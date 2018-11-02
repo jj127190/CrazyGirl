@@ -1,0 +1,76 @@
+<h1 class="page_title">
+    广告 </h1>
+
+<h2>
+    1 顶部展开定时自动关闭广告 </h2>
+<div class="codeView bs-docs-example ">
+    <div id="">
+        <div id="top" style="display:none;">
+            <img src="/static/img/AD-1000x60.gif" width="1000" height="60"/>
+        </div>
+        <div id="banner" style="width:1000px;display:none;">
+            <img src="/static/img/AD-1000x300.gif" width="1000" height="300"/>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#banner").slideDown("slow");
+            /*下拉速度 可自己设置*/
+        });
+        function displayimg() {
+            $("#banner").slideUp(1000, function () {
+                $("#top").slideDown(1000);
+                /*下拉速度 可自己设置*/
+            });
+        }
+        setTimeout("displayimg()", 4000);
+        /*大图显示时间 可自己设置*/
+    </script>
+</div>
+
+<h2>
+    2 对联广告 </h2>
+<div>
+    <div class="dual dual_l">
+        <div class="dual_con ">
+            <img src="/sattic/img/AD-100x300.gif" width="100" height="300"/>
+        </div>
+        <a href="#" class="dual_close ">
+            X关闭 </a>
+    </div>
+    <div class="dual dual_r">
+        <div class="dual_con ">
+            <img src="/static/img/AD-100x300.gif" width="100" height="300"/>
+        </div>
+        <a href="#" class="dual_close ">
+            X关闭 </a>
+    </div>
+</div>
+<script type="text/javascript">
+    var dual = $(".dual");
+    var dual_close = $("a.dual_close");
+    var screen_w = screen.width;
+    if (screen_w > 1024) {
+        dual.show();
+    }
+    $(window).scroll(function () {
+        var scrollTop = $(window).scrollTop();
+        dual.stop().animate({top: scrollTop + 260});
+    });
+    dual_close.click(function () {
+        $(this).parent().hide();
+        return false;
+    });
+</script>
+
+<div class="dual dual_l">
+    <div class="dual_con">对联的内容</div>
+    <a href="#" class="dual_close">X关闭</a></div>
+<div class="dual dual_r">
+    <div class="dual_con">对联的内容</div>
+    <a href="#" class="dual_close">X关闭</a></div>
+
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.ad包即可</span></pre>

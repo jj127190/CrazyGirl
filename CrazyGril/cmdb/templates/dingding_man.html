@@ -1,0 +1,108 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}钉钉报警管理
+<span style="margin-left: 20px"></span>
+
+<a href="/cmdb/wechat"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+
+
+
+{% block content %}
+<!--<form action="{% url 'cmdb:asset_add' %}" name="splitf" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >-->
+ <form  action="" name="splitf" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl" style="display: none">
+        <label class="form-label col-3"><span class="c-red">*</span>hidden</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.id}}" name="idc_id" />
+        </div>
+    </div>
+
+<div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>当前钉钉平台:</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="Rancher 平台" name="idc_name" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>报警名称</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"   value="小猪佩奇"  name="idc_tag" />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3">消息推送</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"  value="开启"  name="idc_add" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>url</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="https://oapi.dingtalk.com/"   name="idc_tel"  />
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>access_token</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="beb9ece312..."   name="idc_pic"  >
+        </div>
+   </div>
+
+
+
+
+
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>备注信息</label>
+        <div class="formControls col-7">
+                 <input type="textarea"  rows="7" cols="42" class="input-text form-control"  value="{{host_info.sn}}"  name="idc_msg"  />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span></label>
+        <div class="formControls col-7">
+        <button onclick="sub()" class="btn radius btn-primary ">添加<span class="glyphicon glyphicon-ok"></span></button>
+            <span style="margin-left: 5px"></span>
+        <button onclick="cancel()" class="btn radius btn-success " >取消<span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+<script>
+    function cancel(){
+        document.splitf.action="{% url 'cmdb:idc_cancel' %}";
+        document.splitf.submit();
+    }
+
+    function sub(){
+        document.splitf.action="{% url 'cmdb:idc_add' %}";
+        document.splitf.submit();
+    }
+
+</script>
+
+
+{% endblock %}

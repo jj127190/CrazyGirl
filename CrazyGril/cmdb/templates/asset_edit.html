@@ -1,0 +1,191 @@
+<form action="{% url 'cmdb:asset_edit' %}" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl" style="display: none">
+        <label class="form-label col-3"><span class="c-red">*</span>hidden</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.id}}" name="asset_id" />
+        </div>
+    </div>
+
+<div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>主机名:</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.hostname}}" name="hostname" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>内网ip 地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"   value="{{host_info.ip}}"  name="n_ip" />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3">外网ip 地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"  value="{{host_info.other_ip}}"  name="w_ip" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>操作系统</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.os}}"   name="os"  placeholder="os ！٩(๑❛ᴗ❛๑)۶"/>
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>cpu型号</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.cpu_model}}"   name="cpu_type"  placeholder="cpu type！罒ω罒/">
+        </div>
+   </div>
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3">cpu数量</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.cpu_num}}"   name="cpu_num"  placeholder="cpu num！( • ̀ω•́ )✧"/>
+        </div>
+    </div>
+
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>内存大小</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.memory}}"  name="mem"  placeholder="mem！ヾ(ﾟ∀ﾟゞ)"/>
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>硬盘</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.disk}}"  name="disk"  placeholder="disk！(*/ω＼*)"/>
+        </div>
+    </div>
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>资产编号</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.asset_no}}"  name="asset_nu"  placeholder="asset！<(￣ ﹌ ￣)>  "/>
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>设备类型</label>
+        <div class="formControls col-7">
+             <select class="form-control input-text select2" name="asset_type" id="types">
+
+                    {% for type in all_type %}
+                    {% if type == host_info.asset_type %}
+                    <option value="{{  host_info.asset_type }}"  selected>{{host_info.asset_type}}</option>
+                    {% else %}
+                    <option value="{{ type }}">{{ type }}</option>
+                    {% endif %}
+                    {% endfor%}
+            </select>
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>设备状态</label>
+        <div class="formControls col-7">
+             <select class="form-control input-text select2" name="asset_status" id="asset_status">
+                    <!--<option  selected >缺省</option>-->
+                   {% for statu in all_status %}
+                    {% if statu == host_info.status %}
+                    <option value="1"  selected>{{host_info.status}}</option>
+                     {% else %}
+                   <option value="{{ statu }}">{{ statu }}</option>
+                    {% endif %}
+                   {% endfor%}
+
+            </select>
+        </div>
+    </div>
+
+
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>SN</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{host_info.sn}}"  name="sn"  placeholder="sn！Σ(っ°Д°;)っ"/>
+        </div>
+    </div>
+
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>厂商</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{ host_info.vendor }}"  name="Manufacturer"  placeholder="Manufacturer！っﾟДﾟ)っ"/>
+        </div>
+    </div>
+
+          <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>上架时间</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{host_info.up_time}}"  name="update_time "  placeholder="time！っﾟДﾟ)っ"/>
+        </div>
+    </div>
+
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房</label>
+        <div class="formControls col-7">
+             <select class="form-control input-text select2" name="idc" id="idc">
+                 <!--<option selected value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+                   {% for idc in all_idc %}
+                    {% if idc == host_info.idc %}
+                    <option selected value="{{ host_info.idc  }}">{{ host_info.idc }}</option>
+                    {% else %}
+                   <option value="{{ idc }}">{{ idc.name }}</option>
+                 {% endif %}
+                   {% endfor%}
+
+            </select>
+        </div>
+    </div>
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3">备注信息</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{host_info.memo}}"  name="msg"  placeholder="msg！٩(๑❛ᴗ❛๑)۶"/>
+        </div>
+    </div>
+
+
+
+
+
+
+      <div class="row cl">
+          <label class="form-label col-3 ">操作</label>
+      <div class="col-sm-offset-7 col-sm-5" style="margin-top: 15px;">
+        <div class="modal-footer">
+        <button type="submit" class="btn radius btn-primary">编辑 ！</button>
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+       </div>
+        </div>
+      </div>
+
+</form>

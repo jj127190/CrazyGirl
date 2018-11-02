@@ -1,0 +1,158 @@
+<h1 class="page_title">
+		进度条 loading	</h1>
+	<p class="alert alert-info no-margin">
+		所有的进度条都包含一个基本样式	<code>
+		.progress	</code>
+，并可以通过以下样式控制进度条的大小	<code>
+		.progress-xs	</code>
+,	<code>
+		.progress-sm	</code>
+,	<code>
+		.progress-lg	</code>
+，或者不用添加样式，保持默认大小.	</p>
+		<h2>
+		1 原始进度条	</h2>
+	<div class="codeView bs-docs-example ">
+				<div class="progress-unique">
+        <div class="progress-bars"><span class="sr-modern" style="width:25%"></span></div>
+    </div>
+	</div>
+		<h2>
+		2 进度动态变化的进度条 	</h2>
+	<p>
+			<span class="label bg-color-darken txt-color-white">JS required</span>
+ 这个小巧的动画进度条需要CSS样式和javascript的支持	</p>
+	<p>
+		你只需要简单的在	<strong>
+		.progress-bar	</storng>
+样式后面，添加以下属性值	<code>
+		aria-valuetransitiongoal="25".	</code>
+	</p>
+	<p>
+		默认是左对齐，添加以下样式，使进度条右对齐	<code>
+		.progress .right	</code>
+如下：	</p>
+	<div class="codeView bs-docs-example ">
+				<div class="well no-padding">
+							<div class="bar-holder">
+		<div class="progress right">
+			<div aria-valuetransitiongoal="25" class="progress-bar bg-color-teal" style="width: 25%;" aria-valuenow="25">25%</div>
+		</div>
+	</div>
+					<div class="bar-holder">
+		<div class="progress right">
+			<div aria-valuetransitiongoal="50" class="progress-bar bg-color-blueLight" style="width: 50%;" aria-valuenow="50">50%</div>
+		</div>
+	</div>
+					<div class="bar-holder">
+		<div class="progress right">
+			<div aria-valuetransitiongoal="75" class="progress-bar bg-color-blue" style="width: 75%;" aria-valuenow="75">75%</div>
+		</div>
+	</div>
+					<div class="bar-holder">
+		<div class="progress right">
+			<div aria-valuetransitiongoal="100" class="progress-bar bg-color-redLight" style="width: 100%;" aria-valuenow="100">100%</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+		<h2>
+		3 各式进度条  	</h2>
+	<div class="codeView bs-docs-example ">
+					<div class="row">
+						<div class="col-sm-12">
+												<hr class="simple">
+							<h3>
+		默认进度条 	</h3>
+						<p >
+		微进度条     <code > 
+        .progress-micro     </code>
+with
+						    <code > 
+        .progress-bar-primary    </code>
+						</p>
+								<div class="progress progress-micro">
+				<div style="width: 44%;" role="progressbar" class="progress-bar progress-bar-primary"></div>
+		</div>
+						<p >
+		超小进度条     <code > 
+        .progress-xs    </code>
+with
+						    <code > 
+        .bg-color-blue    </code>
+							<span class="txt-color-blue pull-right"><i class="fa fa-lg fa-check"></i></span>
+						</p>
+								<div class="progress progress-xs">
+				<div style="width: 60%;" role="progressbar" class="progress-bar bg-color-blue"></div>
+		</div>
+						<p >
+		小进度条     <code > 
+        .progress-sm    </code>
+with
+						    <code > 
+        .bg-color-greenLight    </code>
+							<span class="txt-color-green pull-right"><i class="fa fa-save"></i></span>
+						</p>
+						progressBar(smProgressBarPercentage "progress-sm" smProgressBarColorCls)
+						<p >
+		默认进度条<code>.bg-color-redLight</code>
+							<span class="txt-color-red pull-right"><i class="fa fa-lg fa-times"></i></span>
+						</p>
+								<div class="progress ">
+				<div style="width: 60%;" role="progressbar" class="progress-bar bg-color-redLight"></div>
+		</div>
+	
+						<p >
+		大进度条 <code>.progress-lg</code>with
+						    <code > 
+        .bg-color-blueLight    </code>
+							<span class="txt-color-blueLight pull-right"><i class="fa fa-2x fa-check"></i></span>
+						</p>
+								<div class="progress progress-lg">
+				<div style="width: 80%;" role="progressbar" class="progress-bar bg-color-blueLight"></div>
+		</div>
+						<hr class="simple">
+							<h3>
+		斜纹进度条 	</h3>
+						<p >
+		斜纹进度条采用CSS3倾斜样式完成, 通过添加    <code > 
+        .progress-striped    </code>
+ 样式到基础样式中	</p>
+						<p>
+		<span class="label label-info">Info!</span> 注意，在一些陈旧的浏览器中无法工作，如IE9。 <span class="txt-color-purple pull-right"><i class="fa fa-warning"></i> 80% Complete</span>
+	</p>
+									<div class="progress progress-striped">
+				<div style="width: 77%;" role="progressbar" class="progress-bar bg-color-purple"></div>
+		</div>
+						<p >
+		添加样式    <code > 
+        .progress-striped .active    </code>
+，以激活进度条并显示动画效果.	</p>
+						<p >
+								添加样式    <code > 
+        .bg-color-darken    </code>
+，可以使进度条变暗. 
+							<span class="txt-color-orange pull-right"><i class="fa fa-lg fa-times"></i></span>
+						</p>
+								<div class="progress progress-sm progress-striped active">
+				<div style="width: 45%;" role="progressbar" class="progress-bar bg-color-darken"></div>
+		</div>
+						<hr class="simple">
+							<h3>
+		叠加进度条	</h3>
+						<p >
+		一条叠在另一个上面包括所有在一个    <code > 
+        div.progress    </code>
+	</p>
+						<div class="progress progress-sm">
+									<div style="width: 35%" class="progress-bar bg-color-greenLight"></div>
+							<div style="width: 20%" class="progress-bar bg-color-yellow"></div>
+							<div style="width: 10%" class="progress-bar bg-color-redLight"></div>
+						</div>
+			</div>
+		</div>
+	</div>
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.progress包即可</span></pre>

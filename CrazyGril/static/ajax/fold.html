@@ -1,0 +1,190 @@
+<h1 class="page_title">
+    折叠 </h1>
+<h2>
+    1 只打开一个，可以关闭 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="cl l" style="width:48%">
+        <p><strong>点击效果</strong></p>
+        <ul id="Tinyfold1" class="Tinyfold">
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"> 内容<br>很多内容</div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/2.png" width="300" height="150">
+                    <br>可以是图片
+                </div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/1.png" width="300" height="150">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="cl r" style="width:48%">
+        <p><strong>鼠标经过效果</strong></p>
+        <ul id="Tinyfold4" class="Tinyfold">
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"> 内容<br>很多内容</div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/2.png" width="300" height="150">
+                    <br>可以是图片
+                </div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/1.png" width="300" height="150">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".Hui_aside").scrollTop(380);
+            /*折叠*/
+            $.Tinyfold("#Tinyfold1 .item h4", "#Tinyfold1 .item .info", "fast", 1, "click");
+            /*5个参数顺序不可打乱，分别是：相应区,隐藏显示的内容,速度,类型,事件*/
+            $.Tinyfold("#Tinyfold4 .item h4", "#Tinyfold4 .item .info", "", 1, "mouseover");
+        });
+    </script>
+    <div class="clear"></div>
+</div>
+<h2>
+    2 必须有一个打开 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="cl l" style="width:48%">
+        <p><strong>点击效果</strong></p>
+        <ul id="Tinyfold2" class="Tinyfold">
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"> 内容<br>很多内容</div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/2.png" width="300" height="150">
+                    <br>可以是图片
+                </div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/1.png" width="300" height="150">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="cl r" style="width:48%">
+        <p><strong>鼠标经过效果</strong></p>
+        <ul id="Tinyfold5" class="Tinyfold">
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"> 内容<br>很多内容</div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/2.png" width="300" height="150">
+                    <br>可以是图片
+                </div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/1.png" width="300" height="150">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".Hui_aside").scrollTop(380);
+            /*折叠*/
+            /*5个参数顺序不可打乱，分别是：相应区,隐藏显示的内容,速度,类型,事件*/
+            $.Tinyfold("#Tinyfold2 .item h4", "#Tinyfold2 .item .info", "", 2, "click");
+            $.Tinyfold("#Tinyfold5 .item h4", "#Tinyfold5 .item .info", "", 2, "mouseover");
+
+        });
+    </script>
+    <div class="clear"></div>
+</div>
+<h2>
+    3 可打开多个 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="cl l" style="width:48%">
+        <p><strong>点击效果</strong></p>
+        <ul id="Tinyfold3" class="Tinyfold">
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"> 内容<br>很多内容</div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/2.png" width="300" height="150">
+                    <br>可以是图片
+                </div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/1.png" width="300" height="150">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="cl r" style="width:48%">
+        <p><strong>鼠标经过效果</strong></p>
+        <ul id="Tinyfold6" class="Tinyfold">
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"> 内容<br>很多内容</div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/2.png" width="300" height="150">
+                    <br>可以是图片
+                </div>
+            </li>
+            <li class="item">
+                <h4>标题<b>+</b></h4>
+
+                <div class="info"><img src="/static/img/1.png" width="300" height="150">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".Hui_aside").scrollTop(380);
+            /*折叠*/
+            /*5个参数顺序不可打乱，分别是：相应区,隐藏显示的内容,速度,类型,事件*/
+            $.Tinyfold("#Tinyfold3 .item h4", "#Tinyfold3 .item .info", "", 3, "click");
+            $.Tinyfold("#Tinyfold6 .item h4", "#Tinyfold6 .item .info", "", 3, "mouseover");
+        });
+    </script>
+    <div class="clear"></div>
+</div>
+
+
+<h3>组件包</h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.fold包即可</span></pre>

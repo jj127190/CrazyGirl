@@ -1,0 +1,273 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cmn-Hans-CN"> <!--<![endif]-->
+<html lang="zh-cmn-Hans-CN">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8"/>
+    <meta name="renderer" content="webkit|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--<meta name="apple-mobile-web-app-capable" content="yes" />--><!-- home screen app 全屏 -->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black" />--><!-- 状态栏 -->
+    <title>{% block title %}CYOU Web CMDB{% endblock %}</title>
+    <meta name="keywords" content="CYOU Web cmdb">
+    <meta name="description" content="">
+    <script>
+        var contextPath = ".";
+        var CKEDITOR_BASEPATH = contextPath + '/';
+        var pathname = location.pathname;
+        var relativeurl = pathname.substring(CKEDITOR_BASEPATH.length + pathname.length);
+        contextPath = relativeurl;
+        // var UPLOAD_ACTION_URL = '/./action/save.pagelet';
+        /*
+         jQuery.fn.outerHTML = function(s) {
+         return (s) ? this.before(s).remove() : jQuery("p").append(this.eq(0).clone()).html();
+         }
+         */
+    </script>
+    <link rel="shortcut icon" href="{% static 'img/tiny32.png' %}">
+    <link rel="stylesheet" href="{% static 'css/validationEngine.jquery.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/alertify.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/alertify.rtl.css' %}" type="text/css"/>
+
+    <link href="{% static 'css/uiengine.ui.css' %}" rel="stylesheet"/>
+    <script src="{% static 'js/uiengine.ui.js' %}"></script>
+
+    {% block extracss %}{% endblock %}
+
+    <!--[if lt IE 9]>
+		<link href="{% static 'org/tinygroup/publicComponent/css/ie8apply.css' %}" rel="stylesheet" />
+		<script src="{% static 'org/tinygroup/publicComponent/js/html5shiv.min.js' %}"></script>
+		<script src="{% static 'base.html' %}"></script>
+	<![endif]-->
+</head>
+<body class="theme-default main-menu-animated">
+<script>var init = [];</script>
+<script src="{% static 'js/setting.js' %}"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        var qcloud = {};
+        $('[_t_nav]').hover(function () {
+            var _nav = $(this).attr('_t_nav');
+            clearTimeout(qcloud[_nav + '_timer']);
+            qcloud[_nav + '_timer'] = setTimeout(function () {
+                $('[_t_nav]').each(function () {
+                    $(this)[_nav == $(this).attr('_t_nav') ? 'addClass' : 'removeClass']('nav-up-selected');
+                });
+                $('#' + _nav).stop(true, true).slideDown(200);
+            }, 150);
+        }, function () {
+            var _nav = $(this).attr('_t_nav');
+            clearTimeout(qcloud[_nav + '_timer']);
+            qcloud[_nav + '_timer'] = setTimeout(function () {
+                $('[_t_nav]').removeClass('nav-up-selected');
+                $('#' + _nav).stop(true, true).slideUp(200);
+            }, 150);
+        });
+    });
+</script>
+<div class="head-v3">
+    <div class="navigation-up">
+        <div class="navigation-inner">
+            <div class="navigation-v3">
+                <ul>
+                    <li class="nav-up-selected-inpage" _t_nav="home">
+                        <a href="#">首页</a>
+                    </li>
+                    <li class="" _t_nav="product">
+                        <a href="#">云产品</a>
+                    </li>
+                    <li class="" _t_nav="webmanage">
+                        <a href="#">web运维</a>
+                    </li>
+                    <li class="" _t_nav="solution">
+                        <a href="#">行业解决方案</a>
+                    </li>
+                    <li class="" _t_nav="cooperate">
+                        <a href="#">合作伙伴</a>
+                    </li>
+                    <li _t_nav="support">
+                        <a href="#">帮助与支持</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navigation-down">
+        <div id="webmanage" class="nav-down-menu menu-1" style="display: none;" _t_nav="webmanage">
+            <div class="navigation-down-inner">
+                <dl style="margin-left: 100px;">
+                    <dt>域名管理</dt>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.compute1" href="{% url 'webmanage:domain_list' %} ">二级域名</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.compute2" href="{% url 'webmanage:subdomain_list' %} ">三级域名</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.compute3"
+                           href="{% url 'webmanage:record_detail_list' %}">记录详情</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>防火墙管理</dt>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.storage1" href="{% url 'firewall:project_list' %}">防火墙管理</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.storage4" href="{% url 'firewall:task_dispense' %}">防火墙下发</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>配置文件管理</dt>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.monitoring1" href="{% url 'confmanage:conftemplate_list' %} ">配置文件模板</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.monitoring2" href="#">业务配置文件</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.webmanage.monitoring3" href="#">配置文件下发</a>
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+        <div id="product" class="nav-down-menu menu-1" style="display: none;" _t_nav="product">
+            <div class="navigation-down-inner">
+                <dl style="margin-left: 100px;">
+                    <dt>计算机与网络</dt>
+                    <dd>
+                        <a hotrep="hp.header.product.compute1" href="#">云服务器</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.compute2" href="#">弹性Web引擎</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.compute3" href="#">负载均衡</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>存储与CDN</dt>
+                    <dd>
+                        <a hotrep="hp.header.product.storage1" href="#">云数据库</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.storage2" href="#">NoSQL高速存储</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.storage4" href="#">对象存储服务(beta)</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.storage3" href="#">CDN</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>监控与安全</dt>
+                    <dd>
+                        <a hotrep="hp.header.product.monitoring1" href="#">云监控</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.monitoring2" href="#">云安全</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.monitoring3" href="#">云拨测</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>数据分析</dt>
+                    <dd>
+                        <a hotrep="hp.header.product.analysis1" href="#">腾讯云分析</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.analysis2" href="#">关键因子</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>开发者工具</dt>
+                    <dd>
+                        <a hotrep="hp.header.product.devtool1" href="#">移动加速</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.devtool2" href="#">应用加固</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.devtool3" href="#">信鸽推送</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>开发者服务</dt>
+                    <dd>
+                        <a hotrep="hp.header.product.service1" href="#">安全认证服务</a>
+                    </dd>
+                    <dd>
+                        <a hotrep="hp.header.product.service2" href="#">域名备案</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div id="solution" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="solution">
+            <div class="navigation-down-inner">
+                <dl style="margin-left: 380px;">
+                    <dd>
+                        <a class="link" hotrep="hp.header.solution.1" href="#">微信</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <a class="link" hotrep="hp.header.solution.2" href="#">游戏</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <a class="link" hotrep="hp.header.solution.3" href="#">移动应用</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div id="support" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="support">
+            <div class="navigation-down-inner">
+                <dl style="margin-left: 610px;">
+                    <dd>
+                        <a class="link" hotrep="hp.header.support.1" href="#">资料库</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <a class="link" hotrep="hp.header.support.2" href="#">论坛</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <a class="link" hotrep="hp.header.support.3" href="#">亿元扶持</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div id="cooperate" class="nav-down-menu menu-3 menu-1" style="display: none;" _t_nav="cooperate">
+            <div class="navigation-down-inner">
+                <dl style="margin-left: 480px;">
+                    <dd>
+                        <a hotrep="hp.header.partner.1" href="#">代理商</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <a hotrep="hp.header.partner.2" href="#">微信服务商</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dd>
+                        <a hotrep="hp.header.partner.3" href="#">创投机构</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

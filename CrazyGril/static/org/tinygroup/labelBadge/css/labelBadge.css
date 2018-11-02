@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* 标签与标号
+	Name:			style_label
+	Example:		<span class="label label-success/label-warning/label-important/label-info/label-inverse">默认</span>
+	Explain:		.label 默认/.label-success 成功/.label-warning 错误/.lable-warning 危险/.label-important 重要/.label-info 信息/.label-inverse 相反
+
+	Name:			style_badge
+	Example:		<span class="badge badge-success/badge-warning/badge-important/badge-info/badge-inverse">1</span>
+	Explain:		.label 默认/.badge-success 成功/.badge-warning 错误/.badge-warning 危险/.badge-important 重要/.badge-info 信息/.badge-inverse 相反
+
+*/
+.label, .badge{display: inline-block;padding: 2px 4px;font-size: 11.844px;font-weight: bold;line-height: 14px;color: #fff;/*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);*/white-space: nowrap;vertical-align: baseline;background-color: #999}
+.label{border-radius:3px}
+.badge{padding:4px 7px;border-radius:12px}
+.label:empty, .badge:empty{display: none}
+a.label:hover, a.label:focus, a.badge:hover, a.badge:focus{color: #fff;text-decoration: none;cursor: pointer}
+
+/*成功*/
+.label-success, .badge-success{background-color: #0c0}
+.label-success[href], .badge-success[href]{background-color: #0c0}
+/*错误*/
+.label-warning, .badge-warning{background-color: #f0ad4e}
+.label-warning[href], .badge-warning[href]{background-color: #f0ad4e}
+/*危险*/
+.label-danger, .badge-danger{background-color: #d9534f}
+.label-danger[href], .badge-danger[href]{background-color: #d9534f}
+/*重要*/
+.label-important, .badge-important{background-color: #b94a48}
+.label-important[href], .badge-important[href]{background-color: #b94a48}
+/*金额*/
+.label-price, .badge-price{background-color: #f60}
+.label-price[href], .badge-price[href]{background-color: #f60}
+/*信息*/
+.label-info, .badge-info{background-color: #1faef2}
+.label-info[href], .badge-info[href]{background-color: #1faef2}
+/*相反*/
+.label-inverse, .badge-inverse{background-color: #1a1a1a}
+.label-inverse[href], .badge-inverse[href]{background-color: #1a1a1a}
+/*尺寸*/
+.btn .label, .btn .badge{position: relative;top: -1px}
+.btn-mini .label, .btn-mini .badge{top: 0}

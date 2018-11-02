@@ -1,0 +1,8 @@
+@charset "utf-8";
+/*缩略图*/
+.imgbox{}
+.img{}
+.img-circle{border-radius:50%}
+
+/*缩略图*/
+.pic-avatar{border:none;background:none;padding:0;margin-bottom:10px}.who-info .caption{padding:5px}.who-info{background:#fcfcfc;border:#f1f1f1 1px solid;padding:4px 5px;}.who-info .caption a{color:#333;}.who_info .caption a:hover{color:#f90;}

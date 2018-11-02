@@ -1,0 +1,109 @@
+<h2>
+    1 Tabs展现 </h2>
+<div class="codeView bs-docs-example ">
+
+    <div style="position:relative;">
+        <div class="m-header f-clearfix">
+            <h4 class="logoBox"><img src="/static/img/logo_min.png"></h4>
+            <ul class="linkInfo">
+                <li class="userPic">
+                    <a href="#">
+                        <img src="/static/img/pic_sty.png">
+                    </a>
+
+                    <p><a href="#">用户名</a></p>
+                </li>
+                <li class="syst">
+                    <a href="javascript:">
+                        系统管理 </a>
+                </li>
+                <li class="flow">
+                    <a href="javascript:">
+                        业务流程 </a>
+                </li>
+                <li class="help">
+                    <a href="javascript:">
+                        新手向导 </a>
+                </li>
+                <li class="exit">
+                    <a href="javascript:">
+                        退出 </a>
+                </li>
+            </ul>
+        </div>
+        <div class="m-container f-clearfix">
+            <div class="m-main">
+                <div class="m-tabList">
+                    <div id="tabLeft" class="m-tab-left"></div>
+                    <div id="tabRight" class="m-tab-right"></div>
+                    <div class="m-tab-list">
+                        <ul id="tabList">
+                            <li id="0list" class="on"><a href="javascript:">
+                                首 页</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-tabCon" id="tabCon">
+                    <div id="0Con" class="m-tab-content">
+                        <div class="m-detail-con f-clearfix">
+                            <div class="contentShow"> 展示内容位置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/static/org/tinygroup/tabShow/data/menuData.js",
+                dataType: "json",
+                success: function (menuData) {
+                    ;
+                    $.artTabs({
+                        menu: menuData
+                    });
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+                    alert(errorThrown);
+                }
+            });
+
+        })
+        /*
+         * 设置输入域(input/textarea)光标的位置
+         * @param {HTMLInputElement/HTMLTextAreaElement} elem
+         * @param {Number} index
+         */
+        function setCursorPosition(elem, index) {
+            var val = elem.value
+            var len = val.length
+            var index = index || len;
+// 超过文本长度直接返回
+            if (len < index) return
+            setTimeout(function () {
+                elem.focus()
+                if (elem.setSelectionRange) { // 标准浏览器
+                    elem.setSelectionRange(index, index)
+                } else { // IE9-
+                    var range = elem.createTextRange()
+                    range.moveStart("character", -len)
+                    range.moveEnd("character", -len)
+                    range.moveStart("character", index)
+                    range.moveEnd("character", 0)
+                    range.select()
+                }
+            }, 10)
+        }
+    </script>
+</div>
+
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.tabShow包</span></pre>

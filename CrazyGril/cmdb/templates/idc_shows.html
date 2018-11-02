@@ -1,0 +1,115 @@
+<form action="{% url 'cmdb:asset_show' %}" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl" style="display: none">
+        <label class="form-label col-3"><span class="c-red">*</span>hidden</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{idc_info.id}}" name="asset_id"  readonly="readonly" />
+        </div>
+    </div>
+
+<div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房:</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{idc_info.name}}" name="hostname"  readonly="readonly" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"   value="{{idc_info.address}}"  name="n_ip"   readonly="readonly" />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3"> 机房电话</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"  value="{{idc_info.tel}}"  name="w_ip"  readonly="readonly" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房负责人</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{idc_info.contact}}"   name="os"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房负责人电话</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{idc_info.contact_phone}}"   name="cpu_type"   readonly="readonly" />
+        </div>
+   </div>
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3">机柜</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{idc_info.jigui}}"   name="cpu_num"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>ip范围</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{idc_info.ip_range}}"  name="mem"   readonly="readonly" />
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>带宽</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{idc_info.bandwidth}}"  name="disk"   readonly="readonly"/>
+        </div>
+    </div>
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>备注</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{idc_info.memo}}"  name="asset_nu"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row cl">
+          <label class="form-label col-3 ">操作</label>
+      <div class="col-sm-offset-6 col-sm-5" style="margin-top: 15px;">
+        <div class="modal-footer">
+        <!--<button type="submit" class="btn radius btn-primary">编辑 ！</button>-->
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+       </div>
+        </div>
+      </div>
+
+</form>

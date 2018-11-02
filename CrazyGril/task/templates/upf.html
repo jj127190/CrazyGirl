@@ -1,0 +1,27 @@
+<form action="/task/tun_upf" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3">上传文件</label>
+        <div class="formControls col-7">
+             <input type="file" class="input-text form-control btn btn-success"   value=""   name="uploadf"  />
+        </div>
+    </div>
+
+
+{#<div class="row cl">#}
+{#        <label class="form-label col-3">创建时间：</label>#}
+{#        <div class="formControls col-7">#}
+{#            <input type="text" class="input-text form-control" value="{{ upload_time }}" name="upload_time" readonly />#}
+{#        </div>#}
+{#    </div>#}
+
+
+    <div class="modal-footer">
+        <button type="submit" class="btn radius btn-primary">确定</button>
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</form>

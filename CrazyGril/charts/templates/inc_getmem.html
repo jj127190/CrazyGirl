@@ -1,0 +1,37 @@
+<script>
+var dom1 = document.getElementById("container");
+var myChart1 = echarts.init(dom1);
+var app1 = {};
+$.get("/charts/info_shows/").done(function (data) {
+    if (data){
+        alert(data)
+        var datas = JSON.parse(data);
+        alert(datas)
+        option = null;
+        option = {
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: datas.time
+                {#data: ['5/min', '10/min', '15/min', '20/min']#}
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: datas.mem_p,
+                {#data: [20, 40, 45, 50, 55, 70, 80,100],#}
+                type: 'line',
+                areaStyle: {}
+    }]
+};
+;
+if (option && typeof option === "object") {
+    myChart1.setOption(option, true);
+}
+    }
+});
+
+
+</script>
+

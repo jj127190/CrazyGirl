@@ -1,0 +1,27 @@
+@charset "utf-8";
+/*4.2.7 导航集合*/
+.dropdown-menu {
+    background-clip: padding-box;
+    /*background: #e3e6ff;*/
+    border: 1px solid adadad;
+    border-radius: 2px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+    display: none;
+    float: left;
+    font-size: 13px;
+    left: 0;
+    list-style: outside none none;
+    margin: 2px 0 0;
+    min-width: 100px;
+    padding: 5px 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+}
+.dropdown-menu.pull-right {left: auto;right: 0;}
+.dropdown-menu .divider {background-color: #e5e5e5;height: 1px; margin: 8px 0;overflow: hidden; border-bottom: 1px solid #ccc;}
+.dropdown-large {position: static !important;}
+.dropdown-menu-large .dropdown-header{color:#5c391e;font-size:18px;}
+.dropdown-menu-large > li > ul > li > a{clear: both;color: #333;display: block;font-weight: 400;line-height: 1.42857;padding: 3px 20px; white-space: normal;}
+.navigation-box{position:relative;}

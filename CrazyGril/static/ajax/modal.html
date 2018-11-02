@@ -1,0 +1,197 @@
+<input type="hidden" id="scrollTop1" value="0"/>
+	<input type="hidden" id="scrollTop2" value="0"/>
+		<h1 class="page_title">
+		对话框 弹出层	</h1>
+		<h2>
+		1 弹出框	</h2>
+  	<div class="codeView bs-docs-example ">
+			 <h3>原模式</h3>
+	<a class="btn radius btn-primary size-L" data-target="#myModal" data-toggle="modal"  data-width="600" modal-title="测试标题" href="/../page/form/4.6.pagelet">
+		弹出对话框	</a>
+	<a class="demo radius btn btn-primary size-L" data-target="#stack1" data-toggle="modal"  data-height="200" data-width="600" modal-title="测试标题2">
+		多个弹出层	</a>
+	<a class="btn radius btn-primary size-L" href="javascript:;" onClick="Tinymodal_alert('我是消息框，2秒后我自动滚蛋!',2000)">
+		消息框，2秒钟自动消失	</a>
+
+<div id="myModal" class="modal hide fade " tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+		<span class="glyphicon glyphicon-fullscreen"></span>
+		<span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+		<h3>对话框标题</h3>
+    </div>
+    <div class="modal-body  ">
+        <div class="clear"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="modal-footer ">
+        <button class="btn radius btn-primary" data-submit="modal">确定</button>
+        <button class="btn radius" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#myModal").on("close",function(e){
+            $(this).modal('hide');
+        })
+        $("#myModal [data-submit=modal]").off("click").on("click",function(){
+            $(this).closest(".modal").find("form:first").submit();
+        });
+    });
+</script>
+
+<!--打开多个弹出层-->
+
+<div id="stack1" class="modal hide fade " tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+		<span class="glyphicon glyphicon-fullscreen"></span>
+		<span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+		<h3>对话框标题</h3>
+    </div>
+    <div class="modal-body  ">
+        <div class="clear">    <p>第一个弹出层内容</p>
+    <input data-tabindex="1" type="text">
+    <input data-tabindex="2" type="text">
+    	<button class="btn radius" data-target="#stack2" data-toggle="modal"  data-height="300" data-width="500" modal-title="第二个层"/>
+		弹出第二个弹出层	</button>
+</div>
+        <div class="clear"></div>
+    </div>
+    <div class="modal-footer ">
+        <button class="btn radius btn-primary" data-submit="modal">确定</button>
+        <button class="btn radius" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#stack1").on("close",function(e){
+            $(this).modal('hide');
+        })
+        $("#stack1 [data-submit=modal]").off("click").on("click",function(){
+            $(this).closest(".modal").find("form:first").submit();
+        });
+    });
+</script>
+
+<div id="stack2" class="modal hide fade " tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+		<span class="glyphicon glyphicon-fullscreen"></span>
+		<span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+		<h3>对话框标题</h3>
+    </div>
+    <div class="modal-body  ">
+        <div class="clear">    <p>第二个弹出层内容</p>
+    <input data-tabindex="1" type="text">
+    <input data-tabindex="2" type="text">
+    	<button data-target="#stack3" data-toggle="modal"  modal-title="btn radius"/>
+		弹出第三个弹出层	</button>
+</div>
+        <div class="clear"></div>
+    </div>
+    <div class="modal-footer ">
+        <button class="btn radius btn-primary" data-submit="modal">确定</button>
+        <button class="btn radius" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#stack2").on("close",function(e){
+            $(this).modal('hide');
+        })
+        $("#stack2 [data-submit=modal]").off("click").on("click",function(){
+            $(this).closest(".modal").find("form:first").submit();
+        });
+    });
+</script>
+
+<div id="stack3" class="modal hide fade " tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+		<span class="glyphicon glyphicon-fullscreen"></span>
+		<span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+		<h3>对话框标题</h3>
+    </div>
+    <div class="modal-body  ">
+        <div class="clear">第三个弹出层内容</div>
+        <div class="clear"></div>
+    </div>
+    <div class="modal-footer ">
+        <button class="btn radius btn-primary" data-submit="modal">确定</button>
+        <button class="btn radius" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#stack3").on("close",function(e){
+            $(this).modal('hide');
+        })
+        $("#stack3 [data-submit=modal]").off("click").on("click",function(){
+            $(this).closest(".modal").find("form:first").submit();
+        });
+    });
+</script>
+	</div>
+		<h2>
+		2 弹出框（Popover）	</h2>
+	<p >
+		弹出框（Popover）插件根据需求生成内容和标记，默认情况下是把弹出框（popover）放在它们的触发元素后面。	</p>
+	<div class="codeView bs-docs-example ">
+				<div class="container " style="padding: 20px 50px 10px;">
+					<button type="button" class="btn btn-default"         title="Popover title" data-container="body" data-toggle="popover"
+     data-placement="left"     data-content="左侧的 Popover 中的一些内容">
+        		左侧的 Popover	    </button>
+			<button type="button" class="btn btn-primary"         title="Popover title" data-container="body" data-toggle="popover"
+     data-placement="top"     data-content="顶部的 Popover 中的一些内容">
+        		顶部的 Popover	    </button>
+			<button type="button" class="btn btn-success"         title="Popover title" data-container="body" data-toggle="popover"
+     data-placement="bottom"     data-content="底部的 Popover 中的一些内容">
+        		底部的 Popover	    </button>
+			<button type="button" class="btn btn-warning"         title="Popover title" data-container="body" data-toggle="popover"
+     data-placement="right"     data-content="右侧的 Popover 中的一些内容">
+        		右侧的 Popover	    </button>
+	</div>
+	<script>
+		   $(function ()
+		      { $("[data-toggle='popover']").popover();
+		      });
+	</script>
+	</div>
+
+		<h2>
+		3 工具提示（Tooltip）	</h2>
+	<p >
+		工具提示（Tooltip）插件根据需求生成内容和标记，默认情况下是把工具提示（tooltip）放在它们的触发元素后面。	</p>
+	<div class="codeView bs-docs-example ">
+					<button type="button" class="btn btn-default"         title="默认的 Tooltip" data-container="body" data-toggle="tooltip"
+        data-content="">
+        			默认的 Tooltip	    </button>
+		<button type="button" class="btn btn-default"         title="左侧的 Tooltip" data-container="body" data-toggle="tooltip"
+     data-placement="left"    data-content="">
+        		左侧的 Tooltip	    </button>
+		<button type="button" class="btn btn-default"         title="顶部的 Tooltip" data-container="body" data-toggle="tooltip"
+     data-placement="top"    data-content="">
+        		顶部的 Tooltip	    </button>
+		<button type="button" class="btn btn-default"         title="底部的 Tooltip" data-container="body" data-toggle="tooltip"
+     data-placement="bottom"    data-content="">
+        		底部的 Tooltip	    </button>
+		<button type="button" class="btn btn-default"         title="右侧的 Tooltip" data-container="body" data-toggle="tooltip"
+     data-placement="right"    data-content="">
+        			右侧的 Tooltip	    </button>
+	<script>
+
+			   $(function () { $("[data-toggle='tooltip']").tooltip(); });
+	</script>
+	</div>
+
+<ul class="list"> <li><b>通过 data 属性</b>：如需添加一个工具提示（tooltip），只需向一个锚标签添加 <b>data-toggle="tooltip"</b> 即可。锚的 title 即为工具提示（tooltip）的文本。默认情况下，插件把工具提示（tooltip）设置在顶部。 <pre class="prettyprint prettyprinted" style="background-image: none;"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#"</span><span class="pln"> </span><span class="atn">data-toggle</span><span class="pun">=</span><span class="atv">"tooltip"</span><span class="pln"> </span><span class="atn">title</span><span class="pun">=</span><span class="atv">"Example tooltip"</span><span class="tag">&gt;</span><span class="pln">请悬停在我的上面</span><span class="tag">&lt;/a&gt;</span></pre> </li> <li><b>通过 JavaScript</b>：通过 JavaScript 触发工具提示（tooltip）： <pre class="prettyprint prettyprinted" style="background-image: none;"><span class="pln">$</span><span class="pun">(</span><span class="str">'#identifier'</span><span class="pun">).</span><span class="pln">tooltip</span><span class="pun">(</span><span class="pln">options</span><span class="pun">)</span></pre> </li> </ul>
+<p><img src="/static/img/quote.png">工具提示（Tooltip）插件不像之前所讨论的下拉菜单及其他插件那样，它不是纯 CSS 插件。如需使用该插件，您必须使用 jquery 激活它（读取 javascript）。使用下面的脚本来启用页面中的所有的工具提示（tooltip）： <pre class="prettyprint prettyprinted" style="background-image: none;"><span class="pln">$</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> $</span><span class="pun">(</span><span class="str">"[data-toggle='tooltip']"</span><span class="pun">).</span><span class="pln">tooltip</span><span class="pun">();</span><span class="pln"> </span><span class="pun">});</span></pre> </p>
+
+
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.modal包即可</span></pre>
+
+
+<div id="remoteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body"> </div>
+</div>
+<!--ajaxModal-->
+<div id="ajaxModal" class="modal hide fade" tabindex="-1" data-width="700"></div>

@@ -1,0 +1,109 @@
+<h2>
+    1 fullCalendar日程表 </h2>
+<div class="codeView bs-docs-example ">
+    <div style="position:relative">
+        <div class="workcalendar">
+            <div class='showbody' id="fullCalendar"></div>
+            <div id="fullCalendar-showtitle" class="wc-showtitle"></div>
+            <script>
+                $(function () {
+                    var $modalLink = $("#mfullCalendar");
+                    var dolink = "/static/data/calendarEvent.page";
+                    dolink += dolink.indexOf("?") > -1 ? "&" : "?";
+                    dolink += "fcid=fullCalendar&"
+                    $("#fullCalendar-showtitle").on("click", function () {
+                        var that = this;
+                        WdatePicker({
+                            startDate: '%y-%M-01', dateFmt: "yyyy-MM",
+                            onpicked: function () {
+                                $calendar.fullCalendar('gotoDate', $(that).html());
+                            }
+                        })
+                    });
+                    var $calendar = $('#fullCalendar');
+                    var olddate = moment().format("YYYY-MM-DD");
+                    $calendar.fullCalendar({
+                        header: {
+                            left: 'prev',
+                            center: 'title',
+                            right: 'next'
+                        },
+                        events: '/static/data/calendar.page',
+                        defaultDate: "2015-02-12",//moment().format("YYYY-MM-DD"),
+                        businessHours: true, // display business hours
+                        editable: true,
+                        eventLimit: true,
+                        dayClick: function (date, allDay, jsEvent, view) {
+                            olddate = date;
+                            $modalLink.attr({
+                                "href": dolink + "date=" + date.format("YYYY-MM-DD") + "&action=add",
+                                "modal-title": "增加事件"
+                            });
+                            $modalLink.trigger("click");
+                        },
+                        eventClick: function (event, jsEvent, view) {
+                            olddate = event.start;
+                            $modalLink.attr({"href": dolink + "id=" + event.id + "&action=edit", "modal-title": "修改事件"});
+                            $modalLink.trigger("click");
+                        }
+                    });
+                    $calendar.on("refresh", function (e) {
+                        $(this).fullCalendar('refetchEvents');//fullCalendar( 'rerenderEvents' );//fullCalendar('refetchResources');
+                    })
+                });
+            </script>
+        </div>
+    </div>
+    <a id="mfullCalendar" class="hide" data-target="#mfullCalendarModal" data-toggle="modal" data-width="80%" modal-title="增加"
+       href="/static/data/calendarEvent.page">
+    </a>
+
+    <div id="mfullCalendarModal" class="modal hide fade " tabindex="-1"
+         role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <span class="glyphicon glyphicon-fullscreen"></span>
+            <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+            <h3>增加</h3>
+        </div>
+        <div class="modal-body  ">
+            <div class="clear"></div>
+            <div class="clear"></div>
+        </div>
+        <div class="modal-footer ">
+            <button class="btn radius btn-primary ModalSubmitButton" data-submit="modal">
+                确定
+            </button>
+            <button class="btn radius " data-dismiss="modal" aria-hidden="true">
+                关闭
+            </button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        <!--
+        $(function () {
+            $("#mfullCalendarModal").on("close", function (e) {
+                $(this).modal('hide');
+            })
+        });
+        //-->
+    </script>
+    <script type="text/javascript">
+        <!--
+        $(function () {
+            $("button.ModalSubmitButton").off("click").on("click", function () {
+                var thisform = $("#mfullCalendarModal form");
+                if (thisform.size()) {
+                    thisform.submit();
+                }
+            });
+        });
+        //-->
+    </script>
+
+</div>
+
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">1 fullCalendar日程表依赖org.tinygroup.fullCalendar包</span></pre>

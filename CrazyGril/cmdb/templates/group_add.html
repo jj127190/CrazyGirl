@@ -1,0 +1,165 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}添加组信息
+<span style="margin-left: 20px"></span>
+
+<a href="/cmdb/group_connect"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+
+{% block content %}
+
+<script src="/static/layer/layer.js"></script>
+<script src="/static/js/jquery.bootstrap-duallistbox.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-duallistbox.css">
+<div class="row">
+
+    <label>组名：</label>
+    <textarea id="group_name" cols="40" rows="1"  value="{{ group_name }}" width="20%"  class="form-control" ></textarea>
+    &nbsp;&nbsp;
+    <label>描述：</label>
+    <textarea id="des" cols="40" rows="1"  value="{{ des }}" width="20%"         class="form-control" ></textarea>
+    &nbsp;&nbsp;&nbsp;
+        <!--<div class="btn-group">-->
+				<!--<input type="submit" class="btn btn-primary btn-sm"  onclick="showLoading()" value="搜索" />-->
+            <!--</div>-->
+    </div>
+
+
+
+
+<div class="col-md-7">
+    <!--<form >-->
+    <!--<form  action="" name="splitf" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >-->
+      <!--{{csrf_}}}-->
+        {% csrf_token %}
+        <select id="demo2" multiple="multiple" size="10" name="duallistbox_demo2" class="demo2">
+        <!--<option value="option1">Option 1</option>-->
+        <!--<option value="option2">Option 2</option>-->
+        <!--<option value="option3" selected="selected">Option 3</option>-->
+        {% for item in host_ip %}
+          <option value="{{ item.ip }}" id="{{ item.ip  }}">{{ item.hostname }}:<span style="margin-left: 5px;color: red;">{{ item.ip }}</span> </option>
+        {% endfor %}
+      </select>
+
+
+
+
+   <div class="row cl col-sm-4">
+        <div class="formControls col-7">
+        <button id="sub" class="btn radius btn-primary "><span class="glyphicon glyphicon-ok"></span>添加</button>
+            <span style="margin-left: 5px"></span>
+        <a href="group_connect"> <button class="btn radius btn-success " >取消<span class="glyphicon glyphicon-remove"></span></button></a>
+        </div>
+    </div>
+
+
+
+
+      <script>
+        var demo2 = $('.demo2').bootstrapDualListbox({
+          nonSelectedListLabel: '可选服务器ip',
+          selectedListLabel: '已选服务器ip',
+          filterTextClear: '清空过滤条件',
+          filterPlaceHolder: '过滤条件',
+          preserveSelectionOnMove: 'moved',
+          moveOnSelect: false,
+          infoText: '当前共 {0} 条IP',
+          infoTextFiltered: '从 {1} 项 筛选 {0} 项',
+          infoTextEmpty: 'Empty list',
+          nonSelectedFilter: ''
+        });
+
+
+      </script>
+
+
+    <script>
+
+
+
+      $("#sub").click(function () {
+            var selectedValues = [];
+            var group_name = $("#group_name").val()
+            var des = $("#des").val()
+            // alert(des+group_name)
+            $("#demo2 :selected").each(function(){
+            selectedValues.push($(this).val());
+            });
+            // alert(selectedValues);
+            var url="/cmdb/ajax_tran_data"
+            // var data = selectedValues.join()
+            // alert(data)
+            $.post(
+                url,
+                {'selectedValues':selectedValues.join("-"),"group_name":group_name,"des":des, 'csrftoken': csrftoken},
+                function(data){
+                    if (data == "1"){
+                        // alert("123")
+
+                   // setTimeout("javascript:location.href='/cmdb/group_connect'", 1000);
+                   //  setTimeout("javascript:location.href='/cmdb/group_connect'", 1000);
+
+                      layer.open({
+                          title: '返回结果'
+                          ,content: '操作成功'
+                        });
+                        // alert(1)
+                        // alert("操作成功www！")
+                    }
+                    else{
+                        layer.open({
+                          title: '返回结果'
+                          ,content: data
+                        });
+
+                    }
+                });
+
+          // var selected =$("#demo2 option:selected").attr("id")
+          // var myselect=document.getElementById("demo2");
+          // var index=myselect.selectedIndex;
+          // var selected = myselect.options[index].value;
+
+          // alert(selected)
+            // var objectiveIdc = $(this).children('option:selected').val();
+            // hostGroupIp = $("input[name='hostGroupIp']").val();
+            // aclNumber = $("input[name='aclNumber']").val();
+            // console.log(hostGroupIp, aclNumber);
+            // var url = "";
+            // $.post(url, {'objectiveIdc': objectiveIdc, 'csrftoken': csrftoken},
+            //         function (data) {
+            //             if (data["code"] == "0") {
+            //                 $("input[name='hostGroupIp']").val(data["data"]["host_group_ip"]);
+            //                 $("input[name='aclNumber']").val(data["data"]["acl_number"]);
+            //                 $("input[name='ruleNumber']").val(data["data"]["rule_number"]);
+            //             }
+            //             else{
+            //                 $("input[name='ruleNumber']").val("内部异常错误");
+            //             }
+            //         }, "json");
+        });
+
+    </script>
+
+
+    <script>
+    function cancel(){
+        document.splitf.action="/cmdb/group_connect";
+        document.splitf.submit();
+    }
+
+    function sub(){
+        document.splitf.action="{% url 'cmdb:group_add' %}";
+        document.splitf.submit();
+    }
+
+</script>
+    </div>
+
+
+
+
+
+{% endblock %}

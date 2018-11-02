@@ -1,0 +1,15 @@
+<form action="/cmdb/group_del" method="post" class="form form-horizontal" id="form_validation">
+    {% csrf_token %}
+
+
+
+
+
+<div class="text-center">
+        <input type="text" name="group_id" class="hidden" value="{{ del_id }}"/>
+        <button type="submit" class="btn radius btn-primary" style="margin: 10px 5px">删除</button>
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true" style="margin: 10px  5px" >关闭</button>
+
+    </div>
+
+</form>

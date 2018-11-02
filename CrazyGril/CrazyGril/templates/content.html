@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<div id="content-wrapper">
+    <div class="postion-nav">
+        <ul class="breadcrumb">
+            <li class="text-light-gray">所在位置：</li>
+            <li><a href="#">{% block breadcrumb %}首页{% endblock %}</a></li>
+        </ul>
+    </div>
+    <!-- 主体 start -->
+    <div class="row">
+        <div style="min-height:490px">{% block content %}{% endblock %}</div>
+    </div>
+    <div id="tinyfooter">
+        <div class="tinyfooterrap">
+			<span class="right">
+					系统中心
+			</span>
+            央视网 &copy; 2018
+        </div>
+    </div>
+</div>
+</div>

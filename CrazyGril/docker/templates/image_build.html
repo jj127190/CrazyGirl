@@ -1,0 +1,273 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}docker ImageBuild管理{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <form class="form form-inline" action="" method="GET">
+            <div class="well well-sm">
+                {% if hostip %}
+                当前服务器Ip: {{hostip}}
+                {% else %}
+                当前服务器Ip: 0.0.0.0
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;
+                HarborIP: 10.71.11.145
+            </div>
+        </form>
+    </div>
+
+
+
+     <div class="row">
+        <form class="form form-inline" action="/docker/search_build_image" method="POST">
+             {% csrf_token %}
+            <div class="well well-sm">
+                新镜像名称:&nbsp;<input type="text" name="newimage" value="{{ newimage }}" class="form-control  input-sm" size="10" />
+                版本:&nbsp;        <input type="text" name="version" value="{{ version }}" class="form-control  input-sm" size="10" />
+                维护者:&nbsp;          <input type="text" name="maintainer" value="{{ maintainer }}" class="form-control  input-sm" size="10" />
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-primary btn-sm" onclick="showLoading()"  value="搜索"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="tinyheaderTools form-inline">
+            <input type="hidden" name="pagesize" value="10"/>
+            <a class="btn btn-success" modal-title="添加" data-target="#add" data-toggle="modal" data-height="580" data-width="700"
+               href="/docker/build_add">
+                添加
+            </a>
+
+            <a class="btn   btn-success" modal-title="上传dockerfile" data-target="#add" data-toggle="modal" data-height="330" data-width="700"
+               href="/docker/upload_dockerfile">
+                上传dockerfile
+            </a>
+
+            <a class="btn   btn-danger" modal-title="同步"
+               href="/docker/update_images">
+                同步
+            </a>
+        </div>
+        <div class="clear"></div>
+        <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover">
+                <thead>
+                <tr>
+                    <th>新镜像名称</th>
+                    <th>版本</th>
+                    <th>基础镜像(From)</th>
+                    <th>维护者(MAINTAINER)</th>
+                    <th>创建时间</th>
+                    <th>备注</th>
+                    <th>當前机房???</th>
+                    <th>状态</th>
+                    <th class="unsortable">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if all_data %}
+                    {% for item in all_data %}
+                        <tr class="item{{ item.id }}">
+                            <td style="display:none" ><input type="checkbox"  value="{{ item.id }}" class="chkbox"></td>
+                            <td>{{ item.newimage }}</td>
+                            <td>{{ item.version }}</td>
+                            <td>{{ item.base_image }}</td>
+                            <td>{{ item.maintainer }}</td>
+                            <td>{{ item.upload_time }}</td>
+                            <td>{{ item.msg }}</td>
+                            {% if item.default %}
+                            <td>{{ item.default }}</td>
+                            {% else %}
+                            <td>IDC</td>
+                            {% endif %}
+
+                            <!--{% if item.newimage %}-->
+                            <!--<td>{{ item.newimage }}</td>-->
+                            <!--{% else %}-->
+                            <!--<td>IDC:</td>-->
+                            <!--{% endif %}-->
+                        <td>默认状态</td>
+                            <td>
+                                <a title="编辑" config_id="{{ item.id }}" modal-title="编辑" class="ml-5 addBtn" data-target="#edit"
+                                   data-toggle="modal" data-height="448"
+                                   data-width="504" href="/docker/image_edit?image_edit_id={{ item.id }}"
+                                   style="text-decoration:none">
+                                    <i class="icon-edit"></i>
+                                </a>
+
+
+                                <a title="删除"   acl_rule_id="{{ item.id }}" modal-title="删除镜像" class="ml-5 addBtn" data-target="#edit"
+                                   data-toggle="modal" data-height="120"
+                                   data-width="400"
+                                   href="/docker/image_delete?imagede={{ item.id }}"
+                                  style="text-decoration:none" >
+
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+{#        {% include 'paginator.html' %}#}
+
+
+
+        <ul class="pagination" id="pager">
+        {% if all_data.has_previous %}
+            <li class="previous"><a href="/docker/image_build/?page={{ all_data.previous_page_number }}">上一页</a></li>
+        {% else %}
+            <li class="previous disabled"><a href="#">上一页</a></li>
+        {% endif %}
+        {% for num in paginator.page_range %}
+            {% if num == currentPage %}
+                <li class="item active"><a href="/docker/image_build/?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li class="item"><a href="/docker/image_build/?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if all_data.has_next %}
+            <li class="next"><a href="/docker/image_build/?page={{ all_data.next_page_number }}">下一页</a></li>
+        {% else %}
+            <li class="next disabled"><a href="#">下一页</a></li>
+        {% endif %}
+    </ul>
+
+
+
+        <!--&lt;!&ndash; 如果当前是第一页，就不显示【上一页】链接 &ndash;&gt;  -->
+        <!--{% ifnotequal curPage 1 %}  -->
+            <!--<a href="?curPage={{ curPage }}&&allPage={{ allPage }}&&pageType=pageUp">  -->
+                <!--上一页  -->
+            <!--</a>  -->
+        <!--{% endifnotequal %}   -->
+  <!---->
+        <!--第{{ curPage }}/{{ allPage }}页   -->
+  <!---->
+         <!--&lt;!&ndash; 如果当前是最后一页，就不显示【下一页】链接 &ndash;&gt;  -->
+        <!--{% ifnotequal curPage allPage %}  -->
+            <!--<a href="?curPage={{ curPage }}&&allPage={{ allPage }}&&pageType=pageDown">  -->
+                <!--下一页  -->
+            <!--</a>  -->
+        <!--{% endifnotequal %}  -->
+
+
+            <!--<script>-->
+                <!--/*全选*/-->
+                <!--$(function () {-->
+                    <!--$("#example thead th input:checkbox").on("click", function () {-->
+                        <!--var that = this;-->
+                        <!--$(this).closest("table").find("tr > td:first-child input:checkbox").each(function () {-->
+                            <!--this.checked = that.checked;-->
+                            <!--$(this).closest("tr").toggleClass("selected");-->
+                        <!--});-->
+                    <!--});-->
+                    <!--$(".paginate_button").on("click", function () {-->
+                        <!--$("#example tr").removeClass("selected");-->
+                        <!--$("#example input:checkbox").prop("checked", false);-->
+                    <!--});-->
+                <!--});-->
+            <!--</script>-->
+        </div>
+
+        <!--<script>-->
+            <!--// 删除单个tr操作-->
+            <!--$(function () {-->
+                <!--$(".delBtn").click(function () {-->
+                    <!--var acl_rule_id = $(this).attr('acl_rule_id');-->
+                    <!--layer.confirm('确认要删除吗？', function (index) {-->
+                        <!--if (index) {-->
+                            <!--$.post("", {'acl_rule_ids': acl_rule_id, 'csrftoken': csrftoken},-->
+                                    <!--function (data) {-->
+                                        <!--if (data == '200') {-->
+                                            <!--layer.msg('已删除!', {time: 1000});-->
+                                            <!--$('.item' + acl_rule_id + '').empty();-->
+                                        <!--} else {-->
+                                            <!--layer.msg('[删除失败] ' + data, {time: 1000});-->
+                                        <!--}-->
+                                    <!--});-->
+                        <!--}-->
+                        <!--else {-->
+                            <!--return-->
+                        <!--}-->
+                    <!--});-->
+                <!--});-->
+            <!--});-->
+
+            <!--// 批量操作,获取选中的tr-->
+            <!--function checkValue() {-->
+                <!--var arr = '';-->
+                <!--$(".chkbox").each(function () {-->
+                    <!--if ($(this).is(":checked")) {-->
+                        <!--arr += ($(this).val() + ',')-->
+                    <!--}-->
+                <!--});-->
+                <!--return arr-->
+            <!--}-->
+
+            <!--// 批量删除操作-->
+            <!--function link_del_items() {-->
+                <!--var acl_rule_ids = checkValue();-->
+                <!--if (!acl_rule_ids) {-->
+                    <!--alert('请选择要操作的节点');-->
+                    <!--return false;-->
+                <!--}-->
+                <!--layer.confirm('确认要删除吗？', function (index) {-->
+                    <!--if (index) {-->
+                        <!--$.post("", {'acl_rule_ids': acl_rule_ids, 'csrftoken': csrftoken},-->
+                                <!--function (data) {-->
+                                    <!--if (data == '200') {-->
+                                        <!--layer.msg('已删除!', {time: 1000});-->
+                                        <!--$("input:checked").parents('tr').empty();-->
+                                    <!--} else {-->
+                                        <!--layer.msg('[删除失败] ' + data, {time: 1000});-->
+                                    <!--}-->
+                                <!--});-->
+                    <!--}-->
+                    <!--else {-->
+                        <!--return false-->
+                    <!--}-->
+                <!--});-->
+            <!--}-->
+        <!--</script>-->
+
+
+        <div id="add" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+
+        </div>
+
+        <div id="edit" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(function () {
+                $("#add").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+                $("#edit").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+            });
+        </script>
+    </div>
+{% endblock %}

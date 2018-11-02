@@ -1,0 +1,69 @@
+<h2>
+		 gantt图	</h2>
+
+<div class="gantt" id="GanttChartDIV"></div>
+<script>
+$(function(){
+var $gantt=$("#GanttChartDIV");
+gantg = new JSGantt.GanttChart('gantg',$gantt.get(0), 'day');
+	gantg.setShowRes(1); // Show/Hide Responsible (0/1)
+	gantg.setShowDur(1); // Show/Hide Duration (0/1)
+	gantg.setShowComp(1); // Show/Hide % Complete(0/1)
+	gantg.setCaptionType('none');  // Set to Show Caption (None,Caption,Resource,Duration,Complete)
+	var colorArr=["fff000","ff0000","ff00ff","0000ff","00ff00","00ffff"];
+    gantg.setColor(colorArr);
+	var _gantTaskId="id";
+	$gantt.on("refresh",function(){
+		$(this).empty();
+		gantg.clearList();
+		$.ajax({
+			url:"/static/data/gantdata.page",
+			dataType:"json",
+			data:{action:"getdata"},
+			success:function(data){
+				var _id="";
+				for(var i=0,l=data.length;i<l;i++){
+					_id=data[i].idName?data[i].idName:_gantTaskId;
+					data[i].pGroup=data[i].pGroup=="0"?0:data[i].pGroup;
+					gantg.AddTaskItem(new JSGantt.TaskItem(data[i].pID, data[i].pName, data[i].pStart, data[i].pEnd, colorArr[data[i].pColor], "/../page/form/4.6.pagelet?"+_id+"="+data[i].pID,0,data[i].pRes,data[i].pComp,data[i].pGroup,data[i].pParent,data[i].pCaption));
+				}
+				gantg.Draw();
+				gantg.DrawDependencies();
+			}
+		});
+	});
+	$gantt.trigger("refresh");
+});
+</script>
+			<a id="ganttModalLink" class="hide" data-target="#ganttModalLinkModal" data-toggle="modal"  data-width="800" modal-title="编辑信息" href="/../../page/form/4.6.pagelet">
+			</a>
+	<div id="ganttModalLinkModal" class="modal hide fade " tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+		<span class="glyphicon glyphicon-fullscreen"></span>
+		<span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+		<h3>对话框标题</h3>
+    </div>
+    <div class="modal-body  ">
+        <div class="clear"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="modal-footer ">
+        <button class="btn radius btn-primary" data-submit="modal">确定</button>
+        <button class="btn radius" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#ganttModalLinkModal").on("close",function(e){
+            $(this).modal('hide');
+        })
+        $("#ganttModalLinkModal [data-submit=modal]").off("click").on("click",function(){
+            $(this).closest(".modal").find("form:first").submit();
+        });
+    });
+</script>
+
+
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖gantt包</span></pre>

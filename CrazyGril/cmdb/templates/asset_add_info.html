@@ -1,0 +1,186 @@
+<form action="{% url 'cmdb:asset_add' %}" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>主机名:</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{hostname}}" name="hostname" />
+        </div>
+    </div>
+
+
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>内网ip 地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control" name="n_ip" />
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3">外网ip 地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"  name="w_ip" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>操作系统</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value=""  name="os"  placeholder="os ！٩(๑❛ᴗ❛๑)۶"/>
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>cpu型号</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value=""  name="cpu_type"  placeholder="cpu type！罒ω罒/">
+        </div>
+   </div>
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3">cpu数量</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value=""  name="cpu_num"  placeholder="cpu num！( • ̀ω•́ )✧"/>
+        </div>
+    </div>
+
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>内存大小</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value=""  name="mem"  placeholder="mem！ヾ(ﾟ∀ﾟゞ)"/>
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>硬盘</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value=""  name="disk"  placeholder="disk！(*/ω＼*)"/>
+        </div>
+    </div>
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>资产编号</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value=""  name="asset_nu"  placeholder="asset！<(￣ ﹌ ￣)>  "/>
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>设备类型</label>
+        <div class="formControls col-7">
+             <select class="form-control input-text select2" name="asset_type" id="types">
+                 <option value="1" style="color: #b6b6b6" disabled selected>-------</option>
+                    {% for type in all_type %}
+                   <option value="{{ type }}">{{ type }}</option>
+                    {% endfor%}
+            </select>
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>设备状态</label>
+        <div class="formControls col-7">
+             <select class="form-control input-text select2" name="asset_status" id="asset_status">
+                    <option value="1" style="color: #b6b6b6" disabled selected>-------</option>
+                   {% for statu in all_status %}
+                   <option value="{{ statu }}">{{ statu }}</option>
+                   {% endfor%}
+
+            </select>
+        </div>
+    </div>
+
+
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>SN</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{sn}}"  name="sn"  placeholder="sn！Σ(っ°Д°;)っ"/>
+        </div>
+    </div>
+
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>厂商</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{Manufacturer}}"  name="Manufacturer"  placeholder="Manufacturer！っﾟДﾟ)っ"/>
+        </div>
+    </div>
+
+          <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>上架时间</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{update_time }}"  name="update_time "  placeholder="Manufacturer！っﾟДﾟ)っ"/>
+        </div>
+    </div>
+
+  <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房</label>
+        <div class="formControls col-7">
+             <select class="form-control input-text select2" name="idc" id="idc">
+
+                   {% for idc in all_idc %}
+                    {% if idc == host_info.idc %}
+                    <option selected value="{{ host_info.idc  }}">{{ host_info.idc }}</option>
+                    {% else %}
+                   <option value="{{ idc }}">{{ idc.name }}</option>
+                 {% endif %}
+                   {% endfor%}
+
+            </select>
+        </div>
+    </div>
+
+       <!--<div class="row cl">-->
+        <!--<label class="form-label col-3"><span class="c-red">*</span>机房</label>-->
+        <!--<div class="formControls col-7">-->
+            <!--{% for idc in all_idc %}-->
+            <!--<>-->
+            <!--&lt;!&ndash;<input type="text" class="input-text form-control"  style="color: #b6b6b6" value=""  name="idc"  placeholder="idc！っﾟДﾟ)っ"/>&ndash;&gt;-->
+            <!--{% endfor %}-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+       <div class="row cl">
+        <label class="form-label col-3">备注信息</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value=""  name="msg"  placeholder="msg！٩(๑❛ᴗ❛๑)۶"/>
+        </div>
+    </div>
+
+
+
+
+
+
+      <div class="row cl">
+          <label class="form-label col-3 ">操作</label>
+      <div class="col-sm-offset-7 col-sm-5" style="margin-top: 15px;">
+        <div class="modal-footer">
+        <button type="submit" class="btn radius btn-primary">创建！</button>
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+       </div>
+        </div>
+      </div>
+
+
+
+
+</form>

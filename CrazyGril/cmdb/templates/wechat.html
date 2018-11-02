@@ -1,0 +1,210 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}报警监控管理{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+            <div class="well well-light well-sm">
+               <span style="margin-left: 30px"></span>
+                <a class="btn btn-sm  btn-primary "
+                    href="/cmdb/alert_tem"    style="line-height:10px; text-align:center; color: white"> 报警模板 <span class="glyphicon glyphicon-wrench"></span>
+                </a>
+                <span style="margin-left: 30px"></span>
+                <a class="btn btn-sm  btn-primary "
+                    href="/cmdb/asset_info"    style="line-height:10px; text-align:center; color: white"> 报警范围 <span class="glyphicon glyphicon-new-window"></span>
+                </a>
+                <span style="margin-left: 30px"></span>
+                <a class="btn btn-sm  btn-primary "
+                    href="/cmdb/dingding_man"    style="line-height:10px; text-align:center; color: white"> 钉钉应用API管理 <span class=" glyphicon glyphicon-share-alt"></span>
+                </a>
+
+                  <span style="margin-left: 30px"></span>
+                <a class="btn btn-sm  btn-primary "
+                    href="/cmdb/wac_man"    style="line-height:10px; text-align:center; color: white"> 微信应用API管理 <span class=" glyphicon glyphicon-share-alt"></span>
+                </a>
+
+{#                <span style="margin-left: 30px"></span>#}
+{#                <a class="btn btn-sm  btn-primary "#}
+{#                    href="/cmdb/wechat_man"    style="line-height:10px; text-align:center; color: white"> 微信应用API管理 <span class="glyphicon glyphicon-record"></span>#}
+{#                </a>#}
+                &nbsp;&nbsp;&nbsp
+            </div>
+
+    </div>
+
+     <div class="row">
+        <form class="form form-inline" action="/docker/search_build_image" method="POST">
+             {% csrf_token %}
+            <div class="well well-sm">
+                主机名称:&nbsp;<input type="text" name="newimage" value="{{ newimage }}" class="form-control  input-sm" size="10" />
+                主机ip:&nbsp;        <input type="text" name="version" value="{{ version }}" class="form-control  input-sm" size="10" />
+                报警时间:&nbsp;          <input type="text" name="maintainer" value="{{ maintainer }}" class="form-control  input-sm" size="10" />
+{#                镜像:&nbsp;          <input type="text" name="maintainer" value="{{ maintainer }}" class="form-control  input-sm" size="10" />#}
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-primary btn-sm" onclick="showLoading()"  value="搜索"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div>
+<div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以下表格显示的服务器报警信息。</br>
+            <i class="fa fa-info-circle"></i> 如处理完成，报警信息会自动显示正常。</br>
+{#            <i class="fa fa-info-circle"></i> 如不需要续期，请到 <a target="_blank" href="http://workflow.cyou-inc.com">OA系统</a> 中进行虚机退回表单操作。</br>#}
+            <span class="label label-danger"> 不需要处理的报警，信息会在三天后删除。</span>
+        </div>
+    </div>
+        </div>
+<div style="margin-top: 10px"></div>
+        <div class="clear"></div>
+        <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover">
+                <thead>
+                <tr>
+                    <th>主机名称 </th>
+                    <th>主机IP </th>
+                    <th>报警类型</th>
+                    <th>报警信息</th>
+                    <th>报警时间</th>
+                    <th>是否处理</th>
+                    <th>报警备注</th>
+
+                    <th class="unsortable">详情</th>
+                </tr>
+                </thead>
+                <tbody>
+                        {% for item in all_data %}
+                        <tr class="item{{ item.id }}">
+                            <td style="display:none" ><input type="checkbox"  value="{{ item.id }}" class="chkbox"></td>
+                            <td>{{ item.hostname}}</td>
+                            <td>{{ item.hostip}}</td>
+                            <td>{{ item.d_ps}}</td>
+                            <td>{{ item.d_im}}</td>
+                            <td>{{ item.connect_time}}</td>
+
+
+                            <td>123</td>
+
+
+
+
+
+
+
+
+                            <td>
+                                <a title="容器详情" config_id="{{ item.hostip }}"  class="btn btn-sm  btn-primary"  href="/docker/container_show?hostip={{ item.hostip }}"
+                                   style="text-decoration:none">
+                                    <span class="glyphicon glyphicon-th-large"></span>
+                                </a>
+
+                                <span style="margin-left: 5px"></span>
+                                <a title="同步"   acl_rule_id="{{ item.id }}" modal-title="同步" class="btn btn-sm  btn-danger" data-target="#edit"
+                                   data-toggle="modal" data-height="120"
+                                   data-width="400"
+                                   href="/docker/image_delete?imagede={{ item.id }}"
+                                  style="text-decoration:none" >
+
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+
+{#        <ul class="pagination" id="pager">#}
+{#        {% if all_data.has_previous %}#}
+{#            <li class="previous"><a href="/docker/show_con/?page={{ all_data.previous_page_number }}">上一页</a></li>#}
+{#        {% else %}#}
+{#            <li class="previous disabled"><a href="#">上一页</a></li>#}
+{#        {% endif %}#}
+{#        {% for num in paginator.page_range %}#}
+{#            {% if num == currentPage %}#}
+{#                <li class="item active"><a href="/docker/show_con/?page={{ num }}">{{ num }}</a></li>#}
+{#            {% else %}#}
+{#                <li class="item"><a href="/docker/show_con/?page={{ num }}">{{ num }}</a></li>#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+{#        {% if all_data.has_next %}#}
+{#            <li class="next"><a href="/docker/show_con/?page={{ all_data.next_page_number }}">下一页</a></li>#}
+{#        {% else %}#}
+{#            <li class="next disabled"><a href="#">下一页</a></li>#}
+{#        {% endif %}#}
+{#    </ul>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{##}
+{#<div class="row">#}
+{#    <div id="pagination">#}
+{#    <ul id="pagination-flickr">#}
+{#    {% if all_data.has_previous %}#}
+{#    <li class="previous"><a href="?page={{ all_data.previous_page_number }}{% if request.GET.year %}&year={{ request.GET.year }}{% endif %}{% if request.GET.month %}&month={{ request.GET.month }}{% endif %}{% if request.GET.cid %}&cid={{ request.GET.cid }}{% endif %}">&laquo;上一页</a></li>#}
+{#    {% else %}#}
+{#    <li class="previous-off">&laquo;上一页</li>#}
+{#    {% endif %}#}
+{##}
+{#     <li class="active">{{ all_data.number }}/{{ all_data.paginator.num_pages }}</li>#}
+{#    {% if all_data.has_next %}#}
+{#      <li class="next"><a href="?page={{ all_data.next_page_number }}{% if request.GET.year %}&year={{ request.GET.year }}{% endif %}{% if request.GET.month %}&month={{ request.GET.month }}{% endif %}{% if request.GET.cid %}&cid={{ request.GET.cid }}{% endif %}">下一页 &raquo;</a></li>#}
+{#    {% else %}#}
+{#      <li class="next-off">下一页 &raquo;</li>#}
+{#    {% endif %}#}
+{#   </ul>#}
+{#</div>#}
+{#</div>#}
+
+        <div id="add" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+
+        </div>
+
+        <div id="edit" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(function () {
+                $("#add").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+                $("#edit").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+            });
+        </script>
+    </div>
+{% endblock %}

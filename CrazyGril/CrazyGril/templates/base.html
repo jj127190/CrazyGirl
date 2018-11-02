@@ -1,0 +1,203 @@
+{% load i18n %}
+<!DOCTYPE html>
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="zh-cmn-Hans-CN"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="zh-cmn-Hans-CN"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="zh-cmn-Hans-CN"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="zh-cmn-Hans-CN"> <!--<![endif]-->
+<html lang="zh-cmn-Hans-CN">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8"/>
+    <meta name="renderer" content="webkit|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--<meta name="apple-mobile-web-app-capable" content="yes" />--><!-- home screen app 全屏 -->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="black" />--><!-- 状态栏 -->
+    <title>{% block title %}tv.cctv.com{% endblock %}</title>
+    <meta name="keywords" content="CYOU Web cmdb">
+    <meta name="description" content="">
+
+    <style type="text/css">
+        .over {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #D9EDF7;
+            opacity: 0.5;
+            z-index: 1000;
+        }
+
+        .loader {
+            display: none;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 20%;
+            z-index: 1001;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        var contextPath = ".";
+        var CKEDITOR_BASEPATH = contextPath + '/';
+        var pathname = location.pathname;
+        var relativeurl = pathname.substring(CKEDITOR_BASEPATH.length + pathname.length);
+        contextPath = relativeurl;
+        // var UPLOAD_ACTION_URL = '/./action/save.pagelet';
+        /*
+         jQuery.fn.outerHTML = function(s) {
+         return (s) ? this.before(s).remove() : jQuery("p").append(this.eq(0).clone()).html();
+         }
+         */
+    </script>
+    <link rel="shortcut icon" href="{% static 'img/tiny32.png' %}">
+    <link rel="stylesheet" href="{% static 'css/validationEngine.jquery.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/alertify.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'bootstrap-duallistbox-master/dist/bootstrap-duallistbox.css' %}" type="text/css"/>
+
+
+    <link rel="stylesheet" href="{% static 'css/alertify.rtl.css' %}" type="text/css"/>
+
+    <link href="{% static 'css/uiengine.ui.css' %}" rel="stylesheet"/>
+
+    <script  src="{% static 'bootstrap-duallistbox-master/dist/jquery.bootstrap-duallistbox.js' %}" ></script>
+
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/uiengine.ui.js' %}"></script>
+
+    {% block extracss %}{% endblock %}
+
+    <!--[if lt IE 9]>
+        <link href="{% static 'org/tinygroup/publicComponent/css/ie8apply.css' %}" rel="stylesheet" />
+        <script src="{% static 'org/tinygroup/publicComponent/js/html5shiv.min.js' %}"></script>
+        <script src="{% static 'base.html' %}"></script>
+    <![endif]-->
+</head>
+<body class="theme-default main-menu-animated">
+<div id="over" class="over"></div>
+<div id="loader" class="loader"><img src="{% static 'img/loading.gif' %}" alt="loading"/></div>
+<script>var init = [];</script>
+<script src="{% static 'js/setting.js' %}"></script>
+
+<div id="main-wrapper">
+    {% block header %}{% include 'header.html' %}{% endblock %}
+
+    <div id="main-menu" class="main-menu" role="navigation">
+        <div id="main-menu-inner sidebar-left">
+            <div class="menu-content top" id="menu-content-demo">
+                <div>
+                    <div class="text-bg"><span class="text-slim">运维平台</span> <span
+                            class="text-semibold">{{ username }}</span></div>
+                    <img src="{% static 'img/portraits/1.jpg' %}" alt="" class="">
+
+                    <div class="btn-group">
+                        <a href="javascript:void(0);" class="btn btn-xs btn-primary btn-outline dark"><i
+                                class="fa fa-envelope"></i></a>
+                        <a href="javascript:void(0);" class="btn btn-xs btn-primary btn-outline dark"><i
+                                class="fa fa-user"></i></a>
+                        <a href="javascript:void(0);" class="btn btn-xs btn-primary btn-outline dark"><i
+                                class="fa fa-cog"></i></a>
+                        <a href="/oauth/logout" class="btn btn-xs btn-danger btn-outline dark"><i
+                                class="fa fa-power-off"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% block main-navbar %}{% include 'main-navbar.html' %}{% endblock %}
+        </div>
+    </div>
+
+    <div id="main-menu-bg"></div>
+    <div class="content-wrapper-bg"></div>
+    <div id="content-wrapper">
+        <div class="postion-nav">
+            <ul class="breadcrumb">
+                <li class="text-light-gray">所在位置：</li>
+                <li><a href="#">{% block breadcrumb %}首页{% endblock %}</a></li>
+            </ul>
+        </div>
+        <!-- 主体 start -->
+        <div class="row">
+            <div style="min-height:490px">{% block content %}{% endblock %}</div>
+        </div>
+        <div id="tinyfooter">
+            <div class="tinyfooterrap">
+                    <span class="right">
+                            央视网 &copy; 2018-04-10
+                    </span>
+                央视网运维管理平台v0.0.1
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="{% static 'js/django-ajax-post-csrf.js' %}"></script>
+<script src="{% static 'js/jquery.validationEngine.js' %}"></script>
+<script src="{% static 'js/jquery.validationEngine-zh_CN.js' %}"></script>
+<script src="{% static 'js/alertify.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/jquery.cookie.js' %}"></script>
+{% block footjs %}{% endblock %}
+<script>
+    function showLoading() {
+        document.getElementById("over").style.display = "block";
+        document.getElementById("loader").style.display = "block";
+    }
+    function closeLoading() {
+        document.getElementById("over").style.display = "none";
+        document.getElementById("loader").style.display = "none";
+    }
+</script>
+
+<script>
+    $(function () {
+        var res = get_cookie_menu();
+        $("#self-menu li a").each(function () {
+            if ($(this).attr("data-treeid") == res) {
+                $(this).parentsUntil("#self-menu").filter(".mm-dropdown").addClass('open');
+                $(this).addClass("active");
+            }
+        })
+    });
+
+    function getCount(str1, str2) {
+        var r=new RegExp(str2,"gi");
+        return str1.match(r).length;
+    }
+
+    function set_cookie_menu(obj) {
+        $.removeCookie('menu_data_id_aaa', {path: "/"});
+        var cookie_data_aaa = $(obj).attr("data-treeid");
+        $.cookie('menu_data_id_aaa', cookie_data_aaa, {path: "/"});
+    }
+
+    function get_cookie_menu() {
+        var data = $.cookie('menu_data_id_aaa');
+        if (!data) {
+            data = "0"
+        }
+        return data
+    }
+</script>
+
+</body>
+</html>

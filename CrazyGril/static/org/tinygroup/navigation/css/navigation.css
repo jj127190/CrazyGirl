@@ -1,0 +1,159 @@
+/*导航条*/
+.mainnav{width:100%;z-index:1;background:#3d4a5d}/*导航条背景*/
+.mainnav li,.mainnav li a{height:40px;line-height:40px}/*导航条高度*/
+.mainnav li{float:left;display:inline;color:#fff;font-size:14px;font-weight:bold}/*设置字体*/
+.mainnav li a{display:inline-block;padding:0 18px;color:#fff}/*链接颜色*/
+.mainnav li a:hover,.mainnav li.current a{color:#fff;text-decoration:none; background-color:#2C3543;-webkit-transition: background-color 0.3s ease 0s; -moz-transition: background-color 0.3s ease 0s; -o-transition: background-color 0.3s ease 0s; -ms-transition: background-color 0.3s ease 0s;transition: background-color 0.3s ease 0s}/*交互颜色*/
+
+/* 面包屑导航*/
+.breadcrumb{background:url(../images/icon_home.gif) no-repeat 0 center;padding-left:25px;border-bottom: 1px solid #E5E5E5; height:39px}
+.breadcrumb span{padding:0 5px}
+/*翻页导航*/
+.pageNav{float:none;clear:both;font-size:0px;font-family:Arial,Helvetica,sans-serif;padding:18px 0px;text-align:center}
+.pageNav span,.pageNav a,.pageNav b{font-size:14px;margin-right:5px;overflow:hidden;padding:3px 8px}
+.pageNav a{border:1px solid #CCDBE4;cursor:pointer}
+.pageNav b{color:#000}
+.pageNav .mor{padding:3px;font-weight:bold}
+
+/*顶部导航*/
+.topnav{height:30px;line-height:30px;background:url(../images/bg_topnav.gif) repeat-x 0 0;border-bottom:1px solid #EBEBEB; font-size:12px}
+.topbar{background-color: #ECECEC;border-bottom:1px solid #ddd}
+.topbar a{margin-right:5px}
+.r_nav{display:inline-block; color:#999}
+
+/*向导*/
+.steps,.step{display:inline-block;position:relative;padding:1em 2em 1em 3em;vertical-align:top;background-color:#FFF;color:#888;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
+.step:after,.steps .step:after{position:absolute;z-index:2;content:'';top:0;right:-1.45em;border-bottom:1.5em solid transparent;border-left:1.5em solid #FFF;border-top:1.5em solid transparent;width:0;height:0}
+.step,.steps .step,.steps .step:after{-webkit-transition:opacity .1s ease,color .1s ease,-webkit-box-shadow .1s ease;transition:opacity .1s ease,color .1s ease,box-shadow .1s ease}
+.steps{cursor:pointer;display:inline-block;font-size:0;box-shadow:0 0 0 1px rgba(0,0,0,.1);line-height:1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;border-radius:.3125rem}
+.steps .step:first-child{padding-left:1.35em;border-radius:.3125em 0 0 .3125em}
+.steps .step:last-child{border-radius:0 .3125em .3125em 0}
+.steps .step:only-child{border-radius:.3125em}
+.steps .step:last-child{margin-right:0}
+.steps .step:last-child:after{display:none}
+.step:hover,.step.hover{background-color:#F7F7F7;color:rgba(0,0,0,.8)}
+.steps .step.hover:after,.steps .step:hover:after,.step:hover,.step.hover::after{border-left-color:#F7F7F7}
+.steps .step.down,.steps .step:active,.step.down,.step:active{background-color:#F0F0F0}
+.steps .step.down:after,.steps .step:active:after,.steps.down::after,.steps:active::after{border-left-color:#F0F0F0}
+.steps .step.active,.active.step{cursor:auto;background-color:#428BCA;color:#FFF;font-weight:700}.steps .step.active:after,.active.steps:after{border-left-color:#428BCA}
+.steps .disabled.step,.disabled.step{cursor:auto;background-color:#FFF;color:#CBCBCB}
+.disabled.step:after{border:0;background-color:#FFF;top:.42em;right:-1em;width:2.15em;height:2.15em;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);box-shadow:-1px -1px 0 0 rgba(0,0,0,.1) inset}
+.attached.steps{margin:0;border-radius:.3125em .3125em 0 0}
+.attached.steps .step:first-child{border-radius:.3125em 0 0}
+.attached.steps .step:last-child{border-radius:0 .3125em 0 0}
+.bottom.attached.steps{margin-top:-1px;border-radius:0 0 .3125em .3125em}
+.bottom.attached.steps .step:first-child{border-radius:0 0 0 .3125em}
+.bottom.attached.steps .step:last-child{border-radius:0 0 .3125em}
+
+/*向导数量*/
+.one.steps,.two.steps,.three.steps,.four.steps,.five.steps,.six.steps,.seven.steps,.eight.steps{display:block}
+.one.steps>.step{width:100%}
+.two.steps>.step{width:50%}
+.three.steps>.step{width:33.333%}
+.four.steps>.step{width:25%}
+.five.steps>.step{width:20%}
+.six.steps>.step{width:16.666%}
+.seven.steps>.step{width:14.285%}
+.eight.steps>.step{width:12.5%}
+
+/*向导尺寸*/
+.small.step,.small.steps .step{font-size:.8rem}/*小*/
+.step,.steps .step{font-size:1rem}/*默认*/
+.large.step,.large.steps .step{font-size:1.25rem}/*大*/
+
+/*兼容写法
+	Sample:
+	<div class="steps-ie cl">
+	  <a class="step-ie active" href="#">第一步<em class="arrow"></em></a>
+	  <a class="step-ie" href="#">第二步<em class="arrow"></em></a>
+	  <a class="step-ie" href="#">第三步<em class="arrow"></em></a>
+	</div>
+*/
+.steps-ie,.step-ie,.step-ie .arrow{height:44px; line-height:44px}
+.steps-ie{background-color:#eaf4fd; border:solid 1px #afcfcc}
+.step-ie{position:relative;display:inline-block; float:left; cursor:pointer; padding:0 20px 0 40px; background:url(../images/step_bg.png) repeat-x 0 center}
+.step-ie .arrow{position:absolute;right:-21px; top:0; width:21px; height:44px; display:block; cursor:pointer; background:url(../images/step_arrow.png) no-repeat 0 center;z-index:50}
+.step-ie.active{background-image:url(../images/step_bg-active.png); color:#fff; z-index:100}
+.step-ie.active .arrow{background-image:url(../images/step_arrow-active.png)}
+
+/* 竖向导向tab导航
+	Sample:
+	<div class="verticalTab">
+	  <a class="" href="#">导航一<em></em></a>
+	  <a class="active" href="#">导航二<em></em></a>
+	  <a href="#">导航三<em></em></a>
+	  <a href="#">导航四<em></em></a>
+	</div>
+*/
+.verticalTab{background:#fff url(../images/tab_bg.png) repeat-y 0 0; width:38px}
+.verticalTab a{position:relative; display:block; width:18px; height:auto; text-align:center; position:relative; padding:26px 10px 6px 10px; background:url(../images/tabNav.png) no-repeat 0 0}
+.verticalTab a em{position:absolute; left:0; bottom:-20px; width:38px; height:20px; background:url(../images/tabNav_right.png) no-repeat 0 0; z-index:50}
+.verticalTab a.active{background-image:url(../images/tabNav-active.png); color:#fff; z-index:99}
+.verticalTab a.active em{background-image:url(../images/tabNav_right-active.png)}
+
+/*横向导向tab导航
+	Sample:
+	<ul class="acrossTab">
+	  <li>导航一<i></i><em></em></li>
+	  <li class="active">导航二<i></i><em></em></li>
+	  <li>导航三<i></i><em></em></li>
+	</ul>
+*/
+.acrossTab{height:29px; background:url(../images/acrossTab-bg.png) repeat-x 0 0; padding-top:1px}
+.acrossTab li,.acrossTab li em{background:url(../images/acrossTab.png) no-repeat 0 0}
+.acrossTab li{position:relative;float:left; display:inline-block; height:29px; line-height:29px; font-size:12px;cursor:pointer;padding:0 30px; white-space:nowrap;color:#282828; background-position:0 0}
+.acrossTab li em{position:absolute; width:23px;height:29px;right:-20px; top:0;z-index:50; background-position:right -30px}
+.acrossTab li:hover{background-position:0 -60px}
+.acrossTab li:hover em{background-position:right -90px}
+.acrossTab li.active{background-position:0 -120px; z-index:99}
+.acrossTab li.active em{background-position:right -150px}
+.acrossTab li i{position:absolute; display:block; width:13px; height:13px; top:50%; margin-top:-6px; right:5px; font-size:0; line-height:0; cursor:pointer; background:url(../images/acrossTab-close.png) no-repeat 0 0}
+.acrossTab li i:hover{background-position:0 bottom}
+
+/*导航集合*/
+/*.dropdown-menu {
+    background-clip: padding-box;
+    background: #e3e6ff;
+    border: 1px solid adadad;
+    border-radius: 2px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+    display: none;
+    float: left;
+    font-size: 13px;
+    left: 0;
+    list-style: outside none none;
+    margin: 2px 0 0;
+    min-width: 160px;
+    padding: 5px 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+}
+.dropdown-menu.pull-right {left: auto;right: 0;}
+.dropdown-menu .divider {background-color: #e5e5e5;height: 1px; margin: 8px 0;overflow: hidden; border-bottom: 1px solid #ccc;}
+.dropdown-large {position: static !important;}
+.dropdown-menu-large .dropdown-header{color:#5c391e;font-size:18px;}
+.dropdown-menu-large > li > ul > li > a{clear: both;color: #333;display: block;font-weight: 400;line-height: 1.42857;padding: 3px 20px; white-space: normal;}
+.navigation-box{position:relative;}*/
+/*jquery仿腾讯云下拉导航*/
+.head-v3{position:relative;z-index:100;min-width:1000px}
+.head-v3 .navigation-inner{margin:0 auto;width:980px;position:relative}
+.navigation-up{height:48px;line-height:48px;background:#3d4a5d}
+.navigation-up .navigation-v3{margin-left:155px;float:left;_margin-left:10px}
+.navigation-up .navigation-v3 ul{float:left}
+.navigation-up .navigation-v3 li{height:48px;float:left;color:#fff}
+.navigation-up .navigation-v3 .nav-up-selected{background:#344157}
+.navigation-up .navigation-v3 .nav-up-selected-inpage{background:#202833}
+.navigation-up .navigation-v3 li  a{padding:0 25px;color:#fff;display:inline-block;font-size:16px;}
+
+.navigation-down{position:absolute;top:48px;left:0px;width:100%}
+.navigation-down .nav-down-menu{width:100%;margin:0;background:#344157;position:absolute;top:0px}
+.navigation-down .nav-down-menu .navigation-down-inner{margin:auto;width:1200px;position:relative}
+.navigation-down .nav-down-menu dl{float:left;margin:18px 80px 18px 0}
+.navigation-down .menu-1 dl{margin:20px 80px 25px 0}
+.navigation-down .menu-1 dt{color:#61789e;padding-bottom:10px;border-bottom:1px solid #61789e;margin-bottom:10px}
+.navigation-down .menu-1 dd {margin-left:0;line-height:30px;}
+.navigation-down .menu-1 dd a,.navigation-down .menu-2 dd a,.navigation-down .menu-3 dd a{color:#fff;}
+.navigation-down .menu-1 dd a:hover{color:#60aff6}
+

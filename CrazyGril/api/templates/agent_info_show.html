@@ -1,0 +1,92 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}Agent 信息显示{% endblock %}
+
+{% block content %}
+    <link href="/static/bootstrap-editable/bootstrap-editable.css" rel="stylesheet"/>
+    <script src="/static/bootstrap-editable/bootstrap-editable.min.js"></script>
+    <script>
+    </script>
+
+    <div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以下表格显示的是自动收集的Agent信息。</br>
+            <i class="fa fa-info-circle"></i> 如果Agent传输失败,回自动进行健康检查,显示状态。</br>
+            <i class="fa fa-info-circle"></i> 如有更改，请到 <a target="_blank" href="http://workflow.cyou-inc.com">日志系统中</a> 中进行虚机退回表单操作。</br>
+            <span class="label label-danger"> 如果删除，Agent回自动进行更新到库，也可以主动进行连接刷新。</span>
+        </div>
+    </div>
+    <div class="row">
+
+
+        <div class="clear"></div>
+        <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover">
+                <thead>
+                <tr>
+                    <th>Agent Hostip</th>
+                    <th>Agent Hostname</th>
+                    <th>内存</th>
+                    <th>磁盘</th>
+                    <th>负载... 百分百</th>
+                    <th>docker 详细信息</th>
+                    <th>健康检查时间</th>
+                    <th>状态</th>
+                    <th>主机详细 详细信息</th>
+                    <th>當前机房</th>
+                    <th>备注</th>
+                    <th class="unsortable">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if all_data %}
+                    {% for item in all_data %}
+                        <tr class="item{{ item.id }}">
+                            <td style="display:none" ><input type="checkbox"  value="{{ item.id }}" class="chkbox"></td>
+                            <td>{{ item.newimage }}</td>
+                            <td>{{ item.version }}</td>
+                            <td>{{ item.base_image }}</td>
+                            <td>{{ item.maintainer }}</td>
+                            <td>{{ item.upload_time }}</td>
+                            <td>{{ item.msg }}</td>
+                            {% if item.default %}
+                            <td>{{ item.default }}</td>
+                            {% else %}
+                            <td>IDC</td>
+                            {% endif %}
+
+                            <!--{% if item.newimage %}-->
+                            <!--<td>{{ item.newimage }}</td>-->
+                            <!--{% else %}-->
+                            <!--<td>IDC:</td>-->
+                            <!--{% endif %}-->
+                        <td>默认状态</td>
+                            <td>
+                                <a title="详细信息" config_id="{{ item.id }}" modal-title="详细信息" class="ml-5 addBtn" data-target="#edit"
+                                   data-toggle="modal" data-height="448"
+                                   data-width="504" href="/docker/image_edit?image_edit_id={{ item.id }}"
+                                   style="text-decoration:none">
+                                    <i class="icon-edit"></i>
+                                </a>
+
+
+                                <a title="删除"   acl_rule_id="{{ item.id }}" modal-title="删除镜像" class="ml-5 addBtn" data-target="#edit"
+                                   data-toggle="modal" data-height="120"
+                                   data-width="400"
+                                   href="/docker/image_delete?imagede={{ item.id }}"
+                                  style="text-decoration:none" >
+
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,244 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}执行Shell
+<span style="margin-left: 20px"></span>
+
+<a href="/cmdb/idc_info"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以下填写只能是shell命令和参数。</br>
+            <i class="fa fa-info-circle"></i> 以下操作会进行日志保存。</br>
+            <span class="label label-danger"> 以下选择范围会根据选择方式自动获取。</span>
+
+        </div>
+    </div>
+
+ <form  action="" name="splitf" method="post" class="form form-horizontal" id="form_ids" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl" style="display: none">
+        <label class="form-label col-3"><span class="c-red">*</span>hidden</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.id}}" name="idc_id" />
+        </div>
+    </div>
+
+
+    <div class="row cl">
+        <label class="form-label col-3"><span  class="c-red">*</span>执行名称</label>
+        <div class="formControls col-7">
+                 <input type="text"   class="input-text form-control"  value="{{host_info.sn}}"  name="ac_name"  id="ac_name" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>选择方式</label>
+        <div class="formControls col-7">
+            <select class="form-control" name="sele" id="MySelect">
+                <option name="default">-------------</option>
+                <option name="1">主机ip</option>
+                <option name="2">机房</option>
+                <option name="3">组</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div  id = "selectrange" class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>选择范围</label>
+        <div class="formControls col-7">
+            <select class="form-control" name="rag" id="van" >
+
+            </select>
+        </div>
+    </div>
+
+
+      <div  id = "selectip"  style="display: none" class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>选择IP</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value=""   name="selectip"  />
+        </div>
+    </div>
+
+
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red" >*</span>Shell  Command</label>
+        <div class="formControls col-7">
+            <textarea  id = "shell_command" name="shell_command" class="form-control" rows="5"></textarea>
+
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3">上传shell脚本</label>
+        <div class="formControls col-7">
+            <a  class="input-text form-control btn btn-primary" onclick="alink()" modal-title="上传shell 文件" data-target="#add" data-toggle="modal" data-height="330" data-width="700"
+               href="/task/upf">
+                上传dockerfile -- {{ filename }}
+            </a>
+{#            <input type="text" class="input-text form-control"   value=""   name="upload_sh"  />#}
+{#         <input type="file" class="input-text form-control btn btn-primary"   value=""   name="uploadf"  />#}
+        </div>
+    </div>
+
+
+   <div id="add" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+
+        </div>
+
+
+
+   <div class="row cl">
+        <label class="form-label col-3"></label>
+        <div class="formControls col-7">
+        <button onclick="sub()" class="btn radius btn-primary ">执行<span class="glyphicon glyphicon-ok"></span></button>
+            <span style="margin-left: 5px"></span>
+        <button onclick="cancel()" class="btn radius btn-success " >取消<span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+<script>
+    function cancel(){
+        document.splitf.action="{% url 'task:shell_exe' %}";
+        document.splitf.submit();
+    }
+
+     function sub(){
+       $.ajax({
+           type:"POST",
+           url:"/task/because_accres",
+           data:$("#form_ids").serialize(),
+           async:false,
+           success:function(datas){
+               {#alert(datas);#}
+                layer.open({
+                  type: 1
+                  ,area: ['300px', '150px']
+                  ,title: '操作结果'
+                  ,shade: 0.6
+                  ,maxmin: true
+                  ,anim: 1
+                  ,content: '<span style="margin-left:50px">已执行，详细信息请返回列表页！</span>'
+});
+           }
+
+       })
+
+
+         {################################################################}
+         var ac_name = $("#ac_name").val();
+         var uploadf = $("#uploadf");
+         var formFile = new FormData();
+         var fileObj = $("#splitf").files[0];
+         formFile.append("file", fileObj)
+         formFile.append("ac_name", ac_name)
+          alert("开始上传")
+         $.ajax({
+
+              type:"POST",
+              url:"/task/ajax_show_tasks",
+              data:uploadf,
+              processData:false,
+              contentType:false,
+             success:function(datas){
+                   alert("上传成功")
+                  console.log("123")
+             }
+
+
+         });
+         get();
+         {##################################################################}
+
+    }
+
+
+
+
+    $("#MySelect").change(function(){
+        $("#van").empty();
+        var opt = $("#MySelect option:selected").attr("name");
+         $("#selectip").hide()
+         $("#selectrange").show()
+
+        if (opt == "1"){
+             $("#selectip").show()
+             $("#selectrange").hide()
+        }
+
+
+        var datas = {
+            'csrftoken': csrftoken,
+            'range':opt
+        };
+        $.ajax({
+            type:"POST",
+            url:"/task/ajax_get_range",
+            data:datas,
+            {#dataType: "json",#}
+            success: function(data){
+
+                if (data == "1"){
+                }
+                if (data == "default"){
+                  layer.open({
+                  type: 1
+                  ,area: ['300px', '150px']
+                  ,title: '选择错误'
+                  ,shade: 0.6
+                  ,maxmin: true
+                  ,anim: 1
+                  ,content: '<div style="padding:30px;background:#b7b7b7">' + "<span style='margin-left:60px;color:red'><i>请正确选择当前选项<i></span>" +'</div>'
+});
+                }else {
+                    var jsp = JSON.parse(data)
+                    for (var i=0;i<jsp.length;i++){
+                        $("#van").append("<option   name='"+ jsp[i] + "' value='"+jsp[i]+"' > "+jsp[i]+" </option>");
+                    }
+                }
+            }
+        })
+    })
+
+
+
+function alink(){
+        var ac_name=$("#ac_name").val();
+        var MySelect = $("#MySelect option:selected").attr("name");
+        var selectip=$("#selectip").val();
+        var command = $("#shell_command").val();
+        var selectrange =$("#selectrange option:selected").attr("name");
+        alert(ac_name)
+        alert(MySelect)
+        alert(selectip)
+        alert(command)
+        alert(selectrange)
+
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+<h2>
+		背景日历	</h2>
+	<div class="codeView bs-docs-example ">
+			<div class="workcalendar">
+<div class='showbody' id="wcid831914129"></div>
+<div id="wcid831914129-showtitle" class="wc-showtitle"></div>
+<script>
+	$(function(){
+		$("#wcid831914129-showtitle").on("click",function(){
+			var that=this;
+			WdatePicker({
+				startDate:'%y-%M-01',dateFmt:"yyyy-MM",
+				onpicked:function(){
+					//$(that).html();//setDate($(that).html())
+					$calendar.fullCalendar('gotoDate',$(that).html());
+				}
+			})
+		});
+		var $calendar=$('#wcid831914129');
+		$calendar.fullCalendar({
+			header: {
+				left: 'prev',
+				center: 'title',
+				right: 'next'
+			},
+			defaultDate:moment().format("YYYY-MM-DD"),
+			businessHours: true, // display business hours
+			editable: true,
+			dayClick: function(date, allDay, jsEvent, view) {
+				var eventData;
+				var arys1=date.format().split('-');
+				var tdate=new Date(arys1[0],parseInt(arys1[1]-1),arys1[2]);
+				var thisw=tdate.getDay();
+				var bgcolor="#f1f1f1"
+				if(thisw % 6==0){
+					bgcolor="#fff";
+				}
+				eventData = {
+					id:date.format("YYYY-MM-DD"),
+					start: date,
+					end: date,
+					overlap: true,
+					rendering: 'background',
+					backgroundColor:bgcolor
+				};
+				var ischange=0;
+				if(this.attr("ischange")==="1"){
+					$calendar.fullCalendar('removeEvents', eventData.id)
+					ischange=1;
+				}else{
+					$calendar.fullCalendar('renderEvent', eventData, true);
+				}
+				ischange=Math.abs(1-ischange)
+				this.attr("ischange",ischange);
+				this.trigger("save",[date.format("YYYY-MM-DD"),ischange]);
+			}
+		});
+		function setFixEvent(eventdate){
+			var arys1=eventdate.split('-');     //日期为输入日期，格式为 2013-3-10
+			var date=new Date(arys1[0],parseInt(arys1[1]-1),arys1[2]);
+			var thisw=date.getDay();
+			var bgcolor="#f1f1f1"
+			if(thisw % 6==0){
+				bgcolor="#fff";
+			}
+			$("[data-date="+eventdate+"]").attr("ischange",1);
+			var eventData = {
+					id:eventdate,
+					start: eventdate,
+					end: eventdate,
+					overlap: true,
+					rendering: 'background',
+					backgroundColor:bgcolor
+			};
+			$calendar.fullCalendar('renderEvent', eventData, true);
+		}
+		 	setFixEvent("2015-09-04");
+	setFixEvent("2015-09-05");
+	setFixEvent("2015-09-06");
+	setFixEvent("2015-09-13");
+		$calendar.on("save",function(e,date,isadd){//e为对像 date为时间 isadd是否新增 //处理操作到后台
+		$.ajax({
+		  type: "GET",
+		  url: "do.page",
+		  dataType: "html",
+		  data:{date:date,isadd:isadd},
+		  success: function(a){}
+		});
+	});
+	});
+</script>
+</div>
+	</div>
+
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.fullCalendar包即可</span></pre>
+                

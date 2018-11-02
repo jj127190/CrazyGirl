@@ -1,0 +1,600 @@
+<h1 class="page_title"> 排版 </h1>
+<h2 id="title"> 1 标题</h2>
+<div class="codeView bs-docs-example ">
+    <h1> h1.
+        大标题
+        <small>小标题</small>
+    </h1>
+    <h2> h2.
+        大标题
+        <small>小标题</small>
+    </h2>
+    <h3> h3.
+        大标题
+        <small>小标题</small>
+    </h3>
+    <h4>h4. 大标题
+        <small>小标题</small>
+    </h4>
+    <h5>h5.
+        大标题
+        <small>小标题</small>
+    </h5>
+    <h6>h6. 大标题
+        <small>小标题</small>
+    </h6>
+</div> <h2
+        id="qiangdiao"> 2 强调 </h2>
+<div class="codeView bs- docs-
+example "><p> 这是段落，向下10像素间距 </p>
+
+    <p>
+        <small>小型文本，是父容器字体大小的85%</small>
+    </p>
+    <p><strong>重要文本，加粗显示</strong>
+    </p>
+
+    <p><em>被强调的文本，斜体显示</em></p>
+
+    <p><u>带下划线的文本</u>
+    </p>     <cite>引用的内容</cite>
+
+    <p>
+        <mark>突出显示文本</mark>
+    </p>
+    <p>
+        <del>带删除线的文本</del>
+    </p>
+    <p class="uppercase">tiny 大写字母</p>
+
+    <p
+            class="lowercase">TINY 小写字母</p>
+
+    <p class="capitalize">tiny 首字母大写</p>
+</div>         <h2 id="textAlign"> 3 对齐 </h2>
+<div
+        class="codeView bs-docs-example ">
+    <div class="text-l">左对齐</div>
+    <div class="text-c">居中对齐</div>
+    <div class="text-r">右对齐</div>
+    <table
+            class="table table-border table-bordered ">
+        <tr>
+            <th class="va-t "
+                height="50">居上对齐
+            </th>
+            <th class="va-m ">居中对齐</th>
+            <th
+                    class="va-b ">距底对齐
+            </th>
+        </tr>
+        <tr>
+            <td class="va-t "
+                height="50">.va-t
+            </td>
+            <td class="va-m ">.va-m</td>
+            <td class="va-b
+">.va-b
+            </td>
+        </tr>
+    </table>
+</div>         <h2 id="position">
+    4 定位 </h2>         <h3> Html代码 </h3>
+<pre class="prettyprint
+linenums"><ol class="linenums">
+    <li>class=<span
+            class="value">&quot;pos-r/pos-a/pos-f&quot;</span></li>
+</ol></pre>     <p>
+    .pos-r 相对定位， .pos-a 绝对定位， .pos-f 固定 </p>         <h2 id="float"> 5 浮动
+</h2>
+<div class="codeView bs-docs-example ">
+    <div class="cl"
+            ><span class="l">左浮动</span> <span class="r">右浮动</span>
+    </div>
+</div>     <p> .l 左浮动，.r 右浮动 </p>         <h2
+        id="margin"> 6 控制文字单行、两行溢出省略号 </h2>
+<div class="codeView bs-
+docs-example ">
+    <div class="single-overflow" style="width:300px;">
+        我是很长很长的文字，我的所在的容器尺寸有限，所以我溢出了，并且显示省略号
+    </div>
+    <br/>
+
+    <div class="text-
+overflow" style="width:300px;"> 我是很长很长很长很长的文字，我的所在的容器尺寸有限，所以我溢出了，并且显示省略号省略号省略号
+    </div>
+</div>         <h2 id="margin"> 7 线条 </h2>
+<div
+        class="codeView bs-docs-example ">
+    <div class="line"></div>
+</div>         <h2 id="margin"> 8 外边距 </h2>
+<div class="codeView bs-
+docs-example ">
+    <div style="border-bottom:solid 1px #ccc;"> 参考线
+    </div>
+    <div class=" mt-10" style="border:solid 1px #ddd;
+background:#f2f2f2;padding:20px"> 蓝色div，距上面红色线条10像素
+    </div>
+</div>
+<span class="c_blue">.mt</span> 表示上边距， <span class="c_blue">.mb</span>  表示下边距，
+<span class="c_blue">.ml</span> 表示左边距， <span class="c_blue">.mr</span>  表示右边距
+<p> 支持任何块级元素，如果行内元素要想使用margin，请使用
+    <mark>display：block</mark>
+    先将其转化为块级元素
+</p>
+<h2 id="padding"> 9 内填充 </h2>
+<div class="codeView bs-docs-
+example ">
+    <div class=" pd-10" style="background-color:#e5e5e5;
+border:solid 1px #ddd">
+        <div class=" pd-10" style=" background-
+color:#fff"> 10像素填充，来点背景效果更明显
+        </div>
+    </div>
+</div> <h2
+        id="boxborder"> 10 边框，css3圆角 </h2>
+<div class="codeView bs-
+docs-example ">
+    <div class="bk-gray pd-20"> 边框</div>
+    <div class="bk-gray radius pd-20 mt-10"> 圆角边框</div>
+</div> <h2
+        id="boxShadow"> 11 css3阴影 </h2>
+<div class="codeView bs- docs-
+example ">
+    <div class="box-shadow "> css3阴影效果</div>
+    <p>
+
+    <div class="text-shadow "> css3文字阴影效果</div>
+    </p> </div>     <p>
+    圆角阴影可以组合使用。 </p>
+<div class="codeView bs-docs- example ">
+    <div
+            class="bk-gray box-shadow radius text-c pd-20">css3 圆角阴影效果
+    </div>
+</div>
+<h2 id="fontSize"> 12 行内分割竖线 </h2>
+<div class="codeView bs-docs-example
+"><a href="#"> 注册 </a>     <span class="pipe ">
+|   </span> <a href="#"> 登录 </a></div>         <h2 id="fontSize">
+    13 文字尺寸 </h2>
+<div class="codeView bs-docs-example "><p
+        class="f-12"> 12px 字体 </p>
+
+    <p class="f-14"> 14px 字体 </p>
+
+    <p class="f-16"> 16px 字体 </p>
+
+    <p class="f-18"> 18px 字体 </p>
+
+    <p
+            class="f-20"> 20px 字体 </p></div>         <h2 id="lineHeight"> 14
+    文字行距 </h2>
+<div class="codeView bs-docs- example "><p
+        class="l16 bk-gray"> 16像素行距 </p>
+
+    <p class="l18 bk-gray"> 18像素行距
+    </p>
+
+    <p class="l20 bk-gray"> 20像素行距 </p>
+
+    <p class="l22 bk-gray">
+        22像素行距 </p>
+
+    <p class="l24 bk-gray"> 24像素行距 </p>
+
+    <p class="l26
+bk- gray"> 26像素行距 </p>
+
+    <p class="l28 bk-gray"> 28像素行距 </p>
+
+    <p class="l30 bk-gray"> 30像素行距 </p></div>     <p> 根据黄金比例0.618
+    ，Tiny-ui在css reset中已将全局body,th,td,button,input,select,textarea行高定为文本的1.6倍。
+</p>     <p> 当然如果个人不喜欢，可以二次重写。 </p>         <h2 id="fontColor"> 15
+    文字颜色 </h2> <p> 首先定义默认的三原色红绿蓝，也就是我们常说的RGB，外加常用的白色，黑色，灰色，浅灰色，橙色。 </p>
+<div class="codeView bs-docs-example "><p class="c-red"> 红色字体
+</p>
+
+    <p class="c-green"> 绿色字体 </p>
+
+    <p class="c-blue"> 蓝色字体
+    </p>
+
+    <p class="c-white">         <span style="background-
+color:#06C">白色字体，为了看到效果，加个背景</span></p>
+
+    <p class="c-black"> 黑色字体
+    </p>
+
+    <p class="c-gray"> 灰色字体 </p>
+
+    <p class="c-999"> 浅灰色字体
+    </p>
+
+    <p class="c-orange"> 橙色字体 </p></div> <h2
+        id="fontMuted"> 16 文字颜色强调 </h2>
+<div class="codeView bs- docs-
+example "><p class="text-muted "> 柔和 </p>
+
+    <p class
+               ="text-primary "> 重要 </p>
+
+    <p class="text-warning "> 警告 </p>
+
+    <p
+            class="text-error "> 错误 </p>
+
+    <p class="text- danger "> 危险 </p>
+
+    <p class="text-success "> 成功 </p>
+
+    <p class="text-info "> 信息 </p>
+</div>         <h2 id="abbr"> 17 缩略语 </h2>         <h3> Html代码 </h3>
+<div class="codeView bs- docs-example "> 这是缩略语 <abbr title="User
+Interface" class="initialism "> UI </abbr></div>         <h2
+        id="address"> 18 地址 </h2>
+<div class="codeView bs-docs-example ">
+    <address>杭州市滨江区江南大道……</address>
+</div>         <h2 id="blockquote"> 19 引用
+</h2>
+<div class="codeView bs-docs-example ">
+    <blockquote>这是引用的内容<p>p标签显示的引用内容</p>
+        <small>标签显示小号字体</small>
+    </blockquote>
+    <
+    blockquote>这是引用的内容，右对齐效果<p>标签显示的引用内容</p>
+    <small>small标签显示小号字体</small>
+    </blockquo
+    te>     </div>         <h2 id="subSup"> 20 上标 下标 </h2>
+<div
+        class="codeView bs-docs-example "> 平方米m <sup> 2 </sup>
+    <br> 二氧化碳CO <sub> 2 </sub></div>         <h3> Html代码
+</h3>         <h2 id="content"> 21 内容样式 </h2>
+<div class="codeView
+bs-docs-example ">
+    <div class="cl"><p class="indent"
+            >content是内容样式，14号字体，25px行高，遇到&lt;P&gt;段落标签会自动首行缩进两个字符，如果换行就用&lt;br&gt;。<strong
+            >重点显示就用</strong>&lt;strong&gt;&lt;/strong&gt;便签。切目前主流的门户网站，如：腾讯、网易、新浪等资讯详情页采用的
+        都是这个效果。简单、优雅、规范。</p>
+
+        <p class="indent">再次强烈建议采用最源生的html标签进行手动格式化，抛弃像word那样
+            的后台编辑器，因为它会产生非常多的冗余代码。做过编辑的朋友都知道，如过用cms系统后台自带的编辑器进行可视化编辑是件很辛苦的事。经常把格式搞的一团糟，各种标
+            签如font、内链的style样式一坨一坨的。标签也很容易嵌套出错，或者无法闭合。更重要的一点是冗余的代码增加服务器的负载，影响网页加载速度，很多人可能不在
+            乎这些，那是因为你的网站访问量还没有达到一定的数量级。对于一个访问量千万级的，上亿级别的网站，每节省几个字节都意味着节约更多的带宽，省掉大把的银子。</p>
+
+        <p class="indent">如果是从网络上转载文章的编辑，最好将文章先拷贝到记事本去除下格式，然后再进行手动添加标签进行格式化。</p>
+
+        <p
+                class="indent">说到这里肯定会有一些小编喷我了，搞代码那是工程师的事，让我们搞代码，有没有搞错。如果你不会写html编码，那只能说明你还
+            不是个专业的编辑，专业编辑就应该具备一定的html手写编码能力。</p>
+
+        <p class="indent">
+            <strong>切忌使用过多的修饰，华而不实，很山寨，很雷人。</strong></p></div>
+</div> <h2
+        id="ulolli"> 22 列表 </h2>
+<div class="codeView bs-docs- example
+">
+    <ul>
+        <li>无序列表</li>
+        <li>无序列表</li>
+        <li>无序列表</li>
+    </ul>
+    <ol class="linenums ">
+        <li class="dot-1 "> 有序列表
+        </li>
+        <li class="dot-1 "> 有序列表</li>
+        <li class="dot-1
+"> 有序列表
+        </li>
+    </ol>
+</div> <h3> Html代码 </h3>
+<h3> 图片资源 </h3>
+
+<p>
+    <img>
+    <img>
+    <img>
+    <img>
+    <img>
+</p>
+<h2>
+    23排行榜 </h2>
+<div class="codeView bs-docs-example ">
+    <ol class="top-list ">
+        <li>
+            <em>1</em><a href="#">排行榜列表</a>
+            <span class="date">10</span></li>
+        <li class="blue">
+            <em>2</em><a href="#">排行榜列表</a>
+            <span class="date">13</span></li>
+        <li class="green">
+            <em>3</em><a href="#">排行榜列表</a>
+            <span class="date">12</span></li>
+        <li class="darkGreen">
+            <em>4</em><a href="#">排行榜列表</a>
+            <span class="date">16</span></li>
+        <li class="grey">
+            <em>5</em><a href="#">排行榜列表</a>
+            <span class="date">18</span></li>
+        <li class="darkGreen">
+            <em>6</em><a href="#">排行榜列表</a>
+            <span class="date">20</span></li>
+        <li>
+            <em>7</em><a href="#">排行榜列表</a>
+            <span class="date">26</span></li>
+        <li>
+            <em>8</em><a href="#">排行榜列表</a>
+            <span class="date">28</span></li>
+    </ol>
+</div>
+<h2 id="dldtdd">
+    24 描述 </h2>
+<div class="codeView bs-docs-example ">
+    <dl>
+        <dt>Tiny-ui</dt>
+        <dd>基于Bootstrap框架的改进扩展的前端框架</dd>
+    </dl>
+    <dl class="dl-horizontal cl">
+        <dt>描述</dt>
+        <dd>水平状态的描述</dd>
+    </dl>
+</div>
+<p>
+    .dl-horizontal 水平描述，默认不加为垂直模式。 </p>
+<h2>
+    25 隐藏 显示 </h2>
+<h3>
+    class="×××" </h3>
+<p>
+    <span class="c_blue">.hide</span>
+    整体隐藏，
+    <span class="c_blue">.invisible</span>
+    对象隐藏有空白，
+    <span class="c_blue">.show</span>
+    显示
+</p>
+<h2>
+    26 阴影布局（通过调用宏来实现效果） </h2>
+<div class="codeView bs-docs-example ">
+    <div style="background:#fcfcfc;">
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-standard" style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeStandard宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-lifted" style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用 #@shadeLifted宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-perspective" style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadePerspective宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-raised" style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeRaised宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-sides jquery-shadow-sides-vt-1"
+             style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeStandard宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-sides jquery-shadow-sides-vt-2"
+             style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeSidesVt2宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-sides jquery-shadow-sides-hz-1"
+             style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeSidesHz1宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-sides jquery-shadow-sides-hz-2"
+             style="border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeSidesHz2宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated"
+             style="-webkit-transform: rotate(-5deg); transform: rotate(-5deg);border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@shadeRotated宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-lifted"
+             style="-webkit-transform: rotate(-5deg); transform: rotate(-5deg);border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@rotatedLifted宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-perspective"
+             style="-webkit-transform: rotate(-5deg); transform: rotate(-5deg);border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@rotatedPerspective宏即可完成阴影布局 </p>
+        </div>
+        <div class="box jquery-shadow jquery-shadow-rotated jquery-shadow-raised"
+             style="-webkit-transform: rotate(-5deg); transform: rotate(-5deg);border-radius:4px;width:40%">
+            <p class="text-c">
+                调用#@rotatedRaised宏即可完成阴影布局 </p>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<h2>
+    27 尺寸 </h2>
+<p>
+    新增尺寸全局类名，用于<b class="c-primary">表单、下拉框、头像、按钮</b>等元素上，要与元素一起配合使用，方能看到效果。 </p>
+<p>
+    PS：它使用起来很简单，就像我们衣服的SIZE，是一个通用单位。不管是上衣、裤子、还是内裤都可使用。 </p>
+<div class="codeView bs-docs-example ">
+    <table class="table  table table-border table-bordered table-bg"
+            >
+        <thead>
+        <tr>
+            <th>class=""</th>
+            <th>描述</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>size-MINI</code></td>
+            <td>迷你</td>
+        </tr>
+        <tr>
+            <td><code>size-S</code></td>
+            <td>小</td>
+        </tr>
+        <tr>
+            <td><code>size-M</code></td>
+            <td>中 （默认尺寸，可以不写，可以理解为：均码）</td>
+        </tr>
+        <tr>
+            <td><code>size-L</code></td>
+            <td>稍大</td>
+        </tr>
+        <tr>
+            <td><code>size-XL</code></td>
+            <td>大</td>
+        </tr>
+        <tr>
+            <td><code>size-XXL</code></td>
+            <td>加大</td>
+        </tr>
+        <tr>
+            <td><code>size-XXXL</code></td>
+            <td>超大</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<h2>
+    28 举例说明（使用的按钮和表单的组件来展示） </h2>
+<div class="codeView bs-docs-example ">
+    <table class="table  table table-border table-bordered table-bg"
+            >
+        <thead>
+        <tr>
+            <th>class=""</th>
+            <th>表单</th>
+            <th>下拉框</th>
+            <th>按钮</th>
+            <th>头像</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>size-MINI</th>
+            <td><input type="text" class="input-text size-MINI">
+            </td>
+            <td>		    <span class="select-box size-MINI">
+        					    	    <select class="select select" size="1" nullmsg="请选择所在城市！" datatype="*">
+                                            <option value="" selected>请选择城市</option>
+                                            <option value="1">北京</option>
+                                            <option value="2">上海</option>
+                                            <option value="3">广州</option>
+                                        </select>
+      			    </span>
+            </td>
+            <td><input class="btn  btn-primary size-MINI"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-MINI" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        <tr>
+            <th>size-S</th>
+            <td><input type="text" class="input-text size-S">
+            </td>
+            <td>		    <span class="select-box size-S">
+        					      	    <select class="select select" size="1" nullmsg="请选择所在城市！" datatype="*">
+                                            <option value="" selected>请选择城市</option>
+                                            <option value="1">北京</option>
+                                            <option value="2">上海</option>
+                                            <option value="3">广州</option>
+                                        </select>
+     			    </span>
+            </td>
+            <td><input class="btn  btn-primary size-S"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-S" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        <tr>
+            <th>size-M</th>
+            <td><input type="text" class="input-text size-M">
+            </td>
+            <td>		    <span class="select-box size-M">
+        				        	    <select class="select select" size="1" nullmsg="请选择所在城市！" datatype="*">
+                                            <option value="" selected>请选择城市</option>
+                                            <option value="1">北京</option>
+                                            <option value="2">上海</option>
+                                            <option value="3">广州</option>
+                                        </select>
+      			    </span>
+            </td>
+            <td><input class="btn  btn-primary size-M"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-M" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        <tr>
+            <th>size-L</th>
+            <td><input type="text" class="input-text size-L">
+            </td>
+            <td>		    <span class="select-box size-L">
+        					      	    <select class="select select" size="1" nullmsg="请选择所在城市！" datatype="*">
+                                            <option value="" selected>请选择城市</option>
+                                            <option value="1">北京</option>
+                                            <option value="2">上海</option>
+                                            <option value="3">广州</option>
+                                        </select>
+      			    </span>
+            </td>
+            <td><input class="btn  btn-primary size-L"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-L" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        <tr>
+            <th>size-XL</th>
+            <td><input type="text" class="input-text size-XL">
+            </td>
+            <td>		    <span class="select-box size-XL">
+        					      	    <select class="select select" size="1" nullmsg="请选择所在城市！" datatype="*">
+                                            <option value="" selected>请选择城市</option>
+                                            <option value="1">北京</option>
+                                            <option value="2">上海</option>
+                                            <option value="3">广州</option>
+                                        </select>
+      			    </span>
+            </td>
+            <td><input class="btn  btn-primary size-XL"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-XL" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        <tr>
+            <th>size-XXL</th>
+            <td><input type="text" class="input-text size-XXL">
+            </td>
+            <td></td>
+            <td><input class="btn  btn-primary size-XXL"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-XXL" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        <tr>
+            <th>size-XXXL</th>
+            <td><input type="text" class="input-text size-XXXL">
+            </td>
+            <td></td>
+            <td><input class="btn  btn-primary size-XXXL"
+                       type="button" value="按钮">
+            </td>
+            <td><img class="avatar size-XXXL" src="/static/img/avatar-default-S.gif">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

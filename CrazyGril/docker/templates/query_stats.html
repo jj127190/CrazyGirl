@@ -1,0 +1,110 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}容器监控信息
+<span style="margin-left: 20px"></span>
+<a href="/cmdb/wechat"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+.query-title {
+    height:32px;
+    line-height:32px;
+    text-align: right;
+}
+.query-input {
+    width: 200px!important;
+}
+</style>
+
+
+     <div class="row">
+        <form class="form form-inline" action="/docker/search_build_image" method="POST">
+             {% csrf_token %}
+            <div class="well well-sm">
+                当前主机名称:&nbsp;<span name="newimage"class="form-control  input-sm" size="10" >{{ hostname }}</span>
+                当前主机ip:&nbsp;  <span name="newimage"class="form-control  input-sm" size="10" >{{ hostip }}</span>
+{#                <div class="btn-group">#}
+{#                    <input type="submit" class="btn btn-primary btn-sm" onclick="showLoading()"  value="搜索"/>#}
+{#                </div>#}
+            </div>
+        </form>
+    </div>
+
+        <div>
+<div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以下表格显示容器的状态信息。</br>
+            <i class="fa fa-info-circle"></i> 以下容器资源都是没有限制。</br>
+{#            <i class="fa fa-info-circle"></i> 如不需要续期，请到 <a target="_blank" href="http://workflow.cyou-inc.com">OA系统</a> 中进行虚机退回表单操作。</br>#}
+            <span class="label label-danger"> 以下容器的信息都是建立在共享宿主机资源的情况下的展示。</span>
+        </div>
+    </div>
+        </div>
+<div style="margin-top: 10px"></div>
+
+
+
+      <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover">
+                <thead>
+                <tr>
+                    <th>主机名 </th>
+                    <th>CONTAINER </th>
+                    <th>CPU %</th>
+                    <th>MEM USAGE / LIMIT</th>
+                    <th>MEM %</th>
+                    <th>NET I/0</th>
+                    <th>BLOCK I/0</th>
+                    <th>MSG...</th>
+{#                    <th class="unsortable">容器显示</th>#}
+                </tr>
+                </thead>
+                <tbody>
+                        {% for item in all_data %}
+                        <tr class="item{{ item.id }}">
+                            <td style="display:none" ><input type="checkbox"  value="{{ item.id }}" class="chkbox"></td>
+                            <td>{{ item.hostname}}</td>
+                            <td>{{ item.container}}</td>
+                            <td>{{ item.cpu}}</td>
+                            <td>{{ item.MemUL}}</td>
+                            <td>{{ item.Mem}}</td>
+                            <td>{{ item.netIO}}</td>
+                            <td>{{ item.blockIO}}</td>
+                            <td>{{ item.msg}}</td>
+{#                            <td>{{ item.Mem}}</td>#}
+
+
+
+{#                            <td><a title="容器资源"   class="btn btn-sm  btn-primary"  href="/docker/query_stat?hostip={{ item.hostip }}"#}
+{#                                   style="text-decoration:none">#}
+{#                                    <span class="glyphicon glyphicon-heart"></span>#}
+{#                                </a></td>#}
+{##}
+{#                            <td>#}
+{#                                <a title="容器详情" config_id="{{ item.hostip }}"  class="btn btn-sm  btn-primary"  href="/docker/container_show?hostip={{ item.hostip }}"#}
+{#                                   style="text-decoration:none">#}
+{#                                    <span class="glyphicon glyphicon-th-large"></span>#}
+{#                                </a>#}
+{##}
+{#                                <span style="margin-left: 5px"></span>#}
+{#                                <a title="同步"   acl_rule_id="{{ item.id }}" modal-title="同步" class="btn btn-sm  btn-danger" data-target="#edit"#}
+{#                                   data-toggle="modal" data-height="120"#}
+{#                                   data-width="400"#}
+{#                                   href="/docker/image_delete?imagede={{ item.id }}"#}
+{#                                  style="text-decoration:none" >#}
+{##}
+{#                                    <i class="icon-trash"></i>#}
+{#                                </a>#}
+{#                            </td>#}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+      </div>
+
+
+
+{% endblock %}

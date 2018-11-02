@@ -1,0 +1,170 @@
+<form action="{% url 'docker:image_create_add' %}" method="post" class="form form-horizontal" id="form_validation">
+    {% csrf_token %}
+
+     <!--<div class="row cl" style="display: none">-->
+        <!--<label class="form-label col-3"><span class="c-red">*</span>Dockerfile catalog:</label>-->
+        <!--<div class="formControls col-7">-->
+            <!--<input type="text" class="input-text form-control  validate[required]" value="" name="dockerfilename" />-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>基础镜像(From):</label>
+        <div class="formControls col-7">
+            <select class="form-control input-text select2" name="images" id="images">
+                <option value="1" style="color: #b6b6b6" disabled selected>请选择镜像（づ￣3￣）づ╭❤～</option>
+                {% for k,v in dic.items %}
+                <option value="{{v}}">{{v}}</option>
+                <!--{{k}}-->
+                <!--{{v}}}-->
+                {% endfor %}
+                <!--{% for image in images %}-->
+                    <!--&lt;!&ndash;{% if image %}&ndash;&gt;-->
+                    <!--<option value="{{image}}">{{image}}</option>-->
+                    <!--&lt;!&ndash;{% else %}&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option value="{{image}}">{{image}}</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;{% endif%}&ndash;&gt;-->
+                <!--{% endfor%}-->
+                <!--<option value="2">centos6.6</option>-->
+                <!--<option value="3">ubuntu14.04</option>-->
+                <!--<option value="5">busybox 测试用</option>-->
+                <!--<option value="4" style="color: #b6b6b6" disabled>其他镜像...正在制作中（づ￣3￣）づ╭❤～。。。。</option>-->
+            </select>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3">维护者(MAINTAINER):</label>
+        <div class="formControls col-7">
+
+            {% if requestuser %}
+            <input type="text" class="input-text form-control" value="{{requestuser}}" name="user" />
+            {% else %}
+            <input type="text" class="input-text form-control" value="" name="user" />
+            {% endif %}
+
+        </div>
+    </div>
+
+
+
+
+  <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>版本号(version)</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control validate[required]" style="color: #b6b6b6" value="latest"  name="version" />
+
+        </div>
+    </div>
+
+
+ <div class="row cl">
+
+        <label class="form-label col-3"><span class="c-red">*</span>命令(command):</label>
+        <div class="formControls col-7">
+            <textarea name="command"  required cols="10" rows="5"   width="100%"  class="form-control"  ></textarea>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>新镜像名称</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control" style="text-transform:lowercase"  onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'')" value=""  name="newimage"  />
+        </div>
+    </div>
+
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3">创建时间</label>
+        <div class="formControls col-7">
+             <input type="date"  class="input-text form-control" style="color: #b6b6b6" name="createtime" />
+        </div>
+    </div>
+
+
+    <div class="row cl">
+        <label class="form-label col-3">备注信息</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  style="color: #b6b6b6" value="备注信息"  name="msg" />
+        </div>
+    </div>
+
+
+    <div class="modal-footer">
+        <button type="submit" class="btn radius btn-primary">创建！</button>
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+
+    <!--<script type="text/javascript">-->
+        <!--$(function(){-->
+            <!--jQuery("#form_validation").validationEngine({});-->
+            <!--$.get("",-->
+                <!--function(data){-->
+                    <!--if(data){-->
+                        <!--for(var i=0;i<data.length;i++){-->
+                            <!--$('#objectiveIdc').append("<option value='"+data[i]+"'>"+data[i]+"</option>");-->
+                        <!--}-->
+                    <!--}-->
+                <!--}, "json");-->
+        <!--});-->
+
+        <!--$("#objectiveIdc").change(function () {-->
+            <!--var objectiveIdc = $(this).children('option:selected').val();-->
+            <!--hostGroupIp = $("input[name='hostGroupIp']").val();-->
+            <!--aclNumber = $("input[name='aclNumber']").val();-->
+            <!--console.log(hostGroupIp, aclNumber);-->
+            <!--var url = "";-->
+            <!--$.post(url, {'objectiveIdc': objectiveIdc, 'csrftoken': csrftoken},-->
+                    <!--function (data) {-->
+                        <!--if (data["code"] == "0") {-->
+                            <!--$("input[name='hostGroupIp']").val(data["data"]["host_group_ip"]);-->
+                            <!--$("input[name='aclNumber']").val(data["data"]["acl_number"]);-->
+                            <!--$("input[name='ruleNumber']").val(data["data"]["rule_number"]);-->
+                        <!--}-->
+                        <!--else{-->
+                            <!--$("input[name='ruleNumber']").val("内部异常错误");-->
+                        <!--}-->
+                    <!--}, "json");-->
+        <!--});-->
+
+
+        <!--$("input[name='hostGroupIp']").change(function () {-->
+            <!--hostGroupIp = $("input[name='hostGroupIp']").val();-->
+            <!--aclNumber = $("input[name='aclNumber']").val();-->
+            <!--console.log(hostGroupIp, aclNumber);-->
+            <!--var url = "";-->
+            <!--$.post(url, {'hostGroupIp': hostGroupIp, 'aclNumber': aclNumber, 'csrftoken': csrftoken},-->
+                    <!--function (data) {-->
+                        <!--if (data["code"] == "0") {-->
+                            <!--$("input[name='ruleNumber']").val(data["data"]);-->
+                        <!--}-->
+                        <!--else{-->
+                            <!--$("input[name='ruleNumber']").val("内部异常错误");-->
+                        <!--}-->
+                    <!--}, "json");-->
+        <!--});-->
+
+        <!--$("input[name='aclNumber']").change(function () {-->
+            <!--hostGroupIp = $("input[name='hostGroupIp']").val();-->
+            <!--aclNumber = $("input[name='aclNumber']").val();-->
+            <!--console.log(hostGroupIp, aclNumber);-->
+            <!--var url = "";-->
+            <!--$.post(url, {'hostGroupIp': hostGroupIp, 'aclNumber': aclNumber, 'csrftoken': csrftoken},-->
+                    <!--function (data) {-->
+                        <!--console.log(data);-->
+                        <!--if (data["code"] == "0") {-->
+                            <!--console.log(data["data"]);-->
+                            <!--$("input[name='ruleNumber']").val(data["data"]);-->
+                        <!--}-->
+                        <!--else{-->
+                            <!--$("input[name='ruleNumber']").val("内部异常错误");-->
+                        <!--}-->
+                    <!--}, "json");-->
+        <!--});-->
+    <!--</script>-->
+</form>

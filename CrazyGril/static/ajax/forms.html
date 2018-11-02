@@ -1,0 +1,1574 @@
+<h1 class="page_title">
+    表单 </h1>
+<h2>
+    1 input,textarea 文本域 文本区域 </h2>
+<p>
+    文本框样式 <span class="c_blue">.input-text</span>
+    ，文本域样式 <span class="c_blue">.textarea</span>
+    ，追加 <span class="c_blue">.radius</span>
+    就会显示css3圆角效果。 </p>
+<div class="codeView bs-docs-example ">
+    <table class="table  table table-border table-bordered table-striped"
+            >
+        <thead>
+        <tr>
+            <th width="30%">默认效果</th>
+            <th width="20%">class=""</th>
+            <th width="30%">圆角效果</th>
+            <th>class=""</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text" class="input-text " placeholder="文本框">
+            </td>
+            <td><code>
+                input-text </code>
+            </td>
+            <td><input type="文本框" class="input-text radius " placeholder="文本框">
+            </td>
+            <td><code>
+                input-text radius </code>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="password" class="input-text " placeholder="密码">
+            </td>
+            <td><code>
+                input-text </code>
+            </td>
+            <td><input type="password" class="input-text radius " placeholder="密码">
+            </td>
+            <td><code>
+                input-text radius </code>
+            </td>
+        </tr>
+        <tr>
+            <td><textarea class="textarea  " placeholder="说点什么..." style="width:100%"></textarea>
+            </td>
+            <td><code>
+                textarea </code>
+            </td>
+            <td><textarea class="textarea radius " placeholder="说点什么..." style="width:100%"></textarea>
+            </td>
+            <td><code>
+                textarea radius </code>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<p>
+    不支持圆角和背景渐变浏览器，如IE低版本，会显示扁平纯色直角效果。 </p>
+<h3>
+    文本框尺寸 </h3>
+<p>
+    定义了五种规格尺寸 </p>
+<div class="codeView bs-docs-example ">
+    <table class="table  table table-border table-bordered table-striped"
+            >
+        <thead>
+        <tr>
+            <th width="50%">文本框</th>
+            <th>class=""</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="迷你尺寸" class="input-text radius size-MINI " placeholder="迷你尺寸">
+            </td>
+            <td>input-text radius size-MINI</td>
+        </tr>
+        <tr>
+            <td><input type="小尺寸" class="input-text radius size-S  " placeholder="小尺寸">
+            </td>
+            <td>input-text radius size-S</td>
+        </tr>
+        <tr>
+            <td><input type="默认尺寸" class="input-text radius size-M  " placeholder="默认尺寸">
+            </td>
+            <td>input-text radius size-M</td>
+        </tr>
+        <tr>
+            <td><input type="大尺寸" class="input-text radius size-L  " placeholder="大尺寸">
+            </td>
+            <td>input-text radius size-L</td>
+        </tr>
+        <tr>
+            <td><input type="特大尺寸" class="input-text radius size-L  " placeholder="特大尺寸">
+            </td>
+            <td>input-text radius size-XL</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>
+    2 radio,checkbox 单选 多选 </h2>
+<p>
+    以后会对其进行美化。 </p>
+<div class="codeView bs-docs-example ">
+    <div class="skin-minimal ">
+        <div class="check-box ">
+            <label for="checkbox-1"> <input id="checkbox-1" type="checkbox"
+                    >
+                复选框 </label>
+        </div>
+        <div class="check-box ">
+            <label for="checkbox-2"> <input id="checkbox-2" type="checkbox"
+                                            checked>
+                复选框 checked状态 </label>
+        </div>
+        <div class="check-box ">
+            <input id="checkbox-disabled" type="checkbox"
+                   disabled>
+            <label for="checkbox-disabled">Disabled</label>
+        </div>
+        <div class="check-box ">
+            <input id="checkbox-disabled-checked" type="checkbox"
+                   checked disabled>
+            <label for="checkbox-disabled-checked">Disabled &amp; checked</label>
+        </div>
+    </div>
+    <div class="skin-minimal mt-20">
+        <div class="radio-box ">
+            <input id="radio-1" name="demo-radio1" type="radio"/>
+            <label>单选按钮</label>
+        </div>
+        <div class="radio-box ">
+            <input id="radio-2" name="demo-radio2" checked type="radio"/>
+            <label for="radio-2">单选按钮 checked状态</label>
+        </div>
+        <div class="radio-box ">
+            <input id="radio-disabled" disabled type="radio"/>
+            <label for="radio-disabled">Disabled</label>
+        </div>
+        <div class="radio-box ">
+            <input id="radio-disabled-checked" checked disabled type="radio"/>
+            <label for="radio-disabled-checked">Disabled &amp; checked</label>
+        </div>
+    </div>
+</div>
+<h2>
+    3 select 下拉框 </h2>
+<p>
+    select是个奇葩的表单组件，是表单元素中通过css最难美化的一个，各个浏览器显示都存在很大差异。 </p>
+<p>
+    原生效果 </p>
+<p>
+    <select name="demo1">
+        <option value="" selected="selected">原生select</option>
+        <option value="1">菜单一</option>
+        <option value="1">菜单二</option>
+        <option value="1">菜单三</option>
+    </select>
+</p>
+<p>
+    原生美化方式： </p>
+<p>
+    1、为select外层嵌套个 标签，设置边框，圆角，隐藏掉select本身的表框。 </p>
+<div class="codeView bs-docs-example ">
+		   	<span class="select-box  ">
+		        <select name="demo1">
+                    <option value="" selected="selected">原生select</option>
+                    <option value="1">菜单一</option>
+                    <option value="1">菜单二</option>
+                    <option value="1">菜单三</option>
+                </select>
+	</span>
+		<span class="select-box radius mt-20  ">
+				        <select name="demo2" class="select select">
+                            <option value="" selected="selected">圆角select效果</option>
+                            <option value="1">菜单一</option>
+                            <option value="1">菜单二</option>
+                            <option value="1">菜单三</option>
+                        </select>
+		</span>
+</div>
+<h2>
+    4 input-file 文件上传 </h2>
+<p>
+    input file 是另一个奇葩组件，一直以来都是前端开发的噩梦，原生的基本无法通过CSS美化。基于原生的做法：把文件选择域设为透明,通过绝对定位覆盖在长的好看的按钮上面。优点：完全源生。兼容性好，统一浏览器显示效果。 </p>
+<p>
+    原生效果 </p>
+<p>
+    <input type="file" name="file_0" multiple>
+</p>
+<div class="codeView bs-docs-example ">
+    <p>
+        上传按钮 </p>
+				<span class="btn-upload">
+	    		    	<a class="btn btn-primary radius upload=btn" href="javascript:void(0);">
+                            <i class="iconfont ">
+                                &#xf0020;    </i>
+                            浏览文件 </a>
+	    	<input type="file" name="file_0" class="input-file" multiple>
+		    </span>
+
+    <p>
+        带文本框 </p>
+								<span class="btn-upload">
+	    		    	<input id="file-1_id" name="file-1_name" class="input-text upload-url radius " readonly>
+	    	<a class="btn btn-primary radius upload=btn" href="javascript:void(0);">
+                <i class="iconfont ">
+                    &#xf0020;    </i>
+                浏览文件 </a>
+	    	<input type="file" id="file-1_id" name="file-1" class="input-file" multiple>
+		    </span>
+</div>
+<p>
+    手动在文本框上加style="width: " 来控制input框的宽度。 </p>
+
+<h2>
+    实例 </h2>
+<p>
+    <span class="label label-warning radius">本站郑重声明：</span>
+    Tiny-ui框架直接使用了Validform.js作为表单验证。本人研究了很多表单验证插件，最后发现Validform.js比较方便、简单，相对灵活性比较高，在这我代表Tiny-ui由衷的像作者Validform致敬。 </p>
+<div class="codeView bs-docs-example ">
+    <form name="thisform" action="/../data/Validform_post.html" id="from1715036171" method="post" class="form  " class="">
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                是否VIP： </label>
+
+            <div class="formControls col-8 ">
+                <input type="hidden" name="isvip" id="sid579847102" value="是"/>
+                <input type="checkbox" class="settings-switcher" name="isvipbtn" value="1" data-class="switcher-sm" checked='checked'
+                       id="btnsid579847102"/>
+                <script type="text/javascript">
+                    <!--
+                    $(function () {
+                        $("#btnsid579847102").on("change", function () {
+                            if (this.checked) {
+                                $("#sid579847102").val("是")
+                            } else {
+                                $("#sid579847102").val("不是")
+                            }
+                        });
+                        $("#btnsid579847102").switcher({
+                            theme: 'square',
+                            on_state_content: '<span class="fa fa-check"></span>',
+                            off_state_content: '<span class="fa fa-times"></span>'
+                        });
+                    });
+                    //-->
+                </script>
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                邮箱： </label>
+
+            <div class="formControls col-8 ">
+                <input type="text" name="email" value="" class="form-control  input-text" nullmsg="请输入邮箱！" datatype="e" placeholder="@"
+                       id="email" class="input-text"/>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                用户名： </label>
+
+            <div class="formControls col-8 ">
+                <input type="text" name="username" value="" class="form-control  input-text" ajaxurl="/../data/usercheck.pagelet"
+                       nullmsg="用户名不能为空！" datatype="*4-16" placeholder="4~16个字符，字母/中文/数字/下划线" id="username" class="input-text"/>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                密码： </label>
+
+            <div class="formControls col-8 ">
+                <input type="password" name="password" value="" class="form-control  input-text" nullmsg="请输入密码！" datatype="*6-18"
+                       autocomplete="off" placeholder="密码" id="password" class="input-text"/>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                密码验证： </label>
+
+            <div class="formControls col-8 ">
+                <input type="password" name="password2" value="" class="form-control  input-text" nullmsg="请再输入一次密码！" datatype="*6-18"
+                       autocomplete="off" recheck="password" placeholder="密码" id="password2" class="input-text" errormsg="您两次输入的密码不一致！"/>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                日期选择 </label>
+
+            <div class="formControls col-8 ">
+                <div class="date-Multiple-Select">
+                    <div class="dms-showrap">
+                        <select name="testtest" id="dms619937187-sel" class="form-control select2" multiple="multiple"></select></div>
+<span class="dms-selrap">
+<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+<span id="dms619937187" class="dms-dateinput"/></span>
+                    </span>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var $select = $("#dms619937187-sel");
+                        $select.select2();
+                        $("#dms619937187").on("click", function () {
+                            var that = this;
+                            WdatePicker({
+                                startDate: '%y-%M-01', dateFmt: "yyyy-MM-dd",
+                                onpicked: function () {
+                                    setDate($(that).html())
+                                }
+                            })
+                        });
+                        function setDate(pickdate) {
+                            $select.append('<option value="' + pickdate + '" >' + pickdate + '</option>');
+                            var selv = new Array();
+                            selv = $select.select2("val");
+                            selv.push(pickdate);
+                            $select.val(selv).trigger("change");
+                        }
+
+                        setDate("2015-09-10");
+                        setDate("2015-09-09");
+                        setDate("2015-09-01");
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                select下拉： </label>
+
+            <div class="formControls col-8 ">
+                <select name="lang" class="form-control  input-text select2" value="zh" minimumResultsForSearch="Infinity" nullmsg=""
+                        datatype="*" rel="22" class="input-text select2" data-ajaxurl="/../data/select2ajax.pagelet">
+                    <option value=""></option>
+                    <option value="zh" selected>中国</option>
+                    <option value="en">英国</option>
+                    <option value="ta">泰国</option>
+                </select>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                选择城市： </label>
+
+            <div class="formControls col-8 ">
+                <script>
+                    var zNodessid1458695369 = [];
+                </script>
+                <input id="sid1609612774" name="" type="text" value="" class="input-text"/>
+                <input id="sid1609612774-input" name="cityid" type="hidden" value="41" class="input-text"/>
+
+                <div class="hide" id="sid1609612774-rap">
+                    <div id="sid1609612774-content" class="tree-sel-content t-menu-content hide">
+                        <ul id="ztreesid1609612774" class="fa-ztree">
+                        </ul>
+                        <div class="hide" id="sid1609612774-msg">暂无信息</div>
+                        <div class="fix-part" style="padding:0 5px">
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 1, pId: 0, name: "北京"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 2, pId: 0, name: "天津"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 3, pId: 0, name: "上海"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 6, pId: 0, name: "重庆"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 4, pId: 0, name: "河北省"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 41, pId: 4, name: "石家庄"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 42, pId: 4, name: "保定"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 43, pId: 4, name: "邯郸"});
+                            </script>
+                            <script type="text/javascript">
+                                zNodessid1458695369.push({id: 44, pId: 4, name: "承德"});
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var setting = {
+                            view: {
+                                dblClickExpand: false
+                            },
+                            data: {
+                                simpleData: {
+                                    enable: true
+                                }
+                            },
+                            callback: {
+                                beforeClick: beforeClick,
+                                onClick: onClick
+                            }
+                        };
+                        var zTree;
+                        var zNodes = zNodessid1458695369;
+                        var $treeContent = $("#ztreesid1609612774");
+                        var $treeRap = $("#sid1609612774-content");
+                        var $input = $("#sid1609612774");
+                        var $inputV = $("#sid1609612774-input");
+                        initzTree();
+                        function initzTree() {
+                            zTree = $.fn.zTree.init($treeContent, setting, zNodes);
+                            initInputVale();
+                        }
+
+                        function initInputVale() {
+                            var $val = $inputV.val();
+                            if (!$val) return false;
+                            for (var i = 0; i < zNodes.length; i++) {
+                                if ($val == zNodes[i].id) {
+                                    $input.val(zNodes[i].name);
+                                    $inputV.val($val);
+                                    $input.trigger("setValue", zNodes[i]);
+                                    break;
+                                }
+                            }
+                        }
+
+                        function beforeClick(treeId, treeNode) {
+                            if (treeNode && treeNode.clickAble === false) {
+                                zTree.expandNode(treeNode);
+                                return false;
+                            }
+                        }
+
+                        function onClick(e, treeId, treeNode) {
+                            $input.val(treeNode.name);
+                            $inputV.val(treeNode.id);
+                            $input.trigger("setValue", treeNode);
+                            $inputV.trigger("blur");
+                            $input.trigger("blur");
+                            hideMenu();
+                        }
+
+                        function hideMenu() {
+                            $treeRap.fadeOut("fast");
+                            $("#sid1609612774-rap").append($treeRap);
+                        }
+
+                        $input.on("click", function () {
+                            $("body").append($treeRap);
+                            var thisOffset = $(this).offset();
+                            $treeRap.css({
+                                width: $(this).css("width"),
+                                left: thisOffset.left + "px",
+                                top: thisOffset.top + $(this).outerHeight() + "px"
+                            }).slideDown("fast");
+                        }).on("add", function (e, newNode) {
+                            zTree.addNodes(null, newNode);
+                        });
+                        $("body").on("click", function (e) {
+                            if ($(e.target).attr("id") != $input.attr("id") && $(e.target).parents("#" + $treeRap.attr("id")).size() == 0) {
+                                hideMenu();
+                            }
+                        }).on("click", ".fix-part", function (e) {
+                            hideMenu();
+                        });
+                        function bfxs(zTree, nodes, tt) {
+                            if (nodes.children == null) {//无子节点
+                                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//无子节点，但是包含tt
+                                    fjdxs(zTree, nodes);
+                                }
+                            } else {//有子节点
+                                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//有而且包含
+                                    fjdxs(zTree, nodes);
+                                    xsall(zTree, nodes);
+                                } else {//有但不包含
+                                    $.each(nodes.children, function (aa, bb) {
+                                        bfxs(zTree, bb, tt);
+                                    })
+                                }
+                            }
+                        }
+
+                        ///显示所有父节点
+                        function fjdxs(zTree, nodes) {
+                            if (nodes.getParentNode() == null) {
+                                zTree.showNode(nodes);
+                            }
+                            else {
+                                zTree.showNode(nodes);
+                                fjdxs(zTree, nodes.getParentNode());
+                            }
+                        }
+
+                        ///全显
+                        function xsall(ztree, nodes) {
+                            ztree.showNode(nodes);
+                            if (nodes.children != null) {
+                                $.each(nodes.children, function (x, y) {
+                                    xsall(ztree, y);
+                                })
+                            }
+                        }
+
+                        ///么有子节点的直接隐藏
+                        function ycall(ztree, nodes) {
+                            ztree.hideNode(nodes);
+                            if (nodes.children != null) {
+                                $.each(nodes.children, function (x, y) {
+                                    ycall(ztree, y);
+                                })
+                            }
+                        }
+
+                        $("#sid1609612774").on("propertychange input", function () {
+                            var key = $(this).val();
+                            var nodes = zTree.getNodes();
+                            zTree.showNodes(nodes);
+                            if (!key) {
+                                $("#sid1609612774-msg").hide();
+                                return;
+                            }
+                            var zts = zTree.getNodesByParamFuzzy("name", key);
+                            if (zts.length == 0) {
+                                $("#sid1609612774-msg").show();
+                            } else {
+                                $("#sid1609612774-msg").hide();
+                            }
+
+                            $.each(nodes, function (x, y) {
+                                ycall(zTree, y);
+                            });
+
+                            $.each(nodes, function (index, node) {
+                                bfxs(zTree, node, key);
+                            });
+                            zTree.expandAll(true);
+                        }).on("close", function () {
+                            hideMenu();
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                选择城市2： </label>
+
+            <div class="formControls col-8 ">
+                <script>
+                    var zNodessid260201279 = [];
+                </script>
+                <input id="sid1454088077" name="" type="text" value="" data-URL="/../data/ztreeData.pagelet" class="input-text"/>
+                <input id="sid1454088077-input" name="cityid" type="hidden" value="1" data-URL="/../data/ztreeData.pagelet"
+                       class="input-text"/>
+
+                <div class="hide" id="sid1454088077-rap">
+                    <div id="sid1454088077-content" class="tree-sel-content t-menu-content hide">
+                        <ul id="ztreesid1454088077" class="fa-ztree">
+                        </ul>
+                        <div class="hide" id="sid1454088077-msg">暂无信息</div>
+                        <div class="fix-part" style="padding:0 5px"></div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var setting = {
+                            view: {
+                                dblClickExpand: false
+                            },
+                            data: {
+                                simpleData: {
+                                    enable: true
+                                }
+                            },
+                            callback: {
+                                beforeClick: beforeClick,
+                                onClick: onClick
+                            }
+                        };
+                        var zTree;
+                        var zNodes = zNodessid260201279;
+                        var $treeContent = $("#ztreesid1454088077");
+                        var $treeRap = $("#sid1454088077-content");
+                        var $input = $("#sid1454088077");
+                        var $inputV = $("#sid1454088077-input");
+                        $.ajax({
+                            type: "GET",
+                            url: " /../data/ztreeData.pagelet",
+                            dataType: "json",
+                            success: function (data) {
+                                zNodes = data;
+                                initzTree();
+                            }
+                        });
+                        function initzTree() {
+                            zTree = $.fn.zTree.init($treeContent, setting, zNodes);
+                            initInputVale();
+                        }
+
+                        function initInputVale() {
+                            var $val = $inputV.val();
+                            if (!$val) return false;
+                            for (var i = 0; i < zNodes.length; i++) {
+                                if ($val == zNodes[i].id) {
+                                    $input.val(zNodes[i].name);
+                                    $inputV.val($val);
+                                    $input.trigger("setValue", zNodes[i]);
+                                    break;
+                                }
+                            }
+                        }
+
+                        function beforeClick(treeId, treeNode) {
+                            if (treeNode && treeNode.clickAble === false) {
+                                zTree.expandNode(treeNode);
+                                return false;
+                            }
+                        }
+
+                        function onClick(e, treeId, treeNode) {
+                            $input.val(treeNode.name);
+                            $inputV.val(treeNode.id);
+                            $input.trigger("setValue", treeNode);
+                            $inputV.trigger("blur");
+                            $input.trigger("blur");
+                            hideMenu();
+                        }
+
+                        function hideMenu() {
+                            $treeRap.fadeOut("fast");
+                            $("#sid1454088077-rap").append($treeRap);
+                        }
+
+                        $input.on("click", function () {
+                            $("body").append($treeRap);
+                            var thisOffset = $(this).offset();
+                            $treeRap.css({
+                                width: $(this).css("width"),
+                                left: thisOffset.left + "px",
+                                top: thisOffset.top + $(this).outerHeight() + "px"
+                            }).slideDown("fast");
+                        }).on("add", function (e, newNode) {
+                            zTree.addNodes(null, newNode);
+                        });
+                        $("body").on("click", function (e) {
+                            if ($(e.target).attr("id") != $input.attr("id") && $(e.target).parents("#" + $treeRap.attr("id")).size() == 0) {
+                                hideMenu();
+                            }
+                        }).on("click", ".fix-part", function (e) {
+                            hideMenu();
+                        });
+                        function bfxs(zTree, nodes, tt) {
+                            if (nodes.children == null) {//无子节点
+                                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//无子节点，但是包含tt
+                                    fjdxs(zTree, nodes);
+                                }
+                            } else {//有子节点
+                                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//有而且包含
+                                    fjdxs(zTree, nodes);
+                                    xsall(zTree, nodes);
+                                } else {//有但不包含
+                                    $.each(nodes.children, function (aa, bb) {
+                                        bfxs(zTree, bb, tt);
+                                    })
+                                }
+                            }
+                        }
+
+                        ///显示所有父节点
+                        function fjdxs(zTree, nodes) {
+                            if (nodes.getParentNode() == null) {
+                                zTree.showNode(nodes);
+                            }
+                            else {
+                                zTree.showNode(nodes);
+                                fjdxs(zTree, nodes.getParentNode());
+                            }
+                        }
+
+                        ///全显
+                        function xsall(ztree, nodes) {
+                            ztree.showNode(nodes);
+                            if (nodes.children != null) {
+                                $.each(nodes.children, function (x, y) {
+                                    xsall(ztree, y);
+                                })
+                            }
+                        }
+
+                        ///么有子节点的直接隐藏
+                        function ycall(ztree, nodes) {
+                            ztree.hideNode(nodes);
+                            if (nodes.children != null) {
+                                $.each(nodes.children, function (x, y) {
+                                    ycall(ztree, y);
+                                })
+                            }
+                        }
+
+                        $("#sid1454088077").on("propertychange input", function () {
+                            var key = $(this).val();
+                            var nodes = zTree.getNodes();
+                            zTree.showNodes(nodes);
+                            if (!key) {
+                                $("#sid1454088077-msg").hide();
+                                return;
+                            }
+                            var zts = zTree.getNodesByParamFuzzy("name", key);
+                            if (zts.length == 0) {
+                                $("#sid1454088077-msg").show();
+                            } else {
+                                $("#sid1454088077-msg").hide();
+                            }
+
+                            $.each(nodes, function (x, y) {
+                                ycall(zTree, y);
+                            });
+
+                            $.each(nodes, function (index, node) {
+                                bfxs(zTree, node, key);
+                            });
+                            zTree.expandAll(true);
+                        }).on("close", function () {
+                            hideMenu();
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                选择城市： </label>
+
+            <div class="formControls col-8 ">
+                <select name="" class="form-control " value="" nullmsg="请选择所在城市！" datatype="*">
+                    <option value="" selected>请选择城市</option>
+                    <option value="1">北京</option>
+                    <option value="2">上海</option>
+                    <option value="3">广州</option>
+                </select>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                Ajax数据返回： </label>
+
+            <div class="formControls col-8 ">
+                <input type="hidden" id="s2id465407152" name="sel2" value="2" dataId="sid" dataText="stext" datatype="*"
+                       placeholder="查询数据" fixDataVal="1" fix2="ajian" fixData="pid"/>
+                <script type="text/javascript">
+                    $(function () {
+                        var _inputVal = $("#s2id465407152");
+                        var multiple = _inputVal.attr("multiple");
+                        multiple = multiple ? true : false;
+                        _inputVal.select2({
+                            multiple: multiple,
+                            ajax: {
+                                url: "/../data/select2ajax.pagelet",
+                                dataType: 'json',
+                                quietMillis: 250,
+                                data: function (term, page) {
+                                    var data = {fix2: _inputVal.attr("fix2"), fixData: _inputVal.attr("fixData"), key: term};
+                                    return data;
+                                },
+                                results: function (reData, page) {
+                                    var data = [];
+                                    for (var i = 0, l = reData.length; i < l; i++) {
+                                        data.push({id: reData[i].sid, text: reData[i].stext})
+                                    }
+                                    return {results: data};
+                                },
+                                cache: true
+                            },
+                            initSelection: function (element, callback) {   // 初始化时设置默认值
+                                var v = element.val();
+                                $.ajax({
+                                    url: "/../data/select2ajax.pagelet",
+                                    type: "get",
+                                    data: {select2Init: "true", initKey: v},
+                                    dataType: "json",
+                                    success: function (reData) {
+                                        var data = [];
+                                        for (var i = 0, l = reData.length; i < l; i++) {
+                                            data.push({id: reData[i].sid, text: reData[i].stext})
+                                            //callback(data);
+                                        }
+                                        if (!data) return false;
+                                        if (multiple) {
+                                            callback(data);
+                                        } else {
+                                            callback(data[0]);
+                                        }
+                                    }
+                                })
+                            },
+                            formatResult: function (data) {
+                                return "<div>" + data.text + "</div>";
+                            },
+                            formatSelection: function (data) {
+                                return data.text;
+                            },
+                            formatInputTooShort: function () {
+                                return "请输入关键字"
+                            },
+                        });
+                        $("#s2id465407152").prev("div").find("abbr.select2-search-choice-close").show();
+                        _inputVal.on("select2-blur", function () {
+                            $(this).trigger("blur");
+                        }).on("change", function () {
+                            if ($(this).val()) {
+                                $(this).prev("div").find("abbr.select2-search-choice-close").show()
+                            } else {
+                                $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+                            }
+                        }).on("disable", function () {
+                            var disabled = $(this).attr("disabled");
+                            if (disabled) {
+                                disabled = true;
+                                $(this).removeAttr("disabled");
+                            } else {
+                                disabled = false;
+                                $(this).attr("disabled", "true");
+                            }
+                            $(this).select2("enable", disabled);
+                        });
+                    })
+                </script>
+                <div class="fixtools hide" id="s2id465407152-fix">
+                    <div class="fixselect2foot"><a class="r" data-target="#myModal2" data-toggle="modal" data-width="600" modal-title="增加"
+                                                   href="/../page/form/4.6.pagelet">
+                        增加 </a>
+                        <a href="/../page/">全部</a></div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var isinit = false;
+                        $("#s2id465407152").on("select2-open", function (e) {
+                            var $sel = $(this);
+                            if (!isinit) {
+                                $("#select2-drop").append($("#s2id465407152-fix").html());
+                                $("#select2-drop").on("click", "a[data-toggle!=modal]", function () {
+                                    window.location.href = $(this).attr("href");
+                                }).on("click", '[data-toggle="modal"]', function (e) {
+                                    $("#select2-drop").hide();
+                                    var $this = $(this),
+                                            href = $this.attr('href'),
+                                            height = $this.attr('data-height'),
+                                            width = $this.attr('data-width'),
+                                            modalTitle = $this.attr('modal-title'),
+                                            modalUrl = $this.attr('modal-url'),
+                                            modalData = $this.attr('modal-Data'),
+                                            $target = $($this.attr('data-target') || (href && href.replace(/.*(?=^\s]+$)/, ''))),
+                                            option = $target.data('modal') ? 'toggle' : $.extend({
+                                                remote: !/#/.test(href) && href,
+                                                height: height ? height : 0,
+                                                maxHeight: $(window).height() * 0.8 - 100,
+                                                modalTitle: modalTitle ? modalTitle : null,
+                                                modalUrl: modalUrl ? modalUrl : null,
+                                            }, $target.data(), $this.data());
+                                    $target.drag({
+                                        handle: ".modal-header"
+                                    });
+                                    e.preventDefault();
+                                    $target.modal(option).one('hide', function () {
+                                        $this.focus();
+                                    });
+                                });
+                                isinit = true;
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                国籍： </label>
+
+            <div class="formControls col-8 ">
+                <select name="lang2" class="form-control" nullmsg="请选择省份！" datatype="*" class="input-text select2" id="sid1804688100">
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="IN">Indiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                </select>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#sid1804688100").each(function (e) {
+                            var that = this;
+                            $(this).select2({
+                                //allowClear: true,
+                                minimumResultsForSearch: ($(that).attr("minimumResultsForSearch") ? Infinity : "")
+                            });
+                        });
+                        $("#sid1804688100").on("change", function () {
+                            if ($(this).val()) {
+                                $(this).prev("div").find("abbr.select2-search-choice-close").show()
+                            } else {
+                                $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+                            }
+                            $(this).trigger('blur');
+                        });
+                        $("#sid1804688100").prev("div").find("abbr.select2-search-choice-close").show();
+                        var valuestr = "IN";
+                        var values = valuestr.split(",");
+                        if (values.length > 1) {
+                            $("#sid1804688100").val(values).trigger("change");
+                        } else {
+                            $("#sid1804688100").val(valuestr).trigger("change");
+                        }
+                    });
+                </script>
+                <div class="fixtools hide" id="sid1804688100-fix">
+                    <div class="fixselect2foot"><a class="r" data-target="#myModal2" data-toggle="modal" data-width="600" modal-title="增加"
+                                                   href="/../page/form/4.6.pagelet">
+                        增加 </a>
+                        <a href="/../page/">全部</a></div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var isinit = false;
+                        $("#sid1804688100").on("select2-open", function (e) {
+                            var $sel = $(this);
+                            if (!isinit) {
+                                $("#select2-drop").append($("#sid1804688100-fix").html());
+                                $("#select2-drop").on("click", "a[data-toggle!=modal]", function () {
+                                    window.location.href = $(this).attr("href");
+                                }).on("click", '[data-toggle="modal"]', function (e) {
+                                    $("#select2-drop").hide();
+                                    var $this = $(this),
+                                            href = $this.attr('href'),
+                                            height = $this.attr('data-height'),
+                                            width = $this.attr('data-width'),
+                                            modalTitle = $this.attr('modal-title'),
+                                            modalUrl = $this.attr('modal-url'),
+                                            modalData = $this.attr('modal-Data'),
+                                            $target = $($this.attr('data-target') || (href && href.replace(/.*(?=^\s]+$)/, ''))),
+                                            option = $target.data('modal') ? 'toggle' : $.extend({
+                                                remote: !/#/.test(href) && href,
+                                                height: height ? height : 0,
+                                                maxHeight: $(window).height() * 0.8 - 100,
+                                                modalTitle: modalTitle ? modalTitle : null,
+                                                modalUrl: modalUrl ? modalUrl : null,
+                                            }, $target.data(), $this.data());
+                                    $target.drag({
+                                        handle: ".modal-header"
+                                    });
+                                    e.preventDefault();
+                                    $target.modal(option).one('hide', function () {
+                                        $this.focus();
+                                    });
+                                });
+                                isinit = true;
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                单选框： </label>
+
+            <div class="formControls skin-minimal col-5 ">
+                <div class="radio-box"><input type="radio" name="sex" class="iradio iradio-blue" id="rad655279779" value="man"
+                                              nullmsg="请选择性别！" datatype="*"/><label for="rad655279779" class="cursor-hand">男</label></div>
+                <div class="radio-box"><input type="radio" name="sex" class="iradio iradio-blue" id="rad779816941" value="women" checked
+                                              nullmsg="请选择性别！" datatype="*"/><label for="rad779816941" class="cursor-hand">女</label></div>
+                <div class="radio-box"><input type="radio" name="sex" class="iradio iradio-blue" id="rad1401195369" value="secret"
+                                              nullmsg="请选择性别！" datatype="*"/><label for="rad1401195369" class="cursor-hand">保密</label>
+                </div>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                爱好： </label>
+
+            <div class="formControls col-5 ">
+                <div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check1374079736"
+                                              value="a" nullmsg="爱好不能为空！" datatype="*"/><label for="check1374079736" class="cursor-hand">上网</label>
+                </div>
+                <div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check312299664"
+                                              value="b" nullmsg="爱好不能为空！" datatype="*"/><label for="check312299664"
+                                                                                               class="cursor-hand">喝茶</label></div>
+                <div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check446251277"
+                                              value="c" nullmsg="爱好不能为空！" datatype="*"/><label for="check446251277"
+                                                                                               class="cursor-hand">打球</label></div>
+                <div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check47323606"
+                                              value="d" nullmsg="爱好不能为空！" datatype="*"/><label for="check47323606"
+                                                                                               class="cursor-hand">走路</label></div>
+                <div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check200719488"
+                                              value="e" nullmsg="爱好不能为空！" datatype="*"/><label for="check200719488"
+                                                                                               class="cursor-hand">爬山</label></div>
+                <div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check242242061"
+                                              value="f" nullmsg="爱好不能为空！" datatype="*"/><label for="check242242061"
+                                                                                               class="cursor-hand">唱歌</label></div>
+                <script type="text/javascript">
+                    $(function () {
+                        var checkval = [];
+                        checkval.push("a");
+                        checkval.push("c");
+                        checkval.push("e");
+                        $("input[name=checkbox2]").each(function (e) {
+                            if (checkval.indexOf(this.value) > -1) {
+                                this.checked = true;
+                            } else {
+                                this.checked = false;
+                            }
+                        });
+                    })
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                纯上传： </label>
+
+            <div class="formControls col-8 ">
+								<span class="form-inline">
+<span class="btn-upload">
+	<input id="fid728913060_input" name="upfile1_name" value="" type="text" class="form-control">
+	<a class="btn btn-primary" role="button"><i class="glyphicon glyphicon-cloud-upload"></i> 浏览文件</a>
+	<input type="file" id="fid728913060" name="upfile1" class="input-file">
+</span></span>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#fid728913060").on("change", function () {
+                            $(this).prev("input").val($(this).val())
+                            //$("#fid728913060_input").val($(this).val());
+                        });
+                    })
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                图片上传：
+
+            </label>
+
+            <div class="formControls col-8 ">
+                <input type="hidden" class="form-control" value="" name="inputImage" id="upload55629679" placeholder="可点击图标进行上传"><span
+                    class="btn btn-primary upload-btn" id="upload55629679-wrap"><i class="iconfont">&#xf0020;</i> 浏览文件 <input type="file"
+                                                                                                                              class="input-file"
+                                                                                                                              name="upfile"
+                                                                                                                              id="upload55629679-file"></span>
+
+                <div id="showimgupload55629679"></div>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#upload55629679-wrap").on("change", "#upload55629679-file", function () {
+                            $.ajaxFileUpload({
+                                url: '/../action/savepic.pagelet',
+                                secureuri: false,
+                                fileElementId: "upload55629679-file",
+                                dataType: 'json',
+                                success: function (data, status) {
+                                    if (data.state == "SUCCESS") {
+                                        $("#upload55629679").val(data.url);
+                                        $("#showimgupload55629679").html("<img src='/.." + data.url + "' width='100'>");
+                                    } else {
+                                        var str = !data.info;
+                                        if (!str) {
+                                            str = "参数有误";
+                                        }
+                                        layer.msg(str);
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                附件：
+                <div class="list-operate-more-less" style="margin-right:10px"><span id="oid1954273537-add" data-target="#list-item"
+                                                                                    data-minSize="2" class=""><i
+                        class="glyphicon glyphicon-plus"></i></span>
+                    <span id="oid1954273537-less" data-target="#list-item" data-minSize="2" class=""><i
+                            class="glyphicon glyphicon-minus"></i></span>
+                    <script type="text/javascript">
+                        $(function () {
+                            var minsize = $("#oid1954273537-add").attr("data-minSize");
+                            var maxsize = $("#oid1954273537-add").attr("data-maxSize");
+                            if (!minsize) minsize = 1;
+                            function updateInputName(_this) {
+                                var targetDom = $($(_this).attr("data-target"));
+                                targetDom.children().each(function (index) {
+                                    $(this).find("input,select").each(function () {
+                                        var name = $(this).attr("name");
+                                        name = name.replace(/\[[0-9]*\]/, "[" + index + "]");
+                                        $(this).attr("name", name);
+                                    })
+                                })
+
+                            }
+
+                            $("#oid1954273537-add").on("click", function () {
+                                var targetDom = $($(this).attr("data-target"));
+                                if (!targetDom) return false;
+                                if (maxsize && targetDom.children().size() >= maxsize) {
+                                    layer.msg("已经有" + maxsize + "个，不能再加了");
+                                    return false;
+                                }
+                                var $item = targetDom.children(":first").clone();
+                                $item.find("input:text,select").val("");
+                                targetDom.append($item);
+                                updateInputName(this);
+                            });
+                            $("#oid1954273537-less").on("click", function () {
+                                var targetDom = $($(this).attr("data-target"));
+                                if (!targetDom) return false;
+                                if (targetDom.children().size() > minsize) {
+                                    targetDom.children().last().remove();
+                                    updateInputName(this);
+                                } else {
+                                    layer.msg("少于" + minsize + "个,不能再删了")
+                                }
+
+                            })
+                        })
+                    </script>
+                </div>
+            </label>
+
+            <div class="formControls col-8 ">
+                <div id="list-item">
+                    <div class="mb10"><input type="text" class="form-control " value="" name="inputName" id="upload117075736"
+                                             placeholder="可直接输入地址，也可点击下图标进行上传"><span class="btn btn-primary upload-btn"
+                                                                                     id="upload117075736-wrap"><i class="iconfont">
+                        &#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload117075736-file"></span>
+
+                        <div id="showimgupload117075736"></div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $("#upload117075736-wrap").on("change", "#upload117075736-file", function () {
+                                    $.ajaxFileUpload({
+                                        url: '/../action/savepic.pagelet',
+                                        secureuri: false,
+                                        fileElementId: "upload117075736-file",
+                                        dataType: 'json',
+                                        success: function (data, status) {
+                                            if (data.state == "SUCCESS") {
+                                                $("#upload117075736").val(data.url);
+                                                $("#showimgupload117075736").html("<img src='/.." + data.url + "' width='100'>");
+                                            } else {
+                                                var str = !data.info;
+                                                if (!str) {
+                                                    str = "参数有误";
+                                                }
+                                                layer.msg(str);
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="mb10"><input type="text" class="form-control " value="" name="inputName" id="upload42428442"
+                                             placeholder="可直接输入地址，也可点击下图标进行上传"><span class="btn btn-primary upload-btn"
+                                                                                     id="upload42428442-wrap"><i class="iconfont">
+                        &#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload42428442-file"></span>
+
+                        <div id="showimgupload42428442"></div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $("#upload42428442-wrap").on("change", "#upload42428442-file", function () {
+                                    $.ajaxFileUpload({
+                                        url: '/../action/savepic.pagelet',
+                                        secureuri: false,
+                                        fileElementId: "upload42428442-file",
+                                        dataType: 'json',
+                                        success: function (data, status) {
+                                            if (data.state == "SUCCESS") {
+                                                $("#upload42428442").val(data.url);
+                                                $("#showimgupload42428442").html("<img src='/.." + data.url + "' width='100'>");
+                                            } else {
+                                                var str = !data.info;
+                                                if (!str) {
+                                                    str = "参数有误";
+                                                }
+                                                layer.msg(str);
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="mb10"><input type="text" class="form-control " value="" name="inputName" id="upload2132324056"
+                                             placeholder="可直接输入地址，也可点击下图标进行上传"><span class="btn btn-primary upload-btn"
+                                                                                     id="upload2132324056-wrap"><i class="iconfont">
+                        &#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload2132324056-file"></span>
+
+                        <div id="showimgupload2132324056"></div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $("#upload2132324056-wrap").on("change", "#upload2132324056-file", function () {
+                                    $.ajaxFileUpload({
+                                        url: '/../action/savepic.pagelet',
+                                        secureuri: false,
+                                        fileElementId: "upload2132324056-file",
+                                        dataType: 'json',
+                                        success: function (data, status) {
+                                            if (data.state == "SUCCESS") {
+                                                $("#upload2132324056").val(data.url);
+                                                $("#showimgupload2132324056").html("<img src='/.." + data.url + "' width='100'>");
+                                            } else {
+                                                var str = !data.info;
+                                                if (!str) {
+                                                    str = "参数有误";
+                                                }
+                                                layer.msg(str);
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                出生日期： </label>
+
+            <div class="formControls col-8 ">
+                <div class="input-prepend input-group">		<span class="add-on input-group-addon">
+			<i class="glyphicon glyphicon-calendar fa fa-calendar">
+            </i>
+		</span>
+                    <input type="text" name="birthday" class="form-control " id="dateput1978815255" value="" nullmsg="日期不能为空" datatype="*"
+                           noPick="false" style="width:200px" placeholder="yMdHmswW分别代表年月日时分秒星期周,你可以任意组合这些元素来自定义你个性化的日期格式."/>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+                        dateFormat = dateFormat ? dateFormat : 'yyyy-MM-dd';// HH:mm:ss
+                        dateFormat = dateFormat.replace(/Y/g, "y").replace("ii", "mm").replace(/D/g, "d");
+                        //console.log(dateFormat);
+                        $("#dateput1978815255").on("click", function () {
+                            WdatePicker({
+                                startDate: '%y-%M-01 00:00:00', dateFmt: dateFormat,
+                                onpicked: function () {
+                                    $("input[name='birthday']").trigger('blur change')
+                                }
+                            })
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                日期区间： </label>
+
+            <div class="formControls col-8 ">
+                <div class="input-group form-inline" id="sid1010381970-rap">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" name="btime" id="sid1010381970" class="form-control" value="" style="width:100px"/><span
+                        style="padding:6px;float:left"> 至</span> <input type="text" name="etime" id="sid1010381970-2" class="form-control"
+                                                                        value="" style="width:100px"/>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        var dateFormat = '';
+                        dateFormat = dateFormat ? dateFormat : 'YYYY-MM-DD';
+                        showTime = false;
+                        var s = dateFormat.toLowerCase();
+                        if (s.indexOf("h") > -1) {
+                            showTime = true;
+                        }
+                        var datestr = "" ? "" : moment().format(dateFormat);
+                        var datestr2 = "" ? "" : moment().format(dateFormat);
+                        $("#sid1010381970-rap").daterangepicker({
+                            timePicker: showTime,
+                            timePickerIncrement: 1,
+                            timePicker12Hour: false,
+                            timePickerSeconds: true,
+                            startDate: datestr,
+                            endDate: datestr2,
+                            format: dateFormat
+                        }).on("apply.daterangepicker", function (e, _this) {
+                            $("#sid1010381970").val(_this.startDate.format(dateFormat)).trigger("blur").siblings("input:first").val(_this.endDate.format(dateFormat)).trigger("blur");
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                所在区域： </label>
+
+            <div class="formControls col-5 form-inline selectList ">
+                <select name="province" class="form-control  province" value="" nullmsg="请选择省份！" datatype="*" class="province">
+                    <option value="">请选择省份</option>
+                </select>
+                <select name="city" class="form-control  city" value="" nullmsg="请选择城市！" datatype="*" class="city">
+                    <option value="">请选择城市</option>
+                </select>
+                <select name="district" class="form-control  district" value="" nullmsg="请选择地区！" datatype="*" class="district">
+                    <option value="">请选择地区</option>
+                </select>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                网址： </label>
+
+            <div class="formControls col-8 ">
+                <input type="text" name="username" value="" class="form-control  input-text" nullmsg="网址不能为空！" datatype="url"
+                       placeholder="http://" id="username" class="input-text"/>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                描述： </label>
+
+            <div class="formControls col-8 ">
+                <textarea class="form-control " name="remark" nullmsg="备注不能为空！" datatype="*10-500"
+                          placeholder="说点什么...最少输入10个字符">内容走起</textarea>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <label class="form-label col-2" id="">
+                内容： </label>
+
+            <div class="formControls col-8 ">
+                <script type="text/plain" id="contentxx2">最后一个MAP参数为Ueditor的初始化参数 会自动带入 </script>
+                <script type="text/javascript">
+                    window.UMEDITOR_CONFIG.textarea = 'content22';
+                    UM.delEditor('contentxx2');
+                    UM.getEditor('contentxx2', {
+                        initialFrameHeight: "600",
+                    });
+                </script>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row cl ">
+            <div class=" col-10 col-offset-2 form-inline">
+                <input type="submit" name="submitbtn" value=" 提交 " class="form-control  btn btn-primary" class="btn btn-primary"/>
+                <a class="btn grayBtn" href="javascript:history.go(-1);">
+                    返回 </a>
+                <input value="change" type="button" id="changeBtn" class="btn grayBtn"/>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(function () {
+            $('#from1715036171 .icheckbox,#from1715036171 .iradio').iCheck({
+                checkboxClass: 'icheckbox-blue',
+                radioClass: 'iradio-blue',
+                increaseArea: '20%'
+            });
+            $("#from1715036171 .settings-switcher").switcher({
+                theme: 'square',
+                on_state_content: '<span class="fa fa-check"></span>',
+                off_state_content: '<span class="fa fa-times"></span>'
+            });
+            $("#from1715036171 select.select2").each(function (e) {
+                var that = this;
+                $(this).select2({
+                    minimumResultsForSearch: ($(that).attr("minimumResultsForSearch") ? Infinity : "")
+                });
+                if ($(this).attr("value")) {
+                    $(this).prev("div").find("abbr.select2-search-choice-close").show();
+                } else {
+                    $(this).select2("val", null);
+                }
+                $(this).on("change", function () {
+                    if ($(this).val()) {
+                        $(this).prev("div").find("abbr.select2-search-choice-close").show()
+                    } else {
+                        $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+                    }
+                    $(this).trigger('blur')
+                })
+
+            });
+        });
+    </script>
+    <div id="myModal2" class="modal hide fade " tabindex="-1"
+         role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <span class="glyphicon glyphicon-fullscreen"></span>
+            <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+            <h3>对话框标题</h3>
+        </div>
+        <div class="modal-body  ">
+            <div class="clear"><p>对话框内容…</p></div>
+            <div class="clear"></div>
+        </div>
+        <div class="modal-footer ">
+            <button class="btn radius btn-primary " data-submit="modal">
+                确定
+            </button>
+            <button class="btn radius " data-dismiss="modal" aria-hidden="true">
+                关闭
+            </button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        <!--
+        $(function () {
+            $("#myModal2").on("close", function (e) {
+                $(this).modal('hide');
+            })
+        });
+        //-->
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".selectList").each(function () {
+                var url = "/../data/getDist.html";
+                var areaJson;
+                var temp_html;
+                var oProvince = $(this).find(".province");
+                var oCity = $(this).find(".city");
+                var oDistrict = $(this).find(".district");
+                //初始化省
+                var province = function () {
+                    $.each(areaJson, function (i, province) {
+                        temp_html += "<option value='" + province.p + "'>" + province.p + "</option>";
+                    });
+                    oProvince.html(temp_html);
+                    city();
+                };
+                //赋值市
+                var city = function () {
+                    temp_html = "";
+                    var n = oProvince.get(0).selectedIndex;
+                    $.each(areaJson[n].c, function (i, city) {
+                        temp_html += "<option value='" + city.ct + "'>" + city.ct + "</option>";
+                    });
+                    oCity.html(temp_html);
+                    district();
+                };
+                //赋值县
+                var district = function () {
+                    temp_html = "";
+                    var m = oProvince.get(0).selectedIndex;
+                    var n = oCity.get(0).selectedIndex;
+                    if (typeof(areaJson[m].c[n].d) == "undefined") {
+                        oDistrict.css("display", "none");
+                    } else {
+                        oDistrict.css("display", "inline");
+                        $.each(areaJson[m].c[n].d, function (i, district) {
+                            temp_html += "<option value='" + district.dt + "'>" + district.dt + "</option>";
+                        });
+                        oDistrict.html(temp_html);
+                    }
+                    ;
+                };
+                //选择省改变市
+                oProvince.change(function () {
+                    city();
+                });
+                //选择市改变县
+                oCity.change(function () {
+                    district();
+                });
+                //获取json数据
+                $.getJSON(url, function (data) {
+                    areaJson = data;
+                    province();
+                });
+            });
+        });
+        $(function () {
+            $("form[name=thisform").Validform({
+                tiptype: 2,
+                beforeCheck: function (curform) {
+                    //在表单提交执行验证之前执行的函数，curform参数是当前表单对象。
+                    //这里明确return false的话将不会继续执行验证操作;
+                },
+                beforeSubmit: function (curform) {
+                    $(curform).ajaxSubmit({
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.status == "y") {
+                                layer.msg(data.info, 2, 1);
+                                $(curform).closest(".modal").trigger("close");
+                            } else {
+                                layer.msg(data.info);
+                            }
+                            try {
+                                $(curform).closest(".modal").trigger("close");//当弹出框时触发弹出框关闭
+                                //$(curform).closest(".modal").find(".modal-header .close").trigger("click");//弹出框关闭
+                                $("table.tinytable").trigger("initnav"); ////可配合TINYTABLE 做刷新
+                            } catch (e) {
+                                console.log(e)
+                            }
+                        },
+                        error: function () {
+                            layer.msg(data.info);
+                        }
+                    });
+                    return false;
+
+                    //在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+                    //这里明确return false的话表单将不会提交;
+                }
+
+            });
+
+        });
+    </script>
+</div>
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.form包即可</span></pre>

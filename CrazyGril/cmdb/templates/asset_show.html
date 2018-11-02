@@ -1,0 +1,194 @@
+<form action="{% url 'cmdb:asset_show' %}" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl" style="display: none">
+        <label class="form-label col-3"><span class="c-red">*</span>hidden</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.id}}" name="asset_id"  readonly="readonly" />
+        </div>
+    </div>
+
+<div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>主机名:</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.hostname}}" name="hostname"  readonly="readonly" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>内网ip 地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"   value="{{host_info.ip}}"  name="n_ip"   readonly="readonly" />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3">外网ip 地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"  value="{{host_info.other_ip}}"  name="w_ip"  readonly="readonly" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>操作系统</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.os}}"   name="os"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>cpu型号</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.cpu_model}}"   name="cpu_type"   readonly="readonly" />
+        </div>
+   </div>
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3">cpu数量</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.cpu_num}}"   name="cpu_num"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>内存大小</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.memory}}"  name="mem"   readonly="readonly" />
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>硬盘</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.disk}}"  name="disk"   readonly="readonly"/>
+        </div>
+    </div>
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>资产编号</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.asset_no}}"  name="asset_nu"   readonly="readonly" />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>设备类型</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{ host_info.asset_type }}"  name="status"   readonly="readonly" />
+             <!--<select class="form-control input-text select2" name="asset_type" id="types">-->
+
+                    <!--{% for type in all_type %}-->
+                    <!--{% if type == host_info.asset_type %}-->
+                    <!--<option value="{{  host_info.asset_type }}"  selected>{{host_info.asset_type}}</option>-->
+                    <!--{% else %}-->
+                    <!--<option value="{{ type }}">{{ type }}</option>-->
+                    <!--{% endif %}-->
+                    <!--{% endfor%}-->
+            <!--</select>-->
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>设备状态</label>
+        <div class="formControls col-7">
+             <input type="text" class="input-text form-control"  value="{{ host_info.status }}"  name="status"   readonly="readonly" />
+             <!--<select class="form-control input-text select2" name="asset_status" id="asset_status">-->
+                    <!--&lt;!&ndash;<option  selected >缺省</option>&ndash;&gt;-->
+                   <!--{% for statu in all_status %}-->
+                    <!--{% if statu == host_info.status %}-->
+                    <!--<option value="1"  selected>{{host_info.status}}</option>-->
+                     <!--{% else %}-->
+                   <!--<option value="{{ statu }}">{{ statu }}</option>-->
+                    <!--{% endif %}-->
+                   <!--{% endfor%}-->
+
+            <!--</select>-->
+        </div>
+    </div>
+
+
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>SN</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{host_info.sn}}"  name="sn"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>厂商</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{ host_info.vendor }}"  name="Manufacturer"   readonly="readonly" />
+        </div>
+    </div>
+
+          <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>上架时间</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{host_info.up_time}}"  name="update_time "   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房</label>
+        <div class="formControls col-7">
+        <input type="text" class="input-text form-control"  value="{{ host_info.idc }}"  name="idc"   readonly="readonly" />
+             <!--<select class="form-control input-text select2" name="idc" id="idc">-->
+                 <!--&lt;!&ndash;<option selected value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>&ndash;&gt;-->
+                   <!--{% for idc in all_idc %}-->
+                    <!--{% if idc == host_info.idc %}-->
+                    <!--<option selected value="{{ host_info.idc  }}">{{ host_info.idc }}</option>-->
+                    <!--{% else %}-->
+                   <!--<option value="{{ idc }}">{{ idc.name }}</option>-->
+                 <!--{% endif %}-->
+                   <!--{% endfor%}-->
+
+            <!--</select>-->
+        </div>
+    </div>
+
+
+
+       <div class="row cl">
+        <label class="form-label col-3">备注信息</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"  value="{{host_info.memo}}"  name="msg"   readonly="readonly" />
+        </div>
+    </div>
+
+
+
+
+
+
+      <div class="row cl">
+          <label class="form-label col-3 ">操作</label>
+      <div class="col-sm-offset-6 col-sm-5" style="margin-top: 15px;">
+        <div class="modal-footer">
+        <!--<button type="submit" class="btn radius btn-primary">编辑 ！</button>-->
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+       </div>
+        </div>
+      </div>
+
+</form>

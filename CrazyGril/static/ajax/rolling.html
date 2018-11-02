@@ -1,0 +1,108 @@
+<h1 class="page_title">
+    滚动 </h1>
+<h2>
+    1 上下滚动 </h2>
+<div class="codeView bs-docs-example ">
+    <div id="marquee" class="marquee ">
+        <div id="holder">
+            <ul>
+                <li>第一条数据</li>
+                <li>第二条数据</li>
+                <li>第三条数据</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<p>
+    调用代码： </p>
+<pre>marquee(22,30,3000); <span class="comment">/*移动高度,移动速度,间隔时间*/</span></pre>
+<h2>
+    2 左右自动滚动，带控制 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="rollpic cl ">
+        <a href="javascript:void(0)" class="prev ">
+        </a>
+
+        <div class="rollpicshow">
+            <ul>
+                <li>
+                    <img width="170" height="143" title="" src="/static/img/pic.jpg"></li>
+                <li>
+                    <img width="170" height="143" title="" src="/static/img/pic.jpg"></li>
+                <li>
+                    <img width="170" height="143" title="" src="/static/img/pic.jpg"></li>
+                <li>
+                    <img width="170" height="143" title="" src="/static/img/pic.jpg"></li>
+                <li>
+                    <img width="170" height="143" title="" src="/static/img/pic.jpg"></li>
+            </ul>
+        </div>
+        <a href="javascript:void(0)" class="next ">
+        </a>
+    </div>
+</div>
+
+<h2>
+    3 自动上下滚动，带控制 </h2>
+<div class="codeView bs-docs-example ">
+    <div id="scrollDiv" style="width:300px;">
+        <div class="cl text-r ">
+		    			<span class="btn up ">
+				&uarr; 向上		</span>
+    			<span class="btn down ">
+				&darr; 向下		</span>
+        </div>
+        <div class="scrollText bk_gray pd-10 mt-10 " style="height:170px;min-height:25px;overflow:hidden">
+            <ul style="margin-top: 0px;">
+                <li>这是公告标题的第六行</li>
+                <li>这是公告标题的第七行</li>
+                <li>这是公告标题的第八行</li>
+                <li>这是公告标题的九行</li>
+                <li>这是公告标题的第十行</li>
+                <li>这是公告标题的第十一行</li>
+                <li>这是公告标题的第十二行</li>
+                <li>这是公告标题的第六行</li>
+                <li>这是公告标题的第七行</li>
+                <li>这是公告标题的第八行</li>
+                <li>这是公告标题的九行</li>
+                <li>这是公告标题的第十行</li>
+                <li>这是公告标题的第十一行</li>
+                <li>这是公告标题的第十二行</li>
+                <li>这是公告标题的第六行</li>
+                <li>这是公告标题的第七行</li>
+                <li>这是公告标题的第八行</li>
+                <li>这是公告标题的九行</li>
+                <li>这是公告标题的第十行</li>
+                <li>这是公告标题的第十一行</li>
+                <li>这是公告标题的第十二行</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.rolling包即可</span></pre>
+
+<script type="text/javascript">
+    marquee(22, 30, 3000);
+    /*移动高度,移动速度,间隔时间*/
+    $(function () {
+        /*左侧导航条当前状态*/
+        /*左侧导航滚动条位置*/
+        /*左右自动滚动，带控制*/
+        $(".rollpicshow").jCarouselLite({
+            auto: 2000000, /*自动播放间隔时间*/
+            speed: 500, /*速度*/
+            btnNext: ".next", /*向前滚动*/
+            btnPrev: ".prev", /*向后滚动*/
+            visible: 3 /*显示数量*/
+        });
+
+        /*上下自动滚动，带控制*/
+        $("#scrollDiv").textSlider({
+            line: 2, /*一次滚动条数*/
+            speed: 500, /*速度*/
+            timer: 3000 /*间隔时间*/
+        });
+    });</script>

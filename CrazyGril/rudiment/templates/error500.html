@@ -1,0 +1,31 @@
+{% extends "rudiment_index.html" %}
+{% block breadcrumb %}
+操作失败
+{% endblock %}
+{% block content %}
+{% load staticfiles %}
+<div style="margin-top:20px;">
+<p style="font-weight: 800;font-size: x-large;color: darkred">{{ error }}</p>
+<span id="time" style="background: #00BFFF">{{ time }}</span>
+    秒钟后自动跳转，如果不跳转，请点击下面的链接<a href="{{ nextUrl }}">返回</a>
+</div>
+{% endblock %}
+
+{% block footjs %}
+<script language="JavaScript" type="text/javascript">
+    function delayURL(url) {
+		var delay = document.getElementById("time").innerHTML;
+		if(delay > 0) {
+			delay--;
+			document.getElementById("time").innerHTML = delay;
+		} else {
+			location.href = url;
+            return false;
+		}
+		setTimeout("delayURL('" + url + "')", 1000);
+	}
+
+    delayURL("{{ nextUrl }}");
+
+</script>
+{% endblock %}

@@ -1,0 +1,41 @@
+@charset "utf-8";
+/*4.19.1 标签输入效果*/
+.hui-tags{border:solid 1px #dedede; padding:0 10px}
+.hui-tags-editor{position:relative; padding:10px 0 10px 24px}
+.hui-tags-editor .icon-tags{position:absolute; left:0; top:14px}
+.hui-tags-token{color:#aaa; float:left; font-size:12px; height:20px; line-height:20px; margin-right:8px; padding:0 1px; white-space:nowrap; cursor:pointer}
+.hui-tags-token:before{content:"#"}
+.hui-tags-token:hover{text-decoration:line-through}
+.hui-tags-iptwrap{position:relative; float:left}
+.hui-tags-input{position:relative;height:20px;min-width:60px; border:0 none; vertical-align:top;line-height:20px; color:#333;z-index:2;background: url(../images/empty.png) repeat scroll 0 0; display:inline-block; width:100%}
+.hui-tags-lable{position:absolute; top:0; left:2px; width:240px; height:20px; line-height:20px; font-size:14px; overflow:hidden; z-index:1; color:#ccc}
+.hui-tags-list{padding:0 0 10px 0; display:none}
+.hui-notag{font-size:12px}
+.hui-tags-has span{cursor:pointer; font-size:12px; white-space:nowrap; margin-right:10px}
+
+/*4.19.2 标签混排效果*/
+.tags a{height:26px; line-height:26px;padding-right:6px}
+.tags0{}
+.tags1{color:#C00; font-size:24px}
+.tags2{color:#030; font-size:16px}
+.tags3{color:#00F}
+.tags4{font-size:16px}
+.tags5{color:#C00; font-size:20px}
+.tags6{color:#F06 font-size:20px}
+.tags7{color:#030; font-weight:bold; font-size:18px}
+.tags8{color:#F06; font-weight:bold}
+.tags9{color:#C00; font-weight:bold;font-size:16px}
+.tags a:hover{color:#F00; text-decoration:underline}
+
+/*4.19.3 tag云标签*/
+#tagyun {position:relative}
+#tagyun a {position:absolute;top:0px;left:0px;font-weight:bold;text-decoration:none;padding:3px 6px}
+
+/*标签页*/
+.jarviswidget>div{border-width:1px; padding:2px 0 1px 6px;}
+.tabs-right.nav-tabsty .nav-tabs li a{border:none;padding:2px 8px;background:#f2f2f2;min-width:10px;width:28px;display:inline-block}
+.tabs-right.nav-tabsty .nav-tabs>li.active>a,.tabs-right.nav-tabsty .nav-tabs>li.active>a:hover{background:#fff}
+.tabs-right.nav-tabsty .nav-tabs li a:hover{background:#eee;}
+.tabs-right.nav-tabsty{ margin-bottom:-2px; margin-top:-2px;}
+.tabs-right.nav-tabsty>.nav-tabs{border:none}
+

@@ -1,0 +1,67 @@
+<form action="" method="post" class="form form-horizontal" id="form-user-add">
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>用户名：</label>
+
+        <div class="formControls col-5">
+            <input type="text" class="input-text form-control" value="" placeholder="" id="user-name" name="user-name" datatype="*2-16"
+                   nullmsg="用户名不能为空">
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>性别：</label>
+
+        <div class="formControls col-5 skin-minimal">
+            <div class="radio-box">
+                <input type="radio" id="sex-1" name="sex" datatype="*" nullmsg="请选择性别！">
+                <label for="sex-1">男</label>
+            </div>
+            <div class="radio-box">
+                <input type="radio" id="sex-2" name="sex">
+                <label for="sex-2">女</label>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>手机：</label>
+
+        <div class="formControls col-5">
+            <input type="text" class="input-text form-control" value="" placeholder="" id="user-tel" name="user-tel" datatype="m"
+                   nullmsg="手机不能为空">
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>邮箱：</label>
+
+        <div class="formControls col-5">
+            <input type="text" class="input-text form-control" placeholder="@" name="email" id="email" datatype="e" nullmsg="请输入邮箱！">
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3">所在城市：</label>
+
+        <div class="formControls col-5"> <span class="select-box">
+        <select class="select" size="1" name="demo1" datatype="*" nullmsg="请选择所在城市！">
+            <option value="" selected>请选择城市</option>
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">广州</option>
+        </select>
+        </span></div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3">备注：</label>
+
+        <div class="formControls col-5">
+            <textarea name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true"
+                      nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+
+            <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</form>

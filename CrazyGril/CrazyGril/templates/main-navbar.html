@@ -1,0 +1,444 @@
+{% load staticfiles %}
+{% block main-navbar %}
+<ul class="navigation main-menu">
+    <li><a href="/rudiment/content" class="ajax-link active navitem" title="首页" data-treeid="0"><i
+            class="menu-icon fa fa-home"></i><span class="mm-text">首页</span></a></li>
+    <li><a href="" class="ajax-link navitem" title="概述" data-treeid="1"><i
+            class="menu-icon fa fa-dashboard"></i><span class="mm-text">概述</span></a></li>
+
+    <li class="mm-dropdown class java.util.HashMap"><a href="javascript:void(0);" data-treeid="2"><i
+            class="menu-icon fa fa-th"></i><span class="mm-text">布局</span></a>
+        <ul>
+            <li>
+                <a href="" class="ajax-link navitem" title="栅格系统" data-treeid="2.1"><span
+                        class="mm-text">栅格系统</span>
+                </a>
+            </li>
+            <li>
+                <a href="" class="ajax-link navitem" title="Tabs展现" data-treeid="2.2"><span
+                        class="mm-text">Tabs展现</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/togglebox.html' %}" class="navitem" title="ToggleBox" data-treeid="2.3"><span
+                        class="mm-text">ToggleBox</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="3"><i class="menu-icon fa fa-desktop"></i><span
+                class="mm-text">基础</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/typography.html' %}" class="navitem" title="排版" data-treeid="3.1"><span
+                        class="mm-text">排版</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/icon.html' %}" class="navitem" title="图标" data-treeid="3.3"><span
+                        class="mm-text">图标</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/button.html' %}" class="navitem" title="按钮" data-treeid="3.4"><span
+                        class="mm-text">按钮</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/tables.html' %}" class="navitem" title="表格" data-treeid="3.5"><span
+                        class="mm-text">表格</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="4"><i class="menu-icon fa icon-wrench"></i><span
+                class="mm-text">元素</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/labelBadge.html' %}" class="navitem" title="便签与标号" data-treeid="4.1"><span
+                        class="mm-text">便签与标号</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/alert.html' %}" class="navitem" title="警告" data-treeid="4.2"><span
+                        class="mm-text">警告</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/progress.html' %}" class="navitem" title="进度条" data-treeid="4.3"><span
+                        class="mm-text">进度条</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/interfaceElements.html' %}" class="navitem" title="界面元素" data-treeid="4.4"><span
+                        class="mm-text">界面元素</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/nav.html' %}" class="navitem" title="导航" data-treeid="4.5"><span
+                        class="mm-text">导航</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="5"><i class="menu-icon fa fa-tasks"></i><span class="mm-text">表单</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/forms.html' %}" class="navitem" title="表单列表" data-treeid="5.1"><span
+                        class="mm-text">表单列表</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/editor.html' %}" class="navitem" title="编辑器" data-treeid="5.2"><span
+                        class="mm-text">编辑器</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/bootstrapDate.html' %}" class="navitem" title="日期控件" data-treeid="5.3"><span
+                        class="mm-text">日期控件</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/dropDown.html' %}" class="navitem" title="下拉菜单" data-treeid="5.5"><span
+                        class="mm-text">下拉菜单</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/search.html' %}" class="navitem" title="搜索" data-treeid="5.6"><span
+                        class="mm-text">搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/webupload.html' %}" class="navitem" title="多文件上传" data-treeid="5.7"><span
+                        class="mm-text">多文件上传</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/authorlist.html' %}" class="navitem" title="权限移动" data-treeid="5.8"><span
+                        class="mm-text">权限移动</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="6"><i class="menu-icon fa icon-picture"></i><span
+                class="mm-text">图库</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/picture.html' %}" class="navitem" title="图片" data-treeid="6.1"><span
+                        class="mm-text">图片</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/thumbnails.html' %}" class="navitem" title="缩略图" data-treeid="6.2"><span
+                        class="mm-text">缩略图</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/media.html' %}" class="navitem" title="媒体插入" data-treeid="6.3"><span
+                        class="mm-text">媒体插入</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/ad.html' %}" class="navitem" title="广告" data-treeid="6.4"><span
+                        class="mm-text">广告</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/uedTips.html' %}" class="navitem" title="UED提示" data-treeid="6.5"><span
+                        class="mm-text">UED提示</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="7"><i class="menu-icon fa icon-random"></i><span
+                class="mm-text">交互</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/animation.html' %}" class="navitem" title="动画" data-treeid="7.1"><span
+                        class="mm-text">动画</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/Unslider.html' %}" class="navitem" title="幻灯片" data-treeid="7.2"><span
+                        class="mm-text">幻灯片</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/tab.html' %}" class="navitem" title="选项卡" data-treeid="7.3"><span
+                        class="mm-text">选项卡</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/modal.html' %}" class="navitem" title="对话框 弹出层" data-treeid="7.4"><span
+                        class="mm-text">对话框 弹出层</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/rolling.html' %}" class="navitem" title="滚动" data-treeid="7.5"><span
+                        class="mm-text">滚动</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/tags.html' %}" class="navitem" title="标签" data-treeid="7.6"><span
+                        class="mm-text">标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/fold.html' %}" class="navitem" title="折叠" data-treeid="7.7"><span
+                        class="mm-text">折叠</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/maskBar.html' %}" class="navitem" title="遮罩条" data-treeid="7.8"><span
+                        class="mm-text">遮罩条</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="8"><i class="menu-icon fa icon-legal"></i><span
+                class="mm-text">部件</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/kefu.html' %}" class="navitem" title="客服" data-treeid="8.1"><span
+                        class="mm-text">客服</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/toTop.html' %}" class="navitem" title="返回顶部" data-treeid="8.2"><span
+                        class="mm-text">返回顶部</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/share.html' %}" class="navitem" title="分享" data-treeid="8.3"><span
+                        class="mm-text">分享</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/example.html' %}" class="navitem" title="案例" data-treeid="8.4"><span
+                        class="mm-text">案例</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/Smart-treeview.html' %}" class="navitem" title="树形视图" data-treeid="8.5"><span
+                        class="mm-text">树形视图</span>
+                </a>
+            </li>
+            <li class="mm-dropdown class java.util.HashMap">
+                <a href="javascript:void(0);" data-treeid="8.6"><span class="mm-text">图表</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{% static 'ajax/charts.html' %}" class="navitem" title="图表展示" data-treeid="8.6.1"><span
+                                class="mm-text">图表展示</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/flot.html' %}" class="navitem" title="flot图表" data-treeid="8.6.2"><span
+                                class="mm-text">flot图表</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/burndownChart.html' %}" class="navitem" title="燃尽图表"
+                           data-treeid="8.6.3"><span class="mm-text">燃尽图表</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/highCharts.html' %}" class="navitem" title="highCharts图表"
+                           data-treeid="8.6.4"><span class="mm-text">highCharts图表</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{% static 'ajax/calendar.html' %}" class="navitem" title="日历" data-treeid="8.7"><span
+                        class="mm-text">日历</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/workCalendar.html' %}" class="navitem" title="背景日历" data-treeid="8.8"><span
+                        class="mm-text">背景日历</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="9"><i class="menu-icon fa icon-th-list"></i><span
+                class="mm-text">实例</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/comment.html' %}" class="navitem" title="评论列表" data-treeid="9.1"><span
+                        class="mm-text">评论列表</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/userComment.html' %}" class="navitem" title="用户评论" data-treeid="9.2"><span
+                        class="mm-text">用户评论</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/searchPage.html' %}" class="navitem" title="搜索页" data-treeid="9.3"><span
+                        class="mm-text">搜索页</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/gantt.html' %}" class="navitem" title="Gantt图" data-treeid="9.4"><span
+                        class="mm-text">Gantt图</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/tourbus.html' %}" class="navitem" title="操作向导" data-treeid="9.5"><span
+                        class="mm-text">操作向导</span>
+                </a>
+            </li>
+            <li class="mm-dropdown class java.util.HashMap">
+                <a href="javascript:void(0);" data-treeid="9.6"><span class="mm-text">邮件模板</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{% static 'ajax/emailTemplate.html' %}" class="navitem" title="邮件列表"
+                           data-treeid="9.6.1"><span class="mm-text">邮件列表</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/mailDetail.html' %}" class="navitem" title="邮件详情"
+                           data-treeid="9.6.2"><span class="mm-text">邮件详情</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/mailCompose.html' %}" class="navitem" title="编写邮件"
+                           data-treeid="9.6.3"><span class="mm-text">编写邮件</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{% static 'ajax/timeline.html' %}" class="navitem" title="时间轴" data-treeid="9.7"><span
+                        class="mm-text">时间轴</span>
+                </a>
+            </li>
+            <li class="mm-dropdown class java.util.HashMap">
+                <a href="javascript:void(0);" data-treeid="9.8"><span class="mm-text">论坛</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="{% static 'ajax/forum.html' %}" class="navitem" title="论坛布局" data-treeid="9.8.1"><span
+                                class="mm-text">论坛布局</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/forum-topic.html' %}" class="navitem" title="论坛列表"
+                           data-treeid="9.8.2"><span class="mm-text">论坛列表</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% static 'ajax/forum-post.html' %}" class="navitem" title="论坛详情"
+                           data-treeid="9.8.3"><span class="mm-text">论坛详情</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{% static 'ajax/viewsControl.html' %}" class="navitem" title="视图控制" data-treeid="9.9"><span
+                        class="mm-text">视图控制</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/iconTab.html' %}" class="navitem" title="图标控制" data-treeid="9.10"><span
+                        class="mm-text">图标控制</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="10"><i class="menu-icon fa fa-files-o"></i><span
+                class="mm-text">其它</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/error404.html' %}" class="navitem" title="错误404" data-treeid="10.1"><span
+                        class="mm-text">错误404</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/error500.html' %}" class="navitem" title="错误500" data-treeid="10.2"><span
+                        class="mm-text">错误500</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/loginRegistered.html' %}" class="navitem" title="登录注册" data-treeid="10.3"><span
+                        class="mm-text">登录注册</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% static 'ajax/loadscrollingpic.html' %}" class="navitem" title="屏幕内图片加载"
+                   data-treeid="10.4"><span class="mm-text">屏幕内图片加载</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="mm-dropdown class java.util.HashMap">
+        <a href="javascript:void(0);" data-treeid="11"><i class="menu-icon fa fa-sitemap"></i><span
+                class="mm-text">多级导航</span>
+            <span class="label label-warning">6</span> </a>
+        <ul>
+            <li>
+                <a href="{% static 'ajax/first.html' %}" class="navitem" title="一级菜单" data-treeid="11.1"><span
+                        class="mm-text">一级菜单</span>
+                </a>
+            </li>
+            <li class="mm-dropdown class java.util.HashMap">
+                <a href="javascript:void(0);" data-treeid="11.2"><span class="mm-text">一级菜单</span>
+                    <span class="label label-warning">5</span> </a>
+                <ul>
+                    <li>
+                        <a href="{% static 'ajax/second.html' %}" class="navitem" title="二级菜单" data-treeid="11.2.1"><span
+                                class="mm-text">二级菜单</span>
+                        </a>
+                    </li>
+                    <li class="mm-dropdown class java.util.HashMap">
+                        <a href="javascript:void(0);" data-treeid="11.2.2"><span class="mm-text">二级菜单</span>
+                            <span class="label label-warning">5</span> </a>
+                        <ul>
+                            <li class="mm-dropdown class java.util.HashMap">
+                                <a href="javascript:void(0);" data-treeid="11.2.2.1"><span class="mm-text">三级菜单</span>
+                                    <span class="label label-warning">5</span> </a>
+                                <ul>
+                                    <li>
+                                        <a href="{% static 'ajax/fourth.html' %}" class="navitem" title="四级菜单"
+                                           data-treeid="11.2.2.1.1"><span class="mm-text">四级菜单</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% static 'ajax/third.html' %}" class="navitem" title="三级菜单"
+                                   data-treeid="11.2.2.2"><span class="mm-text">三级菜单</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="second2.page" class="navitem" title="二级菜单2" data-treeid="11.2.3"><span
+                                class="mm-text">二级菜单2</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- navigation end -->
+{%endblock main-navbar %}

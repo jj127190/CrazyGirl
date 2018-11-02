@@ -1,0 +1,460 @@
+@charset "utf-8";
+/* 排版*/
+/*标题
+	Example：
+	<h1>h1. 大标题<small>小标题</small></h1>
+    <h2>h2. 大标题<small>小标题</small></h2>
+    <h3>h3. 大标题<small>小标题</small></h3>
+    <h4>h4. 大标题<small>小标题</small></h4>
+    <h5>h5. 大标题<small>小标题</small></h5>
+    <h6>h6. 大标题<small>小标题</small></h6>
+*/
+h1,h2,h3,h4,h5,h6{font-weight:500;line-height:1.1;color:inherit}
+h1 small,h2 small,h3 small,h4 small,h5 small,h6 small,h1 .small,h2 .small,h3 .small,h4 .small,h5 .small,h6 .small{font-weight:normal;line-height:1;color:#999}
+h1,h2,h3{margin-bottom:12px}
+h1 small,h2 small,h3 small,h1 .small,h2 .small,h3 .small{font-size:65%}
+h4,h5,h6{margin-bottom:10px}
+h4 small,h5 small,h6 small,h4 .small,h5 .small,h6 .small{font-size:75%}
+h1{font-size:36px}
+h2{font-size:30px}
+h3{font-size:24px}
+h4{font-size:18px}
+h5{font-size:14px}
+h6{font-size:12px}
+/*强调
+	Example:
+	<p>这是段落，向下10像素间距</p>
+	<smail>小型文本，是父容器字体大小的85%</smail>
+	<strong>重要文本，加粗显示</strong>
+	<em>被强调的文本，斜体显示</em>
+	<u>带下划线的文本</u>
+	<cite>引用</cite>
+	<mark>突出显示文本</mark>
+	<del>带删除线的文本</del>
+	<pre>预格式化的文本</pre>
+*/
+p{margin-bottom:10px}	/*段落*/
+small{font-size:85%}	/*小型文本*/
+b,strong {font-weight: bold}	/*重要的文本，加粗*/
+em{font-style:italic}	/*被强调的文本*/
+i{}	/*斜体*/
+u{}	/*加下划线*/
+cite{font-style:normal}	/*引用*/
+mark{color:#000;background:#ff0}/*突出显示文本*/
+var{}	/*变量*/
+kbd{}	/*键盘文本*/
+code{}	/*计算机代码文本*/
+dfn{font-style: italic}	/*一个定义项目*/
+del{font-family:Simsun}	/*删除线*/
+code,kbd,pre,samp {font-family: monospace, serif;}
+pre{white-space: pre-wrap}	/*预格式化的文本*/
+.uppercase{text-transform:uppercase} /*文字大写*/
+.lowercase{text-transform:lowercase} /*文字小写*/
+.capitalize{text-transform:capitalize} /*首字母大写*/
+.en{font-family:"Arial"}
+/*对齐
+	Name:			style_text-align
+	Example:		class="ftext-l/text-r/text-c"
+	Explain:		.text-水平对齐 （.text-l左对齐/.text-r右对齐/.text-c居中对齐）
+					.va-上下对齐 （.va-t 居上对齐 .va-m 居中对齐 .va-b 居下对齐）
+*/
+.text-l{text-align:left}.text-r{text-align:right}.text-c{text-align:center}
+.va-t{vertical-align:top!important}.va-m{vertical-align:middle!important}.va-b{vertical-align:bottom!important}
+/* 定位
+	Name:			style_position
+	Example:		class="pos-r/pos-a/pos-f"
+	Explain:		.pos-r 相对定位/.pos-a 绝对定位/.pos-f 固定
+*/
+.pos-r{position:relative}.pos-a{position:absolute}.pos-f{position:fixed}
+/* 浮动
+	Name:			style_float
+	Example:		class="l/r"
+	Explain:		.l 左浮动/.r 右浮动
+*/
+.l{float:left!important;_display:inline}.r{float:right!important;_display:inline}
+[class*="span"].r,.row-fluid [class*="span"].r{float:right}
+/*3.1.6 文字单行溢出省略号
+	Name:			style_text-overflow
+	Example:		class="text-overflow"
+*/
+.single-overflow{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 线条
+	Name:			style_line
+	Example:		class="line"
+*/
+.line{font-size: 0; line-height: 0; border-top: solid 1px #ddd; float: none}
+/* 外边距
+	Name:			style_margin
+	Example:		class="mt-5/mt-10/..."
+	Explain:		.mt表示上边距/.mb表示下边距/.ml表示左边距/.mr表示右边距
+*/
+.mt-5{margin-top:5px}.mt-10{margin-top:10px}.mt-15{margin-top:15px}.mt-20{margin-top:20px}.mt-25{margin-top:25px}.mt-30{margin-top:30px}.mt-35{margin-top:35px}.mt-40{margin-top:40px}.mt-50{margin-top:50px}
+.mb-5{margin-bottom:5px}.mb-10{margin-bottom:10px}.mb-15{margin-bottom:15px}.mb-20{margin-bottom:20px}.mb-30{margin-bottom:30px}.mb-40{margin-bottom:40px}
+.ml-5{margin-left:5px}.ml-10{margin-left:10px}.ml-15{margin-left:15px}.ml-20{margin-left:20px}.ml-30{margin-left:30px}.ml-40{margin-left:40px}
+.mr-5{margin-right:5px}.mr-10{margin-right:10px}.mr-15{margin-right:15px}.mr-20{margin-right:20px}.mr-30{margin-right:30px}.mr-40{margin-right:40px}
+/* 内填充
+	Name:			style_padding
+	Example:		class="pt-5/pt-10/……"
+	Explain:		.pt表示上填充/.pb表示下填充/.pl表示左填充/.pr表示右填充
+*/
+.pt-5{padding-top:5px}.pt-10{padding-top:10px}.pt-20{padding-top:20px}
+.pb-5{padding-bottom:5px}.pb-10{padding-bottom:10px}.pb-20{padding-bottom:20px}
+.pl-5{padding-left:5px}.pl-10{padding-left:10px}.pl-20{padding-left:20px}
+.pr-5{padding-right:5px}.pr-10{padding-right:10px}.pr-20{padding-right:20px}
+.pd-5{padding:5px}.pd-10{padding:10px}.pd-15{padding:15px}.pd-20{padding:20px}.pd-30{padding:30px}.pd-40{padding:40px}
+/* 边框，css3圆角
+	Name:			style-border
+	Example:		class="bk_gray radius"
+	Explain:		.bk_gray 边框/bk_gray radius圆角边框
+*/
+.bk-gray{border:solid 1px #ddd}
+.radius{border-radius:4px}
+/* css3阴影
+	Name:			style_shadow
+	Example:		class="box_shadow"
+	Explain:		css3阴影，IE下显示1像素边框
+*/
+.box-shadow{background-color:#fff;border:solid 1px #ddd;box-shadow:1px 1px 2px 2px #ddd;}
+.text-shadow{text-shadow:1px 1px 2px 2px #ddd;-webkit-text-shadow:1px 1px 2px 2px #ddd;-moz-text-shadow:1px 1px 2px 2px #ddd;}
+/* 行内分割竖线
+	Name:			style_pipe
+	Example:		<span class="pipe">|</span>
+*/
+.pipe{margin:0 5px;color:#CCC;font-size:10px!important}
+/* 文字尺寸
+	Name:			style_font-size
+	Example:		class="f12/f14/f16/f18/f20"
+	Explain:		12px字体/14px字体/16px字体/18px字体/20px字体
+*/
+.f-12{font-size:12px}.f-14{font-size:14px}.f-16{font-size:16px}.f-18{font-size:18px}.f-20{font-size:20px}.f-24{font-size:24px}.f-30{font-size:30px}
+/* 文字行距
+	Name:			mod_line-height
+	Example:		class="l16/l18/l20/l22/l24/l26/l28/l30"
+	Explain:		16px行高、18px行高、20px行高、22px行高、24px行高、26px行高、30px行高
+*/
+.l16{line-height:16px}.l18{line-height:18px}.l20{line-height:20px}.l22{line-height:22px}.l24{line-height:24px}.l26{line-height:26px}.l28{line-height:28px}.l30{line-height:30px}
+/* 文字颜色
+	Name:			style_color
+	Example:		class="c-red|c-green|c-blue|c-white|c-black|c-gray|c-999|c-orange"
+	Explain:		红色|绿色|蓝色|白色|黑色|灰色|浅灰色|橙色
+*/
+.c-red,.c-red a,a.c-red{color:red}
+.c-red a:hover,a.c-red:hover{}
+
+.c-green,.c-green a,a.c-green{color:green}
+.c-red a:hover,a.c-red:hover{}
+
+.c-blue,.c-blue a,a.c-blue{color:blue}
+.c-blue a:hover,a.c-blue:hover{}
+
+.c-white,.c-white a,a.c-white{color:white}
+.c-white a:hover,a.c-white:hover{}
+
+.c-black,.c-black a{color:black}
+.c-black a:hover,a.c-black:hover{}
+
+.c-gray,.c-gray a,a.c-gray{color:gray}
+.c-gray a:hover,a.c-gray:hover{}
+
+.c-666,.c-666 a,a.c-666{color:#666}
+.c-666 a:hover,a.c-666:hover{}
+
+.c-999,.c-999 a,a.c-999{color:#999}
+.c-999 a:hover,a.c-999:hover{}
+
+.c-orange,.c-orange a,a.c-orange{color:orange}
+.c-orange a:hover,a.c-orange:hover{}
+
+/* 文字颜色强调
+	Example:		class="text-muted/text-primary/text-warning/text-error/text-danger/text-success/text-info"
+	Explain:		柔和/重要/警告/错误/危险/成功/信息
+*/
+/*.text-muted{color:#999}a.text-muted:hover{color:#808080}
+.text-primary{color:#428BCA}a.text-primary:hover{color:#247dc9}
+.text-warning{color:#f33}a.text-warning:hover{color:#f03}
+.text-error{color:#f33}a.text-error:hover{color:#f03}
+.text-danger{color:#c00}a.text-danger:hover{color:#900}
+.text-success{color:#0c0}a.text-success:hover{color:#093}
+.text-info{color:#1faef2}a.text-info:hover{color:#06c}
+.text-price{color:#f60}a.text-price:hover{color:#f60}*/
+.text-error{color:#f33}.text-error:hover{color:#f03}
+/* 缩略语
+	Example:		<abbr title="User Interface" class="initialism">UI</abbr>
+	Explain:		
+*/
+abbr[title],abbr[data-original-title]{cursor:help;border-bottom:1px dotted #999}
+abbr.initialism{font-size:90%;text-transform:uppercase}
+/* 地址
+	Example:		<address>北京市海淀区上地……</address>
+	Explain:		
+*/
+address{display:block;margin-bottom:20px;font-style:normal;line-height:20px}
+/* 引用
+	Example:		<blockquote>这是引用的内容</blockquote>
+	Explain:		
+*/
+blockquote{padding:0 0 0 15px;margin:0 0 20px;border-left:5px solid #eee}
+blockquote p{margin-bottom:0;font-size:17px;font-weight:300;line-height:1.25}
+blockquote small{display:block;line-height:20px;color:#999}
+blockquote small:before{content:'\2014 \00A0'}
+blockquote.text-r{padding-right:15px;padding-left:0;border-right:5px solid #eee;border-left:0}
+blockquote.text-r p,blockquote.text-r small{text-align:right}
+blockquote.text-r small:before{content:''}
+blockquote.text-r small:after{content:'\00A0 \2014'}
+q:before,q:after,blockquote:before,blockquote:after{content:""}
+q {/*短的引用*/quotes: "\201C" "\201D" "\2018" "\2019"}
+/* 上标，下标
+	Example:		<sup>2</sup>	<sub>2<sub>
+	Explain:		上标/下标
+*/
+sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}
+sup{top:-0.5em}sub{bottom:-0.25em}
+/* 内容样式
+	Name:			style_content
+	Example:		<div class="content"><p>……</p></div>
+	Explain:		内容样式
+*/
+.content{position:relative;font-size:14px;line-height:1.6;overflow:hidden;text-align:left}
+.content h3{margin-top:20px;font-size:16px}
+.content p{margin-top:10px}
+.indent{ text-indent:2em}
+.content img{max-width:100%}
+.content ul{text-indent:2em}
+/* 列表
+	Name:			style_ulolli
+	Example:		<ul class="tlist"><li>无序列表</li><li>无序列表</li><li>无序列表</li></ul>
+					<ol class="linenums"><li>有序列表</li><li>有序列表</li><li>有序列表</li></ol>
+	Explain:		
+*/
+ul.unstyled,ol.unstyled{margin-left:0;list-style:none}
+ul.inline,ol.inline{margin-left:0;list-style:none}
+ul.inline>li,ol.inline>li{display:inline-block;*display:inline;padding-right:5px;padding-left:5px;*zoom:1}
+ol.linenums{list-style:decimal outside none;margin:0 0 0 22px;/* IE indents via margin-left */}
+.tlist li{line-height:22px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}/*禁止换行*/
+	.dot-1{padding-left:10px;background:url(../images/dot_1.gif) no-repeat 3px center}/*圆点*/
+	.box-1{padding-left:10px;background:url(../images/box_1.gif) no-repeat 3px center}/*小方块*/
+	.jt-1{padding-left:18px;background:url(../images/jt_1.gif) no-repeat 3px center}/*箭头1*/
+	.jt-2{padding-left:18px;background:url(../images/jt_2.gif) no-repeat 3px center}/*箭头2*/
+	.jt-3{padding-left:18px;background:url(../images/jt_3.gif) no-repeat 3px center}/*箭头3*/
+/*排行榜*/
+/*<ol class="top-list"><li class="top"><em>1</em><a href="#">排行榜列表</a><span class="date">12</span></li></ol>*/
+.top-list li{height:30px;line-height:20px;margin-bottom:10px;overflow: hidden;padding-left: 30px;position: relative;text-overflow: ellipsis;vertical-align: bottom;white-space:nowrap;border-bottom:#e7eaec 1px solid;}
+.top-list li a{color:#676a6c;font-weight:normal;}
+.top-list li a:hover{color:#f90}
+.top-list em {background-color: #F8F8F8;border: 1px solid #EBEBEB;color:#333;height:19px; font-size:12px;left: 0;line-height: 18px;position: absolute;text-align: center;top: 0;width: 20px;border-radius:0.25em; font-style:normal}
+.top-list .top em{background:#1c84c6;border:none;color:#fff;}
+.top-list .blue em{background:#1c84c6;color:#fff;}
+.top-list .green em{background:#23c6c8;color:#fff;}
+.top-list .grey em{background:#d1dade;color:#5e5e5e;}
+.top-list .darkGreen em{background:#1ab394;color:#fff;}
+.top-list .date {color:#666;font-size: 12px;position: absolute;right: 0;top:0;font-weight:normal}
+.tlist .time{font-size:12px; font-family:Arial; color:#999}
+.dashboard-header{margin-bottom:10px;}
+.dashboard-header h2 {font-size:26px;color:#676a6c; margin-bottom:10px;}
+.dashboard-header .top-list {margin-top:16px;}
+/*描述
+	Name:			style_dldtdd
+	Example:		<dl class="dl-horizontal cl"><dt>H-ui</dt><dd>基于Bootstrap框架的改进扩展的前端框架</dd></dl>
+	Explain:		.dl-horizontal 水平描述，默认不加为垂直模式。
+*/
+dl{margin-bottom:20px}
+dt,dd{line-height:20px}
+dt{font-weight:bold}
+dd{margin-left:2em}
+
+/* 隐藏 显示
+  Name:				style_display
+  Example:    <div class="hide">隐藏的内容</div> <div class="show">显示的内容</div>
+  Explain:    		.hide 隐藏 / .show 显示
+*/
+.hide{display:none}[hidden]{display: none}
+.hidden{display:none!important;visibility:hidden!important}
+.f-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}
+[class*="span"].hide,.row-fluid [class*="span"].hide{display:none}
+.show{display:block}
+.invisible{visibility:hidden}
+
+
+/* 尺寸	新增尺寸全局类名，用于表单、按钮、表格、头像、标签等元素上，要与元素一起配合使用，方能看到效果*/
+.size-MINI{}/*迷你*/
+.size-S{}/*小*/
+.size-M{}/*中 缺省默认尺寸，可以不写，可以理解为：均码*/
+.size-L{}/*L*/
+.size-XL{}/*大*/
+.size-XXL{}/*加大*/
+.size-XXXL{}/*超大*/
+
+.input-text,.input-text.size-M,.btn.size-M{ font-size:14px; height:32px;line-height:1.42857;padding:4px}/*默认为M，可以不写，可以理解为：均码*/
+.btn.size-M{ padding:4px 12px}
+.input-text.size-MINI,.btn.size-MINI{font-size:12px; height:23px;padding:1px 2px;line-height:1.42857}/*迷你*/
+.btn.size-MINI{ padding:1px 4px}
+.input-text.size-S,.btn.size-S{font-size:12px; height:27px;padding:3px;line-height:1.42857;}/*小*/
+.btn.size-S{ padding:3px 8px}
+.input-text.size-L,.btn.size-L{font-size:16px; height:41px; padding:8px}/*大*/
+.btn.size-L{ padding:8px 16px}
+.input-text.size-XL,.btn.size-XL{font-size:18px; height:48px; padding:10px}/*特大*/
+.btn.size-XL{ padding:10px 24px}
+.input-text.size-XXL,.btn.size-XXL{font-size:20px; height:50px; padding:12px}/*特大*/
+.btn.size-XXL{ padding:9px 26px}
+.input-text.size-XXXL,.btn.size-XXXL{font-size:22px; height:52px; padding:14px}/*特大*/
+.btn.size-XXXL{ padding:8px 28px}
+@media (max-width: 767px) {
+	.responsive .input-text.size-MINI,.responsive .btn.size-MINI{height:24px;}
+	.responsive .input-text.size-S,.responsive .btn.size-S{ font-size:14px; height:30px}
+	.responsive .input-text,.responsive .input-text.size-M,.responsive .btn.size-M{ font-size:16px; height:36px}
+	.responsive .input-text.size-L,.responsive .btn.size-L{ font-size:18px; height:42px}
+	.responsive .input-text.size-XL,.responsive .btn.size-XL{ font-size:20px; height:48px}
+}
+
+.avatar{display:inline-block;position:relative;overflow:hidden}
+.avatar img{display:block}
+.avatar.radius,.avatar.radius img{border-radius:50%}
+.avatar.size-MINI{ width:16px;height:16px}
+.avatar.size-S,.avatar.size-S img{width:24px; height:24px}
+.avatar.size-M,.avatar.size-M img{width:32px; height:32px}/*默认为中，可以不写，可以理解为：均码*/
+.avatar.size-L,.avatar.size-L img{width:40px; height:40px}
+.avatar.size-XL,.avatar.size-XL img{width:64px; height:64px}
+.avatar.size-XXL,.avatar.size-XXL img{width:100px; height:100px}
+.avatar.size-XXXL,.avatar.size-XXXL img{width:128px; height:128px}
+
+/*阴影布局*/
+.jquery-shadow {
+	position:relative;
+	-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-webkit-transform:rotate(0deg); transform:rotate(0deg);
+}
+.jquery-shadow:before,
+.jquery-shadow:after {
+    content:"";
+    position:absolute; 
+    z-index:-2;
+}
+/* Lifted corners */
+.jquery-shadow-lifted:before,
+.jquery-shadow-lifted:after { 
+    bottom:15px;
+    left:10px;
+    width:50%;
+    height:20%;
+    max-width:300px;
+    -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);   
+    -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+    box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+    -webkit-transform:rotate(-3deg);    
+    -moz-transform:rotate(-3deg);   
+    -ms-transform:rotate(-3deg);   
+    -o-transform:rotate(-3deg);
+    transform:rotate(-3deg);
+}
+.jquery-shadow-lifted:after {
+    right:10px; 
+    left:auto;
+    -webkit-transform:rotate(3deg);   
+    -moz-transform:rotate(3deg);  
+    -ms-transform:rotate(3deg);  
+    -o-transform:rotate(3deg);
+    transform:rotate(3deg);
+}
+/* Perspective */
+.jquery-shadow-perspective:before {
+    left:80px;
+    bottom:5px;
+    width:50%;
+    height:35%;
+    max-width:200px;
+    -webkit-box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+    box-shadow:-80px 0 8px rgba(0, 0, 0, 0.4);
+    -webkit-transform:skew(50deg);
+    -moz-transform:skew(50deg);
+    -ms-transform:skew(50deg);
+    -o-transform:skew(50deg);
+    transform:skew(50deg);
+    -webkit-transform-origin:0 100%;
+    -moz-transform-origin:0 100%;
+    -ms-transform-origin:0 100%;
+    -o-transform-origin:0 100%;
+    transform-origin:0 100%;
+}
+.jquery-shadow-perspective:after {
+    display:none;
+}
+/* Side shadows */
+.jquery-shadow-sides:before {
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:50%;
+    -webkit-box-shadow:0 0 15px rgba(0,0,0,0.6);
+    -moz-box-shadow:0 0 15px rgba(0,0,0,0.6);
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+    -moz-border-radius:10px / 100px;
+    border-radius:10px / 100px;
+}
+.jquery-shadow-sides-vt-2:before {
+    right:0;
+}
+.jquery-shadow-sides-hz-1:before {
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.jquery-shadow-sides-hz-2:before {
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+/* Raised shadow - no pseudo-elements needed */
+.jquery-shadow-raised {
+    -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+/* Rotated box */
+.jquery-shadow-rotated :first-child:before {
+    content:"";
+    position:absolute;
+    z-index:-1;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.box {
+  display:inline-block;
+  padding: 1em;
+  margin:12px;
+  background: #fff;
+}
+
+/*拖拉布局*/
+.jarviswidget>div.panel-body {padding:2px;}
+.jarviswidget-ctrls .jarviswidget-delete-btn{display:none}
+.jarviswidget-ctrls .button-icon{min-width:43px;}
+.widget-toolbar .dropdown-menu{min-width:132px}
+.widgetDrag .storeInfo{padding:1px;background:#fdfdfe}
+.toolbarMore .onoffswitch-title,.jarviswidget-color-blueLight>header>.toolbarMore .onoffswitch-title,.jarviswidget-color-blueLight>header .fa-comments{color:#333;}
+.jarviswidget-sortable .toolbarMore .onoffswitch-title,.jarviswidget-color-blueLight .toolbarMore .onoffswitch-title{color:#fff;}
+
+.jarviswidget .widget-support-tickets,.jarviswidget .jarviswidget-editbox{border-width:1px; padding:1px 0 1px 1px;}
+.jarviswidget .widget-support-tickets .tab-content-padding{background:#fdfdfe;box-shadow:none}
+.widget-support-tickets .table-condensed{margin-bottom:0}
+.highcharts-container .highcharts-title{display:none}
+.widget-support-tickets .table.table-condensed thead tr th{padding:8px 10px!important;background:#f7f7f7;}
+.widget-support-tickets .table.table-condensed tbody tr td{padding:3px 10px!important;}
+.padding-clear .widgetDrag,.padding-clear .slimScrollDiv .storeInfo{padding:0}
+.widget-support-tickets .table-condensed tfoot tr td,.widget-support-tickets .table-condensed tfoot .no-margin{padding-top:8px;padding-bottom:5px;}
+
+.positionInfos{color:#909191;margin-bottom:12px;}

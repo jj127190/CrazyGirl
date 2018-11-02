@@ -1,0 +1,120 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}容器监控信息
+<span style="margin-left: 20px"></span>
+<a href="/cmdb/wechat"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+.query-title {
+    height:32px;
+    line-height:32px;
+    text-align: right;
+}
+.query-input {
+    width: 200px!important;
+}
+</style>
+
+
+     <div class="row">
+        <form class="form form-inline" action="/docker/search_build_image" method="POST">
+             {% csrf_token %}
+            <div class="well well-sm">
+                主机名称:&nbsp;<input type="text" name="newimage" value="{{ newimage }}" class="form-control  input-sm" size="10" />
+                主机ip:&nbsp;        <input type="text" name="version" value="{{ version }}" class="form-control  input-sm" size="10" />
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-primary btn-sm" onclick="showLoading()"  value="搜索"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div>
+<div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以下表格显示容器的状态信息。</br>
+            <i class="fa fa-info-circle"></i> 以下容器资源都是没有限制。</br>
+{#            <i class="fa fa-info-circle"></i> 如不需要续期，请到 <a target="_blank" href="http://workflow.cyou-inc.com">OA系统</a> 中进行虚机退回表单操作。</br>#}
+            <span class="label label-danger"> 以下容器的信息都是建立在共享宿主机资源的情况下的展示。</span>
+        </div>
+    </div>
+        </div>
+<div style="margin-top: 10px"></div>
+
+<div id="edit" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <span class="glyphicon glyphicon-fullscreen"></span>
+        <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+        <h3>对话框标题</h3>
+    </div>
+    <div class="modal-body"></div>
+</div>
+
+        <div class="row">
+            <table class="table" id="table" data-toggle="table"></table>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#table").bootstrapTable({
+                    showRefresh: true,
+                    clickToSelect: true,
+                    showColumns: true,
+                    showToggle: true,
+                    sortable: true,
+                    pagination: true,
+                    striped: true,
+
+                    url: '{% url "docker:ajax_docker_stats" %}',
+                    columns: [{
+                        field: "rownum",
+                        checkbox: "true"
+                    },{
+                        field: "hostname",
+                        title: "主机名"
+                    }, {
+                        field: "container",
+                        title: "CONTAINER",
+                        sortable: true
+                    }, {
+                        field: "cpu",
+                        title: "CPU %",
+                        sortable: true
+                    }, {
+                        field: "mem_ul",
+                        title: "MEM USAGE / LIMIT",
+                        sortable: true
+                    },{
+                        field: "mem",
+                        title: "MEM %",
+                        sortable: true
+                    }, {
+                        field: "net_io",
+                        title: "NET I/O",
+                        sortable: true
+                    },{
+                        field: "block_io",
+                        title: "BLOCK I/O",
+                        sortable: true
+                    }, {
+                        field: "ids",
+                        title: "容器资源图表",
+                        sortable: true,
+                        formatter:function(value,row,index){
+                            {#alert(value)#}
+                            return[
+                                '<a  href="/docker/container_e?container_id='+ value +'" style="text-decoration:none">'+  '<span class="glyphicon glyphicon-asterisk"> </sapn>' +'</i> </a>'
+                            ]
+                }
+                    }]
+                });
+            });
+            </script>
+
+
+
+
+{% endblock %}

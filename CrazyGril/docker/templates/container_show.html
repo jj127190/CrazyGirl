@@ -1,0 +1,94 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}容器详情
+<span style="margin-left: 30px"></span>
+<span style="color: #0c0c0c">当前服务器IP:</span><span style="color: red"><i>
+    {% if hostip %}
+    {{ hostip}}
+    {% else %}
+    0.0.0.0
+    {% endif %}
+</i></span>
+<span style="margin-left: 20px"></span>
+
+<a href="/docker/show_con"><span><button class="btn radius btn-primary " ><span class="glyphicon glyphicon-repeat"></span>刷新</button></span></a>
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="clear"></div>
+        <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover">
+                <thead>
+                <tr>
+                    <th><span style="color: #0E70CA">容器ID </span></th>
+                    <th>镜像</th>
+                    <th>命令</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>端口</th>
+                    <th>名字</th>
+                    <th>资源图形显示</th>
+                    <!--<th class="unsortable">主机容器详情</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                        {% for item in data %}
+                        <tr class="item{{ item.id }}">
+                            <td style="display:none" ><input type="checkbox"  value="{{ item.id }}" class="chkbox"></td>
+
+
+
+                            <td>{{ item.id}}</td>
+                            <td>{{ item.image}}</td>
+                            <td>{{ item.command}}</td>
+                            <td>{{ item.create}}</td>
+                            <td>{{ item.status}}</td>
+                            <td>{{ item.port}}</td>
+                            <td>{{ item.name}}</td>
+                            <td> <a  href="/docker/t_get_conec?hostip={{ hostip }}&c_name={{ item.name }}" style="text-decoration:none"> <span class="glyphicon glyphicon-asterisk"></span></a></td>
+
+                            <!--<td>-->
+                                <!--<select>-->
+                                    <!--<option>1</option>-->
+                                     <!--<option>1</option>-->
+                                     <!--<option>1</option>-->
+                                     <!--<option>1</option>-->
+
+                                <!--</select>-->
+                            <!--</td>-->
+
+
+
+
+
+
+
+                            <!--<td>-->
+                                <!--<a title="容器详情" config_id="{{ item.hostip }}"  class="btn btn-sm  btn-primary"  href="/docker/container_show?hostip={{ item.hostip }}"-->
+                                   <!--style="text-decoration:none">-->
+                                    <!--<span class="glyphicon glyphicon-th-large"></span>-->
+                                <!--</a>-->
+
+                                <!--<span style="margin-left: 5px"></span>-->
+                                <!--<a title="删除"   acl_rule_id="{{ item.id }}" modal-title="删除镜像" class="btn btn-sm  btn-danger" data-target="#edit"-->
+                                   <!--data-toggle="modal" data-height="120"-->
+                                   <!--data-width="400"-->
+                                   <!--href="/docker/image_delete?imagede={{ item.id }}"-->
+                                  <!--style="text-decoration:none" >-->
+
+                                    <!--<i class="icon-trash"></i>-->
+                                <!--</a>-->
+                            <!--</td>-->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="margin-top: 20px">
+                <span style="" class=" col-sm-offset-11 col-sm-1"> <a href="/docker/show_con"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward" style="margin-left: 5px"></span><span style="margin-left: 5px"></span>返回</button></span></a></span>
+
+
+{% endblock %}

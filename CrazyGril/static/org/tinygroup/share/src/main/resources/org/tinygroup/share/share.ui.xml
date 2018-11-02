@@ -1,0 +1,7 @@
+<ui-components>
+    <ui-component name="share" dependencies="publicComponent">
+        <css-resource></css-resource>
+		<js-resource></js-resource>
+		<description>分享 (http://share.baidu.com/code)</description>
+    </ui-component>
+</ui-components>

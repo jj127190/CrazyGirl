@@ -1,0 +1,510 @@
+{% extends "rudiment_index.html" %}
+{#{% load common_use %}#}
+{% load splitT %}
+{% block breadcrumb %}报警模板
+<span style="margin-left: 20px"></span>
+
+<a href="/cmdb/wechat"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{#{% endblock %}#}
+{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        .query-title {
+            height:32px;
+            line-height:32px;
+            text-align: right;
+        }
+        .query-input {
+            width: 200px!important;
+        }
+    </style>
+
+
+
+
+    <div class="row">
+        <div class="form form-inline">
+            <div class="well well-sm">
+                <div class="row mt-5">
+                    <div class="col-md-3" style="float: left">
+                        <div class="col-md-4 query-title">
+                            内存:
+                        </div>
+                        <div class="col-md-8">
+                             <input type="text" class="input-text form-control query-input" id="mem"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3"  style="float: left">
+                        <div class="col-md-4 query-title">
+                            磁盘:
+                        </div>
+                        <div class="col-md-8">
+                             <input type="text" class="input-text form-control query-input" id="df"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3"  style="float: left">
+                        <div class="col-md-4 query-title">
+                            I/O：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="io"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3"  style="float: left">
+                        <div class="col-md-4 query-title">
+                            负载：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="upload"/>
+{#                            <select class="form-control input-text select2 query-input" id="query_input_or_output">#}
+{#                                <option value=""></option>#}
+{#                                <option value="入方向">入方向</option>#}
+{#                                <option value="出方向">出方向</option>#}
+{#                            </select>#}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="col-md-4 query-title">
+                            流量(in)：
+                        </div>
+                        <div class="col-md-8">
+                             <input type="text" class="input-text form-control query-input" id="in"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-md-4 query-title">
+                            流量(out)：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="out"/>
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="col-md-4 query-title">
+                            端口：
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="port"/>
+                        </div>
+                    </div>
+
+{#                    <div class="col-md-3">#}
+{#                        <div class="col-md-4 query-title">#}
+{#                            端口：#}
+{#                        </div>#}
+{#                        <div class="col-md-8">#}
+{#                            <select class="form-control input-text select2 query-input" id="query_policy">#}
+{#                                <option value=""></option>#}
+{#                                <option value="允许">立即</option>#}
+{#                                <option value="拒绝">default</option>#}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <span style="margin-top: 20px"></span>#}
+{#                    <div class="col-md-3">#}
+{#                        <div class="col-md-4 query-title">#}
+{#                            端口：#}
+{#                        </div>#}
+{#                        <div class="col-md-8">#}
+{#                            <select class="form-control input-text select2 query-input" id="query_policy">#}
+{#                                <option value=""></option>#}
+{#                                <option value="允许">立即</option>#}
+{#                                <option value="拒绝">default</option>#}
+{#                            </select>#}
+{#                        </div>#}
+{#                    </div>#}
+
+{#                </div>#}
+{#                      <div class="col-md-3">#}
+{#                        <div class="col-md-4 query-title">#}
+{#                            端口：#}
+{#                        </div>#}
+{#                        <div class="col-md-8">#}
+{#                            <input type="text" class="input-text form-control query-input" id="query_cidr_ip"/>#}
+{#                        </div>#}
+{#                    </div>#}
+
+{#                      <div class="col-md-3">#}
+{#                        <div class="col-md-4 query-title">#}
+{#                            授权IP：#}
+{#                        </div>#}
+{#                        <div class="col-md-8">#}
+{#                            <input type="text" class="input-text form-control query-input" id="query_cidr_ip"/>#}
+{#                        </div>#}
+{#                    </div>#}
+                <div class="row">
+                    <div class="btn-group col-md-1">
+                        <a href="/cmdb/create_alertTS">测试</a>
+                        <input type="submit" class="btn btn-primary" onclick="create()" value="创建" style="float: left"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以上阈值默认是大于值的百分比。</br>
+            <i class="fa fa-info-circle"></i> 填写完整阈值,点击创建。</br>
+{#            <i class="fa fa-info-circle"></i> 如不需要续期，请到 <a target="_blank" href="http://workflow.cyou-inc.com">OA系统</a> 中进行虚机退回表单操作。</br>#}
+            <span class="label label-danger"> 除非删除，否则模板会永久存在。</span>
+        </div>
+    </div>
+        <div class="row">
+            <span id="tags" class="{{ dd }}">
+{#            <div class="form-inline">#}
+{#                <a class="btn btn-info" modal-title="添加" data-target="#add" data-toggle="modal" data-height="548"#}
+{#                   data-width="504"#}
+{#                   href="" style="float: left">#}
+{#                    添加#}
+{#                </a>#}
+{#                <a class="btn btn-danger btn-info" onclick="link_del_items()" style="float: left; margin-left: 10px">#}
+{#                    删除#}
+{#                </a>#}
+{#            </div>#}
+            <table class="table" id="table" data-toggle="table">
+            </table>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#table").bootstrapTable({
+                    pagination: true,
+                    showRefresh: true,
+                    showColumns: true,
+                    showToggle: true,
+                    sortable: true,
+                    selectItemName: 'id',
+                    idField: 'id',
+
+                    url: "/cmdb/get_alert_temp",
+                    columns: [{
+                        field: "rownum",
+                        checkbox: true
+                    }, {
+                        field: "id",
+                        title: "ID"
+                    }, {
+                        field: "alert_tem",
+                        title: "报警模板",
+                        sortable: true
+                    }, {
+                        field: "alert_create",
+                        title: "创建时间",
+                        sortable: true
+                    }, {
+                        field: "alert_user",
+                        title: "创建人",
+                        sortable: true
+                    }, {
+                        field: "des",
+                        title: "描述",
+                        sortable: true
+                    },  {
+                        field: "default",
+                        title: "默认"
+                    }, {
+                        title: "操作",
+                        formatter: formatter,
+                        events: operateEvents
+                    }]
+                });
+            });
+
+            function formatter(value, row, index) {
+                console.log(value, row, index);
+                //删除标签
+                var d = '<a class = "remove" href="javascript:void(0)"><i class="icon-minus-sign">删除</i></a>';
+                return d
+            }
+            //删除和修改的执行
+            window.operateEvents = {
+                //删除操作
+                'click .remove': function (e, value, row, index) {
+                    //获取ID
+                    var id = row.id;
+                    //声明一个数组idArray，用于存储要删除信息的id
+                    var idArray = [];
+                    //将id存入数组中
+                    idArray.push(id);
+                    console.log(idArray);
+
+                    var data = {
+                        'csrftoken': csrftoken,
+                        'ids': JSON.stringify(idArray)
+                    };
+
+                    layer.confirm('确认要删除吗？', function (index) {
+                        if (index) {
+                            $.post("", data,
+                                    function (data) {
+                                        if (data["code"] == "0") {
+                                            console.log(data);
+                                            $('#table').bootstrapTable('remove', {
+                                                field: 'id',
+                                                values: idArray
+                                            });
+                                            layer.msg(data["msg"], {time: 1000});
+
+                                        } else {
+                                            layer.msg('[失败]', {time: 1000});
+                                        }
+                                    }, "json");
+                        }
+                        else {
+                            return false
+                        }
+                    });
+                }
+            };
+
+
+
+
+            function create() {
+                alert("create")
+                $("#table").bootstrapTable('showLoading');
+                {#var mem = $("#mem").val();#}
+                {#var df = $("#df").val();#}
+                {#var io = $("#io").val();#}
+                {#var upload = $("#upload").val();#}
+                {#var ins = $("#in").val();#}
+                {#var out = $("#out").val();#}
+                {#var port  = $("#port").val();#}
+                {#query_cidr_ip = $("#query_cidr_ip").val();#}
+                {##}
+                {#var data = {#}
+                {#    'csrftoken': csrftoken,#}
+                {#    'mem': mem,#}
+                {#    'df': df,#}
+                {#    'io': io,#}
+                {#    'upload': upload,#}
+                {#    'in': ins,#}
+                {#    'out': out,#}
+                {#    'port': port#}
+                {##}
+                var data={"a":"1"}
+                alert("222")
+                $.post("/cmdb/create_alertTS", data,
+                        function (data) {
+                            if (data) {
+                                alert(data)
+                                alert(typeof data)
+                                {#var dd = JSON.parse(data)#}
+                                {#var cc = JSON.stringify(data)#}
+                                {#alert(dd)#}
+                                {#alert(typeof dd)#}
+                                {#alert(cc)#}
+                                {#alert(typeof cc)#}
+                                console.log(data);
+                                $("#table").bootstrapTable('hideLoading').bootstrapTable('load', data);
+                            } else {
+                                layer.msg('[失败]', {time: 1000});
+                            }
+                        }, "json");
+
+            }
+            {#var dd = $("#tags").attr("class")#}
+            {#alert(dd)#}
+            {#var DD = JSON.parse(dd)#}
+            {#alert(typeof  DD)#}
+            $("#table").bootstrapTable('hideLoading').bootstrapTable('load', {{ dd |rejson }} );
+
+            function link_del_items() {
+                var items = $("#table").bootstrapTable('getSelections');
+                var idArray = [];
+                for (x in items) {
+                    idArray.push(items[x].id)
+                }
+
+                console.log(idArray);
+                if (!idArray) {
+                    alert('请选择要操作的节点');
+                } else {
+                    layer.confirm('确认要删除吗？', function (index) {
+                        if (index) {
+                            var data = {
+                                'csrftoken': csrftoken,
+                                'ids': JSON.stringify(idArray)
+                            };
+
+                            $.post("", data,
+                                    function (data) {
+                                        if (data["code"] == "0") {
+                                            $('#table').bootstrapTable('remove', {
+                                                field: 'id',
+                                                values: idArray
+                                            });
+                                            layer.msg(data["msg"], {time: 1000});
+                                        } else {
+                                            layer.msg('[删除失败] ' + data["msg"], {time: 1000});
+                                        }
+                                    }, "json");
+                        }
+                        else {
+                            return false
+                        }
+                    });
+                }
+
+            }
+        </script>
+
+        <script type="text/javascript">
+            var aliyun_region_name_list = ["", "华南1", "华北1", "华北2", "华北3", "华东1", "华东2", "美国东部1", "香港", "中东东部1", "亚太东南1", "亚太东南2", "亚太东北1", "欧洲中部1", "美国西部1"];
+            var qcloud_region_name_list = ["", "华东地区(上海)", "华南地区(广州)", "华北地区(北京)", "东南亚地区(香港)", "东南亚地区(新加坡)", "北美地区(多伦多)", "美国西部(硅谷)"];
+            $(function () {
+                for (var i = 0; i < aliyun_region_name_list.length; i++) {
+                    $("#query_region_name").append("<option value='" + aliyun_region_name_list[i] + "'>" + aliyun_region_name_list[i] + "</option>");
+                }
+                $("#query_security_group_name").append("<option value=''></option>");
+            });
+
+            $("#query_manufacturer").change(function () {
+                var manufacturer = $(this).children('option:selected').val();
+                console.log(manufacturer);
+                $("#query_region_name").html("");
+
+                if (manufacturer == "阿里") {
+                    for (var i = 0; i < aliyun_region_name_list.length; i++) {
+                        $("#query_region_name").append("<option value='" + aliyun_region_name_list[i] + "'>" + aliyun_region_name_list[i] + "</option>");
+                    }
+                } else {
+                    for (var i = 0; i < qcloud_region_name_list.length; i++) {
+                        $("#query_region_name").append("<option value='" + qcloud_region_name_list[i] + "'>" + qcloud_region_name_list[i] + "</option>");
+                    }
+                }
+            });
+
+            $("#query_region_name").change(function () {
+                var manufacturer = $("#query_manufacturer").children('option:selected').val();
+                var region_name = $(this).children('option:selected').val();
+                console.log(manufacturer, region_name);
+
+                $("#query_security_group_name").html("");
+                if (manufacturer == "阿里") {
+                    if (region_name == "华南1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华南1VPC'>华南1VPC</option>");
+                    } else if (region_name == "华北1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华北1VPC'>华北1VPC</option>");
+                    } else if (region_name == "华北2") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华北2VPC'>华北2VPC</option>");
+                    } else if (region_name == "华北3") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华北3VPC'>华北3VPC</option>");
+                    } else if (region_name == "华东1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华东1VPC'>华东1VPC</option>");
+                    } else if (region_name == "华东2") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华东2VPC'>华东2VPC</option>");
+                    } else if (region_name == "香港") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='香港VPC'>香港VPC</option>");
+                    } else if (region_name == "中东东部1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='中东东部1VPC'>中东东部1VPC</option>");
+                    } else if (region_name == "亚太东南1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='亚太东南1VPC'>亚太东南1VPC</option>");
+                    } else if (region_name == "亚太东南2") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='亚太东南2VPC'>亚太东南2VPC</option>");
+                    } else if (region_name == "亚太东北1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='亚太东北1VPC'>亚太东北1VPC</option>");
+                    } else if (region_name == "欧洲中部1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='欧洲中部1VPC'>欧洲中部1VPC</option>");
+                    } else if (region_name == "美国西部1") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='美国西部1VPC'>美国西部1VPC</option>");
+                    }
+                } else {
+                    if (region_name == "华东地区(上海)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华东上海VPC'>华东上海VPC</option>");
+                    } else if (region_name == "华南地区(广州)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华南广州VPC'>华南广州VPC</option>");
+                    } else if (region_name == "华北地区(北京)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='华北北京VPC'>华北北京VPC</option>");
+                    } else if (region_name == "东南亚地区(香港)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='东南亚香港VPC'>东南亚香港VPC</option>");
+                    } else if (region_name == "东南亚地区(新加坡)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='东南亚新加坡VPC'>东南亚新加坡VPC</option>");
+                    } else if (region_name == "北美地区(多伦多)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='北美多伦多VPC'>北美多伦多VPC</option>");
+                    } else if (region_name == "美国西部(硅谷)") {
+                        console.log(region_name);
+                        $("#query_security_group_name").append("<option value='美国硅谷VPC'>美国硅谷VPC</option>");
+                    }
+                }
+
+            });
+
+            $("#query_ip_protocol").change(function () {
+                var ip_protocol = $(this).children('option:selected').val();
+                console.log(ip_protocol);
+
+                if (ip_protocol == "all") {
+                    $("#query_port_range").val("ALL").attr("readOnly", true);
+                } else {
+                    $("#query_port_range").val("").attr("readOnly", false);
+                }
+            });
+        </script>
+        <div id="add" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $("#add").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+            });
+        </script>
+    </div>
+
+    <script>
+    {#$(document).ready(function () {#}
+
+        {#alert("caccccc")#}
+
+            {#     $.post("/cmdb/create_alertTS", data,#}
+            {#            function (data) {#}
+            {#                if (data) {#}
+            {#                    alert(data)#}
+            {#                    alert(typeof data)#}
+                                {#var dd = JSON.parse(data)#}
+                                {#var cc = JSON.stringify(data)#}
+                                {#alert(dd)#}
+                                {#alert(typeof dd)#}
+                                {#alert(cc)#}
+                                {#alert(typeof cc)#}
+            {#                    console.log(data);#}
+            {#                    $("#table").bootstrapTable('hideLoading').bootstrapTable('load', data);#}
+            {#                } else {#}
+            {#                    layer.msg('[失败]', {time: 1000});#}
+            {#                }#}
+            {#            }, "json");#}
+            {##}
+
+{#    </script>#}
+{% endblock %}

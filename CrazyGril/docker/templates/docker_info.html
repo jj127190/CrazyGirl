@@ -1,0 +1,182 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}docker ImageBuild管理{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+            <div class="well well-sm">
+                {% if hostnu %}
+                当前宿主机数量: <span style="color: red"><i>{{hostnu}}</i></span>
+                {% else %}
+                当前宿主机数量: <span style="color: red"><i>0</i></span>
+                {% endif %}
+                &nbsp;&nbsp;&nbsp
+            </div>
+
+    </div>
+
+     <div class="row">
+        <form class="form form-inline" action="/docker/search_build_image" method="POST">
+             {% csrf_token %}
+            <div class="well well-sm">
+                主机名称:&nbsp;<input type="text" name="newimage" value="{{ newimage }}" class="form-control  input-sm" size="10" />
+                主机ip:&nbsp;        <input type="text" name="version" value="{{ version }}" class="form-control  input-sm" size="10" />
+                容器:&nbsp;          <input type="text" name="maintainer" value="{{ maintainer }}" class="form-control  input-sm" size="10" />
+                镜像:&nbsp;          <input type="text" name="maintainer" value="{{ maintainer }}" class="form-control  input-sm" size="10" />
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-primary btn-sm" onclick="showLoading()"  value="搜索"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div>
+        <a class="btn   btn-danger" modal-title="同步"
+           href="/docker/update_images">
+            同步
+        </a>
+        </div>
+<div style="margin-top: 10px"></div>
+        <div class="clear"></div>
+        <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover">
+                <thead>
+                <tr>
+                    <th>主机名称 </th>
+                    <th>主机IP </th>
+                    <th>容器数量</th>
+                    <th>镜像数量</th>
+                    <th>更新时间</th>
+                    <th>容器资源</th>
+                    <th class="unsortable">容器显示</th>
+                </tr>
+                </thead>
+                <tbody>
+                        {% for item in all_data %}
+                        <tr class="item{{ item.id }}">
+                            <td style="display:none" ><input type="checkbox"  value="{{ item.id }}" class="chkbox"></td>
+                            <td>{{ item.hostname}}</td>
+                            <td>{{ item.hostip}}</td>
+                            <td>{{ item.d_ps}}</td>
+                            <td>{{ item.d_im}}</td>
+                            <td>{{ item.connect_time}}</td>
+
+                            <td><a title="容器资源"   class="btn btn-sm  btn-primary"  href="/docker/query_stat?hostip={{ item.hostip }}"
+                                   style="text-decoration:none">
+                                    <span class="glyphicon glyphicon-heart"></span>
+                                </a></td>
+
+                            <td>
+                                <a title="容器详情" config_id="{{ item.hostip }}"  class="btn btn-sm  btn-primary"  href="/docker/container_show?hostip={{ item.hostip }}"
+                                   style="text-decoration:none">
+                                    <span class="glyphicon glyphicon-th-large"></span>
+                                </a>
+
+                                <span style="margin-left: 5px"></span>
+                                <a title="同步"   acl_rule_id="{{ item.id }}" modal-title="同步" class="btn btn-sm  btn-danger" data-target="#edit"
+                                   data-toggle="modal" data-height="120"
+                                   data-width="400"
+                                   href="/docker/image_delete?imagede={{ item.id }}"
+                                  style="text-decoration:none" >
+
+                                    <i class="icon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+
+        <ul class="pagination" id="pager">
+        {% if all_data.has_previous %}
+            <li class="previous"><a href="/docker/show_con/?page={{ all_data.previous_page_number }}">上一页</a></li>
+        {% else %}
+            <li class="previous disabled"><a href="#">上一页</a></li>
+        {% endif %}
+        {% for num in paginator.page_range %}
+            {% if num == currentPage %}
+                <li class="item active"><a href="/docker/show_con/?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li class="item"><a href="/docker/show_con/?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if all_data.has_next %}
+            <li class="next"><a href="/docker/show_con/?page={{ all_data.next_page_number }}">下一页</a></li>
+        {% else %}
+            <li class="next disabled"><a href="#">下一页</a></li>
+        {% endif %}
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div id="pagination">
+    <ul id="pagination-flickr">
+    {% if all_data.has_previous %}
+    <li class="previous"><a href="?page={{ all_data.previous_page_number }}{% if request.GET.year %}&year={{ request.GET.year }}{% endif %}{% if request.GET.month %}&month={{ request.GET.month }}{% endif %}{% if request.GET.cid %}&cid={{ request.GET.cid }}{% endif %}">&laquo;上一页</a></li>
+    {% else %}
+    <li class="previous-off">&laquo;上一页</li>
+    {% endif %}
+
+     <li class="active">{{ all_data.number }}/{{ all_data.paginator.num_pages }}</li>
+    {% if all_data.has_next %}
+      <li class="next"><a href="?page={{ all_data.next_page_number }}{% if request.GET.year %}&year={{ request.GET.year }}{% endif %}{% if request.GET.month %}&month={{ request.GET.month }}{% endif %}{% if request.GET.cid %}&cid={{ request.GET.cid }}{% endif %}">下一页 &raquo;</a></li>
+    {% else %}
+      <li class="next-off">下一页 &raquo;</li>
+    {% endif %}
+   </ul>
+</div>
+</div>
+
+        <div id="add" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+
+        </div>
+
+        <div id="edit" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body"></div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(function () {
+                $("#add").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+                $("#edit").on("close", function (e) {
+                    $(this).modal('hide');
+                });
+            });
+        </script>
+    </div>
+{% endblock %}

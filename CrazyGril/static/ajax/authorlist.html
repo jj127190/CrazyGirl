@@ -1,0 +1,99 @@
+<form name="" action="" id="from1326953405" method="post" class="form " >
+	<div class="authdiv" id="bid26329850">
+		<ul class="leftul alert alert-info">
+			<li rel="1">刘德华1,52岁</li>
+			<li rel="2">文章1,26岁</li>
+			<li rel="3">孙红雷1,40岁</li>
+			<li rel="4">葛优1,58岁</li>
+			<li rel="5">刘德华2,52岁</li>
+			<li rel="11">文章2,26岁</li>
+			<li rel="12">孙红雷2,40岁</li>
+			<li rel="13">葛优2,58岁</li>
+		</ul>
+		<div class="authdivnav">
+			<button type="button" class="btn btn-primary" toggle="backward"><i class="icon-backward"></i></button>
+			<button type="button" class="btn btn-primary" toggle="forward"><i class="icon-forward"></i></button>
+		</div>
+		<ul class="rightul alert alert-success"></ul>
+		<div class="clear"></div>
+	</div>
+	<input type="hidden" id="bid26329850-input" name="newsauther" value="1,2,3,5"/>
+	<script type="text/javascript">
+	$(function () {
+		var $leftul = $("#bid26329850>.leftul");
+		var $rightul = $("#bid26329850>.rightul");
+		var thisauth=$("#bid26329850-input").val().split(",");
+		$("#bid26329850>.leftul>li").each(function(index){
+			if(thisauth.indexOf($(this).attr("rel"))>=0){
+				$rightul.append($(this).clone());
+			}
+		});
+		function setValue(){
+			$("#bid26329850-input").val(thisauth.join(","));
+		}
+		setValue();
+
+		$("#bid26329850").on("click","li",function(){
+			$(this).toggleClass("active")
+		}).on("click","[toggle=backward]",function(){
+			var i=0;
+			$("#bid26329850>.rightul>li").each(function(index){
+				if($(this).hasClass("active")){
+					$(this).removeClass("active");
+					$(this).remove();
+					thisauth.splice(index-i,1);
+					i++;
+				}
+			});
+			setValue();
+		}).on("click","[toggle=forward]",function(){
+			$("#bid26329850>.leftul>li").each(function(){
+				if($(this).hasClass("active")){
+					$(this).removeClass("active");
+					if(thisauth.indexOf($(this).attr("rel"))==-1){
+						thisauth.push($(this).attr("rel"));
+						$rightul.append($(this).clone());
+					}
+				}
+			});
+			setValue();
+		})
+
+	});
+	</script>
+	<div style="text-align:center"><button type="button" class="btn btn-primary">确定</button></div>
+</form>
+<script type="text/javascript">
+    $(function(){
+        $('#from1326953405 .icheckbox,#from1326953405 .iradio').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
+        $("#from1326953405 .settings-switcher").switcher({
+            theme: 'square',
+            on_state_content: '<span class="fa fa-check"></span>',
+            off_state_content: '<span class="fa fa-times"></span>'
+        });
+        $("#from1326953405 select.select2").each(function(e){
+            var that=this;
+            $(this).select2({
+                minimumResultsForSearch:($(that).attr("minimumResultsForSearch")?Infinity:"")
+            });
+            if($(this).attr("value")){
+				$(this).prev("div").find("abbr.select2-search-choice-close").show();
+			}else{
+                $(this).select2("val",null);
+			}
+            $(this).on("change",function(){
+                if($(this).val()){
+                    $(this).prev("div").find("abbr.select2-search-choice-close").show()
+                }else{
+                    $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+                }
+                $(this).trigger('blur')
+            })
+
+        });
+    });
+</script>

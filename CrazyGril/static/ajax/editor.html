@@ -1,0 +1,78 @@
+<h2>
+		Trumbowyg编辑器	</h2>
+	<div class="codeView bs-docs-example ">
+			
+
+<textarea id="tid1681481377" name="form-content"  style="height:100px">   		<h1>
+		您好，欢迎来到Tiny框架技术论坛! 	</h1>
+		<p >
+				这次不说Tiny框架引擎的执行效率大致是Velocity的4倍这个事儿，仅就通过示例的方式展示一下TinyTemplate和Velocity的功能上的差异。 
+		</p>
+</textarea>
+<script type="text/javascript">
+    $(function(){
+        $.extend(true, $.trumbowyg.upload, {           });
+        $('#tid1681481377').trumbowyg({
+            lang:"zh_cn",
+            closable: false,
+            mobile: true,
+            fixedBtnPane: false,
+            fixedFullWidth: true,
+            btnsDef: {
+                align: {
+                    dropdown: ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                    ico: 'justifyLeft'
+                },
+                image: {
+                    dropdown: ['insertImage', 'upload'],
+                    ico: 'insertImage'
+                }
+            },
+            btns: ['viewHTML','bold','|', 'italic','|', "link" ,'|', 'image','|', 'formatting','|', 'align','|', 'btnGrp-lists','|', 'foreColor', 'backColor','|', 'horizontalRule'],
+            autoAjustHeight: false,
+            height:300,
+
+        }).on('tbwblur',function(){
+            $(this).val($(this).prev(".trumbowyg-editor:first").html());
+        });
+    })
+</script>
+
+	</div>
+
+
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">1 Trumbowyg编辑器依赖org.tinygroup.trumbowyg包</span></pre>
+
+		<h2>
+		2 UEditor编辑器	</h2>
+	<div class="codeView bs-docs-example ">
+		   <script type="text/plain" id="myEditor">这里我可以写一些输入提示
+</script>
+   <script type="text/javascript">
+		window.UMEDITOR_CONFIG.textarea='myName';
+		UM.delEditor('myEditor');
+		UM.getEditor('myEditor',{
+		  		});
+   </script>
+	</div>
+		<h2>
+		UEditor编辑器Mini 	</h2>
+	<div class="codeView bs-docs-example ">
+		    <script type="text/plain" id="myEditormin">这里我可以写一些输入提示
+</script>
+<script type="text/javascript">
+
+UM.delEditor('myEditormin');
+UM.getEditor('myEditormin',{
+	 toolbar:[
+			'bold italic underline forecolor backcolor removeformat insertorderedlist insertunorderedlist fontfamily fontsize justifyleft justifycenter justifyright link unlink'
+	 ],
+    });
+</script>
+	</div>
+
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">2 UEditor编辑器依赖org.tinygroup.UEditor包</span></pre>

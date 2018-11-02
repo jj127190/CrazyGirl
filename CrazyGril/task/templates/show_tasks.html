@@ -1,0 +1,110 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}任务列表
+<span style="margin-left: 20px"></span>
+<a href="/cmdb/wechat"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+.query-title {
+    height:32px;
+    line-height:32px;
+    text-align: right;
+}
+.query-input {
+    width: 200px!important;
+}
+</style>
+
+
+     <div class="row">
+        <form class="form form-inline" action="/docker/search_build_image" method="POST">
+             {% csrf_token %}
+            <div class="well well-sm">
+                主机名称:&nbsp;<input type="text" name="newimage" value="{{ newimage }}" class="form-control  input-sm" size="10" />
+                主机ip:&nbsp;        <input type="text" name="version" value="{{ version }}" class="form-control  input-sm" size="10" />
+                <div class="btn-group">
+                    <input type="submit" class="btn btn-primary btn-sm" onclick="showLoading()"  value="搜索"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div>
+<div class="row">
+        <div class="alert alert-info">
+            <i class="fa fa-info-circle"></i> 以下显示任务执行后的状态。</br>
+            <i class="fa fa-info-circle"></i> 以下任务都放在任务队列，如果执行长,可能不能及时返回结果。</br>
+{#            <i class="fa fa-info-circle"></i> 如不需要续期，请到 <a target="_blank" href="http://workflow.cyou-inc.com">OA系统</a> 中进行虚机退回表单操作。</br>#}
+            <span class="label label-danger"> 一下任务信息会长期存在。</span>
+        </div>
+    </div>
+        </div>
+<div style="margin-top: 10px"></div>
+
+<div id="edit" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <span class="glyphicon glyphicon-fullscreen"></span>
+        <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+        <h3>对话框标题</h3>
+    </div>
+    <div class="modal-body"></div>
+</div>
+
+        <div class="row">
+            <table class="table" id="table" data-toggle="table"></table>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#table").bootstrapTable({
+                    showRefresh: true,
+                    clickToSelect: true,
+                    showColumns: true,
+                    showToggle: true,
+                    sortable: true,
+                    pagination: true,
+                    striped: true,
+
+                    url: '{% url "task:ajax_show_tasks" %}',
+                    columns: [{
+                        field: "rownum",
+                        checkbox: "true"
+                    },{
+                        field: "task_id",
+                        title: "任务id"
+                    }, {
+                        field: "status",
+                        title: "任务状态",
+                        sortable: true
+                    }, {
+                        field: "content_type",
+                        title: "任务返回格式",
+                        sortable: true
+                    }, {
+                        field: "content_encoding",
+                        title: "任务返回编码",
+                        sortable: true
+                    },{
+                        field: "result",
+                        title: "任务返回结果",
+                        sortable: true
+                    }, {
+                        field: "traceback",
+                        title: "执行异常",
+                        sortable: true
+                    },{
+                        field: "date_done",
+                        title: "执行完成时间",
+                        sortable: true
+                    }]
+                });
+            });
+            </script>
+
+
+
+
+{% endblock %}

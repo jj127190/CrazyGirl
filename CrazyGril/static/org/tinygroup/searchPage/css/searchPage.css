@@ -1,0 +1,23 @@
+@charset "utf-8";
+.tab-pane h1 {
+    font-size: 24px;
+    letter-spacing: -1px;
+    margin: 10px 0;
+}
+.search-results img {
+    display: inline-block;
+    margin-right: 4px;
+    margin-top: 4px;
+    width: 80px;
+}
+.search-results > div {
+    display: inline-block;
+    vertical-align: top;
+}
+.search-results + .search-results {
+    border-top: 1px dashed #e3e3e3;
+}
+.search-results {
+    padding: 18px 5px;
+}
+.font-md small.text-danger{font-size:18px;}

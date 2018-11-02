@@ -1,0 +1,4 @@
+.footable{border-collapse:inherit; border:#eee 1px solid;}
+.footable-row-detail-row{line-height:2em; margin-right:21px;}
+.table.footable tbody tr:hover{background:#fafafb!important}
+.table.footable tr th,.table.footable tr td{text-align:left}

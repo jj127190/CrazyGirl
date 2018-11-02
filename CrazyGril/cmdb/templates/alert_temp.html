@@ -1,0 +1,200 @@
+{% extends "rudiment_index.html" %}
+{#{% load common_use %}#}
+{% block breadcrumb %}报警模板
+<span style="margin-left: 20px"></span>
+
+<a href="/cmdb/wechat"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+
+{% endblock %}
+{% block content %}
+    <style type="text/css">
+        .query-title {
+            height:32px;
+            line-height:32px;
+            text-align: right;
+        }
+        .query-input {
+            width: 200px!important;
+        }
+    </style>
+
+    <div class="alert alert-info">
+        <i class="fa fa-info-circle"></i> 填写完整阈值,点击创建。</br>
+        <i class="fa fa-info-circle"></i> 以下阈值默认是大于值的百分比。</br>
+
+{#            <i class="fa fa-info-circle"></i> 如不需要续期，请到 <a target="_blank" href="http://workflow.cyou-inc.com">OA系统</a> 中进行虚机退回表单操作。</br>#}
+        <span class="label label-danger"> 除非删除，否则模板会永久存在。</span>
+    </div>
+     <div class="row">
+        <div class="form form-inline">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-md-3" style="float: left">
+                        <div class="col-md-4 query-title">
+                            内存:
+                        </div>
+                        <div class="col-md-8">
+                             <input type="text" class="input-text form-control query-input" id="mem"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3"  style="float: left">
+                        <div class="col-md-4 query-title">
+                            磁盘:
+                        </div>
+                        <div class="col-md-8">
+                             <input type="text" class="input-text form-control query-input" id="df" placeholder="%"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3"  style="float: left">
+                        <div class="col-md-4 query-title">
+                            负载:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="upload"/>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="col-md-4 query-title">
+                            I/O(in):
+                        </div>
+                        <div class="col-md-8">
+                             <input type="text" class="input-text form-control query-input" id="in"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-md-4 query-title">
+                            I/O(out):
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="out"/>
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="col-md-4 query-title">
+                            端口:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="input-text form-control query-input" id="port"/>
+                        </div>
+                    </div>
+
+
+            </div>
+
+
+
+
+                <div class="row">
+                    <div class="btn-group col-md-1">
+
+                        <input type="submit" class="btn btn-primary" onclick="create()" value="创建" style="float: right"/>
+                    </div>
+                </div>
+        </div>
+          </div>
+          </div>
+
+
+        <div class="row">
+            <table class="table" id="table" data-toggle="table"></table>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#table").bootstrapTable({
+                    showRefresh: true,
+                    clickToSelect: true,
+                    showColumns: true,
+                    showToggle: true,
+                    sortable: true,
+                    pagination: true,
+
+                    url: '{% url "cmdb:create_alertTS" %}',
+                    columns: [{
+                        field: "alert_temp",
+                        title: "模板名称"
+                    }, {
+                        field: "create_time",
+                        title: "创建时间",
+                        sortable: true
+                    }, {
+                        field: "create_user",
+                        title: "创建人"
+                    }, {
+                        field: "des",
+                        title: "模板描述",
+                        sortable: true
+                    }, {
+                        field: "defaults",
+                        title: "默认",
+                        sortable: true
+                    }]
+                });
+            });
+
+
+            function create() {
+                $("#table").bootstrapTable('showLoading');
+                ip = $("#query_ip").val();
+                project = $("#query_project").val();
+                type = $("#query_type").val();
+                time = $("#query_reservationtime").val();
+                host_principal = $("#query_host_principal").val();
+                source = $("#query_source").val();
+                group = $("#query_group").val();
+                info = $("#query_info").val();
+
+                data = {
+                    'csrftoken': csrftoken,
+                    "ip": ip,
+                    "project": project,
+                    "type": type,
+                    "time": time,
+                    "host_principal": host_principal,
+                    "source": source,
+                    "group": group,
+                    "info": info
+                };
+
+                $.post("", data,
+                        function (data) {
+                            if (data) {
+                                console.log(data);
+                                $("#table").bootstrapTable('hideLoading').bootstrapTable('load', data);
+                            } else {
+                                alert(data);
+                                layer.msg('[失败]', {time: 1000});
+                            }
+                        }, "json");
+
+            }
+        </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

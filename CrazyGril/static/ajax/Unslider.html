@@ -1,0 +1,296 @@
+<h1 class="page_title">
+    轮播幻灯片 </h1>
+<h2>
+    1 满屏响应式焦点轮播 </h2>
+<div class="codeView bs-docs-example ">
+    <style>
+        .main_image, .main_image li span {
+            height: 420px;
+        }
+
+        div.flicking_con a {
+            background: url("/static/img/btn_main_img.png") no-repeat 0px 0px;
+            margin: 0px;
+            padding: 0px;
+            width: 21px;
+            height: 21px;
+            text-indent: -1000px;
+            float: left;
+            display: block;
+        }
+
+        .main_image li .img_1 {
+            background: url("/static/img/img_main_1.jpg") no-repeat top;
+        }
+
+        .main_image li .img_2 {
+            background: url("/static/img/img_main_1.jpg") no-repeat top;
+        }
+
+        .main_image li .img_3 {
+            background: url("/static/img/img_main_1.jpg") no-repeat top;
+        }
+
+        .main_image li .img_4 {
+            background: url("/static/img/img_main_1.jpg") no-repeat top;
+        }
+
+        .main_image li .img_5 {
+            background: url("/static/img/img_main_1.jpg") no-repeat top;
+        }
+
+        #btn_prev {
+            background: url("/static/img/hover_left.png") no-repeat left top;
+            left: 12px;
+        }
+
+        #btn_next {
+            background: url("/static/img/hover_right.png") no-repeat right top;
+            right: 12px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".main_visual").hover(function () {
+                $("#btn_prev,#btn_next").fadeIn()
+            }, function () {
+                $("#btn_prev,#btn_next").fadeOut()
+            })
+            $dragBln = false;
+            $(".main_image").touchSlider({
+                flexible: true,
+                speed: 200,
+                btn_prev: $("#btn_prev"),
+                btn_next: $("#btn_next"),
+                paging: $(".flicking_con a"),
+                counter: function (e) {
+                    $(".flicking_con a").removeClass("on").eq(e.current - 1).addClass("on");
+                }
+            });
+            $(".main_image").bind("mousedown", function () {
+                $dragBln = false;
+            })
+            $(".main_image").bind("dragstart", function () {
+                $dragBln = true;
+            })
+            $(".main_image a").click(function () {
+                if ($dragBln) {
+                    return false;
+                }
+            })
+            timer = setInterval(function () {
+                $("#btn_next").click();
+            }, 5000);
+            $(".main_visual").hover(function () {
+                clearInterval(timer);
+            }, function () {
+                timer = setInterval(function () {
+                    $("#btn_next").click();
+                }, 5000);
+            })
+            $(".main_image").bind("touchstart", function () {
+                clearInterval(timer);
+            }).bind("touchend", function () {
+                timer = setInterval(function () {
+                    $("#btn_next").click();
+                }, 5000);
+            })
+        });
+    </script>
+    <div class="main_visual">
+        <div class="main_image">
+            <ul>
+                <li><span class="img_1"></span></li>
+                <li><span class="img_2"></span></li>
+                <li><span class="img_3"></span></li>
+                <li><span class="img_4"></span></li>
+                <li><span class="img_5"></span></li>
+            </ul>
+            <a id="btn_prev" href="javascript:;"></a>
+            <a id="btn_next" href="javascript:;"></a>
+        </div>
+        <div class="flicking_con">
+            <div class="flicking_inner">
+                <a href="javascript:;">1</a>
+                <a href="javascript:;">2</a>
+                <a href="javascript:;">3</a>
+                <a href="javascript:;">4</a>
+                <a href="javascript:;">5</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h2>
+    2 轮播（Carousel）插件 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="row">
+        <div class="col-sm-12 col-6">
+            <!-- 组件代码 -->
+            <div class="well">
+                <h3>
+                    轮播 <code>
+                    .slide </code>
+                </h3>
+
+                <p>
+                    实现默认的轮播幻灯片效果，请使用基本样式 <code>
+                    .carousel .slide </code>
+                </p>
+
+                <div id="myCarousel-2" class="carousel slide ">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-target="#myCarousel-2" data-slide-to="0">
+                        </li>
+                        <li data-target="#myCarousel-2" data-slide-to="1">
+                        </li>
+                        <li data-target="#myCarousel-2" data-slide-to="2">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="item active">
+                            <img src="/static/img/m3.png">
+
+                            <div class="carousel-caption caption-right">
+                                <h4>
+                                    Tiny框架 </h4>
+
+                                <p>
+                                    Tiny框架的构建者认为再好的框架也有过时的时候，再优秀的架构师也有视野盲区，再NB的写手也无法实现所有的部分。
+                                </p>
+                                <br>
+                                <a class="btn btn-info btn-sm" href="javascript:void(0);">
+                                    查看更多 </a>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="item">
+                            <img src="/static/img/m1.png">
+
+                            <div class="carousel-caption caption-left">
+                                <h4>
+                                    框架取名 </h4>
+
+                                <p>
+                                    取名Tiny是取其微不足道，微小之意。Tiny的构建者认为，一个J2EE开发框架是非常复杂的，只有把框架分解成非常细小static.
+                                </p>
+                                <br>
+                                <a class="btn btn-danger btn-sm" href="javascript:void(0);">
+                                    查看更多 </a>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="item">
+                            <img src="/static/img/m2.png">
+
+                            <div class="carousel-caption">
+                                <h4>
+                                    Tiny构建者想法 </h4>
+
+                                <p>
+                                    一般来说越到底层的程序员，工作时间越短、技能越弱、经验越少。但是实际工作当中，你会发现越到底层的程序员要做的事情越多，要用的技能也越多。
+                                </p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" data-slide="prev" href="#myCarousel-2">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" data-slide="next" href="#myCarousel-2">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- end 组件代码-->
+        </div>
+
+        <div class="col-sm-12 col-6">
+            <!-- 组件代码 -->
+            <div class="well">
+                <h3>
+                    轮播 <code>
+                    .fade </code>
+                </h3>
+
+                <p>
+                    实现幻灯片的切换，请使用样式 <code>
+                    .carousel .fade </code>
+                </p>
+
+                <div id="myCarousel" class="carousel ">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-target="#myCarousel" data-slide-to="0">
+                        </li>
+                        <li data-target="#myCarousel" data-slide-to="1">
+                        </li>
+                        <li data-target="#myCarousel" data-slide-to="2">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="item active">
+                            <img src="/static/img/m1.png">
+
+                            <div class="carousel-caption caption-right">
+                                <h4>
+                                    Tiny框架 </h4>
+
+                                <p>
+                                    Tiny框架的构建者认为再好的框架也有过时的时候，再优秀的架构师也有视野盲区，再NB的写手也无法实现所有的部分。
+                                </p>
+                                <br>
+                                <a class="btn btn-info btn-sm" href="javascript:void(0);">
+                                    查看更多 </a>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="item">
+                            <img src="/static/img/m2.png">
+
+                            <div class="carousel-caption caption-left">
+                                <h4>
+                                    框架取名 </h4>
+
+                                <p>
+                                    Tiny框架的构建者认为再好的框架也有过时的时候，再优秀的架构师也有视野盲区，再NB的写手也无法实现所有的部分。
+                                </p>
+                                <br>
+                                <a class="btn btn-danger btn-sm" href="javascript:void(0);">
+                                    查看更多 </a>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="item">
+                            <img src="/static/img/m3.png">
+
+                            <div class="carousel-caption">
+                                <h4>
+                                    Tiny构建者想法 </h4>
+
+                                <p>
+                                    一般来说越到底层的程序员，工作时间越短、技能越弱、经验越少。但是实际工作当中，你会发现越到底层的程序员要做的事情越多，要用的技能也越多。
+                                </p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" data-slide="prev" href="#myCarousel">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" data-slide="next" href="#myCarousel">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- end 组件代码-->
+        </div>
+    </div>
+</div>
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.slideShow包即可</span></pre>

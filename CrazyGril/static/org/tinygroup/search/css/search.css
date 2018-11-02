@@ -1,0 +1,28 @@
+@charset "utf-8";
+/*4.17 搜索条
+	Name:			mod_searchBar
+	Sample:
+<div class="searchBar">
+  <form class="form-search" method="post" action="">
+    <input id="searchKeyword" name="searchKeyword" value="请输入搜索关键词" class="searchTxt">
+    <input id="searchBtn" name="searchBtn" type="submit" value="搜索" class="searchBtn" onclick="b_onclick()">
+  </form>
+</div>
+*/
+.searchBar{z-index: 100; width:460px;height: 33px;background:url(../images/search.gif) no-repeat 0 -48px;position:relative}
+.form-search{margin-bottom:0px}
+.searchTxt{float:left;width:350px;height:23px;line-height:23px;font-size:14px;color:#9a9a9a;margin-left:33px;margin-top:5px;border:none;background-color:#fff}
+.searchTxt.focus{color:#333}
+.form-search .searchBtn{float:right;display:block;border:none;width:73px;height:33px;cursor:pointer;text-indent:-9999px;background:url(../images/search.gif) no-repeat right -81px}
+.form-search .searchBtn:hover{background-position:right -114px}
+/*搜索下拉提示*/
+.ac_results{position:absolute;width:386px; height:auto;border:solid 1px #890800;background-color:#fff;top:32px; left:0px; display:none}
+.ac_results ul{width:100%;list-style-position:outside;list-style:none;padding:0;margin:0}
+.ac_results li p{float:left;margin:0;padding:0;overflow:hidden}
+.ac_results li p tt{color:#666}
+.ac_results li span{margin:0;padding:0;display:inline;float:right;color:#f93;width:90px; text-align:right; overflow:hidden}
+.ac_results ul li{padding-left:5px;padding-right:5px;display:block;height:22px;line-height:22px;cursor:pointer;color:#000;font:宋体;font-size:12px}
+.ac_results ul li.hover{background-color:#fef8ec;color:#000}
+.ac_loading{background:#fff url(../images/loading_s.gif) right center no-repeat}
+
+.AD{text-align:center}

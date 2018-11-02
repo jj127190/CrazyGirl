@@ -1,0 +1,1376 @@
+<div style="background:#f1f1f1;line-height:30px;padding:2px 10px">
+    <div class="droptoprj" id="sid474247419">
+        <span class="toprj" id="sid474247419-nav"><span>工程 </span><i class="caret"></i></span>
+
+        <div class="dropdownbody ztree-dropdownbody" id="sid474247419-body" style="top:30px;left:-10px">
+            <script>
+                var zNodessid1666626443 = [];
+            </script>
+            <input id="sid1908266862" name="" type="text" value="" data-URL="/static/data/ztreeData.page" class="input-text"/>
+            <input id="sid1908266862-input" name="ajian" type="hidden" value="1" data-URL="/static/data/ztreeData.page"
+                   class="input-text"/>
+
+            <div class="hide" id="sid1908266862-rap">
+                <div id="sid1908266862-content" class="tree-sel-content t-menu-content hide">
+                    <ul id="ztreesid1908266862" class="fa-ztree">
+                    </ul>
+                    <div class="hide" id="sid1908266862-msg">暂无信息</div>
+                    <div class="fix-part" style="padding:0 5px"><a class="r" data-target="#myModal" data-toggle="modal"
+                                                                   data-height="500" data-width="600" modal-title="增加"
+                                                                   href="/../page/form/4.6.pagelet">
+                        增加 </a>
+                        <a href="/static/ajax/">全部</a>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    var setting = {
+                        view: {
+                            dblClickExpand: false
+                        },
+                        data: {
+                            simpleData: {
+                                enable: true
+                            }
+                        },
+                        callback: {
+                            beforeClick: beforeClick,
+                            onClick: onClick
+                        }
+                    };
+                    var zTree;
+                    var zNodes = zNodessid1666626443;
+                    var $treeContent = $("#ztreesid1908266862");
+                    var $treeRap = $("#sid1908266862-content");
+                    var $input = $("#sid1908266862");
+                    var $inputV = $("#sid1908266862-input");
+                    $.ajax({
+                        type: "GET",
+                        url: " /static/data/ztreeData.page",
+                        dataType: "json",
+                        success: function (data) {
+                            zNodes = data;
+                            initzTree();
+                        }
+                    });
+                    function initzTree() {
+                        zTree = $.fn.zTree.init($treeContent, setting, zNodes);
+                        initInputVale();
+                    }
+
+                    function initInputVale() {
+                        var $val = $inputV.val();
+                        if (!$val) return false;
+                        for (var i = 0; i < zNodes.length; i++) {
+                            if ($val == zNodes[i].id) {
+                                $input.val(zNodes[i].name);
+                                $inputV.val($val);
+                                $input.trigger("setValue", zNodes[i]);
+                                break;
+                            }
+                        }
+                    }
+
+                    function beforeClick(treeId, treeNode) {
+                        if (treeNode && treeNode.clickAble === false) {
+                            zTree.expandNode(treeNode);
+                            return false;
+                        }
+                    }
+
+                    function onClick(e, treeId, treeNode) {
+                        $input.val(treeNode.name);
+                        $inputV.val(treeNode.id);
+                        $input.trigger("setValue", treeNode);
+                        $inputV.trigger("blur");
+                        $input.trigger("blur");
+                        hideMenu();
+                    }
+
+                    function hideMenu() {
+                        $treeRap.fadeOut("fast");
+                        $("#sid1908266862-rap").append($treeRap);
+                    }
+
+                    $input.on("click", function () {
+                        $("body").append($treeRap);
+                        var thisOffset = $(this).offset();
+                        $treeRap.css({
+                            width: $(this).css("width"),
+                            left: thisOffset.left + "px",
+                            top: thisOffset.top + $(this).outerHeight() + "px"
+                        }).slideDown("fast");
+                    }).on("add", function (e, newNode) {
+                        zTree.addNodes(null, newNode);
+                    });
+                    $("body").on("click", function (e) {
+                        if ($(e.target).attr("id") != $input.attr("id") && $(e.target).parents("#" + $treeRap.attr("id")).size() == 0) {
+                            hideMenu();
+                        }
+                    }).on("click", ".fix-part", function (e) {
+                        hideMenu();
+                    });
+                    function bfxs(zTree, nodes, tt) {
+                        if (nodes.children == null) {//无子节点
+                            if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//无子节点，但是包含tt
+                                fjdxs(zTree, nodes);
+                            }
+                        } else {//有子节点
+                            if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//有而且包含
+                                fjdxs(zTree, nodes);
+                                xsall(zTree, nodes);
+                            } else {//有但不包含
+                                $.each(nodes.children, function (aa, bb) {
+                                    bfxs(zTree, bb, tt);
+                                })
+                            }
+                        }
+                    }
+
+                    ///显示所有父节点
+                    function fjdxs(zTree, nodes) {
+                        if (nodes.getParentNode() == null) {
+                            zTree.showNode(nodes);
+                        }
+                        else {
+                            zTree.showNode(nodes);
+                            fjdxs(zTree, nodes.getParentNode());
+                        }
+                    }
+
+                    ///全显
+                    function xsall(ztree, nodes) {
+                        ztree.showNode(nodes);
+                        if (nodes.children != null) {
+                            $.each(nodes.children, function (x, y) {
+                                xsall(ztree, y);
+                            })
+                        }
+                    }
+
+                    ///么有子节点的直接隐藏
+                    function ycall(ztree, nodes) {
+                        ztree.hideNode(nodes);
+                        if (nodes.children != null) {
+                            $.each(nodes.children, function (x, y) {
+                                ycall(ztree, y);
+                            })
+                        }
+                    }
+
+                    $("#sid1908266862").on("propertychange input", function () {
+                        var key = $(this).val();
+                        var nodes = zTree.getNodes();
+                        zTree.showNodes(nodes);
+                        if (!key) {
+                            $("#sid1908266862-msg").hide();
+                            return;
+                        }
+                        var zts = zTree.getNodesByParamFuzzy("name", key);
+                        if (zts.length == 0) {
+                            $("#sid1908266862-msg").show();
+                        } else {
+                            $("#sid1908266862-msg").hide();
+                        }
+
+                        $.each(nodes, function (x, y) {
+                            ycall(zTree, y);
+                        });
+
+                        $.each(nodes, function (index, node) {
+                            bfxs(zTree, node, key);
+                        });
+                        zTree.expandAll(true);
+                    }).on("close", function () {
+                        hideMenu();
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    <script type="text/javascript">
+        <!--
+        $(function () {
+            var isinit = false;
+            var treeShowId = $("#sid474247419-body .tree-sel-content").attr("id");
+            var inputId = $("#sid474247419-body>input:first").attr("id");
+
+            function hidePrj() {
+                $("#sid474247419-body>input:first").trigger("close")
+                $("#sid474247419-body").hide();
+            }
+
+            $("#sid474247419-nav").click(function (e) {
+                if ($("#sid474247419-body").css("display") == "none") {
+                    $("#sid474247419-body").show();
+                    $("#sid474247419-body>input:first").trigger("click")
+                }
+                e.stopPropagation();
+            });
+            $("#" + treeShowId).off("click");
+            $("body").on("click", function (e) {
+                if ($(e.target).attr("type") != "text" && $(e.target).parents("#" + treeShowId).size() == 0 || $(e.target).parents(".fix-part").size()) {
+                    hidePrj();
+                }
+            });
+
+            $("#" + inputId).on("setValue", function () {
+                $("#sid474247419-body").hide();
+                $("#sid474247419-nav span:first").html($(this).val());
+            });
+
+        });
+        //-->
+    </script>
+    工程 项目 规划 <span id="showsearchmore"><i class="icon-search"></i>搜索</span>
+</div>
+<form method="get" action="" id="table-ss2form" class="form-condensed searchform">
+    <div class="hide">
+        <select id="operatortemp">
+            <option value="=">=</option>
+            <option value="!=">!=</option>
+            <option value="&gt;">&gt;</option>
+            <option value="&gt;=">&gt;=</option>
+            <option value="&lt;">&lt;</option>
+            <option value="&lt;=">&lt;=</option>
+            <option value="include">包含</option>
+            <option value="between">介于</option>
+            <option value="notinclude">不包含</option>
+            <option value="belong">从属于</option>
+        </select>
+        <select id="usertemp">
+            <option value="" selected="selected"></option>
+            <option value="admin">A:admin</option>
+            <option value="demo">D:Demo</option>
+            <option value="dev1">D:开发甲</option>
+            <option value="dev2">D:开发乙</option>
+            <option value="dev3">D:开发丙</option>
+            <option value="productManager">P:产品经理</option>
+            <option value="projectManager">P:项目经理</option>
+            <option value="tester1">T:测试甲</option>
+            <option value="tester2">T:测试乙</option>
+            <option value="tester3">T:测试丙</option>
+            <option value="testManager">T:测试经理</option>
+            <option value="closed">Closed</option>
+            <option value="$@me">自己</option>
+            <option value="null">空</option>
+        </select>
+        <select id="pritemp">
+            <option value="0"></option>
+            <option value="3">3</option>
+            <option value="1">1</option>
+            <option value="44">44</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="null">空</option>
+        </select>
+        <select id="statustemp">
+            <option value="" selected="selected"></option>
+            <option value="wait">未开始</option>
+            <option value="doing">进行中</option>
+            <option value="done">已完成</option>
+            <option value="pause">已暂停</option>
+            <option value="cancel">已取消</option>
+            <option value="closed">已关闭</option>
+            <option value="null">空</option>
+        </select>
+
+    </div>
+    <table class="table-form" id="task-search">
+        <tbody>
+        <tr>
+            <td class="w-400px">
+                <table class="active-disabled">
+                    <tbody>
+                    <tr id="searchbox1" class="">
+                        <td class="text-right w-60px"><span id="searchgroup1"><strong>第一组</strong></span><input type="hidden"
+                                                                                                                name="andOr1"
+                                                                                                                id="andOr1"
+                                                                                                                value="AND">
+                        </td>
+                        <td class="w-90px"><select name="field1" id="field1" class="form-control "></select>
+                        </td>
+                        <td class="w-70px"><select name="operator1" id="operator1" class="form-control "></select>
+                        </td>
+                        <td id="valueBox1"></td>
+                    </tr>
+                    <tr id="searchbox2" class="">
+                        <td class="text-right w-60px" valign="middle"><select name="andOr2" id="andOr2" class="form-control ">
+                            <option value="and" selected="selected">并且</option>
+                            <option value="or">或者</option>
+                        </select>
+                        </td>
+                        <td class="w-90px"><select name="field2" id="field2" class="form-control ">
+                        </select>
+                        </td>
+                        <td class="w-70px"><select name="operator2" id="operator2" class="form-control "></select>
+                        </td>
+                        <td id="valueBox2"><input type="text" name="value2" id="value2" value="" class="form-control   ">
+                        </td>
+                    </tr>
+                    <tr id="searchbox3" class="">
+                        <td class="text-right w-60px"><select name="andOr3" id="andOr3" class="form-control ">
+                            <option value="and" selected="selected">并且</option>
+                            <option value="or">或者</option>
+                        </select>
+                        </td>
+                        <td class="w-90px"><select name="field3" id="field3" class="form-control ">
+                        </select>
+                        </td>
+                        <td class="w-70px"><select name="operator3" id="operator3" class="form-control "></select>
+                        </td>
+                        <td id="valueBox3"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td class="text-center nobr w-90px form-inline"><select name="groupAndOr" id="groupAndOr" class="form-control w-60px">
+                <option value="and" selected="selected">并且</option>
+                <option value="or">或者</option>
+            </select>
+            </td>
+            <td class="w-400px">
+                <table class=" active-disabled">
+                    <tbody>
+                    <tr id="searchbox4" class="">
+                        <td class="text-right w-60px"><span id="searchgroup2"><strong>第二组</strong></span><input type="hidden"
+                                                                                                                name="andOr4"
+                                                                                                                id="andOr4"
+                                                                                                                value="AND">
+                        </td>
+                        <td class="w-90px"><select name="field4" id="field4" class="form-control ">
+                        </select>
+                        </td>
+                        <td class="w-70px"><select name="operator4" id="operator4" class="form-control "></select>
+                        </td>
+                        <td id="valueBox4"></td>
+                    </tr>
+                    <tr id="searchbox5" class="">
+                        <td class="text-right w-60px"><select name="andOr5" id="andOr5" class="form-control ">
+                            <option value="and" selected="selected">并且</option>
+                            <option value="or">或者</option>
+                        </select>
+                        </td>
+                        <td class="w-90px"><select name="field5" id="field5" class="form-control ">
+                        </select>
+                        </td>
+                        <td class="w-70px"><select name="operator5" id="operator5" class="form-control "></select>
+                        </td>
+                        <td id="valueBox5"></td>
+                    </tr>
+                    <tr id="searchbox6" class="">
+                        <td class="text-right w-60px"><select name="andOr6" id="andOr6" class="form-control ">
+                            <option value="and" selected="selected">并且</option>
+                            <option value="or">或者</option>
+                        </select>
+                        </td>
+                        <td class="w-90px"><select name="field6" id="field6" class="form-control ">
+                        </select>
+                        </td>
+                        <td class="w-70px"><select name="operator6" id="operator6" class="form-control "></select>
+                        </td>
+                        <td id="valueBox6">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td class="w-400px form-inline">
+                <div class="btn-group">
+                    <button type="submit" id="submit" class="btn btn-submit btn-primary btn-sm">搜索</button>
+                    <button type="button" onclick="resetForm(this)" class="btn btn-sm">重置</button>
+                    <button class="btn btn-primary btn-sm" id="qid-581865222">保存</button>
+                    <button class="btn btn-sm no-padding no-border" style="margin-left:20px" onclick="return false">
+                        <select id="qid-581865222-sel" class="form-control no-border-radius margin-bottom-0"
+                                style="height:31px"></select>
+                    </button>
+                    <script type="text/javascript">
+                        $(function () {
+                            var form = $("#qid-581865222").closest("form");
+                            var qF = form.queryFor("#qid-581865222-sel");
+                            $("#qid-581865222-sel").on("change", function () {
+                                var v = $(this).val();
+                                if (v == "none") return false;
+                                var fItem, formItems = qF.getVal(v).split("&");
+                                for (var i = 0, l = formItems.length; i < l; i++) {
+                                    fItem = formItems[i].split("=");
+                                    form.find("[name='" + decodeURIComponent(fItem[0]) + "']").eq(0).val(decodeURIComponent(fItem[1])).trigger("change");
+                                }
+                                form.trigger("submit");
+                            });
+                            $("#qid-581865222").on("click", function () {
+                                layer.prompt({title: '请输入保存名称', formType: 2}, function (text) {
+                                    var v = form.serialize();
+                                    qF.add(text, v);
+                                    layer.closeAll();
+                                });
+                                return false;
+                            });
+                            $("#qid-581865222-btn-remove").on("click", function () {
+                                qF.delete($("#qid-581865222-sel").val());
+                                return false;
+                            })
+                        })
+                    </script>
+                    <button class="btn btn-sm" id="qid-581865222-btn-remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="moreOrLite">
+        <a id="searchmore" href="javascript:;"><i class="icon-double-angle-down icon-2x"></i></a>
+        <a id="searchlite" href="javascript:;"><i class="icon-double-angle-up icon-2x"></i></a>
+    </div>
+</form>
+
+<script type="text/javascript">
+    <!--
+    $(function () {
+        $("#showsearchmore").click(function () {
+            $("#table-ss2form").toggleClass("showmore");
+        });
+        $("#searchmore").click(function () {
+            $("#searchlite").css("display", "block");
+            $(this).hide();
+            $("#searchbox5,#searchbox6,#searchbox2,#searchbox3").show();
+        });
+        $("#searchlite").click(function () {
+            $("#searchmore").css("display", "block");
+            $(this).hide();
+            $("#searchbox5,#searchbox6,#searchbox2,#searchbox3").hide();
+        });
+        var itemlist = []
+        itemlist.push({
+            "name": "name",
+            "title": "任务名称",
+            "operator": "include",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "id",
+            "title": "编号",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "status",
+            "title": "任务状态",
+            "operator": "=",
+            "value": "status"
+        });
+        itemlist.push({
+            "name": "desc",
+            "title": "任务描述",
+            "operator": "include",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "assignedTo",
+            "title": "指派给",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "pri",
+            "title": "优先级",
+            "operator": "=",
+            "value": "pri"
+        });
+        itemlist.push({
+            "name": "project",
+            "title": "所属项目",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "module",
+            "title": "所属模块",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "estimate",
+            "title": "最初预计",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "left",
+            "title": "预计剩余",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "consumed",
+            "title": "总消耗",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "type",
+            "title": "任务类型",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "fromBug",
+            "title": "来源Bug",
+            "operator": "belong",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "closedReason",
+            "title": "关闭原因",
+            "operator": "=",
+            "value": "text"
+        });
+        itemlist.push({
+            "name": "openedBy",
+            "title": "由谁创建",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "finishedBy",
+            "title": "由谁完成",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "closedBy",
+            "title": "由谁关闭",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "canceledBy",
+            "title": "由谁取消",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "lastEditedBy",
+            "title": "最后修改",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "mailto",
+            "title": "抄送给",
+            "operator": "=",
+            "value": "user"
+        });
+        itemlist.push({
+            "name": "openedDate",
+            "title": "创建日期",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "deadline",
+            "title": "截止日期",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "estStarted",
+            "title": "预计开始",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "realStarted",
+            "title": "实际开始",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "assignedDate",
+            "title": "指派日期",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "finishedDate",
+            "title": "完成时间",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "closedDate",
+            "title": "关闭时间",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "canceledDate",
+            "title": "取消时间",
+            "operator": "=",
+            "value": "date"
+        });
+        itemlist.push({
+            "name": "lastEditedDate",
+            "title": "最后修改日期",
+            "operator": "=",
+            "value": "date"
+        });
+        function setValueBox(index, itemIndex) {
+            $("#operator" + itemIndex).val(itemlist[index]["operator"]);
+            switch (itemlist[index]["value"]) {
+                case "text":
+                    $("#valueBox" + itemIndex).html('<input type="text" name="value' + itemIndex + '" id="value' + itemIndex + '" value="" class="form-control">');
+                    break;
+                case "user":
+                    $("#valueBox" + itemIndex).html($('<select name="value' + itemIndex + '" id="value' + itemIndex + '" class="form-control">').html($("#usertemp").html()));
+                    break;
+                case "pri":
+                    $("#valueBox" + itemIndex).html($('<select name="value' + itemIndex + '" id="value' + itemIndex + '" class="form-control">').html($("#pritemp").html()));
+                    break;
+                case "status":
+                    $("#valueBox" + itemIndex).html($('<select name="value' + itemIndex + '" id="value' + itemIndex + '" class="form-control">').html($("#statustemp").html()));
+                    break;
+                case "date":
+                    $("#valueBox" + itemIndex).html('<input type="text" name="value' + itemIndex + '" id="value' + itemIndex + '" value="" class="form-control dateinput">');
+                    break;
+            }
+        }
+
+        $("#field1,#field2,#field3,#field4,#field5,#field6").each(function (index) {
+            $(this).empty();
+            var option;
+            for (var i = 0; i < itemlist.length; i++) {
+                option = $("<option>").val(itemlist[i]["name"]).text(itemlist[i]["title"]);
+                $(this).append(option);
+            }
+            $(this).val(itemlist[index]["name"]);
+            $("#operator" + (index + 1)).html($("#operatortemp").html());
+            setValueBox(index, index + 1);
+            $(this).on("change", function () {
+                for (var i = 0; i < itemlist.length; i++) {
+                    if (itemlist[i]["name"] == $(this).val()) {
+                        setValueBox(i, $(this).attr("id").substr(-1));
+                        break;
+                    }
+                }
+            });
+
+        });
+        $("#table-ss2form").on("click", "input[class*=dateinput]", function () {
+            WdatePicker({
+                startDate: '%y-%M-01 00:00:00', dateFmt: "yyyy-MM-dd"
+            })
+        });
+        $("#table-ss2form").on("submit", function () {
+            $("#table-ss2").trigger("initnav");
+            return false;
+        });
+
+    });
+    //-->
+</script>
+<p></p>
+<div id="tid190402984" class="togglebox trans open" class="open">
+    <div id="tid190402984-ico" class="togglenavico trans"><i class="icon-caret-right"></i></div>
+    <div id="tid190402984-nav" toggle-state="open" class="trans togglenavpart aclass" class="aclass"><h3 class="navtitle"><i
+            class="fa "></i>网站建设一期</h3>
+
+        <div class="navbody ">
+            <ul id="demoLeft" class="fa-ztree left-ztree"></ul>
+            <script type="text/javascript">
+                <!--
+                $(function () {
+                    var setting = {
+                        view: {
+                            addHoverDom: addHoverDom,
+                            removeHoverDom: removeHoverDom,
+                            addDiyDom: addDiyDom,
+                            selectedMulti: false
+                        },
+                        edit: {
+                            drag: {
+                                autoExpandTrigger: true,
+                                prev: dropPrev,
+                                inner: dropInner,
+                                next: dropNext
+                            },
+
+                            enable: true,
+                            editNameSelectAll: true,
+                            showRemoveBtn: showRemoveBtn,
+                            showRenameBtn: showRenameBtn,
+                            showAddBtn: showAddBtn
+
+                        }, data: {
+                            simpleData: {
+                                enable: true
+                            }
+                        },
+                        callback: {
+                            beforeEditName: beforeEditName,
+                            beforeRemove: beforeRemove,
+                            beforeRename: beforeRename,
+                            beforeDrag: beforeDrag,
+                            beforeDrop: beforeDrop,
+                            beforeDragOpen: beforeDragOpen,
+                            onDrag: onDrag,
+                            onDrop: onDrop,
+                            onRemove: onRemove,
+                            onRename: onRename,
+                            beforeDrag: beforeDrag,
+                            beforeDrop: beforeDrop,
+                            beforeDragOpen: beforeDragOpen,
+                            onDrag: onDrag,
+                            onDrop: onDrop,
+                            onNodeCreated: onNodeCreated,
+                            beforeClick: beforeClick,
+                            onClick: onClick,
+                            onExpand: onExpand
+
+                        }
+                    };
+
+                    var zNodes = [];
+                    var log, className = "dark";
+                    var ztreeid = "demoLeft";
+                    var zTree;
+                    var linkurl;
+                    var editUrl;
+                    var addUrl;
+                    var delUrl;
+                    var currentNode;
+                    var IDMark_A = "_a";
+                    var dataformat = {name: "name", id: "id", pid: "pid"};
+
+                    function setLinkUrl(url) {
+                        linkurl = url;
+                    }
+
+                    function setEditUrl(url) {
+                        editUrl = url;
+                    }
+
+                    function setAddUrl(url) {
+                        addUrl = url;
+                    }
+
+                    function setDelUrl(url) {
+                        delUrl = url;
+                    }
+
+                    dataformat["name"] = "truename";
+                    dataformat["pid"] = "parentid";
+                    dataformat["id"] = "modelid";
+                    setLinkUrl("/static/ajax/togglebox.html");
+                    setAddUrl("/static/ajax/togglebox.html");
+                    setEditUrl("/static/ajax/togglebox.html");
+                    setDelUrl("/static/ajax/togglebox.html");
+                    currentNode = '';
+                    function refreshdata(callback) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/static/data/ztreeData.page",
+                            dataType: "html",
+                            success: function (data) {
+                                data = eval(' ' + data + ' ');
+                                data.splice(0, 0, {id: "allcontent", pId: 0, name: "全部", add: true});
+                                zNodes = data;
+                                zTree = $.fn.zTree.init($("#" + ztreeid), setting, zNodes);
+                                callback && callback();
+                                //initzTree();
+                            }
+                        });
+                    }
+
+                    refreshdata();
+                    //var zTree=$.fn.zTree.init($("#"+ztreeid), setting, zNodes);
+                    $("#demoLeft").on("refresh", function (e, callback) {
+                        refreshdata(callback);
+                    });
+                    function beforeEditName(treeId, treeNode) {
+
+                        if (editUrl) {
+                            layer.prompt({title: '修改名称', val: treeNode.name, formType: 2}, function (text) {
+                                var data = {rand: Math.random()};
+                                data[dataformat.id] = treeNode.id;
+                                data[dataformat.name] = text;
+                                data[dataformat.pid] = treeNode.pId;
+                                $.ajax({
+                                    type: "GET",
+                                    url: editUrl,
+                                    data: data,
+                                    dataType: "json",
+                                    success: function (data) {
+                                        if (data.status == "success" || data.status == "y") {
+                                            layer.msg(data.info, 2, 1)
+                                        } else {
+                                            layer.msg(data.info, 2)
+                                        }
+                                        refreshdata();
+                                    }
+                                });
+                                layer.closeAll()
+                            });
+                        } else {
+                            layer.msg("修改地址不可用，操作失败")
+                        }
+                        //className = (className === "dark" ? "":"dark");
+                        return false;
+                    }
+
+                    function onNodeCreated(event, treeId, treeNode) {
+                        var rightWidth = 3;
+                        if (treeNode.edit) {
+                            rightWidth += 35;
+                        }
+                        if (treeNode.add) {
+                            rightWidth += 15;
+                        }
+                        $("#" + treeNode.tId + "_a").css("padding-right", rightWidth + "px");
+
+                    }
+
+                    function addDiyDom(treeId, treeNode) {
+                        if (!currentNode) return;
+                        if (treeNode.id == currentNode) {
+                            $("#" + treeNode.tId + "_a").css("color", "#c00");
+                        }
+                    }
+
+                    function beforeRemove(treeId, treeNode) {
+                        className = (className === "dark" ? "" : "dark");
+                        //var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                        zTree.selectNode(treeNode);
+                        layer.confirm("确认删除吗?", function (e) {
+
+
+                            if (delUrl) {
+                                var data = {rand: Math.random()};
+                                data[dataformat.id] = treeNode.id;
+                                data[dataformat.name] = treeNode.name;
+                                data[dataformat.pid] = treeNode.pId;
+                                $.ajax({
+                                    type: "GET",
+                                    url: delUrl,
+                                    data: data,
+                                    dataType: "json",
+                                    success: function (data) {
+                                        //layer.close(e);
+                                        if (data.status == "success" || data.status == "y") {
+                                            layer.msg(data.info, 2, 1)
+                                        } else {
+                                            layer.msg(data.info, 2)
+                                        }
+                                        refreshdata();
+                                    }
+                                });
+                            } else {
+                                layer.msg("删除地址不可用，操作失败")
+                            }
+                        });
+                        return false;//confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+                    }
+
+                    function onRemove(e, treeId, treeNode) {
+                        return false
+                    }
+
+                    function beforeRename(treeId, treeNode, newName, isCancel) {
+                        //className = (className === "dark" ? "":"dark");
+
+                        return false;
+                    }
+
+                    function onRename(e, treeId, treeNode, isCancel) {
+
+                    }
+
+                    function showRemoveBtn(treeId, treeNode) {
+                        if (treeNode.edit) return true;
+                    }
+
+                    function showAddBtn(treeId, treeNode) {
+                        return 0;
+                    }
+
+                    function showRenameBtn(treeId, treeNode) {
+                        if (treeNode.edit) return true;
+                    }
+
+                    function beforeClick(treeId, treeNode) {
+                        if (treeNode.clickAble === false) {
+                            zTree.expandNode(treeNode);
+                            return false;
+                        }
+                        /*var check = (treeNode && !treeNode.isParent);
+                         if (!check) {
+                         zTree.expandNode(treeNode);
+                         return false;
+                         }//return check;*/
+                    }
+
+                    function onClick(e, treeId, treeNode) {
+                        var id = treeNode.id;
+                        var url = linkurl;
+                        if (treeNode.id != "allcontent") {
+                            url = linkurl + (linkurl.indexOf("?") > -1 ? "&" : "?") + dataformat.id + "=" + treeNode.id;
+                        }
+                        $(e.target).closest("a").attr("href", url);
+                    }
+
+                    var newCount = 1;
+
+                    function addHoverDom(treeId, treeNode) {
+                        //console.log(treeNode.pId)
+                        if (!treeNode.add) {
+                            return false;
+                        }
+
+                        //return treeNode.pId;
+                        var sObj = $("#" + treeNode.tId + "_span");
+                        if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+                        var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+                                + "' title='add node' onfocus='this.blur();'></span>";
+                        sObj.after(addStr);
+                        var btn = $("#addBtn_" + treeNode.tId);
+                        if (btn) btn.bind("click", function () {
+                            if (addUrl) {
+                                layer.prompt({title: '请填写名称', formType: 2}, function (text) {
+                                    var data = {rand: Math.random()};
+                                    data[dataformat.name] = text;
+                                    data[dataformat.pid] = treeNode.id == "allcontent" ? 0 : treeNode.id;
+                                    if (treeNode.id == "allcontent") data[dataformat.pid] = 0;
+                                    $.ajax({
+                                        type: "GET",
+                                        url: addUrl,
+                                        data: data,
+                                        dataType: "json",
+                                        success: function (data) {
+                                            if (data.status == "success" || data.status == "y") {
+                                                layer.msg(data.info, 2, 1)
+                                            } else {
+                                                layer.msg(data.info, 2)
+                                            }
+                                            refreshdata();
+                                        }
+                                    });
+                                    layer.closeAll()
+                                });
+                            } else {
+                                layer.msg("新增地址不可用，操作失败");
+                                return false;
+                            }
+                            //zTree.addNodes(treeNode, {id:(100 + newCount), pId:treeNode.id, name:"new node" + (newCount++),edit:true});
+                            return false;
+                        });
+                    };
+                    function removeHoverDom(treeId, treeNode) {
+                        $("#addBtn_" + treeNode.tId).unbind().remove();
+                    };
+                    function selectAll() {
+                        //zTree.setting.edit.editNameSelectAll =  $("#selectAll").attr("checked");
+                    }
+
+                    function dropPrev(treeId, nodes, targetNode) {
+                        var pNode = targetNode.getParentNode();
+                        if (pNode && pNode.dropInner === false) {
+                            return false;
+                        } else {
+                            for (var i = 0, l = curDragNodes.length; i < l; i++) {
+                                var curPNode = curDragNodes[i].getParentNode();
+                                if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+                                    return false;
+                                }
+                            }
+                        }
+                        return true;
+                    }
+
+                    function dropInner(treeId, nodes, targetNode) {
+                        if (targetNode && targetNode.dropInner === false) {
+                            return false;
+                        } else {
+                            for (var i = 0, l = curDragNodes.length; i < l; i++) {
+                                if (!targetNode && curDragNodes[i].dropRoot === false) {
+                                    return false;
+                                } else if (curDragNodes[i].parentTId && curDragNodes[i].getParentNode() !== targetNode && curDragNodes[i].getParentNode().childOuter === false) {
+                                    return false;
+                                }
+                            }
+                        }
+                        return true;
+                    }
+
+                    function dropNext(treeId, nodes, targetNode) {
+                        var pNode = targetNode.getParentNode();
+                        if (pNode && pNode.dropInner === false) {
+                            return false;
+                        } else {
+                            for (var i = 0, l = curDragNodes.length; i < l; i++) {
+                                var curPNode = curDragNodes[i].getParentNode();
+                                if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+                                    return false;
+                                }
+                            }
+                        }
+                        return true;
+                    }
+
+                    function beforeDrag(treeId, treeNodes) {
+                        className = (className === "dark" ? "" : "dark");
+
+                        for (var i = 0, l = treeNodes.length; i < l; i++) {
+                            if (treeNodes[i].drag === false) {
+                                curDragNodes = null;
+                                return false;
+                            } else if (treeNodes[i].parentTId && treeNodes[i].getParentNode().childDrag === false) {
+                                curDragNodes = null;
+                                return false;
+                            }
+                        }
+                        curDragNodes = treeNodes;
+                        return true;
+                    }
+
+                    function beforeDragOpen(treeId, treeNode) {
+                        autoExpandNode = treeNode;
+                        return true;
+                    }
+
+                    function beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy) {
+                        className = (className === "dark" ? "" : "dark");
+
+                        return true;
+                    }
+
+                    function onDrag(event, treeId, treeNodes) {
+                        className = (className === "dark" ? "" : "dark");
+
+                    }
+
+                    function onDrop(event, treeId, treeNodes, targetNode, moveType, isCopy) {
+                        className = (className === "dark" ? "" : "dark");
+                        if (!targetNode) return;
+                        layer.confirm("确定吗?", function (e) {
+                            var data = {rand: Math.random()};
+                            ;
+                            data[dataformat.pid] = targetNode.id == "allcontent" ? 0 : targetNode.id;
+                            ;
+                            data[dataformat.id] = curDragNodes[0].id;
+                            $.ajax({
+                                type: "GET",
+                                url: editUrl,
+                                data: data,
+                                dataType: "json",
+                                success: function (data) {
+                                    if (data.status == "success" || data.status == "y") {
+                                        layer.msg(data.info, 2, 1)
+                                    } else {
+                                        layer.msg(data.info, 2)
+                                    }
+                                    refreshdata();
+                                }
+                            });
+                        }, function (e) {
+                            refreshdata();
+                        });
+                    }
+
+                    function onExpand(event, treeId, treeNode) {
+                        //if (treeNode === autoExpandNode) {
+                        //	className = (className === "dark" ? "":"dark");
+                        //}
+                    }
+                });
+                //-->
+            </script>
+            <div class="text-align-center mt-10"><input type="button" class="btn btn-default" id="changeE" value="刷新树"/>
+            </div>
+            <script>
+                $(function () {
+                    $("#changeE").click(function () {
+                        $("#demoLeft").trigger("refresh", function () {
+                            //刷新内容
+                        })
+                    })
+                })
+            </script>
+        </div>
+    </div>
+    <div id="tid190402984-body" class="trans togglebodypart ">
+        <div class="tinyheaderTools form-inline ">
+                        		<span class="r">
+			每页显示条数
+			<select class="form-control" name="pagesize" id="table-ss2pageSize">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="35">35</option>
+                <option value="100000000">全部</option>
+            </select>
+	</span>
+            <a href="#" class="btn btn-danger btn-sm">状态</a>
+            <a href="#" class="btn btn-default btn-sm">产品</a>
+            <a href="#" class="btn btn-success btn-sm">Bug</a>
+            <a href="#" class="btn btn-primary btn-sm">工程</a>
+            <a href="#" class="btn btn-info btn-sm">历史</a>
+            <a href="#" class="btn btn-warning btn-sm">相关</a>
+        </div>
+        <div class="clear"></div>
+        <div class="table-responsive">
+            <table class="dataTable tinytable table table-hover" id="table-ss2" data-url="/static/data/tinytabledata.pagelet"
+                   data-url-real="/static/data/tinytabledata.pagelet">
+                <thead>
+                <tr>
+                    <th width="6">
+                        <div style=";white-space: nowrap;margin-right:5px;"><input type="checkbox" name="allck" value=""></div>
+                    </th>
+                    <th rel="sortname" class="sorting sorting_desc">
+                        <div style=";white-space: nowrap;margin-right:5px;">姓名</div>
+                    </th>
+                    <th rel="sortname" class="">
+                        <div style=";white-space: nowrap;margin-right:5px;">城市</div>
+                    </th>
+                    <th rel="sortname" class="">
+                        <div style=";white-space: nowrap;margin-right:5px;">办公室</div>
+                    </th>
+                    <th rel="sortname" style="color:#f00" class="sorting">
+                        <div style="color:#f00;white-space: nowrap;margin-right:5px;">年龄</div>
+                    </th>
+                    <th rel="sortname" class="sorting">
+                        <div style=";white-space: nowrap;margin-right:5px;">就职日期</div>
+                    </th>
+                    <th rel="sortname" class="sorting">
+                        <div style=";white-space: nowrap;margin-right:5px;">薪资</div>
+                    </th>
+                    <th rel="sortname" class="sorting">
+                        <div style=";white-space: nowrap;margin-right:5px;">操作</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="table-ss2-Body">
+                </tbody>
+            </table>
+        </div>
+        <div class="tinytableNav">
+            <div class="pagination-sm r" id="table-ss2-nav"></div>
+            显示 <span id="table-ss2-currentItemInfo"></span> 总共有 <span id="table-ss2-allnum"></span> 条目 <span
+                id="table-ss2-msgInfo"></span>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $("#table-ss2").on("initnav refresh init", function () {//currentPage
+                    var url = $('#table-ss2').attr("data-url");
+                    $("#table-ss2pageSize").attr("name", "");
+                    if ($("#table-ss2form").size() > 0) {
+                        var url = url + (url.indexOf("?") > 0 ? "&" : "?") + $("#table-ss2form").formSerialize();
+                    }
+                    $('#table-ss2').attr("data-url-real", url);
+                    getInfo(1, 1);
+                });
+                $("#table-ss2").on("change:url", function (e, url) {
+                    $(this).attr("data-url", url);
+                });
+                function getInfo(page, initnav) {
+                    var order;
+                    var ordertype;
+                    var pageSize = $("#table-ss2pageSize").val();
+                    if (!pageSize) pageSize = 10;
+                    if ($("#table-ss2 th.sorting_desc").size() > 0) {
+                        order = $("#table-ss2 th.sorting_desc").eq(0).attr("rel");
+                        ordertype = "desc";
+                    } else if ($("#table-ss2 th.sorting_asc").size() > 0) {
+                        order = $("#table-ss2 th.sorting_asc").eq(0).attr("rel");
+                        ordertype = "asc";
+                    }
+
+                    $.ajax({
+                        type: "GET",
+                        url: $('#table-ss2').attr("data-url-real"),
+                        data: {
+                            page: page,
+                            pagesize: pageSize,
+                            pageSize: pageSize,
+                            order: order,
+                            ordertype: ordertype,
+                            orderType: ordertype,
+                            limit: pageSize,
+                            start: (page - 1) * pageSize,
+                            tinytableid: "table-ss2"
+                        },
+                        dataType: "html",
+                        cache: false,
+                        success: function (a) {
+                            var $tpl = $("<div></div>").html(a);
+                            var msgInfo = $tpl.children("div.tb-msg-box").html();
+                            $("#table-ss2-msgInfo").html(msgInfo);
+                            var nums = $tpl.children("input[name=records]").val();
+                            $("#table-ss2>tbody").remove();
+                            var firstTagName = $tpl.children(":first").get(0).tagName.toLowerCase();
+                            if (firstTagName == "meta" || firstTagName == "html" || firstTagName == "body") {
+                                a = "<div style='text-align:center'>系统错误</div>";
+                            }
+                            if (!nums && firstTagName != "<tr>") {
+                                $('#table-ss2-nav').parent().hide();
+                                $("#table-ss2").append("<tbody><tr><td colspan='20'>" + a + "</td><tr></tbody>");
+                            } else {
+                                $('#table-ss2-nav').parent().show();
+                                $("#table-ss2").append("<tbody>" + a + "</tbody>");
+                            }
+                            if (initnav != undefined) {
+                                $('#table-ss2').attr("data-num", nums);
+                                $("#table-ss2-allnum").html($('#table-ss2').attr("data-num"));
+                                setPageList(nums, pageSize, page)
+                            }
+                            var pageMaxNum = page * pageSize;
+                            if (page * pageSize > parseInt($('#table-ss2').attr("data-num"))) {
+                                pageMaxNum = $('#table-ss2').attr("data-num");
+                            }
+                            var pageMinNum = (page - 1) * pageSize + 1;
+                            if (nums == 0) {
+                                pageMinNum = pageMaxNum = 0;
+                            }
+                            $("#table-ss2-currentItemInfo").html(pageMinNum + "-" + pageMaxNum);
+                        }
+                    });
+                }
+
+                function setPageList(nums, pageSize, currentPage) {
+                    var showcontent = false;
+                    $('#table-ss2-nav').html("<div></div>");
+                    if (nums == 0) return false;
+                    if (!currentPage) currentPage = 1;
+                    var totalPages = Math.ceil(nums / pageSize);
+                    $('#table-ss2-nav div').twbsPagination({
+                        totalPages: totalPages,
+                        visiblePages: totalPages > 7 ? 7 : totalPages,
+                        startPage: currentPage,
+                        onPageClick: function (event, page) {
+                            if (!showcontent) {
+                                showcontent = true;
+                                return;
+                            }
+                            getInfo(page);
+                        },
+                        hrefVariable: "pagenum",
+                        version: '1.1'
+                    });
+                }
+
+                $("#table-ss2").trigger("initnav");
+                $("#table-ss2pageSize").on("change", function () {
+                    $("#table-ss2").trigger("initnav");
+                });
+                $("#table-ss2").on("click", "th.sorting", function () {
+                    var hasdesc = false;
+                    if ($(this).hasClass("sorting_desc")) {
+                        hasdesc = true;
+                    }
+                    $("#table-ss2 th").removeClass("sorting_desc sorting_asc");
+                    if (hasdesc) {
+                        $(this).addClass("sorting_asc");
+                    } else {
+                        $(this).addClass("sorting_desc");
+                    }
+                    $("#table-ss2").trigger("initnav");
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $("#table-ss2 th input:checkbox").on("click", function () {
+                    var that = this;
+                    $(this).closest("table").find("tr > td:first-child input:checkbox").each(function () {
+                        if (this.disabled) {
+                            return;
+                        }
+                        this.checked = that.checked;
+                    });
+                });
+                $("#table-ss2").on("click", ".Item-Remove", function () {
+                    var that = this;
+                    layer.confirm('确定要删除该记录？', function (index) {
+                        $.ajax({
+                            url: $(that).attr("data-url"),
+                            data: {id: $(that).attr("data-id")},
+                            dataType: "json",
+                            success: function (data) {
+                                if (data.status == "success" || data.status == "y") {
+                                    layer.msg(data.info, 2, 1);
+                                    setTimeout(function () {
+                                        layer.closeAll();
+                                        $("#table-ss2").trigger("refresh");
+                                    }, 300);
+                                } else {
+                                    var msg = data.info ? data.info : "系统出错";
+                                    layer.msg(msg);
+                                }
+                            },
+                            error: function () {
+                                layer.msg("系统出错");
+                            }
+                        });
+
+                    });
+                }).on("click", ">tbody>tr>td", function (e) {
+                    if ($(this).find("a,input,button").size() == 0) {
+                        $(this).parent().find("input[type=checkbox]").trigger("click");
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $('#table-ss2').on('click', '.delBtn', function (e) {
+                    user_del(this, '1');
+                });
+            })
+        </script>
+        <div id="myModal" class="modal hide fade " tabindex="-1"
+             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <span class="glyphicon glyphicon-fullscreen"></span>
+                <span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+
+                <h3>对话框标题</h3>
+            </div>
+            <div class="modal-body  ">
+                <div class="clear"><p>对话框内容…</p></div>
+                <div class="clear"></div>
+            </div>
+            <div class="modal-footer ">
+                <button class="btn radius btn-primary " data-submit="modal">
+                    确定
+                </button>
+                <button class="btn radius " data-dismiss="modal" aria-hidden="true">
+                    关闭
+                </button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            <!--
+            $(function () {
+                $("#myModal").on("close", function (e) {
+                    $(this).modal('hide');
+                })
+            });
+            //-->
+        </script>
+    </div>
+</div>
+<script type="text/javascript">
+    <!--
+    $(function () {
+        if ($("#tid190402984").hasClass("open")) {
+            $("#tid190402984-ico i").attr("class", "icon-caret-left");
+        }
+        $("#tid190402984-ico").on("click", function () {
+            $("#tid190402984").toggleClass("open");
+            $(this).find("i").toggleClass("icon-caret-left icon-caret-right");
+        });
+    });
+    //-->
+</script>

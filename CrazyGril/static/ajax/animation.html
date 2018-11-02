@@ -1,0 +1,66 @@
+<h1 class="page_title">
+		动画效果	</h1>
+	<div class="codeView bs-docs-example ">
+			<input class="btn btn-primary radius hui-animation " type="button" value="淡入" data-tra="Tiny-fadein"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡入-从上" data-tra="Tiny-fadeinT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡入-从右" data-tra="Tiny-fadeinR"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡入-从下" data-tra="Tiny-fadeinB"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡入-从左" data-tra="Tiny-fadeinL"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡出" data-tra="Tiny-fadeout"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡出-向上" data-tra="Tiny-fadeoutT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡出-向右" data-tra="Tiny-fadeoutR"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡出-向下" data-tra="Tiny-fadeoutB"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="淡出-向左" data-tra="Tiny-fadeoutL"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹跳" data-tra="Tiny-bounce"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹入" data-tra="Tiny-bouncein"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹入-从上" data-tra="Tiny-bounceinT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹入-从右" data-tra="Tiny-bounceinR"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹入-从下" data-tra="Tiny-bounceinB"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹入-从左" data-tra="Tiny-bounceinL"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹出" data-tra="Tiny-bounceout"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹出-向上" data-tra="Tiny-bounceoutT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹出-向右" data-tra="Tiny-bounceoutR"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹出-向下" data-tra="Tiny-bounceoutB"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="弹出-向左" data-tra="Tiny-bounceoutL"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转入" data-tra="Tiny-rotatein"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转入-从左上" data-tra="Tiny-rotateinLT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转入-从右上" data-tra="Tiny-rotateinRT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转入-从右下" data-tra="Tiny-rotateinRB"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转出" data-tra="Tiny-rotateout"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转出-向左上" data-tra="Tiny-rotateoutLT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转出-向左下" data-tra="Tiny-rotateoutLB"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="转出-向右上" data-tra="Tiny-rotateoutRT"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="翻转" data-tra="Tiny-flip"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="翻入-X轴" data-tra="Tiny-flipinX"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="翻入-Y轴" data-tra="Tiny-flipinY"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="翻出-X轴" data-tra="Tiny-flipoutX"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="翻出-Y轴" data-tra="Tiny-flipoutY"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="闪烁" data-tra="Tiny-flash"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="震颤" data-tra="Tiny-shake"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="摇摆" data-tra="Tiny-swing"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="摇晃" data-tra="Tiny-wobble"/>
+	<input class="btn btn-primary radius hui-animation " type="button" value="震铃" data-tra="Tiny-ring"/>
+	<div class="text-c mt-30" >
+			<input id="text" type="button" value="测试效果"			/>
+	</div>
+	</div>
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.animation包即可</span></pre>
+<script type="text/javascript">
+	$('.hui-animation').on('click',function(){
+		var tra=$(this).attr('data-tra');
+		$('#text').val(tra);
+		$('#text').removeClass();
+	 	$('#text').addClass(tra);
+	})
+	$('#text').on({
+		'animationend':function(){
+			$('#text').removeClass();
+		},
+		'webkitAnimationEnd':function(){
+			$('#text').removeClass();
+		},
+	})
+</script>
+<style>.hui-animation{margin-right: 20px;margin-top: 10px;}</style>

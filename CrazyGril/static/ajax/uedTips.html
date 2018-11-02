@@ -1,0 +1,80 @@
+<h2>
+		1 UED提示	</h2>
+	<div class="codeView bs-docs-example ">
+				<div class="widget-body">
+			<div class="row">
+					<table class="table table-bordered">
+						<thead>						<th style="width:40%;font-size:15px">
+		点击按钮4种不同提示效果	</th>
+						<th style="width:20%;font-size:15px">
+		隐藏弹出层	</th>
+						<th style="width:40%;font-size:15px">
+		点击按钮后3秒后自动隐藏	</th>
+			</thead>
+				<tbody>
+					<tr>
+											<td style="padding-bottom:20px;">
+								<input class="btn btn-default" type="button" value="图标1" onclick="clickme(1)" />
+							<input class="btn btn-default" type="button" value="图标4" onclick="clickme(4)" />
+							<input class="btn btn-default" type="button" value="图标5" onclick="clickme(5)" />
+							<input class="btn btn-default" type="button" value="图标6" onclick="clickme(6)" />
+						</td>
+						<td style="padding-bottom:20px;">
+								<input class="btn btn-default" type="button" value="隐藏" onclick="clickhide()" />
+						</td>
+						<td style="padding-bottom:20px;">
+								<input class="btn btn-default" type="button" value="图标1" onclick="clickautohide(1)" />
+							<input class="btn btn-default" type="button" value="图标4" onclick="clickautohide(4)" />
+							<input class="btn btn-default" type="button" value="图标5" onclick="clickautohide(5)" />
+							<input class="btn btn-default" type="button" value="图标6" onclick="clickautohide(6)" />
+						</td>
+								</tr>
+	</tbody>
+			</table>
+		</div>
+	</div>
+	<script>
+		function clickme(i){
+			var tip = "";
+			switch(i){
+				case 1:
+					tip = "服务器繁忙，请稍后再试。";
+				break;
+				case 4:
+					tip = "设置成功！";
+				break;
+				case 5:
+					tip = "数据拉取失败";
+				break;
+				case 6:
+					tip = "正在加载中，请稍后...";
+				break;
+			}
+			ZENG.msgbox.show(tip, i);
+		}
+		function clickhide(){
+			ZENG.msgbox._hide();
+		}
+		function clickautohide(i){
+			var tip = "";
+			switch(i){
+				case 1:
+					tip = "服务器繁忙，请稍后再试。";
+				break;
+				case 4:
+					tip = "设置成功！";
+				break;
+				case 5:
+					tip = "数据拉取失败";
+				break;
+				case 6:
+					tip = "正在加载中，请稍后...";
+				break;
+			}
+			ZENG.msgbox.show(tip, i, 3000);
+		}
+	</script>
+	</div>
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.uedTips包</span></pre>

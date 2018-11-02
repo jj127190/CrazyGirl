@@ -1,0 +1,230 @@
+{% load staticfiles %}
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        var qcloud = {};
+        $('[_t_nav]').hover(function () {
+            var _nav = $(this).attr('_t_nav');
+            clearTimeout(qcloud[_nav + '_timer']);
+            qcloud[_nav + '_timer'] = setTimeout(function () {
+                $('[_t_nav]').each(function () {
+                    $(this)[_nav == $(this).attr('_t_nav') ? 'addClass' : 'removeClass']('nav-up-selected');
+                });
+                $('#' + _nav).stop(true, true).slideDown(200);
+            }, 150);
+        }, function () {
+            var _nav = $(this).attr('_t_nav');
+            clearTimeout(qcloud[_nav + '_timer']);
+            qcloud[_nav + '_timer'] = setTimeout(function () {
+                $('[_t_nav]').removeClass('nav-up-selected');
+                $('#' + _nav).stop(true, true).slideUp(200);
+            }, 150);
+        });
+    });
+</script>
+<div id="main-navbar" class="navbar navbar-inverse" role="navigation">
+    <!-- Main menu toggle -->
+    <button type="button" id="main-menu-toggle">
+        <i class="navbar-icon fa fa-bars icon"></i>
+        <span class="hide-menu-text"></span>
+    </button>
+
+    <div class="navigation-up">
+        <!-- navbar-header start-->
+        <div class="navbar-header">
+            <!-- Logo -->
+            <a href="javascript:void(0);" class="navbar-brand">
+{#                <div><img title="tv.cctv.com" src="{% static 'img/main-navbar-logo.png' %}"></div>#}
+                <div><font style="color: snow;font-size: 23px">央视网</font></div>
+                <!--TinyAdmin-->
+            </a>
+
+            <!-- navbar-toggle start -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#main-navbar-collapse"><i
+                    class="navbar-icon fa fa-bars"></i></button>
+            <!-- navbar-toggle end -->
+        </div>
+        <div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="javascript:void(0);" _t_nav="webmanage">总览</a></li>
+                </ul>
+                <div class="right clearfix">
+                    <ul class="nav navbar-nav pull-right right-navbar-nav">
+                        <li class="fullscreen">
+                            <a href="javascript:void(0);" onclick="launchFullScreen(document.documentElement);"
+                               title="全屏"><i
+                                    class="fa fa-fullscreen"></i></a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle help" data-toggle="dropdown">
+                                <span>关于</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://10.127.138.130/showdoc/index.php?s=/1" target="_Blank"><i class="dropdown-icon fa icon-tag"></i>&nbsp;&nbsp;开发规范管理</a>
+                                </li>
+                                <li><a href="/update_time_line"><i class="dropdown-icon fa icon-tag"></i>&nbsp;&nbsp;版本更新</a>
+                                </li>
+                                <li><a href="/feedback"><i class="dropdown-icon fa icon-tag"></i>&nbsp;&nbsp;意见反馈</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                                <img src="{% static 'img/portraits/1.jpg' %}" alt="">
+                                <span>{{ username }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/oauth/logout"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;退出</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="navigation-down">
+            <div id="webmanage" class="nav-down-menu menu-1" style="display: none;" _t_nav="webmanage">
+                <div class="navigation-down-inner">
+                    {% if 'sysadmin' in login_group or 'web' in login_group %}
+                        <dl>
+                            <dt>域名管理</dt>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.compute1" href="{% url 'webmanage:domain_list' %}"
+                                   onclick="set_cookie_menu(this)" data-treeid="2.2.1">二级域名</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.compute2" href="{% url 'webmanage:subdomain_list' %}"
+                                   onclick="set_cookie_menu(this)" data-treeid="2.2.2">三级域名</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.compute3"
+                                   href="{% url 'webmanage:record_detail_list' %}" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.2.3">记录详情</a>
+                            </dd>
+                        </dl>
+                    {% endif %}
+                    <dl>
+                        <dt>任务管理</dt>
+                        <dd>
+                            <a hotrep="hp.header.webmanage.monitoring1" href=""
+                               onclick="set_cookie_menu(this)" data-treeid="1.1">其他平台1</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.webmanage.monitoring2" href=""
+                               onclick="set_cookie_menu(this)" data-treeid="1.2">其他平台2</a>
+                        </dd>
+                    </dl>
+                    {% if 'sysadmin' in login_group or 'web' in login_group %}
+                        <dl>
+                            <dt>防火墙管理</dt>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.storage1"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.4.1">防火墙管理</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.storage4"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.4.3">防火墙下发</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>配置文件管理</dt>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring1"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.5.1">配置文件模板</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring2" href="" %}"
+                                   onclick="set_cookie_menu(this)" data-treeid="2.5.2">业务配置文件</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring3" href=""
+                                   onclick="set_cookie_menu(this)" data-treeid="2.5.4">配置文件下发</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>业务初始化</dt>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring1"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.6.1">脚本管理</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring2"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.6.2">初始化管理</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring3" href=""
+                                   onclick="set_cookie_menu(this)" data-treeid="2.6.4">流程分发</a>
+                            </dd>
+                        </dl>
+                    {% endif %}
+
+                    {% if 'sysadmin' in login_group or 'net' in login_group %}
+                        <dl>
+                            <dt>网络管理</dt>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring1"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="3.1.1">ACL规则管理</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring2" href=""
+                                   onclick="set_cookie_menu(this)" data-treeid="3.2.1">VLAN管理</a>
+                            </dd>
+                        </dl>
+                    {% endif %}
+
+                    <dl>
+                        <dt>统计信息</dt>
+                        {% if 'sysadmin' in login_group or 'pm' in login_group %}
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring1"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="4.1.1">openstack创建日志</a>
+                            </dd>
+                        {% endif %}
+                        {% if 'sysadmin' in login_group or 'net' in login_group %}
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring2"
+                                   href="" onclick="set_cookie_menu(this)"
+                                   data-treeid="2.7.1">域名访问量图</a>
+                            </dd>
+                            <dd>
+                                <a hotrep="hp.header.webmanage.monitoring3"
+                                   href=""
+                                   onclick="set_cookie_menu(this)" data-treeid="2.7.2">域名访问量表</a>
+                            </dd>
+                        {% endif %}
+                        <dd>
+                            <a hotrep="hp.header.webmanage.monitoring4" href=""
+                               onclick="set_cookie_menu(this)" data-treeid="5.1">其他平台1</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>其他平台</dt>
+                        <dd>
+                            <a hotrep="hp.header.webmanage.monitoring1" href="http://paas.cyou.com">跳转其他平台</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.webmanage.monitoring2" href="http://monkey.cyou-inc.com">turn1</a>
+                        </dd>
+                        <dd>
+                            <a hotrep="hp.header.webmanage.monitoring3" href="http://pxe.cyou.com">turn1</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- main-navbar-collapse end -->
+    </div>
+    <!-- navbar-inner end -->
+</div>

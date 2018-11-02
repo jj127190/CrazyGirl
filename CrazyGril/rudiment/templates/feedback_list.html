@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'multi-select/css/multi-select.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap-table/bootstrap-table.min.css' %}">
+    <link rel="stylesheet" href="{% static 'daterangepicker/daterangepicker.css' %}">
+{% endblock %}
+{% block main-navbar %}
+    <ul class="navigation main-menu" id="self-menu">
+        <li>
+            <a href="{% url 'rudiment:feedback' %}" class="navitem"  title="意见反馈"
+               data-treeid="0"><i
+                    class="menu-icon fa fa-home"></i><span class="mm-text">意见反馈</span></a>
+        </li>
+        <li>
+            <a href="{% url 'rudiment:list_feedback' %}" class="navitem"  title="意见列表"
+               data-treeid="0"><i
+                    class="menu-icon fa fa-home"></i><span class="mm-text">意见列表</span></a>
+        </li>
+    </ul>
+
+{% endblock main-navbar %}
+{% block content %}
+    <div class="codeView">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#example').dataTable({
+                    "bSort": true,
+                    "aoColumnDefs": [
+                        {"bSortable": false, "aTargets": "unsortable"}
+                    ],
+                });
+            });
+        </script>
+        <div class="dataTablebox">
+            <header>
+            <span class="widget-icon">
+                <i class="fa fa-table ">
+                </i>
+     	    </span>
+                意见反馈表
+            </header>
+            <table id="example" class="table display" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th class="unsortable">标题</th>
+                    <th>内容</th>
+                    <th>时间</th>
+                    <th>建议人</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if obj %}
+                    {% for item in obj %}
+                        <tr class="user{{ item.id }}">
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.content }}</td>
+                            <td>{{ item.create_time }}</td>
+                            <td>{{ item.user }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

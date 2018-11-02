@@ -1,0 +1,27 @@
+<h2>
+		用户评论	</h2>
+	<div class="codeView bs-docs-example ">
+				<div id="articleComment">
+			</div>
+	<script type="text/javascript">
+		$.getJSON("/static/org/tinygroup/userComment/data/userComment.js", function(agoComment){
+		  $("#articleComment").zyComment({
+			"width":"355",
+			"height":"33",
+			"agoComment":agoComment,
+			"callback":function(comment){
+				console.info("填写内容返回值：");
+				console.info(comment);
+				
+				// 添加新的评论
+			}
+			});
+		});
+	</script>
+		</div>
+
+
+
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.userComment包</span></pre>

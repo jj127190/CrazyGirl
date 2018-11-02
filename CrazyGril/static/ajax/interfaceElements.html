@@ -1,0 +1,159 @@
+<h1 class="page_title">
+    界面元素 </h1>
+<p>
+    全新开发一些独特的界面小部件，允许比常规的小部件拥有更多的特性。^_^ </p>
+<h2>
+    1 数字智能加减Spinner </h2>
+<div class="codeView bs-docs-example ">
+    <input type="text" class="spinnerExample" value=""/>
+    <script type="text/javascript">
+        $('.spinnerExample').spinner({});
+    </script>
+</div>
+
+
+<h2>
+    2 字数统计 </h2>
+<div class="codeView bs-docs-example ">
+    <form id="edit_myfrom" method="post" class="form form-horizontal responsive formSty">
+        <p id="numtj">你还可以输入<var style="color:#C00">--</var>个字符。</p>
+
+        <p class="textinput">
+            <textarea cols="" rows="" maxlength="110" style="height:60px;width:400px; padding:6px;">字数统计</textarea>
+        </p>
+    </form>
+    <script language="javascript">
+        $(document).ready(function () {
+            var text = $("#edit_myfrom textarea").val();
+            var counter = text.length;
+            $("#numtj var").text(110 - counter);
+            $(document).keyup(function () {
+                var text = $("#edit_myfrom textarea").val();
+                var counter = text.length;
+                $("#numtj var").text(110 - counter);
+            });
+        });
+    </script>
+</div>
+
+
+<h2>
+    3 左右滑动效果选取数值 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="selectionBox">
+        <input type="hidden" class="" value=""/>
+        <input type="hidden" class="single-slider" value="23"/>
+        <button id="g1" class="btn .single-slider">获取值</button>
+    </div>
+    <div class="selectionBox">
+        <input type="hidden" class="range-slider" value="25,75"/>
+        <button id="g2" class="btn .range-slider">获取值</button>
+    </div>
+    <script>
+        $(function () {
+            $('.single-slider').jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0, 25, 50, 75, 100],
+                format: '%s',
+                width: 300,
+                showLabels: true,
+                showScale: true
+            });
+            $('.range-slider').jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0, 25, 50, 75, 100],
+                format: '%s',
+                width: 300,
+                showLabels: true,
+                showScale: true
+            });
+            $("#g1").click(function () {
+                var aa = $(".single-slider").val();
+                alert(aa);
+            });
+            $("#g2").click(function () {
+                var aa = $(".range-slider").val();
+                alert(aa);
+            });
+        });
+    </script>
+</div>
+
+
+<h2>
+    4 基于bootstrap数据分页 </h2>
+<div class="codeView bs-docs-example ">
+    <section id="main-content">
+    </section>
+
+
+    <ul class="pagination-sm" id="nvanva22"></ul>
+    <script type="text/javascript">
+        $(function () {
+            var startPage = 1;
+            if (startPage < 1) startPage = 1;
+            $('#nvanva22').twbsPagination({
+                totalPages: 21,
+                visiblePages: 10,
+                num_edge_entries: true,
+                startPage: startPage,
+                href: "/../page/interfaceElement/8.4.page" + ("/../page/interfaceElement/8.4.page".indexOf("?") < 0 ? "?" : "&") + "page=pagenum",
+                hrefVariable: "pagenum",
+                version: '1.1'
+            });
+        });
+    </script>
+    <br>
+    AJAX加载模式
+    <div id="bodyconentrap" class="">
+
+    </div>
+    <ul class="pagination-sm" id="bodyconentrap-nav"></ul>
+    <script type="text/javascript">
+        $(function () {
+            var startPage = 1;
+            var totalPages = 10;
+            if (totalPages == "none") {
+                totalPages = totalPages;
+            } else {
+                totalPages = 10;
+            }
+            var bodyconentrapNav = $('#bodyconentrap-nav').twbsPagination({
+                totalPages: 10,
+                visiblePages: 10,
+                startPage: startPage,
+                onPageClick: function (event, page) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/../page/table/3.5.pagelet",
+                        data: {page: page},
+                        dataType: "html",
+                        cache: !0,
+                        beforeSend: function () {
+                            $("#bodyconentrap").html(' 加载...');
+                        },
+                        success: function (a) {
+                            $("#bodyconentrap").css({
+                                opacity: "0.0"
+                            }).html(a).delay(50).animate({
+                                        opacity: "1.0"
+                                    },
+                                    300)
+                        }
+                    });
+                },
+                hrefVariable: "pagenum",
+                version: '1.1'
+            });
+        });
+    </script>
+</div>
+
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖interfaceElements包</span></pre>

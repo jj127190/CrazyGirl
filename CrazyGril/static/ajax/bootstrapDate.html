@@ -1,0 +1,79 @@
+<h1 class="page_title">
+		日期控件	</h1>
+ 	<p >
+		温馨提示：在单独使用某个日期组件时外层要有个div盒子内加id="daterangepicker-position"即可。^_^	</p>
+	<div class="codeView bs-docs-example ">
+				<h4>基本的日期范围选择</h4>
+		 <form class="form form-horizontal responsive form-horizontal">
+	 						<div class="control-group">
+		<div class="controls">
+			<div class="input-prepend input-group">
+				<span class="add-on input-group-addon">
+					<i class="glyphicon glyphicon-calendar fa fa-calendar">
+					</i>
+				</span>
+				<input type="text" style="width:200px" name="reservation" id="reservation"
+				class="form-control" value="2015/03/18 - 2015/03/23" />
+			</div>
+		</div>
+	</div>
+		 </form>
+	<script type="text/javascript">
+			$(document).ready(function() {
+				var dataval=$('#reservation').val();
+				var datestr=dataval?dataval:moment().format('YYYY-MM-DD');
+				$('#reservation').daterangepicker({1:1 ,startDate:datestr});
+			});
+	</script>
+<br/>
+	<h4>基本单日期选择</h4>
+		<div class="input-prepend input-group">		<span class="add-on input-group-addon">
+			<i class="glyphicon glyphicon-calendar fa fa-calendar">
+			</i>
+		</span>
+		<input type="text" name="birthday" class="form-control " id="dateput427101075" value=""  nullmsg="日期不能为空" datatype="*" style="width:200px" placeholder="yMdHmswW分别代表年月日时分秒星期周,你可以任意组合这些元素来自定义你个性化的日期格式."/>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+						var dateFormat='YYYY-MM-DD HH:mm:ss';
+			dateFormat=dateFormat?dateFormat:'yyyy-MM-dd';// HH:mm:ss
+			dateFormat=dateFormat.replace(/Y/g, "y").replace("ii", "mm").replace(/D/g, "d");
+			//console.log(dateFormat);
+			$("#dateput427101075").on("click",function(){
+				WdatePicker({
+					startDate:'%y-%M-01 00:00:00',dateFmt:dateFormat,
+					onpicked:function(){$("input[name='birthday']").trigger('blur change')}
+				})
+			});
+					});
+	</script>
+
+
+
+<br/>
+	<h4>日期范围和时间选择器与30分钟增量</h4>
+		 <form class="form form-horizontal responsive form-horizontal">
+	 						<div class="control-group">
+		<div class="controls">
+			<div class="input-prepend input-group">
+				<span class="add-on input-group-addon">
+					<i class="glyphicon glyphicon-calendar fa fa-calendar">
+					</i>
+				</span>
+				<input type="text" style="width:400px" name="reservation" id="reservationtime"
+				class="form-control" value="2015/08/01 01:00 - 2015/08/01 01:30" />
+			</div>
+		</div>
+	</div>
+		 </form>
+	<script type="text/javascript">
+			$(document).ready(function() {
+				var dataval=$('#reservationtime').val();
+				var datestr=dataval?dataval:moment().format('YYYY-MM-DD');
+				$('#reservationtime').daterangepicker({timePicker: true,timePickerIncrement: 30,format: 'YYYY/MM/DD HH:mm ' ,startDate:datestr});
+			});
+	</script>
+	</div>
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.form包</span></pre>

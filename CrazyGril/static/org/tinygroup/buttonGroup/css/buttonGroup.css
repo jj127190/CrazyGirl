@@ -1,0 +1,8 @@
+@charset "utf-8";
+/*4.1 按钮组*/
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {border-bottom-right-radius: 0;border-top-right-radius: 0}
+.btn-group > .btn:first-child {margin-left: 0}
+.btn-group > .btn, .btn-group-stacked > .btn {float: left;position: relative}
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {border-radius: 0}
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {margin-left: -1px}
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {border-bottom-left-radius: 0;border-top-left-radius: 0}

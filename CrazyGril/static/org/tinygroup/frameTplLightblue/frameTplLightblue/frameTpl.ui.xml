@@ -1,0 +1,18 @@
+<ui-components>
+    <ui-component name="frameTplLightblue" dependencies="frameCommon">
+        <css-resource>
+			/org/tinygroup/frameTplLightblue/assets/stylesheets/themes.min.css
+		</css-resource>
+		<js-codelet>
+           tinyTplList.push({sort:7,name: 'frost',  title: '浅蓝', img: contextPath+'/img/themes/light-blue.png' });
+        </js-codelet>
+		<!-- <compatibilityResources class="compatibility-resources">
+			<compatibility-resource condition="lt IE 9">
+				<js-resource>
+					/org/tinygroup/frameCommon/assets/javascripts/ie.min.js
+				</js-resource>
+			</compatibility-resource>
+		</compatibilityResources> -->
+		<description>TinyUi框架模板浅蓝</description>
+    </ui-component>
+</ui-components>

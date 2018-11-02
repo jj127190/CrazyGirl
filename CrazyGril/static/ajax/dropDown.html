@@ -1,0 +1,138 @@
+<h1 class="page_title">菜单</h1>
+<h2>1 下拉菜单 </h2>
+<div class="codeView bs-docs-example ">
+    <div class="group cl">
+        <span class="dropDown dropDown_click  ">
+            <a class="dropDown_A" href="#">点击菜单 </a>
+            <span class="dropDown-menu box-shadow">
+                <ul>
+                    <li><a href="#" tabindex="-1" data-toggle="tab">
+                        菜单一 </a></li>
+                    <li><a href="#" tabindex="-1" data-toggle="tab">
+                        菜单二 </a></li>
+                </ul>
+            </span>
+        </span>
+        <span class="dropDown dropDown_hover  ">
+            <a class="dropDown_A" href="#">经过菜单 </a>
+            <span class="dropDown-menu box-shadow">
+                <ul>
+                    <li><a href="#" tabindex="-1" data-toggle="tab">
+                        菜单一 </a></li>
+                    <li><a href="#" tabindex="-1" data-toggle="tab">
+                        菜单二 </a></li>
+                </ul>
+            </span>
+        </span>
+    </div>
+</div>
+
+
+<h2>
+    2 Bootstrap按钮下拉菜单及大小 </h2>
+<p>
+    菜单也可以往上拉伸的，只需要简单地向父 <b>
+    .btn-group </b>
+    容器添加 <b>
+    .dropup </b>
+    即可。 </p>
+<p>
+    您也可以使用带有各种大小按钮的下拉菜单，只需要简单地在 <b>
+    .btn </b>
+    容器添加 <b>
+    .size-MINI、.size-S、.size-M、.size-L、.size-XL </b>
+    。 </p>
+<div class="codeView bs-docs-example ">
+    <div class="btn-group ">
+        <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+            默认 <b></b>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">功能</a></li>
+            <li>
+                <a href="#">另一个功能</a></li>
+            <li>
+                <a href="#">其他</a></li>
+            <li class="divider ">
+            </li>
+            <li>
+                <a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+    <div class="btn-group ">
+        <button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown">
+            原始 <b>
+        </b>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">功能</a></li>
+            <li>
+                <a href="#">另一个功能</a></li>
+            <li>
+                <a href="#">其他</a></li>
+            <li class="divider ">
+            </li>
+            <li>
+                <a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+    <div class="btn-group ">
+        <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown">
+            成功 <b>
+        </b>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="#">功能</a></li>
+            <li>
+                <a href="#">另一个功能</a></li>
+            <li>
+                <a href="#">其他</a></li>
+            <li class="divider ">
+            </li>
+            <li>
+                <a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+    <div class="btn-group ">
+        <div class="dropdown dropdownSm">
+            <a role="button" data-toggle="dropdown" class="btn btn-danger" data-target="#" href="javascript:void(0);">多级下拉<i class="caret"></i></a>
+            <ul class="dropdown-menu multi-level">
+                <li>
+                    <a href="javascript:void(0);">
+                        下拉一 </a>
+                </li>
+                <li class="dropdown-submenu">
+                    <a href="javascript:void(0);">
+                        显示子菜单 </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                子菜单一 </a>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="javascript:void(0);">
+                                子菜单二 </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:void(0);">
+                                        子菜单三 </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                子菜单一 </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h3>
+    组件包 </h3>
+<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.dropDown包即可</span></pre>

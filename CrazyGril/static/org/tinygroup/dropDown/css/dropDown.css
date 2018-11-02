@@ -1,0 +1,74 @@
+@charset "utf-8";
+/*4.3 下拉菜单
+	Name:			mod_dropDown
+	Example:		<span class="dropDown"><a class="dropDown_A" href="#">下拉菜单</a><span class="dropDown-menu"><ul><li><a href="#">菜单一</a></li><li><a href="#">菜单二</a></li></ul></span>span>
+	Explain:	
+
+*/
+.dropDown{display:inline-block}
+.dropDown_A{display:inline-block}
+.dropDown-menu{display:none;transition: all 0.3s ease}
+.dropDown:focus,.dropDown-menu:focus {outline:0}
+.dropDown-menu li.arrow{position:absolute;display:block; width:12px; height:8px; margin-top:-13px; margin-left:45px; line-height:0;/*background:url(../images/icon-jt.png) no-repeat 0 0*/}
+/*鼠标经过*/
+.dropDown.hover .dropDown_A,.dropDown.open .dropDown_A{text-decoration:none}
+/*打开菜单*/
+.dropDown.open{position:relative; z-index:99}
+.dropDown.open a:hover{}
+.dropDown.open .dropDown-menu{position:absolute;z-index:100;display:inline-block;float:left;left:0px;top: 100%;min-width:120px;margin:-1px 0 0;padding: 5px 0;background-color:#fff;background-clip: padding-box;
+border:1px solid #d6d6d6;border:1px solid rgba(0,0,0,0.15);
+-webkit-box-shadow:0 6px 12px rgba(0,0,0,0.175);
+box-shadow:0 6px 12px rgba(0,0,0,0.175)}
+.dropDown.open .dropdown-menu.r {right:0;left:auto}
+.dropDown.open .dropDown-menu li{float:none;display:inline}
+.dropDown-menu li a{color:#666}
+.dropDown.open .dropDown-menu li a{display:block;clear: both;line-height:1.428571429;padding:4px 15px;padding-right:30px;white-space:nowrap; text-align:left;font-weight: normal}
+.dropDown-menu li a:hover,.dropDown-menu li a:focus{background-color:#ea5944;color:#fff; text-decoration:none}
+
+/*禁用菜单*/
+.dropDown.open .dropDown-menu .disabled a,.dropDown.open .dropdown-menu .disabled a:hover,.dropDown.open .dropdown-menu .disabled a:focus{color:#999;text-decoration:none; cursor:no-drop; background-color:transparent}
+.dropDown.open .dropDown-menu li.divider{display:block;height:0px; line-height:0px;margin:9px 0;overflow:hidden; border-top:solid 1px #eee}
+
+/*每种皮肤切换 下拉菜单随之变化*/
+.dropdown-menu .dropdown-submenu:hover>a{color:#fff}
+.btn-group .dropdown .dropdown-submenu:hover>a:after{border-left-color:#fff}
+
+.theme-clean .btn-group .dropdown .btn{background:#369;border:#369 1px solid!important}
+.theme-clean .btn-group .dropdown .btn:hover{background:#368!important;background-image:none;}
+.theme-clean .dropdown-submenu:hover>a,.theme-clean .dropdownSm ul.dropdown-menu>li>a:hover{background:#369;}
+
+.theme-adminflare .btn-group .dropdown .btn{background:#418ce4;border:#418ce4 1px solid!important}
+.theme-adminflare .btn-group .dropdown .btn:hover{background:#2486e4!important;background-image:none;}
+.theme-adminflare .dropdown-submenu:hover>a,.theme-adminflare .dropdownSm ul.dropdown-menu>li>a:hover{background:#418ce4;}
+
+.theme-asphalt .btn-group .dropdown .btn{background:#3bc2a9;border:#3bc2a9 1px solid!important}
+.theme-asphalt .btn-group .dropdown .btn:hover{background:#35ae98!important;background-image:none;}
+.theme-asphalt .dropdown-submenu:hover>a,.theme-asphalt .dropdownSm ul.dropdown-menu>li>a:hover{background:#3bc2a9;}
+
+.theme-default .btn-group .dropdown .btn{background:#23272e;border:#23272e 1px solid!important}
+.theme-default .btn-group .dropdown .btn:hover{background:#333!important;background-image:none;}
+.theme-default .dropdown-submenu:hover>a,.theme-default .dropdownSm ul.dropdown-menu>li>a:hover{background:#23272e;}
+
+.theme-dust .btn-group .dropdown .btn{background:#f86149;border:#f86149 1px solid!important}
+.theme-dust .btn-group .dropdown .btn:hover{background:#f7714d!important;background-image:none;}
+.theme-dust .dropdown-submenu:hover>a,.theme-dust .dropdownSm ul.dropdown-menu>li>a:hover{background:#f86149;}
+
+.theme-fresh .btn-group .dropdown .btn{background:#94c53e;border:#94c53e 1px solid!important}
+.theme-fresh .btn-group .dropdown .btn:hover{background:#96c045!important;background-image:none;}
+.theme-fresh .dropdown-submenu:hover>a,.theme-fresh .dropdownSm ul.dropdown-menu>li>a:hover{background:#94c53e;}
+
+.theme-frost .btn-group .dropdown .btn{background:#1aaada;border:#1aaada 1px solid!important}
+.theme-frost .btn-group .dropdown .btn:hover{background:#28b6e5!important;background-image:none;}
+.theme-frost .dropdown-submenu:hover>a,.theme-frost .dropdownSm ul.dropdown-menu>li>a:hover{background:#1aaada;}
+
+.theme-purple-hills .btn-group .dropdown .btn{background:#857198;border:#857198 1px solid!important}
+.theme-purple-hills .btn-group .dropdown .btn:hover{background:#857198!important;background-image:none;}
+.theme-purple-hills .dropdown-submenu:hover>a,.theme-purple-hills .dropdownSm ul.dropdown-menu>li>a:hover{background:#857198;}
+
+.theme-silver .btn-group .dropdown .btn{background:#332;border:#332 1px solid!important}
+.theme-silver .btn-group .dropdown .btn:hover{background:#334!important;background-image:none;}
+.theme-silver .dropdown-submenu:hover>a,.theme-silver .dropdownSm ul.dropdown-menu>li>a:hover{background:#332;}
+
+.theme-white .btn-group .dropdown .btn{background:#d67632;border:#d67632 1px solid!important}
+.theme-white .btn-group .dropdown .btn:hover{background:#dd7c37!important;background-image:none;}
+.theme-white .dropdown-submenu:hover>a,.theme-white .dropdownSm ul.dropdown-menu>li>a:hover{background:#d67632;}

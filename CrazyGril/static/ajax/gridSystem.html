@@ -1,0 +1,200 @@
+﻿<!-- 主体 start -->
+
+							<h1 class="page_title">
+		栅格系统	</h1>
+	<dl  >
+				<dt>
+		为何要栅格？	</dt>
+		<dd>
+					<p >
+		做网页就像盖楼，地皮有了，这一块干啥，那一块干啥，中间留多宽的道路，提前规划很重要，只有精确到像素才能让网页看上去更规范，更便于统一维护，扩展。同时保持网站的整体风格。	</p>
+			<p >
+		栅格系统由行（row）和列（col）共同组成，通过不同的行列组合我们可以实现各种布局，内容就放在一个个的格子中，就像收纳盒一样。	</p>
+		</dd>
+	</dl>
+		<h2>
+		1 百分比栅格	</h2>
+		<p >
+		每列30px，统一向左右间距1%	</p>
+		<p >
+			<span class="label label-important">注意：</span>
+ 添加layloutBg样式名，为了直观演示，故加了背景颜色、上下间距、文字颜色，其框架本身没有样式。实际用时不需要layloutBg！	</p>
+	<div class="codeView bs-docs-example ">
+				<div class="mainPercentage">
+		<div class="row row-percentage-24 girdrap">
+		   		<div class="span-24 layloutBg">24/24</div>
+		<div class="span-23 layloutBg">23/24</div>
+ 	<div class="span-1 layloutBg">1/24</div>
+		<div class="span-22 layloutBg">22/24</div>
+ 	<div class="span-2 layloutBg">2/24</div>
+		<div class="span-21 layloutBg">21/24</div>
+ 	<div class="span-3 layloutBg">3/24</div>
+		<div class="span-20 layloutBg">20/24</div>
+ 	<div class="span-4 layloutBg">4/24</div>
+		<div class="span-19 layloutBg">19/24</div>
+ 	<div class="span-5 layloutBg">5/24</div>
+		<div class="span-18 layloutBg">18/24</div>
+ 	<div class="span-6 layloutBg">6/24</div>
+		<div class="span-17 layloutBg">17/24</div>
+ 	<div class="span-7 layloutBg">7/24</div>
+		<div class="span-16 layloutBg">16/24</div>
+ 	<div class="span-8 layloutBg">8/24</div>
+		<div class="span-15 layloutBg">15/24</div>
+ 	<div class="span-9 layloutBg">9/24</div>
+		<div class="span-14 layloutBg">14/24</div>
+ 	<div class="span-10 layloutBg">10/24</div>
+		<div class="span-13 layloutBg">13/24</div>
+ 	<div class="span-11 layloutBg">11/24</div>
+		<div class="span-12 layloutBg">12/24</div>
+ 	<div class="span-12 layloutBg">12/24</div>
+		<div class="span-11 layloutBg">11/24</div>
+ 	<div class="span-13 layloutBg">13/24</div>
+		<div class="span-10 layloutBg">10/24</div>
+ 	<div class="span-14 layloutBg">14/24</div>
+		<div class="span-9 layloutBg">9/24</div>
+	 	<div class="span-15 layloutBg">15/24</div>
+		<div class="span-8 layloutBg">8/24</div>
+	 	<div class="span-16 layloutBg">16/24</div>
+		<div class="span-7 layloutBg">7/24</div>
+	 	<div class="span-17 layloutBg">17/24</div>
+		<div class="span-6 layloutBg">6/24</div>
+	 	<div class="span-18 layloutBg">18/24</div>
+		<div class="span-5 layloutBg">5/24</div>
+	 	<div class="span-19 layloutBg">19/24</div>
+		</div>
+	</div>
+	</div>
+		<h2>
+			2  非响应式栅格系统
+	</h2>
+	<div class="codeView bs-docs-example ">
+				<div class="row-demo ">  	<div class="row cl  ">
+		    	<div class="col-1" id="test">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-2">
+		2/12(1/6)	</div>
+    	<div class="col-4">
+		4/12(1/3)	</div>
+    	<div class="col-6">
+		6/12(1/2)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-3">
+		3/12(1/4)	</div>
+    	<div class="col-9">
+		9/12(3/4)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-6">
+		6/12(1/2)	</div>
+    	<div class="col-6">
+		6/12(1/2)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-12">
+		12/12(1)	</div>
+  	</div>
+  </div>
+	</div>
+
+		<h2>
+			3  响应式栅格系统true	</h2>
+<p>默认栅格，不支持移动端响应式。如果需要支持，需要在.row 的父级增加个responsive 样式，让栅格支持移动端（宽度小于767px）响应式布局。</p>
+	<div class="codeView bs-docs-example ">
+					<div class="row-demo responsive">		  	<div class="row cl  ">
+		    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+    	<div class="col-1">
+		1/12	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-2">
+		2/12(1/6)	</div>
+    	<div class="col-4">
+		4/12(1/3)	</div>
+    	<div class="col-6">
+		6/12(1/2)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-3">
+		3/12(1/4)	</div>
+    	<div class="col-9">
+		9/12(3/4)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-6">
+		6/12(1/2)	</div>
+    	<div class="col-6">
+		6/12(1/2)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-12">
+		12/12(1)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-3">
+		偏移3/12(1/4)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-4 col-offset-4">
+		偏移4/12(1/3)	</div>
+  	</div>
+  	<div class="row cl  ">
+		    	<div class="col-6 col-offset-6">
+		偏移6/12(1/2)	</div>
+  	</div>
+	</div>
+	</div>
+<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.gridSystems包即可</span></pre>
+<style type="text/css">
+#Tiny_nav li#Huinav_2 a, #Tiny_nav li#Huinav_2 a:hover{background-color: #111; color:#fff;}
+.row-demo .row,.row-demo .col-1{ margin-top:10px}
+.row-demo [class^="col-"],.row-demo [class*=" col-"]{background-color: #f7f7f9;border: 1px solid #ddd;padding: 5px 0;text-align: center;}
+</style>    
+	

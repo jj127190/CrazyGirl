@@ -1,0 +1,1208 @@
+<h2>
+		表单实例	</h2>
+	<div class="codeView bs-docs-example ">
+		    	<form name="thisform" action="/../data/Validform_post.html" id="from730194522" method="post" class="form  "  class="">
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		是否VIP：	</label>
+			<div class="formControls col-8 ">
+					<input type="hidden" name="isvip" id="sid963356967" value="是"/>
+<input type="checkbox" class="settings-switcher" name="isvipbtn" value="1" data-class="switcher-sm" checked='checked' id="btnsid963356967"/>
+<script type="text/javascript">
+<!--
+$(function(){
+	$("#btnsid963356967").on("change",function(){
+		if(this.checked){
+			$("#sid963356967").val("是")
+		}else{
+			$("#sid963356967").val("不是")
+		}
+	});
+	$("#btnsid963356967").switcher({
+		theme: 'square',
+		on_state_content: '<span class="fa fa-check"></span>',
+		off_state_content: '<span class="fa fa-times"></span>'
+	});
+});
+//-->
+</script>
+			</div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		邮箱：	</label>
+			<div class="formControls col-8 ">
+						<input type="text" name="email" value="" class="form-control  input-text"  nullmsg="请输入邮箱！" datatype="e" placeholder="@" id="email" class="input-text"/>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		用户名：	</label>
+			<div class="formControls col-8 ">
+						<input type="text" name="username" value="" class="form-control  input-text"  ajaxurl="/../data/usercheck.pagelet" nullmsg="用户名不能为空！" datatype="*4-16" placeholder="4~16个字符，字母/中文/数字/下划线" id="username" class="input-text"/>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		密码：	</label>
+			<div class="formControls col-8 ">
+					  	<input type="password" name="password" value="" class="form-control  input-text"  nullmsg="请输入密码！" datatype="*6-18" autocomplete="off" placeholder="密码" id="password" class="input-text"/>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		密码验证：	</label>
+			<div class="formControls col-8 ">
+						<input type="password" name="password2" value="" class="form-control  input-text"  nullmsg="请再输入一次密码！" datatype="*6-18" autocomplete="off" recheck="password" placeholder="密码" id="password2" class="input-text" errormsg="您两次输入的密码不一致！"/>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		日期选择	</label>
+			<div class="formControls col-8 ">
+					<div class="date-Multiple-Select">
+<div class="dms-showrap">
+<select name="testtest" id="dms1054285635-sel" class="form-control select2" multiple="multiple" ></select></div>
+<span class="dms-selrap">
+<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+<span id="dms1054285635" class="dms-dateinput"/></span>
+</span>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var $select=$("#dms1054285635-sel");
+		$select.select2();
+		$("#dms1054285635").on("click",function(){
+			var that=this;
+			WdatePicker({
+				startDate:'%y-%M-01',dateFmt:"yyyy-MM-dd",
+				onpicked:function(){
+					setDate($(that).html())
+				}
+			})
+		});
+		function setDate(pickdate){
+			$select.append('<option value="'+pickdate+'" >'+pickdate+'</option>');
+			var selv=new Array();
+			selv=$select.select2("val");
+			selv.push(pickdate);
+			$select.val(selv).trigger("change");
+		}
+							setDate("2015-09-10");
+					setDate("2015-09-09");
+					setDate("2015-09-01");
+				});
+</script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		select下拉：	</label>
+			<div class="formControls col-8 ">
+						<select name="lang" class="form-control  input-text select2" value="zh"  minimumResultsForSearch="Infinity" nullmsg="" datatype="*" rel="22" class="input-text select2" data-ajaxurl="/../data/select2ajax.pagelet">
+							<option value="" ></option>
+					<option value="zh" selected>中国</option>
+					<option value="en" >英国</option>
+					<option value="ta" >泰国</option>
+				</select>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		选择城市：	</label>
+			<div class="formControls col-8 ">
+					<script>
+    var zNodessid1201825538 =[];
+</script>
+<input id="sid836096643" name="" type="text" value=""  class="input-text"/>
+<input id="sid836096643-input" name="cityid" type="hidden" value="41"  class="input-text"/>
+<div class="hide" id="sid836096643-rap">
+    <div id="sid836096643-content" class="tree-sel-content t-menu-content hide">
+        <ul id="ztreesid836096643" class="fa-ztree">
+        </ul>
+        <div class="hide" id="sid836096643-msg">暂无信息</div>
+        <div class="fix-part" style="padding:0 5px"> 				<script type="text/javascript">
+    zNodessid1201825538.push({id:1, pId:0, name:"北京"});
+</script>
+ 				<script type="text/javascript">
+    zNodessid1201825538.push({id:2, pId:0, name:"天津"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:3, pId:0, name:"上海"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:6, pId:0, name:"重庆"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:4, pId:0, name:"河北省"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:41, pId:4, name:"石家庄"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:42, pId:4, name:"保定"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:43, pId:4, name:"邯郸"});
+</script>
+				<script type="text/javascript">
+    zNodessid1201825538.push({id:44, pId:4, name:"承德"});
+</script>
+			</div>
+        </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var setting = {
+            view: {
+                dblClickExpand: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                beforeClick: beforeClick,
+                onClick: onClick
+            }
+        };
+        var zTree;
+        var zNodes =zNodessid1201825538;
+        var $treeContent=$("#ztreesid836096643");
+        var $treeRap=$("#sid836096643-content");
+        var $input=$("#sid836096643");
+        var $inputV=$("#sid836096643-input");
+                            initzTree();
+                function initzTree(){
+            zTree=$.fn.zTree.init($treeContent, setting, zNodes);
+            initInputVale();
+        }
+        function initInputVale(){
+            var $val=$inputV.val();
+            if(!$val) return false;
+            for(var i=0;i<zNodes.length;i++){
+                if($val==zNodes[i].id){
+                        $input.val(zNodes[i].name);
+                        $inputV.val($val);
+                        $input.trigger("setValue",zNodes[i]);
+                    break;
+                }
+            }
+        }
+        function beforeClick(treeId, treeNode) {
+            if(treeNode &&treeNode.clickAble===false){
+                zTree.expandNode(treeNode);
+                return false;
+            }
+        }
+        function onClick(e, treeId, treeNode) {
+                $input.val(treeNode.name);
+                $inputV.val(treeNode.id);
+                $input.trigger("setValue",treeNode);
+                $inputV.trigger("blur");
+                $input.trigger("blur");
+            hideMenu();
+        }
+        function hideMenu() {
+                $treeRap.fadeOut("fast");
+            $("#sid836096643-rap").append($treeRap);
+        }
+            $input.on("click",function(){
+            $("body").append($treeRap);
+        var thisOffset = $(this).offset();
+            $treeRap.css({width:$(this).css("width"),left:thisOffset.left + "px", top:thisOffset.top + $(this).outerHeight() + "px"}).slideDown("fast");
+        }).on("add",function(e,newNode){
+        zTree.addNodes(null, newNode);
+        });
+        $("body").on("click",function(e){
+            if($(e.target).attr("id")!=$input.attr("id")&&$(e.target).parents("#"+$treeRap.attr("id")).size()==0){
+                hideMenu();
+            }
+        }).on("click",".fix-part",function(e){
+            hideMenu();
+        });
+        function bfxs(zTree, nodes, tt) {
+            if (nodes.children == null) {//无子节点
+                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//无子节点，但是包含tt
+                    fjdxs(zTree, nodes);
+                }
+            }else {//有子节点
+                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0){//有而且包含
+                    fjdxs(zTree, nodes);
+                    xsall(zTree, nodes);
+                }else {//有但不包含
+                    $.each(nodes.children, function (aa, bb) {
+                        bfxs(zTree, bb, tt);
+                    })
+                }
+            }
+        }
+        ///显示所有父节点
+        function fjdxs(zTree, nodes) {
+            if (nodes.getParentNode() == null) {
+                zTree.showNode(nodes);
+            }
+            else {
+                zTree.showNode(nodes);
+                fjdxs(zTree, nodes.getParentNode());
+            }
+        }
+        ///全显
+        function xsall(ztree, nodes) {
+            ztree.showNode(nodes);
+            if (nodes.children != null) {
+                $.each(nodes.children, function (x, y) {
+                    xsall(ztree, y);
+                })
+            }
+        }
+        ///么有子节点的直接隐藏
+        function ycall(ztree, nodes) {
+            ztree.hideNode(nodes);
+            if (nodes.children != null) {
+                $.each(nodes.children, function (x, y) {
+                    ycall(ztree, y);
+                })
+            }
+        }
+        $("#sid836096643").on("propertychange input",function(){
+            var key = $(this).val();
+            var nodes = zTree.getNodes();
+            zTree.showNodes(nodes);
+            if(!key){
+                $("#sid836096643-msg").hide();
+                return;
+            }
+            var zts = zTree.getNodesByParamFuzzy("name", key);
+            if (zts.length==0){
+                $("#sid836096643-msg").show();
+            }else{
+                $("#sid836096643-msg").hide();
+            }
+
+            $.each(nodes, function (x, y) {
+                ycall(zTree, y);
+            });
+
+            $.each(nodes, function (index, node) {
+                bfxs(zTree, node, key);
+            });
+            zTree.expandAll(true);
+        }).on("close",function(){
+            hideMenu();
+        });
+    });
+</script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		选择城市2：	</label>
+			<div class="formControls col-8 ">
+					<script>
+    var zNodessid916633077 =[];
+</script>
+<input id="sid295732237" name="" type="text" value=""  data-URL="/../data/ztreeData.pagelet" class="input-text"/>
+<input id="sid295732237-input" name="cityid" type="hidden" value="1"  data-URL="/../data/ztreeData.pagelet" class="input-text"/>
+<div class="hide" id="sid295732237-rap">
+    <div id="sid295732237-content" class="tree-sel-content t-menu-content hide">
+        <ul id="ztreesid295732237" class="fa-ztree">
+        </ul>
+        <div class="hide" id="sid295732237-msg">暂无信息</div>
+        <div class="fix-part" style="padding:0 5px"></div>
+        </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var setting = {
+            view: {
+                dblClickExpand: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                beforeClick: beforeClick,
+                onClick: onClick
+            }
+        };
+        var zTree;
+        var zNodes =zNodessid916633077;
+        var $treeContent=$("#ztreesid295732237");
+        var $treeRap=$("#sid295732237-content");
+        var $input=$("#sid295732237");
+        var $inputV=$("#sid295732237-input");
+                            $.ajax({
+                type: "GET",
+                url: " /../data/ztreeData.pagelet",
+                dataType: "json",
+                success: function(data) {
+                    zNodes=data;
+                    initzTree();
+                }
+            });
+                function initzTree(){
+            zTree=$.fn.zTree.init($treeContent, setting, zNodes);
+            initInputVale();
+        }
+        function initInputVale(){
+            var $val=$inputV.val();
+            if(!$val) return false;
+            for(var i=0;i<zNodes.length;i++){
+                if($val==zNodes[i].id){
+                        $input.val(zNodes[i].name);
+                        $inputV.val($val);
+                        $input.trigger("setValue",zNodes[i]);
+                    break;
+                }
+            }
+        }
+        function beforeClick(treeId, treeNode) {
+            if(treeNode &&treeNode.clickAble===false){
+                zTree.expandNode(treeNode);
+                return false;
+            }
+        }
+        function onClick(e, treeId, treeNode) {
+                $input.val(treeNode.name);
+                $inputV.val(treeNode.id);
+                $input.trigger("setValue",treeNode);
+                $inputV.trigger("blur");
+                $input.trigger("blur");
+            hideMenu();
+        }
+        function hideMenu() {
+                $treeRap.fadeOut("fast");
+            $("#sid295732237-rap").append($treeRap);
+        }
+            $input.on("click",function(){
+            $("body").append($treeRap);
+        var thisOffset = $(this).offset();
+            $treeRap.css({width:$(this).css("width"),left:thisOffset.left + "px", top:thisOffset.top + $(this).outerHeight() + "px"}).slideDown("fast");
+        }).on("add",function(e,newNode){
+        zTree.addNodes(null, newNode);
+        });
+        $("body").on("click",function(e){
+            if($(e.target).attr("id")!=$input.attr("id")&&$(e.target).parents("#"+$treeRap.attr("id")).size()==0){
+                hideMenu();
+            }
+        }).on("click",".fix-part",function(e){
+            hideMenu();
+        });
+        function bfxs(zTree, nodes, tt) {
+            if (nodes.children == null) {//无子节点
+                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0) {//无子节点，但是包含tt
+                    fjdxs(zTree, nodes);
+                }
+            }else {//有子节点
+                if (nodes[zTree.setting.data.key.name].indexOf(tt) >= 0){//有而且包含
+                    fjdxs(zTree, nodes);
+                    xsall(zTree, nodes);
+                }else {//有但不包含
+                    $.each(nodes.children, function (aa, bb) {
+                        bfxs(zTree, bb, tt);
+                    })
+                }
+            }
+        }
+        ///显示所有父节点
+        function fjdxs(zTree, nodes) {
+            if (nodes.getParentNode() == null) {
+                zTree.showNode(nodes);
+            }
+            else {
+                zTree.showNode(nodes);
+                fjdxs(zTree, nodes.getParentNode());
+            }
+        }
+        ///全显
+        function xsall(ztree, nodes) {
+            ztree.showNode(nodes);
+            if (nodes.children != null) {
+                $.each(nodes.children, function (x, y) {
+                    xsall(ztree, y);
+                })
+            }
+        }
+        ///么有子节点的直接隐藏
+        function ycall(ztree, nodes) {
+            ztree.hideNode(nodes);
+            if (nodes.children != null) {
+                $.each(nodes.children, function (x, y) {
+                    ycall(ztree, y);
+                })
+            }
+        }
+        $("#sid295732237").on("propertychange input",function(){
+            var key = $(this).val();
+            var nodes = zTree.getNodes();
+            zTree.showNodes(nodes);
+            if(!key){
+                $("#sid295732237-msg").hide();
+                return;
+            }
+            var zts = zTree.getNodesByParamFuzzy("name", key);
+            if (zts.length==0){
+                $("#sid295732237-msg").show();
+            }else{
+                $("#sid295732237-msg").hide();
+            }
+
+            $.each(nodes, function (x, y) {
+                ycall(zTree, y);
+            });
+
+            $.each(nodes, function (index, node) {
+                bfxs(zTree, node, key);
+            });
+            zTree.expandAll(true);
+        }).on("close",function(){
+            hideMenu();
+        });
+    });
+</script>
+ 			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+                	<label class="form-label col-2" id="">
+		选择城市：	</label>
+        	<div class="formControls col-8 ">
+		        		<select name="" class="form-control " value=""  nullmsg="请选择所在城市！" datatype="*">
+		                <option value="" selected>请选择城市</option>
+                <option value="1">北京</option>
+                <option value="2">上海</option>
+                <option value="3">广州</option>
+            	</select>
+			</div>
+        	<div class="col-2">
+    	    </div>
+         </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		Ajax数据返回：	</label>
+			<div class="formControls col-8 ">
+										<input type="hidden" id="s2id1046352378" name="sel2" value="2" dataId="sid" dataText="stext" datatype="*" placeholder="查询数据" fixDataVal="1" fix2="ajian" fixData="pid"/>
+<script type="text/javascript">
+    $(function(){
+        var _inputVal=$("#s2id1046352378");
+        var multiple=_inputVal.attr("multiple");
+        multiple=multiple?true:false;
+        _inputVal.select2({
+            multiple:multiple,
+            ajax: {
+                url: "/../data/select2ajax.pagelet",
+                dataType: 'json',
+                quietMillis: 250,
+                data: function (term, page) {
+                    var data={fix2:_inputVal.attr("fix2"),fixData:_inputVal.attr("fixData"),key: term};
+                    return data;
+                },
+                results: function (reData, page) {
+                    var data=[];
+                    for(var i= 0,l=reData.length;i<l;i++){
+                        data.push({id:reData[i].sid,text:reData[i].stext})
+                    }
+                    return { results: data};
+                },
+                cache: true
+            },
+            initSelection: function (element, callback) {   // 初始化时设置默认值
+                var v=element.val();
+                $.ajax({
+                    url:"/../data/select2ajax.pagelet",
+                    type:"get",
+                    data:{select2Init:"true",initKey:v},
+                    dataType:"json",
+                    success:function(reData){
+                        var data=[];
+                        for(var i= 0,l=reData.length;i<l;i++){
+                            data.push({id:reData[i].sid,text:reData[i].stext})
+                            //callback(data);
+                        }
+                        if(!data) return false;
+                        if(multiple){
+                            callback(data);
+                        }else{
+                            callback(data[0]);
+                        }
+                    }
+                })
+            },
+            formatResult: function(data){return "<div>"+data.text+"</div>";},
+            formatSelection: function(data){
+                return data.text;
+            },
+            formatInputTooShort: function(){return "请输入关键字"},
+        });
+		            $("#s2id1046352378").prev("div").find("abbr.select2-search-choice-close").show();
+		        _inputVal.on("select2-blur",function(){
+			$(this).trigger("blur");
+		}).on("change",function(){
+            if($(this).val()){
+                $(this).prev("div").find("abbr.select2-search-choice-close").show()
+            }else{
+                $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+            }
+		}).on("disable",function(){
+			var disabled=$(this).attr("disabled");
+			if(disabled){
+                disabled=true;
+                $(this).removeAttr("disabled");
+			}else{
+                disabled=false;
+                $(this).attr("disabled","true");
+			}
+            $(this).select2("enable", disabled);
+		});
+    })
+</script>
+							<div class="fixtools hide" id="s2id1046352378-fix"><div class="fixselect2foot">	<a class="r" data-target="#myModal2" data-toggle="modal"  data-width="600" modal-title="增加" href="/../page/form/4.6.pagelet">
+		增加	</a>
+<a href="/../page/">全部</a></div></div>
+<script type="text/javascript">
+    $(function(){
+        var isinit=false;
+        $("#s2id1046352378").on("select2-open", function (e) {
+            var $sel=$(this);
+            if(!isinit){
+                $("#select2-drop").append($("#s2id1046352378-fix").html());
+                $("#select2-drop").on("click","a[data-toggle!=modal]",function(){
+                    window.location.href=$(this).attr("href");
+                }).on("click",'[data-toggle="modal"]',function(e){
+                    $("#select2-drop").hide();
+                    var $this =	$(this),
+                            href = $this.attr('href'),
+                            height =$this.attr('data-height'),
+                            width =$this.attr('data-width'),
+                            modalTitle =$this.attr('modal-title'),
+                            modalUrl =$this.attr('modal-url'),
+                            modalData =$this.attr('modal-Data'),
+                        $target = $($this.attr('data-target') || (href && href.replace(/.*(?=^\s]+$)/, ''))),
+                    option = $target.data('modal') ? 'toggle' : $.extend({
+                        remote: !/#/.test(href) && href,
+                        height: height ? height : 0,
+                        maxHeight: $(window).height() * 0.8 - 100,
+                        modalTitle: modalTitle ? modalTitle : null,
+                        modalUrl: modalUrl ? modalUrl : null,
+                    },$target.data() , $this.data());
+                        $target.drag({
+                        handle: ".modal-header"
+                        });
+                    e.preventDefault();
+                        $target.modal(option).one('hide',function() {
+                        $this.focus();
+                    });
+                });
+                isinit=true;
+            }
+        });
+    });
+</script>
+						</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		国籍：	</label>
+			<div class="formControls col-8 ">
+											<select name="lang2" class="form-control"  nullmsg="请选择省份！" datatype="*" class="input-text select2" id="sid1542246806">
+     					 <option value="CT">Connecticut</option>
+					 <option value="DE">Delaware</option>
+					 <option value="FL">Florida</option>
+					 <option value="GA">Georgia</option>
+					 <option value="IN">Indiana</option>
+					 <option value="ME">Maine</option>
+					 <option value="MD">Maryland</option>
+				</select>
+<script type="text/javascript">
+    $(function(){
+        $("#sid1542246806").each(function(e){
+            var that=this;
+            $(this).select2({
+                //allowClear: true,
+                minimumResultsForSearch:($(that).attr("minimumResultsForSearch")?Infinity:"")
+            });
+        });
+        $("#sid1542246806").on("change",function(){
+            if($(this).val()){
+                $(this).prev("div").find("abbr.select2-search-choice-close").show()
+            }else{
+                $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+            }
+            $(this).trigger('blur');
+        });
+		            $("#sid1542246806").prev("div").find("abbr.select2-search-choice-close").show();
+            var valuestr="IN";
+            var values=valuestr.split(",");
+            if(values.length>1){
+                $("#sid1542246806").val(values).trigger("change");
+            }else{
+                $("#sid1542246806").val(valuestr).trigger("change");
+            }
+		    });
+</script>
+								<div class="fixtools hide" id="sid1542246806-fix"><div class="fixselect2foot">	<a class="r" data-target="#myModal2" data-toggle="modal"  data-width="600" modal-title="增加" href="/../page/form/4.6.pagelet">
+		增加	</a>
+<a href="/../page/">全部</a></div></div>
+<script type="text/javascript">
+    $(function(){
+        var isinit=false;
+        $("#sid1542246806").on("select2-open", function (e) {
+            var $sel=$(this);
+            if(!isinit){
+                $("#select2-drop").append($("#sid1542246806-fix").html());
+                $("#select2-drop").on("click","a[data-toggle!=modal]",function(){
+                    window.location.href=$(this).attr("href");
+                }).on("click",'[data-toggle="modal"]',function(e){
+                    $("#select2-drop").hide();
+                    var $this =	$(this),
+                            href = $this.attr('href'),
+                            height =$this.attr('data-height'),
+                            width =$this.attr('data-width'),
+                            modalTitle =$this.attr('modal-title'),
+                            modalUrl =$this.attr('modal-url'),
+                            modalData =$this.attr('modal-Data'),
+                        $target = $($this.attr('data-target') || (href && href.replace(/.*(?=^\s]+$)/, ''))),
+                    option = $target.data('modal') ? 'toggle' : $.extend({
+                        remote: !/#/.test(href) && href,
+                        height: height ? height : 0,
+                        maxHeight: $(window).height() * 0.8 - 100,
+                        modalTitle: modalTitle ? modalTitle : null,
+                        modalUrl: modalUrl ? modalUrl : null,
+                    },$target.data() , $this.data());
+                        $target.drag({
+                        handle: ".modal-header"
+                        });
+                    e.preventDefault();
+                        $target.modal(option).one('hide',function() {
+                        $this.focus();
+                    });
+                });
+                isinit=true;
+            }
+        });
+    });
+</script>
+						</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		单选框：	</label>
+			<div class="formControls skin-minimal col-5 ">
+												<div class="radio-box"><input type="radio" name="sex" class="iradio iradio-blue" id="rad1670896155" value="man"   nullmsg="请选择性别！" datatype="*"/><label for="rad1670896155"  class="cursor-hand">男</label></div>
+						<div class="radio-box"><input type="radio" name="sex" class="iradio iradio-blue" id="rad256772843" value="women" checked  nullmsg="请选择性别！" datatype="*"/><label for="rad256772843"  class="cursor-hand">女</label></div>
+						<div class="radio-box"><input type="radio" name="sex" class="iradio iradio-blue" id="rad1979740826" value="secret"   nullmsg="请选择性别！" datatype="*"/><label for="rad1979740826"  class="cursor-hand">保密</label></div>
+						</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		爱好：	</label>
+			<div class="formControls col-5 ">
+											<div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check1077665800" value="a"  nullmsg="爱好不能为空！" datatype="*"/><label for="check1077665800" class="cursor-hand">上网</label></div>
+						<div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check905961692" value="b"  nullmsg="爱好不能为空！" datatype="*"/><label for="check905961692" class="cursor-hand">喝茶</label></div>
+						<div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check942274175" value="c"  nullmsg="爱好不能为空！" datatype="*"/><label for="check942274175" class="cursor-hand">打球</label></div>
+						<div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check899064764" value="d"  nullmsg="爱好不能为空！" datatype="*"/><label for="check899064764" class="cursor-hand">走路</label></div>
+						<div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check584024062" value="e"  nullmsg="爱好不能为空！" datatype="*"/><label for="check584024062" class="cursor-hand">爬山</label></div>
+						<div class="radio-box"><input type="checkbox" name="checkbox2" class="icheckbox icheckbox-blue " id="check2020941296" value="f"  nullmsg="爱好不能为空！" datatype="*"/><label for="check2020941296" class="cursor-hand">唱歌</label></div>
+			<script type="text/javascript">
+$(function(){
+	var checkval=[];
+						checkval.push("a");
+					checkval.push("c");
+					checkval.push("e");
+				$("input[name=checkbox2]").each(function(e){
+		if(checkval.indexOf(this.value)>-1){
+			this.checked=true;
+		}else{
+			this.checked=false;
+		}
+	});
+})
+</script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		纯上传：	</label>
+			<div class="formControls col-8 ">
+								<span class="form-inline">
+<span class="btn-upload">
+	<input id="fid1572032228_input" name="upfile1_name" value="" type="text" class="form-control">
+	<a class="btn btn-primary" role="button"><i class="glyphicon glyphicon-cloud-upload"></i> 浏览文件</a>
+	<input type="file" id="fid1572032228" name="upfile1" class="input-file">
+</span></span>
+<script type="text/javascript">
+$(function(){
+	$("#fid1572032228").on("change",function(){
+		$(this).prev("input").val($(this).val())
+		//$("#fid1572032228_input").val($(this).val());
+	});})
+</script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		图片上传：
+
+			</label>
+			<div class="formControls col-8 ">
+							<input type="hidden" class="form-control" value="" name="inputImage" id="upload456108539"  placeholder="可点击图标进行上传"><span class="btn btn-primary upload-btn" id="upload456108539-wrap"><i class="iconfont">&#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload456108539-file"></span>
+	<div id="showimgupload456108539"></div>
+	<script type="text/javascript">
+	$(function(){
+		$("#upload456108539-wrap").on("change","#upload456108539-file",function(){
+			$.ajaxFileUpload({
+				url: '/../action/savepic.pagelet',
+				secureuri: false,
+				fileElementId: "upload456108539-file",
+				dataType: 'json',
+				success: function (data, status) {
+					if(data.state=="SUCCESS"){
+						$("#upload456108539").val(data.url);
+						$("#showimgupload456108539").html("<img src='/.."+data.url+"' width='100'>");
+					}else{
+						var str=!data.info;
+						if(!str){str="参数有误";}
+						layer.msg(str);
+					}
+				}
+			});
+		});
+	});
+	 </script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		附件：
+		<div class="list-operate-more-less" style="margin-right:10px"><span id="oid1046031272-add" data-target="#list-item" data-minSize="2" class=""><i class="glyphicon glyphicon-plus"></i></span>
+<span id="oid1046031272-less" data-target="#list-item" data-minSize="2" class=""><i class="glyphicon glyphicon-minus"></i></span>
+<script type="text/javascript">
+    $(function(){
+        var minsize=$("#oid1046031272-add").attr("data-minSize");
+		  var maxsize=$("#oid1046031272-add").attr("data-maxSize");
+        if(!minsize) minsize=1;
+        function updateInputName(_this){
+            var targetDom=$($(_this).attr("data-target"));
+            targetDom.children().each(function(index){
+                $(this).find("input,select").each(function(){
+                    var name=$(this).attr("name");
+                    name=name.replace(/\[[0-9]*\]/,"["+index+"]");
+                    $(this).attr("name",name);
+                })
+            })
+
+        }
+        $("#oid1046031272-add").on("click",function(){
+            var targetDom=$($(this).attr("data-target"));
+            if(!targetDom) return false;
+				if(maxsize&&targetDom.children().size()>=maxsize){
+					layer.msg("已经有"+maxsize+"个，不能再加了");
+					return false;
+				}
+            var $item=targetDom.children(":first").clone();
+				$item.find("input:text,select").val("");
+            targetDom.append($item);
+            updateInputName(this);
+        });
+        $("#oid1046031272-less").on("click",function(){
+            var targetDom=$($(this).attr("data-target"));
+            if(!targetDom) return false;
+            if(targetDom.children().size()>minsize){
+                targetDom.children().last().remove();
+                updateInputName(this);
+            }else{
+                layer.msg("少于"+minsize+"个,不能再删了")
+            }
+
+        })
+    })
+</script>
+</div>	</label>
+			<div class="formControls col-8 ">
+					<div id="list-item">
+				<div class="mb10">		<input type="text" class="form-control " value="" name="inputName" id="upload1719521223"  placeholder="可直接输入地址，也可点击下图标进行上传"><span class="btn btn-primary upload-btn" id="upload1719521223-wrap"><i class="iconfont">&#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload1719521223-file"></span>
+	<div id="showimgupload1719521223"></div>
+	<script type="text/javascript">
+	$(function(){
+		$("#upload1719521223-wrap").on("change","#upload1719521223-file",function(){
+			$.ajaxFileUpload({
+				url: '/../action/savepic.pagelet',
+				secureuri: false,
+				fileElementId: "upload1719521223-file",
+				dataType: 'json',
+				success: function (data, status) {
+					if(data.state=="SUCCESS"){
+						$("#upload1719521223").val(data.url);
+						$("#showimgupload1719521223").html("<img src='/.."+data.url+"' width='100'>");
+					}else{
+						var str=!data.info;
+						if(!str){str="参数有误";}
+						layer.msg(str);
+					}
+				}
+			});
+		});
+	});
+	 </script>
+</div>
+				<div class="mb10">		<input type="text" class="form-control " value="" name="inputName" id="upload1074984701"  placeholder="可直接输入地址，也可点击下图标进行上传"><span class="btn btn-primary upload-btn" id="upload1074984701-wrap"><i class="iconfont">&#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload1074984701-file"></span>
+	<div id="showimgupload1074984701"></div>
+	<script type="text/javascript">
+	$(function(){
+		$("#upload1074984701-wrap").on("change","#upload1074984701-file",function(){
+			$.ajaxFileUpload({
+				url: '/../action/savepic.pagelet',
+				secureuri: false,
+				fileElementId: "upload1074984701-file",
+				dataType: 'json',
+				success: function (data, status) {
+					if(data.state=="SUCCESS"){
+						$("#upload1074984701").val(data.url);
+						$("#showimgupload1074984701").html("<img src='/.."+data.url+"' width='100'>");
+					}else{
+						var str=!data.info;
+						if(!str){str="参数有误";}
+						layer.msg(str);
+					}
+				}
+			});
+		});
+	});
+	 </script>
+</div>
+				<div class="mb10">		<input type="text" class="form-control " value="" name="inputName" id="upload1056318619"  placeholder="可直接输入地址，也可点击下图标进行上传"><span class="btn btn-primary upload-btn" id="upload1056318619-wrap"><i class="iconfont">&#xf0020;</i> 浏览文件 <input type="file" class="input-file" name="upfile" id="upload1056318619-file"></span>
+	<div id="showimgupload1056318619"></div>
+	<script type="text/javascript">
+	$(function(){
+		$("#upload1056318619-wrap").on("change","#upload1056318619-file",function(){
+			$.ajaxFileUpload({
+				url: '/../action/savepic.pagelet',
+				secureuri: false,
+				fileElementId: "upload1056318619-file",
+				dataType: 'json',
+				success: function (data, status) {
+					if(data.state=="SUCCESS"){
+						$("#upload1056318619").val(data.url);
+						$("#showimgupload1056318619").html("<img src='/.."+data.url+"' width='100'>");
+					}else{
+						var str=!data.info;
+						if(!str){str="参数有误";}
+						layer.msg(str);
+					}
+				}
+			});
+		});
+	});
+	 </script>
+</div>
+			</div>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		出生日期：	</label>
+			<div class="formControls col-8 ">
+					 		<div class="input-prepend input-group">		<span class="add-on input-group-addon">
+			<i class="glyphicon glyphicon-calendar fa fa-calendar">
+			</i>
+		</span>
+		<input type="text" name="birthday" class="form-control " id="dateput836887585" value=""  nullmsg="日期不能为空" datatype="*" noPick="false" style="width:200px" placeholder="yMdHmswW分别代表年月日时分秒星期周,你可以任意组合这些元素来自定义你个性化的日期格式."/>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+						var dateFormat='YYYY-MM-DD HH:mm:ss';
+			dateFormat=dateFormat?dateFormat:'yyyy-MM-dd';// HH:mm:ss
+			dateFormat=dateFormat.replace(/Y/g, "y").replace("ii", "mm").replace(/D/g, "d");
+			//console.log(dateFormat);
+			$("#dateput836887585").on("click",function(){
+				WdatePicker({
+					startDate:'%y-%M-01 00:00:00',dateFmt:dateFormat,
+					onpicked:function(){$("input[name='birthday']").trigger('blur change')}
+				})
+			});
+					});
+	</script>
+  			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		日期区间：	</label>
+			<div class="formControls col-8 ">
+					<div class="input-group form-inline" id="sid1587985687-rap">
+    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    <input type="text" name="btime" id="sid1587985687" class="form-control" value="" style="width:100px"/><span style="padding:6px;float:left"> 至</span> <input type="text" name="etime" id="sid1587985687-2" class="form-control" value="" style="width:100px"/>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var dateFormat='';
+        dateFormat=dateFormat?dateFormat:'YYYY-MM-DD';
+        showTime=false;
+        var s=dateFormat.toLowerCase();
+        if(s.indexOf("h")>-1){
+            showTime=true;
+        }
+        var datestr=""?"":moment().format(dateFormat);
+        var datestr2=""?"":moment().format(dateFormat);
+        $("#sid1587985687-rap").daterangepicker({
+            timePicker:showTime,timePickerIncrement:1,timePicker12Hour:false,timePickerSeconds:true,startDate:datestr,endDate:datestr2,format:dateFormat
+        }).on("apply.daterangepicker",function(e,_this){
+            $("#sid1587985687").val(_this.startDate.format(dateFormat)).trigger("blur").siblings("input:first").val(_this.endDate.format(dateFormat)).trigger("blur");
+        });
+    });
+</script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		所在区域：	</label>
+			<div class="formControls col-5 form-inline selectList ">
+						<select name="province" class="form-control  province" value=""  nullmsg="请选择省份！" datatype="*" class="province">
+							<option value="" >请选择省份</option>
+				</select>
+				<select name="city" class="form-control  city" value=""  nullmsg="请选择城市！" datatype="*" class="city">
+							<option value="" >请选择城市</option>
+				</select>
+				<select name="district" class="form-control  district" value=""  nullmsg="请选择地区！" datatype="*" class="district">
+							<option value="" >请选择地区</option>
+				</select>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		网址：	</label>
+		<div class="formControls col-8 ">
+					<input type="text" name="username" value="" class="form-control  input-text"  nullmsg="网址不能为空！" datatype="url" placeholder="http://" id="username" class="input-text"/>
+		</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		描述：	</label>
+			<div class="formControls col-8 ">
+						<textarea class="form-control " name="remark"  nullmsg="备注不能为空！" datatype="*10-500" placeholder="说点什么...最少输入10个字符">内容走起</textarea>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         			<label class="form-label col-2" id="">
+		内容：	</label>
+			<div class="formControls col-8 ">
+					   <script type="text/plain" id="contentxx2">最后一个MAP参数为Ueditor的初始化参数 会自动带入 </script>
+   <script type="text/javascript">
+		window.UMEDITOR_CONFIG.textarea='content22';
+		UM.delEditor('contentxx2');
+		UM.getEditor('contentxx2',{
+		  		  initialFrameHeight:"600",		});
+   </script>
+			</div>
+			<div class="col-2">
+    	    </div>
+	     </div>
+		<div class="row cl ">
+         		    <div class=" col-10 col-offset-2 form-inline">
+        				<input type="submit" name="submitbtn" value=" 提交 " class="form-control  btn btn-primary"  class="btn btn-primary"/>
+				<a class="btn grayBtn" href="javascript:history.go(-1);">
+        返回    </a>
+			<input value="change" type="button" id="changeBtn" class="btn grayBtn"/>
+		    </div>
+	     </div>
+</form>
+<script type="text/javascript">
+    $(function(){
+        $('#from730194522 .icheckbox,#from730194522 .iradio').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
+        $("#from730194522 .settings-switcher").switcher({
+            theme: 'square',
+            on_state_content: '<span class="fa fa-check"></span>',
+            off_state_content: '<span class="fa fa-times"></span>'
+        });
+        $("#from730194522 select.select2").each(function(e){
+            var that=this;
+            $(this).select2({
+                minimumResultsForSearch:($(that).attr("minimumResultsForSearch")?Infinity:"")
+            });
+            if($(this).attr("value")){
+				$(this).prev("div").find("abbr.select2-search-choice-close").show();
+			}else{
+                $(this).select2("val",null);
+			}
+            $(this).on("change",function(){
+                if($(this).val()){
+                    $(this).prev("div").find("abbr.select2-search-choice-close").show()
+                }else{
+                    $(this).prev("div").find("abbr.select2-search-choice-close").hide()
+                }
+                $(this).trigger('blur')
+            })
+
+        });
+    });
+</script>
+	<div id="myModal2" class="modal hide fade " tabindex="-1"
+	 role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	 			<div class="modal-header">
+		<span class="glyphicon glyphicon-fullscreen"></span>
+		<span class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove "></i></span>
+		<h3>对话框标题</h3>
+    </div>
+	  <div class="modal-body  "><div class="clear"><p>对话框内容…</p></div><div class="clear"></div></div>
+		<div class="modal-footer ">
+					<button class="btn radius btn-primary " data-submit="modal">
+		确定	</button>
+			<button class="btn radius " data-dismiss="modal" aria-hidden="true">
+		关闭	</button>
+	  </div>
+	</div>
+	<script type="text/javascript">
+	<!--
+		$(function(){
+			$("#myModal2").on("close",function(e){
+                $(this).modal('hide');
+			})
+		});
+	//-->
+	</script>
+<script type="text/javascript">
+ $(function(){
+	$(".selectList").each(function(){
+		  var url = "/../data/getDist.html";
+		  var areaJson;
+		  var temp_html;
+		  var oProvince = $(this).find(".province");
+		  var oCity = $(this).find(".city");
+		  var oDistrict = $(this).find(".district");
+		  //初始化省
+		  var province = function(){
+			 $.each(areaJson,function(i,province){
+				temp_html+="<option value='"+province.p+"'>"+province.p+"</option>";
+			 });
+			 oProvince.html(temp_html);
+			 city();
+		  };
+		  //赋值市
+		  var city = function(){
+			 temp_html = "";
+			 var n = oProvince.get(0).selectedIndex;
+			 $.each(areaJson[n].c,function(i,city){
+				temp_html+="<option value='"+city.ct+"'>"+city.ct+"</option>";
+			 });
+			 oCity.html(temp_html);
+			 district();
+		  };
+		  //赋值县
+		  var district = function(){
+			 temp_html = "";
+			 var m = oProvince.get(0).selectedIndex;
+			 var n = oCity.get(0).selectedIndex;
+			 if(typeof(areaJson[m].c[n].d) == "undefined"){
+				oDistrict.css("display","none");
+			 }else{
+				oDistrict.css("display","inline");
+				$.each(areaJson[m].c[n].d,function(i,district){
+				 temp_html+="<option value='"+district.dt+"'>"+district.dt+"</option>";
+				});
+				oDistrict.html(temp_html);
+			 };
+		  };
+		  //选择省改变市
+		  oProvince.change(function(){
+			 city();
+		  });
+		  //选择市改变县
+		  oCity.change(function(){
+			 district();
+		  });
+		  //获取json数据
+		  $.getJSON(url,function(data){
+			 areaJson = data;
+			 province();
+		  });
+	});
+ });
+$(function(){
+  $("form[name=thisform").Validform({
+	tiptype:2,
+	beforeCheck:function(curform){
+		//在表单提交执行验证之前执行的函数，curform参数是当前表单对象。
+		//这里明确return false的话将不会继续执行验证操作;
+	},
+	beforeSubmit:function(curform){
+		$(curform).ajaxSubmit({
+			dataType:"json",
+			success:function(data){
+				if(data.status=="y"){
+					layer.msg(data.info,2, 1);
+					$(curform).closest(".modal").trigger("close");
+				}else{
+					layer.msg(data.info);
+				}
+				try{
+					$(curform).closest(".modal").trigger("close");//当弹出框时触发弹出框关闭
+					//$(curform).closest(".modal").find(".modal-header .close").trigger("click");//弹出框关闭
+					$("table.tinytable").trigger("initnav"); ////可配合TINYTABLE 做刷新
+				}catch(e){console.log(e)}
+			},
+			error:function(){
+				layer.msg(data.info);
+			}
+		});
+		return false;
+
+		//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+		//这里明确return false的话表单将不会提交;
+	}
+
+ });
+
+});
+</script>	</div>
+		<h3>
+		组件包	</h3>
+	<pre class="prettyprint linenums"><span class="Huialert-danger">以上组件依赖org.tinygroup.form（下拉树org.tinygroup.ztree,编辑器org.tinygroup.ueditor）</span></pre>

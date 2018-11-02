@@ -1,0 +1,18 @@
+<ui-components>
+    <ui-component name="frameTplGreenyellow" dependencies="frameCommon">
+        <css-resource>
+			/org/tinygroup/frameTplGreenyellow/assets/stylesheets/themes.min.css
+		</css-resource>
+		<js-codelet>
+           tinyTplList.push({sort:6,name: 'fresh',  title: '绿黄', img: contextPath+'/img/themes/green.png' });
+        </js-codelet>
+		<!-- <compatibilityResources class="compatibility-resources">
+			<compatibility-resource condition="lt IE 9">
+				<js-resource>
+					/org/tinygroup/frameCommon/assets/javascripts/ie.min.js
+				</js-resource>
+			</compatibility-resource>
+		</compatibilityResources> -->
+		<description>TinyUi框架模板绿黄</description>
+    </ui-component>
+</ui-components>

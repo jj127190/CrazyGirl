@@ -1,0 +1,165 @@
+
+<span style="margin-left: 20px"></span>
+
+
+
+<script src="/static/layer/layer.js"></script>
+<script src="/static/js/jquery.bootstrap-duallistbox.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap-duallistbox.css">
+<div class="row">
+
+    <label>组名：</label>
+    <textarea id="group_name" cols="40" rows="1"  value="{{ group_name }}" class="form-control" >{{ group_name }}</textarea>
+    &nbsp;&nbsp;
+    <label>描述：</label>
+    <textarea id="desc" cols="40" rows="1"  value="{{ group_desc }}"      class="form-control" >{{ group_desc }}</textarea>
+    &nbsp;&nbsp;
+     <div style="display:none">
+    <textarea id="ids" cols="40" rows="1"  value="{{ id }}"      class="form-control" >{{ id }}</textarea>
+    &nbsp;&nbsp;
+     </div>
+
+    </div>
+
+
+
+
+        <select id="demo2" multiple="multiple" size="10" name="duallistbox_demo2" class="demo2">
+            {% if group %}
+        {% for ip in group %}
+            {% if ip%}
+            <option value="{{ ip }}" id="{{ ip  }}"><i>IP:</i><span style="margin-left: 5px;color: red;">{{ ip }}</span> </option>
+            {% else %}
+            {% endif %}
+        {% endfor %}
+            {% else %}
+
+            {% endif%}
+
+            {% if shy %}
+      {% for ip in shy %}
+            {% if ip %}
+        <option value="{{ ip }}" id="" selected="selected"><i>IP:</i><span style="margin-left: 5px;color: red;">{{ ip }}</span> </option>
+            {% else %}
+            {% endif %}
+      {% endfor %}
+            {% else %}
+            {% endif %}
+      </select>
+
+
+
+<div class="row" style="margin-top: 10px"></div>
+<span style="margin-top: 10px"></span>
+<table>
+    <tr>
+
+        <td><div style="height:40px;margin-left: 10px"> <button id="sub" class="btn radius btn-primary ">添加<span class="glyphicon glyphicon-ok"></span></button></div></td>
+
+        <td><div style="height:40px;margin-left: 5px"> <button class="btn radius btn-success " >取消<span class="glyphicon glyphicon-remove"></span></button></div></td>
+    </tr>
+</table>
+
+
+
+
+
+      <script>
+        var demo2 = $('.demo2').bootstrapDualListbox({
+          nonSelectedListLabel: '此组已存在的IP',
+          selectedListLabel: '剔除IP',
+          filterTextClear: '清空过滤条件',
+          filterPlaceHolder: '过滤条件',
+          preserveSelectionOnMove: 'moved',
+          moveOnSelect: false,
+          infoText: '当前共 {0} 条IP',
+          infoTextFiltered: '从 {1} 项 筛选 {0} 项',
+          infoTextEmpty: 'Empty list',
+          nonSelectedFilter: ''
+        });
+
+
+      </script>
+
+
+    <script>
+
+
+
+      $("#sub").click(function () {
+            var selectedValues = [];
+            var all = [];
+            var get_data = []
+            var group_name = $("#group_name").val()
+            var desc = $("#desc").val()
+            var id = $("#ids").val()
+            // alert(group_name+desc+id)
+            $("#demo2 :selected").each(function(){
+            selectedValues.push($(this).val());
+            });
+            // alert(selectedValues)
+            $("#demo2 option").each(function(){
+                all.push($(this).val())
+            })
+            // alert(all)
+            for (var i = all.length - 1; i >= 0; i--) {
+                a = all[i];
+                for (var j = selectedValues.length - 1; j >= 0; j--) {
+                    b = selectedValues[j];
+                    if (a == b) {
+                        all.splice(i, 1);
+                        selectedValues.splice(j, 1);
+                        break;
+                     }
+                    }
+                 }
+
+
+
+            // alert(all)
+
+
+            var url="/cmdb/ajax_change_group"
+
+            $.post(
+                url,
+                {'selectedValues':all.join("-"),"group_name":group_name,"desc":desc,"id":id, 'csrftoken': csrftoken},
+                function(data){
+                    if (data == "1"){
+
+                    // window.location.href='/cmdb/group_connect';
+                     setTimeout("javascript:location.href='/cmdb/group_connect'", 1000);
+                      layer.open({
+                          title: '返回结果'
+                          ,content: '操作成功'
+                        });
+
+                    }
+                    else{
+                        layer.open({
+                          title: '返回结果'
+                          ,content: data
+                        });
+
+                    }
+                });
+
+
+        });
+
+    </script>
+
+
+    <script>
+    function cancel(){
+        document.splitf.action="/cmdb/group_connect";
+        document.splitf.submit();
+    }
+
+    function sub(){
+        document.splitf.action="{% url 'cmdb:group_add' %}";
+        document.splitf.submit();
+    }
+
+</script>
+

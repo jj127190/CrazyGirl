@@ -1,0 +1,10 @@
+<ui-components>
+    <ui-component name="ckeditor" dependencies="publicComponent">
+        <css-resource></css-resource>
+	<js-resource>
+		  /org/tinygroup/ckeditor/ckpath.js,
+		  /org/tinygroup/ckeditor/ckeditor.js
+	</js-resource>
+	<description>CKEDITOR</description>
+    </ui-component>
+</ui-components>

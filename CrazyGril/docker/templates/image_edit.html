@@ -1,0 +1,164 @@
+<form action="/docker/image_edit" method="post" class="form form-horizontal" id="form_validation">
+    {% csrf_token %}
+
+{#    <input type="text" name="acl_rule_id" class="hidden" value="{{ acl_rule_id }}"/>#}
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>新镜像名称：</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control validate[required]" value="{{ newimage }}" name="newimage" required="required" />
+        </div>
+    </div>
+
+
+    <div class="row cl">
+        <label class="form-label col-3">版本：</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{ version }}" name="version"  required="required" />
+        </div>
+    </div>
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3">维护者：</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{ maintainer }}" name="maintainer" required="required" />
+        </div>
+    </div>
+
+
+
+    <div class="row cl">
+        <label class="form-label col-3">备注：</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{ msg }}" name="msg"  required="required" />
+        </div>
+    </div>
+
+
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房：</label>
+        <div class="formControls col-7">
+            <select class="form-control input-text select2" name="Idc" id="Idc">
+                <option value="" style="color: #b6b6b6" disabled selected>当前机房默认，请选择↓</option>
+                <option value="1">石景山</option>
+                <option value="2">三元桥</option>
+                <option value="3">苏州桥</option>
+            </select>
+            <input type="text" class="input-text form-control" value="{{ ids }}" name="current_id" required="required" hidden/>
+        </div>
+    </div>
+<div class="row cl">
+        <label class="form-label col-3">创建时间：</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{ upload_time }}" name="upload_time" readonly />
+        </div>
+    </div>
+
+
+    <div class="row cl">
+        <label class="form-label col-3">基础镜像：</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{ base_image }} " name="base_image" readonly />
+        </div>
+    </div>
+
+{#    <div class="row cl">#}
+{#        <label class="form-label col-3"><span class="c-red">*</span>主机组IP：</label>#}
+{#        <div class="formControls col-7">#}
+{#            <input type="text" class="input-text form-control validate[required]" value="{{ acl_rule.hostGroupIp }}" name="hostGroupIp" />#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class="row cl">#}
+{#        <label class="form-label col-3"><span class="c-red">*</span>acl number：</label>#}
+{#        <div class="formControls col-7">#}
+{#            <input type="text" class="input-text form-control validate[required]" value="{{ acl_rule.aclNumber }}" name="aclNumber" />#}
+{#        </div>#}
+{#    </div>#}
+
+{#    <div class="row cl">#}
+{#        <label class="form-label col-3"><span class="c-red">*</span>rule number：</label>#}
+{#        <div class="formControls col-7">#}
+{#            <input type="text" class="input-text form-control validate[required]" value="{{ acl_rule.ruleNumber }}" name="ruleNumber" readonly/>#}
+{#        </div>#}
+{#    </div>#}
+
+    <div class="modal-footer">
+        <button type="submit" class="btn radius btn-primary">确定</button>
+        <button class="btn radius " data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+{#    <script type="text/javascript">#}
+{#        $(function(){#}
+{#            jQuery("#form_validation").validationEngine({});#}
+{#            $.get("{% url 'netmanage:ajax_get_objectiveIdc' %}",#}
+{#                function(data){#}
+{#                    if(data){#}
+{#                        var objectiveIdc = $("input[name='objectiveIdc']").val();#}
+{#                        for(var i=0;i<data.length;i++){#}
+{#                            if (objectiveIdc == data[i]){#}
+{#                                $('#objectiveIdc').append("<option selected value='"+data[i]+"'>"+data[i]+"</option>");#}
+{#                            }else{#}
+{#                                $('#objectiveIdc').append("<option value='"+data[i]+"'>"+data[i]+"</option>");#}
+{#                            }#}
+{#                            $('#objectiveIdc').append("<option value='"+data[i]+"'>"+data[i]+"</option>");#}
+{#                        }#}
+{#                    }#}
+{#                }, "json");#}
+{#        });#}
+{##}
+        {#$("#objectiveIdc").change(function () {#}
+        {#    var objectiveIdc = $(this).children('option:selected').val();#}
+        {#    hostGroupIp = $("input[name='hostGroupIp']").val();#}
+        {#    aclNumber = $("input[name='aclNumber']").val();#}
+        {#    console.log(hostGroupIp, aclNumber);#}
+        {#    var url = "{% url 'netmanage:ajax_get_acl_info'%}";#}
+        {#    $.post(url, {'objectiveIdc': objectiveIdc, 'csrftoken': csrftoken},#}
+        {#            function (data) {#}
+        {#                if (data["code"] == "0") {#}
+        {#                    $("input[name='hostGroupIp']").val(data["data"]["host_group_ip"]);#}
+        {#                    $("input[name='aclNumber']").val(data["data"]["acl_number"]);#}
+        {#                    $("input[name='ruleNumber']").val(data["data"]["rule_number"]);#}
+        {#                }#}
+        {#                else{#}
+        {#                    $("input[name='ruleNumber']").val("内部异常错误");#}
+        {#                }#}
+        {#            }, "json");#}
+{#        {);#}
+{##}
+{##}
+        {#$("input[name='hostGroupIp']").change(function () {#}
+        {#    hostGroupIp = $("input[name='hostGroupIp']").val();#}
+        {#    aclNumber = $("input[name='aclNumber']").val();#}
+        {#    console.log(hostGroupIp, aclNumber);#}
+        {#    var url = "{% url 'netmanage:ajax_get_rule_number'%}";#}
+        {#    $.post(url, {'hostGroupIp': hostGroupIp, 'aclNumber': aclNumber, 'csrftoken': csrftoken},#}
+        {#            function (data) {#}
+        {#                if (data["code"] == "0") {#}
+        {#                    $("input[name='ruleNumber']").val(data["data"]);#}
+        {#                }#}
+        {#                else{#}
+        {#                    $("input[name='ruleNumber']").val("内部异常错误");#}
+        {#                }#}
+        {#            }, "json");#}
+        {#{);#}
+{##}
+{#        $("input[name='aclNumber']").change(function () {#}
+{#            hostGroupIp = $("input[name='hostGroupIp']").val();#}
+{#            aclNumber = $("input[name='aclNumber']").val();#}
+{#            console.log(hostGroupIp, aclNumber);#}
+{#            var url = "{% url 'netmanage:ajax_get_rule_number'%}";#}
+{#            $.post(url, {'hostGroupIp': hostGroupIp, 'aclNumber': aclNumber, 'csrftoken': csrftoken},#}
+{#                    function (data) {#}
+{#                        console.log(data);#}
+{#                        if (data["code"] == "0") {#}
+{#                            console.log(data["data"]);#}
+{#                            $("input[name='ruleNumber']").val(data["data"]);#}
+{#                        }#}
+{#                        else{#}
+{#                            $("input[name='ruleNumber']").val("内部异常错误");#}
+{#                        }#}
+{#                    }, "json");#}
+{#        });#}
+{#    </script>#}
+</form>

@@ -1,0 +1,136 @@
+{% extends "rudiment_index.html" %}
+{% load staticfiles %}
+{% load tz %}
+{% block breadcrumb %}添加机房信息
+<span style="margin-left: 20px"></span>
+
+<a href="/cmdb/idc_info"><span><button class="btn radius btn-success " ><span class="glyphicon glyphicon-backward"></span>返回</button></span></a>
+{% endblock %}
+
+
+
+
+{% block content %}
+<!--<form action="{% url 'cmdb:asset_add' %}" name="splitf" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >-->
+ <form  action="" name="splitf" method="post" class="form form-horizontal" id="form_validation" enctype="multipart/form-data" >
+   {% csrf_token %}
+
+<div class="row cl" style="display: none">
+        <label class="form-label col-3"><span class="c-red">*</span>hidden</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.id}}" name="idc_id" />
+        </div>
+    </div>
+
+<div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房名称:</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control" value="{{host_info.hostname}}" name="idc_name" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房标识</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"   value="{{host_info.ip}}"  name="idc_tag" />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3">机房地址</label>
+        <div class="formControls col-7">
+             <input type="text"  class="input-text form-control"  value="{{host_info.other_ip}}"  name="idc_add" />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房电话</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.os}}"   name="idc_tel"  />
+        </div>
+    </div>
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房负责人</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.cpu_model}}"   name="idc_pic"  >
+        </div>
+   </div>
+
+
+
+     <div class="row cl">
+        <label class="form-label col-3">移动电话</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.cpu_num}}"   name="idc_mph" />
+        </div>
+    </div>
+
+
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机柜信息</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.memory}}"  name="idc_tan"  />
+        </div>
+    </div>
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>IP 范围</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.disk}}"  name="idc_ip_range"  />
+        </div>
+    </div>
+
+
+      <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房带宽</label>
+        <div class="formControls col-7">
+            <input type="text" class="input-text form-control"   value="{{host_info.asset_no}}"  name="idc_net"  />
+        </div>
+    </div>
+
+
+       <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>机房备注信息</label>
+        <div class="formControls col-7">
+                 <input type="textarea"  rows="7" cols="42" class="input-text form-control"  value="{{host_info.sn}}"  name="idc_msg"  />
+        </div>
+    </div>
+
+
+   <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span></label>
+        <div class="formControls col-7">
+        <button onclick="sub()" class="btn radius btn-primary ">添加<span class="glyphicon glyphicon-ok"></span></button>
+            <span style="margin-left: 5px"></span>
+        <button onclick="cancel()" class="btn radius btn-success " >取消<span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+<script>
+    function cancel(){
+        document.splitf.action="{% url 'cmdb:idc_cancel' %}";
+        document.splitf.submit();
+    }
+
+    function sub(){
+        document.splitf.action="{% url 'cmdb:idc_add' %}";
+        document.splitf.submit();
+    }
+
+</script>
+
+
+{% endblock %}
